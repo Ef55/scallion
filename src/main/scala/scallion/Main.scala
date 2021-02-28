@@ -13,11 +13,11 @@ object Main extends Parsers with LeftFactorization with Grammars {
 
     val letter = elem(true)
     val other = elem(false)
-    val s = letter ~ letter | letter ~ other
+    val s = (letter ~ letter).map(_ => 0) | (letter ~ other).map(_ => 1) | (other ~ other).map(_ => 2)
     val program = leftFactor(true, s)
 
     def main(args: Array[String]) = {
-        val input = "ab"
+        val input = "11"
 
         println(grammars.getGrammar(program).pretty())
 

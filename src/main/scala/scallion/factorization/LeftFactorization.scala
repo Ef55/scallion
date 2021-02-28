@@ -7,42 +7,103 @@ trait LeftFactorization { self: Syntaxes =>
 
   def leftFactor[A](leftFactor: Kind, s: Syntax[A]): Syntax[A] = {
 
-    def leftFactorOut[A](leftFactor: Kind, s: Syntax[A]): Syntax[Token => A] = {
-      s match {
-          case Elem(`leftFactor`)         => Success(()).map( 
+    case class Factorization[A](
+      factorized: Syntax[Token => A],
+      alternative: Syntax[A]
+    ){
+      def |(that: Factorization[A]): Factorization[A] = {
+        Factorization(
+          this.factorized | that.factorized,
+          this.alternative | that.alternative
+        )
+      }
+
+      def ~[F](follow: Syntax[F]): Factorization[A ~ F] = {
+        Factorization(
+          (this.factorized ~ follow).map(
+              _ match { case fl ~ r => (t: Token) => scallion.~(fl(t), r)},
+              _ match { case _ => throw new IllegalArgumentException("Reverse transformation not yet implemented") }
+          ),
+          this.alternative ~ follow
+        )
+      }
+
+      def map[B](fun: A => B, inv: B => Seq[A] = (b: B) => Seq()): Factorization[B] = {
+        Factorization(
+          this.factorized.map(
+            factorized => (t: Token)  => fun(factorized(t)),
+            factorized => throw new IllegalArgumentException("Reverse transformation not yet implemented")
+          ),
+          this.alternative.map(fun, inv)
+        )
+      }
+
+      def mark(mark: Mark): Factorization[A] = {
+        Factorization(
+          this.factorized.mark(mark),
+          this.alternative.mark(mark)
+        )
+      }
+
+      def asRecursive: Factorization[A] = {
+        Factorization(
+          recursive(this.factorized),
+          recursive(this.alternative)
+        )
+      }
+
+      def complete: Syntax[A] = {
+        (elem(leftFactor) ~ this.factorized).map(
+          _ match { case t ~ f => f(t) },
+          (_: A) => throw new IllegalArgumentException("Reverse transformation not yet implemented")
+        ) | this.alternative
+      }
+    }
+
+    object Factorization {
+      def success: Factorization[Token] = {
+        Factorization(
+          Success(()).map( 
             (_: Unit) => (t: Token) => {
               require(getKind(t) == leftFactor)
               t
             }
-          )
-          case Elem(_)                    => throw new IllegalArgumentException("Non-factorizable not yet handled")
+          ),
+          failure
+        )
+      }
 
-          case Sequence(l, r)             => (leftFactorOut(leftFactor, l) ~ r).map(
-            _ match { case fl ~ r => (t: Token) => scallion.~(fl(t), r)},
-            _ match { case _ => throw new IllegalArgumentException("Reverse transformation not yet implemented") }
-          )
-
-          case Disjunction(l, r)          => leftFactorOut(leftFactor, l) | leftFactorOut(leftFactor, r)
-          
-          case Transform(fun, inv, inner) => leftFactorOut(leftFactor, inner).map(
-            factored => (t: Token)  => fun(factored(t)),
-            factored => throw new IllegalArgumentException("Reverse transformation not yet implemented")
-          )
-
-          case Marked(mark, inner)        => Marked(mark, leftFactorOut(leftFactor, inner))
-
-          case Success(_)                 => throw new IllegalArgumentException("Succes cannot be factored")
-
-          case Failure()                  => failure
-
-          case rec: Recursive[_]          => recursive(leftFactorOut(leftFactor, rec.inner))
+      def fail(s: Syntax[Token]): Factorization[Token] = {
+        Factorization(
+          failure,
+          s
+        )
       }
     }
 
-    (elem(leftFactor) ~ leftFactorOut(leftFactor, s)).map(
-      _ match { case t ~ f => f(t) },
-      _ => throw new IllegalArgumentException("Reverse transformation not yet implemented")
-    )
+    
+
+    def leftFactorOut[A](s: Syntax[A]): Factorization[A] = {
+      s match {
+          case Elem(`leftFactor`)         => Factorization.success
+          case e: Elem                    => Factorization.fail(e)
+
+          case Sequence(l, r)             => leftFactorOut(l) ~ r
+          case Disjunction(l, r)          => leftFactorOut(l) | leftFactorOut(r)
+          
+          case Transform(fun, inv, inner) => leftFactorOut(inner).map(fun, inv)
+
+          case Marked(mark, inner)        => leftFactorOut(inner).mark(mark)
+
+          case Success(_)                 => throw new IllegalArgumentException("Succes should not be factorized")
+
+          case Failure()                  => Factorization(failure, failure)
+
+          case rec: Recursive[_]          => leftFactorOut(rec.inner).asRecursive
+      }
+    }
+
+    leftFactorOut(s).complete
   }
 
 }
