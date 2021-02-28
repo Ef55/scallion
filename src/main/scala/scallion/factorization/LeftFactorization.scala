@@ -82,18 +82,20 @@ trait LeftFactorization { self: Syntaxes =>
     }
 
     
-
+    // TODO: 
+    //  - handle things like leftFactor(k, eps ~ elem(k))
+    //  - generalize to left factor whole syntaxes
     def leftFactorOut[A](s: Syntax[A]): Factorization[A] = {
       s match {
-          case Elem(`leftFactor`)         => Factorization.success
-          case e: Elem                    => Factorization.fail(e)
-          case Sequence(l, r)             => leftFactorOut(l) ~ r
-          case Disjunction(l, r)          => leftFactorOut(l) | leftFactorOut(r)
-          case Transform(fun, inv, inner) => leftFactorOut(inner).map(fun, inv)
-          case Marked(mark, inner)        => leftFactorOut(inner).mark(mark)
-          case s: Success[_]              => Factorization.fail(s)
-          case Failure()                  => Factorization(failure, failure)
-          case rec: Recursive[_]          => leftFactorOut(rec.inner).asRecursive
+        case Elem(`leftFactor`)         => Factorization.success
+        case e: Elem                    => Factorization.fail(e)
+        case Sequence(l, r)             => leftFactorOut(l) ~ r
+        case Disjunction(l, r)          => leftFactorOut(l) | leftFactorOut(r)
+        case Transform(fun, inv, inner) => leftFactorOut(inner).map(fun, inv)
+        case Marked(mark, inner)        => leftFactorOut(inner).mark(mark)
+        case s: Success[_]              => Factorization.fail(s)
+        case Failure()                  => Factorization(failure, failure)
+        case rec: Recursive[_]          => leftFactorOut(rec.inner).asRecursive
       }
     }
 
