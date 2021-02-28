@@ -5,7 +5,13 @@ import scallion._
 import scallion.factorization._
 
 object Tokens {
-  sealed trait Token
+  sealed trait Token{
+    def toChar: Char = this match {
+      case Letter(c)    => c
+      case Number(c)    => c 
+      case Separator(c) => c 
+    }
+  }
   case class Letter(char: Char) extends Token
   case class Number(num: Char) extends Token
   case class Separator(sep: Char) extends Token
@@ -89,8 +95,8 @@ class LeftFactorizationTests extends FlatSpec with Parsers with LeftFactorizatio
   // Repsep example (Not yet supported)
   {
     val grammar = 
-      repsep(letter, sep).map(_.mkString("")) |
-      (letter ~ number).map{ case l ~ n => s"${l}${n}"}
+      repsep(letter, sep).map(_.map(_.toChar).mkString("")) |
+      (letter ~ number).map{ case l ~ n => s"${l.toChar}${n.toChar}"}
     val factorized = leftFactorize(LetterKind, grammar)
 
     "Repsep grammar" should "have conflicts" in {
@@ -102,7 +108,8 @@ class LeftFactorizationTests extends FlatSpec with Parsers with LeftFactorizatio
     }
 
     it should "parse strings as expected" in {
-      def mkTestCase(str: String): (String, String) = (str, str.filter(_.isLetterOrDigit))
+      def mkTestCase(str: String): (String, String) = 
+        (str, str.filter(_.isLetterOrDigit))
 
       val parser = Parser(factorized)
       for(str <- Seq(

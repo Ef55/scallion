@@ -73,7 +73,7 @@ trait LeftFactorization { self: Syntaxes =>
         )
       }
 
-      def fail(s: Syntax[Token]): Factorization[Token] = {
+      def fail[A](s: Syntax[A]): Factorization[A] = {
         Factorization(
           failure,
           s
@@ -87,18 +87,12 @@ trait LeftFactorization { self: Syntaxes =>
       s match {
           case Elem(`leftFactor`)         => Factorization.success
           case e: Elem                    => Factorization.fail(e)
-
           case Sequence(l, r)             => leftFactorOut(l) ~ r
           case Disjunction(l, r)          => leftFactorOut(l) | leftFactorOut(r)
-          
           case Transform(fun, inv, inner) => leftFactorOut(inner).map(fun, inv)
-
           case Marked(mark, inner)        => leftFactorOut(inner).mark(mark)
-
-          case Success(_)                 => throw new IllegalArgumentException("Succes should not be factorized")
-
+          case s: Success[_]              => Factorization.fail(s)
           case Failure()                  => Factorization(failure, failure)
-
           case rec: Recursive[_]          => leftFactorOut(rec.inner).asRecursive
       }
     }
