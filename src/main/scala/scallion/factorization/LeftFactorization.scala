@@ -5,7 +5,7 @@ trait LeftFactorization { self: Syntaxes =>
 
   import Syntax._
 
-  def leftFactor[A](leftFactor: Kind, s: Syntax[A]): Syntax[A] = {
+  def leftFactorize[A](leftFactor: Kind, s: Syntax[A]): Syntax[A] = {
 
     case class Factorization[A](
       factorized: Syntax[Token => A],
