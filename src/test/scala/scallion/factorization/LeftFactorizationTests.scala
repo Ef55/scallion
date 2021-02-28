@@ -39,12 +39,9 @@ object Lexer {
   }
 }
 
-class LeftFactorizationTests extends FlatSpec with Parsers with LeftFactorization {
-
+trait LeftFactorizationTest extends FlatSpec with Parsers with LeftFactorization {
   type Token = Tokens.Token
   type Kind = Tokens.Kind
-
-  import Implicits._
 
   override def getKind(token: Token): Kind = token match {
     case Letter(_)      => LetterKind
@@ -54,79 +51,93 @@ class LeftFactorizationTests extends FlatSpec with Parsers with LeftFactorizatio
 
   import Syntax._
 
-  val letter = elem(LetterKind)
-  val number = elem(NumberKind)
-  val sep = elem(SeparatorKind)
+  def letter = elem(LetterKind)
+  def number = elem(NumberKind)
+  def inumber = number.map(n => { val Number(i) = n; i.asDigit })
+  def sep = elem(SeparatorKind)
 
-  // Trivial example
-  {
-    val conflicting =
+  type Result
+  def grammar: Syntax[Result]
+  def factorized: Syntax[Result]
+  def name: String
+  def tests: Seq[(String, Result)]
+
+  name should "have conflicts" in {
+    assertThrows[ConflictException](Parser(grammar))
+  }
+
+  it should "be LL1 once factorized" in {
+    try{
+      val parser = Parser(factorized)
+    }
+    catch{
+      case ConflictException(conflicts) => {
+        fail(debugString(factorized))
+      }
+    }
+  }
+
+  it should "parse strings as expected" in {
+    val parser = Parser(factorized)
+    for(input <- tests){
+      parser(Lexer(input._1).iterator) match {
+        case Parsed(r, _)   => 
+          assertResult(input._2, s"on input `${input._1}`")(r)
+        case _              => 
+          fail(s"Parsing failed on `${input._1}`")
+      }
+    }
+  }
+}
+
+class LeftFactorizationTestSimple extends LeftFactorizationTest {
+  type Result = Int
+  val prefix =
       (letter ~ letter).map(_ => 0) |
       (letter ~ number).map(_ => 1) |
       (number ~ number).map(_ => 2)
-    val grammar = (conflicting ~ sep).map{ case i ~ _ => i}
-    val factorized = leftFactorize(LetterKind, grammar)
+  def grammar = (prefix ~ sep).map{ case i ~ _ => i}
+  def factorized = leftFactorize(LetterKind, grammar)
+  def name = "Simple grammar"
+  def tests = Seq(
+    ("ab ", 0),
+    ("a1-", 1),
+    ("11,", 2)
+  )
+}
 
-    "Trivial example" should "have conflicts" in {
-      assertThrows[ConflictException](Parser(grammar))
-    }
+class LeftFactorizationTestRecursive extends LeftFactorizationTest {
+  type Result = Int
+  val gramma: Syntax[Int] = recursive(
+    epsilon(0) | 
+    inumber | 
+    (inumber ~ sep ~ gramma).map{ case i ~ _ ~ j => i + j }
+  )
+  def grammar = gramma
+  def factorized = leftFactorize(NumberKind, grammar)
+  def name = "Recursive grammar"
+  def tests = Seq(
+    ("", 0),
+    ("0,0,0", 0),
+    ("1,2,3", 6),
+    ("1,2,3,4,5,6,7,8,9", 45)
+  )
+}
 
-    it should "be LL1 once factorized" in {
-      val parser = Parser(factorized)
-    }
+class LeftFactorizationTestRepsep extends LeftFactorizationTest {
+  import Implicits._
 
-    it should "parse strings as expected" in {
-      val parser = Parser(factorized)
-      for(input <- Seq(
-        ("ab ", 0),
-        ("a1-", 1),
-        ("11,", 2)
-      )){
-        parser(Lexer(input._1).iterator) match {
-          case Parsed(r, _)   => 
-            assertResult(input._2, s"on input `${input._1}`")(r)
-          case _              => 
-            fail(s"Parsing failed on `${input._1}`")
-        }
-      }
-    }
-  }
-
-  // Repsep example (Not yet supported)
-  {
-    val grammar = 
+  type Result = String
+  def grammar = 
       repsep(letter, sep).map(_.map(_.toChar).mkString("")) |
       (letter ~ number).map{ case l ~ n => s"${l.toChar}${n.toChar}"}
-    val factorized = leftFactorize(LetterKind, grammar)
-
-    "Repsep grammar" should "have conflicts" in {
-      assertThrows[ConflictException](Parser(grammar))
-    }
-
-    it should "be LL1 once factorized" in {
-      val parser = Parser(factorized)
-    }
-
-    it should "parse strings as expected" in {
-      def mkTestCase(str: String): (String, String) = 
-        (str, str.filter(_.isLetterOrDigit))
-
-      val parser = Parser(factorized)
-      for(str <- Seq(
-        "a,b,c",
-        "x y z",
-        "a1",
-        "b2"
-      )){
-        val (input, expected) = mkTestCase(str)
-        parser(Lexer(input).iterator) match {
-          case Parsed(r, _)   => 
-            assertResult(expected, s"on input `${input}`")(r)
-          case _              => 
-            fail(s"Parsing failed on `${input}`")
-        }
-      }
-    }
-
-  }
+  def factorized = leftFactorize(LetterKind, grammar)
+  def name = "Repsep grammar"
+  def mkTestCase(str: String): (String, String) = (str, str.filter(_.isLetterOrDigit))
+  def tests = Seq(
+    "a,b,c",
+    "x y z",
+    "a1",
+    "b2"
+  ).map(mkTestCase(_))
 }
