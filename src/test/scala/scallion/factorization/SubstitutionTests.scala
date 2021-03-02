@@ -15,17 +15,6 @@ class SubstitutionTests extends FlatSpec with Parsers with Substitution {
   val tru = elem(true)
   val falz = elem(false)
 
-  "Substitution" should "work on simple example" ignore {
-    val transform = (t3: Token ~ Token ~ Token) => t3 match {
-      case a ~ b ~ c  => a && b && c
-    }
-    val invTransform = (b: Boolean) => Seq()
-    val grammar = ( (tru | falz) ~ tru ~ falz ).map(transform, invTransform)
-    val transformed = substitute(grammar, tru, falz)
-    val expected = ( (falz | falz) ~ falz ~ falz ).map(transform, invTransform)
-    assertResult(grammar)(transformed)
-  }
-
   "Safe substitution" should "correctly replace matching trees" in {
     val grammar = 
       ((tru | falz) ~ tru) ~ falz ~ tru.mark("marked!")
@@ -53,5 +42,20 @@ class SubstitutionTests extends FlatSpec with Parsers with Substitution {
     )
     val substituted = substituteSafe(grammar, falz, epsilon(false).mark("Oops!"))
     assertResult(grammar, "The grammar should be the same")(substituted)
+  }
+
+  it should "support recursive self substitution" in {
+    lazy val grammar: Syntax[Boolean] =
+      recursive( tru | grammar )
+    val substituted = substitute(grammar, tru, falz, true)
+    // Expected (conceptually): lazy val expected = recursive( falz | expected )
+    substituted match {
+      case r: Recursive[_]   => r.inner match {
+        case Disjunction(`falz`, `r`)   => succeed
+        case Disjunction(`falz`, _)     => fail("Recursive substitution failed")
+        case _                          => fail("No diagnostic (1)")
+      }
+      case _                => fail("No diagnostic (2)")
+    }
   }
 }
