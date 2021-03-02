@@ -1,10 +1,27 @@
 package scallion
 package factorization
 
+/** Contains functions to apply left factorization to a syntax.
+  *
+  * @groupname factorization Factorization
+  */
 trait LeftFactorization { self: Syntaxes => 
 
   import Syntax._
 
+  /** Left factorizes a single terminal of the grammar.
+    * 
+    * @param leftFactor Terminal to left factor out.
+    * @param s Syntax on which to apply the factorization.
+    * @return An equivalent syntax, with the terminal factorized.
+    *
+    * @todo Handle nullable left-handside of [[scallion.Syntaxes.Syntax.Sequence]].
+    * @todo Generalize to factorize non-terminal (instead of single terminal).
+    * @todo Handle recursive syntaxes (through recursive substitution - 
+    *       see [[scallion.factorization.Substitution.substitute]]).
+    *
+    * @group factorization
+    */
   def leftFactorize[A](leftFactor: Kind, s: Syntax[A]): Syntax[A] = {
 
     case class Factorization[A](
@@ -81,10 +98,6 @@ trait LeftFactorization { self: Syntaxes =>
       }
     }
 
-    
-    // TODO: 
-    //  - handle things like leftFactor(k, eps ~ elem(k))
-    //  - generalize to left factor whole syntaxes
     def leftFactorOut[A](s: Syntax[A]): Factorization[A] = {
       s match {
         case Elem(`leftFactor`)         => Factorization.success
