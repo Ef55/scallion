@@ -141,3 +141,19 @@ class LeftFactorizationTestRepsep extends LeftFactorizationTest {
     "b2"
   ).map(mkTestCase(_))
 }
+
+class LeftFactorizationTestNonTerminal extends LeftFactorizationTest {
+  type Result = Int
+  val prefix = (letter ~ letter ~ letter).map(_ => 3)
+  def grammar =
+    (prefix ~ letter).map{ case i ~ _ => i + 1} |
+    (prefix ~ inumber).map{ case i ~ j => i + j}
+  def factorized = leftFactorize(prefix, grammar)
+  def name = "Non-terminal factorization"
+  def tests = Seq(
+    ("aaaa", 4),
+    ("aaa3", 6),
+    ("efgh", 4),
+    ("efg9", 12)
+  )
+}

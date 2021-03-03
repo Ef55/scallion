@@ -9,23 +9,34 @@ trait LeftFactorization { self: Syntaxes =>
 
   import Syntax._
 
-  /** Left factorizes a single terminal of the grammar.
+  /** Left factorizes a single terminal in the syntax.
     * 
     * @param leftFactor Terminal to left factor out.
     * @param s Syntax on which to apply the factorization.
     * @return An equivalent syntax, with the terminal factorized.
     *
+    * @group factorization
+    */
+  def leftFactorize[A](leftFactor: Kind, s: Syntax[A]): Syntax[A] = {
+    leftFactorize(Elem(leftFactor), s)
+  }
+
+  /** Left factorizes a syntax in the syntax.
+    * 
+    * @param leftFactor Syntax to left factor out.
+    * @param s Syntax on which to apply the factorization.
+    * @return An equivalent syntax, with the syntax left factorized.
+    *
     * @todo Handle nullable left-handside of [[scallion.Syntaxes.Syntax.Sequence]].
-    * @todo Generalize to factorize non-terminal (instead of single terminal).
     * @todo Handle recursive syntaxes (through recursive substitution - 
     *       see [[scallion.factorization.Substitution.substitute]]).
     *
     * @group factorization
     */
-  def leftFactorize[A](leftFactor: Kind, s: Syntax[A]): Syntax[A] = {
+  def leftFactorize[A, L](leftFactor: Syntax[L], s: Syntax[A]): Syntax[A] = {
 
     case class Factorization[A](
-      factorized: Syntax[Token => A],
+      factorized: Syntax[L => A],
       alternative: Syntax[A]
     ){
       def |(that: Factorization[A]): Factorization[A] = {
@@ -38,7 +49,7 @@ trait LeftFactorization { self: Syntaxes =>
       def ~[F](follow: Syntax[F]): Factorization[A ~ F] = {
         Factorization(
           (this.factorized ~ follow).map(
-              _ match { case fl ~ r => (t: Token) => scallion.~(fl(t), r)},
+              _ match { case fl ~ r => (l: L) => scallion.~(fl(l), r)},
               _ match { case _ => throw new IllegalArgumentException("Reverse transformation not yet implemented") }
           ),
           this.alternative ~ follow
@@ -48,7 +59,7 @@ trait LeftFactorization { self: Syntaxes =>
       def map[B](fun: A => B, inv: B => Seq[A] = (b: B) => Seq()): Factorization[B] = {
         Factorization(
           this.factorized.map(
-            factorized => (t: Token)  => fun(factorized(t)),
+            factorized => (l: L)  => fun(factorized(l)),
             factorized => throw new IllegalArgumentException("Reverse transformation not yet implemented")
           ),
           this.alternative.map(fun, inv)
@@ -70,20 +81,19 @@ trait LeftFactorization { self: Syntaxes =>
       }
 
       def complete: Syntax[A] = {
-        (elem(leftFactor) ~ this.factorized).map(
-          _ match { case t ~ f => f(t) },
+        (leftFactor ~ this.factorized).map(
+          _ match { case l ~ f => f(l) },
           (_: A) => throw new IllegalArgumentException("Reverse transformation not yet implemented")
         ) | this.alternative
       }
     }
 
     object Factorization {
-      def success: Factorization[Token] = {
+      def success: Factorization[L] = {
         Factorization(
           Success(()).map( 
-            (_: Unit) => (t: Token) => {
-              require(getKind(t) == leftFactor)
-              t
+            (_: Unit) => (l: L) => {
+              l
             }
           ),
           failure
@@ -100,7 +110,7 @@ trait LeftFactorization { self: Syntaxes =>
 
     def leftFactorOut[A](s: Syntax[A]): Factorization[A] = {
       s match {
-        case Elem(`leftFactor`)         => Factorization.success
+        case _ if s == leftFactor       => Factorization.success.asInstanceOf[Factorization[A]]
         case e: Elem                    => Factorization.fail(e)
         case Sequence(l, r)             => leftFactorOut(l) ~ r
         case Disjunction(l, r)          => leftFactorOut(l) | leftFactorOut(r)
