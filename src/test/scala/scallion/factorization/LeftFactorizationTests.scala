@@ -39,7 +39,7 @@ object Lexer {
   }
 }
 
-trait LeftFactorizationTest extends FlatSpec with Parsers with LeftFactorization {
+trait LeftFactorizationTest extends FlatSpec with Parsers with LeftFactorization with Substitution {
   type Token = Tokens.Token
   type Kind = Tokens.Kind
 
@@ -114,7 +114,8 @@ class LeftFactorizationTestRecursive extends LeftFactorizationTest {
     (inumber ~ sep ~ gramma).map{ case i ~ _ ~ j => i + j }
   )
   def grammar = gramma
-  def factorized = leftFactorize(NumberKind, grammar)
+  lazy val factorize = leftFactorize(NumberKind, grammar)
+  def factorized = substitute(factorize, grammar, factorize)
   def name = "Recursive grammar"
   def tests = Seq(
     ("", 0),
