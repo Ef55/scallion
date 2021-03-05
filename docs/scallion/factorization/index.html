@@ -117,8 +117,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Factorization.html" title="Contains function to factorize syntaxes."></a>
-                        <a href="Factorization.html" title="Contains function to factorize syntaxes.">Factorization</a>
+                        <a class="trait" href="Factorization.html" title="Contains functions to factorize syntaxes."></a>
+                        <a href="Factorization.html" title="Contains functions to factorize syntaxes.">Factorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax."></a>
@@ -127,6 +127,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <span class="separator"></span>
                         <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
                         <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
+                        <a href="Unfold.html" title="Contains functions to apply unfolding to a syntax.">Unfold</a>
                       </li><li name="scallion.util" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="util"></a><a id="util:util"></a>
       <span class="permalink">
@@ -199,9 +203,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="scallion.factorization.Factorization" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="FactorizationextendsLeftFactorizationwithSubstitution"></a><a id="Factorization:Factorization"></a>
+      <a id="FactorizationextendsLeftFactorizationwithSubstitutionwithUnfold"></a><a id="Factorization:Factorization"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/index.html#FactorizationextendsLeftFactorizationwithSubstitution" title="Permalink">
+      <a href="../../scallion/factorization/index.html#FactorizationextendsLeftFactorizationwithSubstitutionwithUnfold" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -210,10 +214,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Contains function to factorize syntaxes." href="Factorization.html"><span class="name">Factorization</span></a><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a> with <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a></span>
+        <a title="Contains functions to factorize syntaxes." href="Factorization.html"><span class="name">Factorization</span></a><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a> with <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.factorization.Unfold">Unfold</a></span>
       </span>
       
-      <p class="shortcomment cmt">Contains function to factorize syntaxes.</p>
+      <p class="shortcomment cmt">Contains functions to factorize syntaxes.</p>
     </li><li name="scallion.factorization.LeftFactorization" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="LeftFactorizationextendsAnyRef"></a><a id="LeftFactorization:LeftFactorization"></a>
       <span class="permalink">
@@ -246,6 +250,22 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <p class="shortcomment cmt">Contains functions to apply substitution to a syntax.</p>
+    </li><li name="scallion.factorization.Unfold" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UnfoldextendsAnyRef"></a><a id="Unfold:Unfold"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/index.html#UnfoldextendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains functions to apply unfolding to a syntax." href="Unfold.html"><span class="name">Unfold</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains functions to apply unfolding to a syntax.</p>
     </li></ol>
             </div>
 
