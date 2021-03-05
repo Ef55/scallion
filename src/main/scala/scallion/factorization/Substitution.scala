@@ -2,7 +2,7 @@ package scallion
 package factorization
 
 import scala.unchecked
-import scala.collection.immutable.Set
+import scala.collection.mutable.HashMap
 
 /** Contains functions to apply substitution to a syntax.
   *
@@ -43,58 +43,44 @@ trait Substitution { self: Syntaxes =>
     *
     * @group factorization
     */
-  def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: => Syntax[A], recSubst: Boolean = true): Syntax[B] = {
-    
-    def iter[C](current: Syntax[C], recs: Set[RecId]): Syntax[C] = {
+  def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A]): Syntax[B] = {
+    val substs = HashMap[Syntax[_], Syntax[_]]()
+    substs += (original -> subst)
+
+    def iter[C](current: Syntax[C]): Syntax[C] = {
       // Most of the redundant code could be factorized into a generic function,
       // but the type system + type erasure won't allow it.
       current match {
-        case _ if current == original     => subst.asInstanceOf[Syntax[C]]
+        case _ if substs.contains(current)=> substs.get(current).get.asInstanceOf[Syntax[C]]
         case e: Elem                      => e 
         case s: Success[_]                => s 
         case f: Failure[_]                => f 
 
         case s@Sequence(l, r)             => {
-          val (nl, nr) = (iter(l, recs), iter(r, recs))
+          val (nl, nr) = (iter(l), iter(r))
           if(nl != l || nr != r){ nl ~ nr }else{ s }
         }
         case d@Disjunction(l, r)          => {
-          val (nl, nr) = (iter(l, recs), iter(r, recs))
+          val (nl, nr) = (iter(l), iter(r))
           if(nl != l || nr != r){ nl | nr }else{ d }
         }
 
         case t@Transform(fun, inv, inner) => {
-          val nInner = iter(inner, recs)
+          val nInner = iter(inner)
           if(nInner != inner){ nInner.map(fun, inv) }else{ t }
         }
         case m@Marked(mark, inner)        => {
-          val nInner = iter(inner, recs)
+          val nInner = iter(inner)
           if(nInner != inner){ nInner.mark(mark) }else{ m }
         }
         case rec: Recursive[C @unchecked] => {  // The type is needed to avoid type mismatch when recursing
-          if(recs.contains(rec.id)){
-            rec
-          }
-          else{
-            val nInner = iter(rec.inner, recs + rec.id)
-            if(nInner != rec.inner){ 
-              if(recSubst){
-                lazy val result: Syntax[C] = recursive( substitute(nInner, rec, result, true) )
-                result
-              }
-              else {
-                recursive(nInner)
-              }
-            }
-            else { 
-              rec 
-            }
-          }
+          substs += ( rec -> recursive(iter(rec.inner)) )
+          substs.get(rec).get.asInstanceOf[Syntax[C]]
         }
       }
     }
 
-    iter(in, Set())
+    iter(in)
   }
 
   /**
@@ -122,8 +108,8 @@ trait Substitution { self: Syntaxes =>
    * @see See [[scallion.factorization.Substitution.substitute]].
    * @group factorization
    */
-  def substituteSafe[A, B](in: Syntax[B], original: Syntax[A], subst: => Syntax[A], recSubst: Boolean = true): Syntax[B] = {
+  def substituteSafe[A, B](in: Syntax[B], original: Syntax[A], subst: => Syntax[A]): Syntax[B] = {
     assert(isSafeForSubstitution(original), "The syntax to substitute must be safe against equality.")
-    substitute(in, original, subst, recSubst)
+    substitute(in, original, subst)
   }
 }
