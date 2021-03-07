@@ -17,15 +17,22 @@ trait Substitution { self: Syntaxes =>
     * @param in Syntax in which the substition(s) will happen.
     * @param original Syntax which will be removed.
     * @param subst Syntax to use as replacement.
-    * @param recSubst Indicates whether the substitutions must be done recursively (see example).
+    * @param elim Indicates whether `original` must be completely eliminated from returned syntax (see example 2).
     *
     * @example 
     * {{{
-    * lazy val grammar: Syntax[Boolean]   = recursive( epsilon(true) | grammar )
-    * lazy val result: Syntax[Boolean]    = recursive( epsilon(false) | grammar )
-    * lazy val resultRec: Syntax[Boolean] = recursive( epsilon(false) | result )
-    * substitute(grammar, epsilon(true), epsilon(false), false) === result
-    * substitute(grammar, epsilon(true), epsilon(false), true)  === resultRec
+    * lazy val grammar: Syntax[Boolean] = recursive( epsilon(true) | grammar )
+    * lazy val result: Syntax[Boolean] = recursive( epsilon(false) | result )
+    * substitute(grammar, epsilon(true), epsilon(false))  === result
+    * }}}
+    *
+    * @example
+    * {{{
+    * lazy val grammar: Syntax[Boolean] = recursive( (epsilon(true) ~ grammar).map{ case a ~ b => a && b} )
+    * lazy val substitute: Syntax[Boolean] = recursive( (epsilon(false) ~ grammar).map{ case a ~ b => a || b} )
+    * substitute(grammar, grammar, substitute, false) === substitute
+    * substitute(grammar, grammar, substitute, true) 
+    * === recursive( (epsilon(false) ~ substitute).map{ case a ~ b => a || b} )
     * }}}
     *
     * @note Due to some implementation details, this function might return unexpected results
@@ -38,14 +45,11 @@ trait Substitution { self: Syntaxes =>
     * === grammar   // Left unchanged...
     * =!= expected  // ... which is not what we expected.
     * }}}
-    * If you're not sure about what you are doing, use [[scallion.factorization.Substitution.substituteSafe]] instead, 
-    * which will reject calls with error-prone syntaxes.
-    *
     * @group factorization
     */
-  def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A]): Syntax[B] = {
+  def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A], elim: Boolean = true): Syntax[B] = {
     val substs = HashMap[Syntax[_], Syntax[_]]()
-    substs += (original -> subst)
+    substs += (original -> (if(elim){ iter(subst) }else{ subst })) 
 
     def iter[C](current: Syntax[C]): Syntax[C] = {
       // Most of the redundant code could be factorized into a generic function,
@@ -74,14 +78,15 @@ trait Substitution { self: Syntaxes =>
           if(nInner != inner){ nInner.mark(mark) }else{ m }
         }
         case rec: Recursive[C @unchecked] => {  // The type is needed to avoid type mismatch when recursing
-          substs += ( rec -> recursive(iter(rec.inner)) )
-          substs.get(rec).get.asInstanceOf[Syntax[C]]
+          substs += ( current -> recursive(iter(rec.inner)) )
+          substs.get(current).get.asInstanceOf[Syntax[C]]
         }
       }
     }
 
     iter(in)
   }
+
 
   /**
     * @todo Replace by isSafeForEquality
@@ -99,17 +104,5 @@ trait Substitution { self: Syntaxes =>
 
       case Transform(_, _, i)   => false
     }
-  }
-
-  /** Substitutes a Syntax with another one.
-   * Behaves like [[scallion.factorization.Substitution.substitute]] but performs additional check
-   * to prevent use of syntaxes which might result in unexpected behavior.
-   *
-   * @see See [[scallion.factorization.Substitution.substitute]].
-   * @group factorization
-   */
-  def substituteSafe[A, B](in: Syntax[B], original: Syntax[A], subst: => Syntax[A]): Syntax[B] = {
-    assert(isSafeForSubstitution(original), "The syntax to substitute must be safe against equality.")
-    substitute(in, original, subst)
   }
 }

@@ -19,8 +19,8 @@ class SubstitutionTests extends FlatSpec with Parsers with Substitution with Str
   "Safe substitution" should "correctly replace matching trees" in {
     val grammar = 
       ((tru | falz) ~ tru) ~ falz ~ tru.mark("marked!")
-    val substituted1 = substituteSafe(grammar, falz, tru.mark("!"))
-    val substituted2 = substituteSafe(grammar, (tru | falz) ~ tru, tru.mark("!") ~ falz.mark("!"))
+    val substituted1 = substitute(grammar, falz, tru.mark("!"))
+    val substituted2 = substitute(grammar, (tru | falz) ~ tru, tru.mark("!") ~ falz.mark("!"))
 
     val expected1 = ((tru | tru.mark("!")) ~ tru) ~ tru.mark("!") ~ tru.mark("marked!")
     val expected2 = (tru.mark("!") ~ falz.mark("!")) ~ falz ~ tru.mark("marked!")
@@ -31,7 +31,7 @@ class SubstitutionTests extends FlatSpec with Parsers with Substitution with Str
 
   it should "not loop on infinite recursions" in {
     lazy val infiniteRec: Syntax[Boolean] = recursive(falz | infiniteRec)
-    val substituted = substituteSafe(infiniteRec, tru, falz)
+    val substituted = substitute(infiniteRec, tru, falz)
     assert(structurallyEquivalent(infiniteRec, substituted))
     assertThrows[ConflictException](Parser(infiniteRec))
   }
@@ -41,7 +41,7 @@ class SubstitutionTests extends FlatSpec with Parsers with Substitution with Str
   //     tru |
   //     (epsilon(true) ~ failure[Boolean]).map{case a~b => a&&b}.mark("marked!")
   //   )
-  //   val substituted = substituteSafe(grammar, falz, epsilon(false).mark("Oops!"))
+  //   val substituted = substitute(grammar, falz, epsilon(false).mark("Oops!"))
   //   assertResult(grammar, "The grammar should be the same")(substituted)
   // }
 
@@ -58,6 +58,14 @@ class SubstitutionTests extends FlatSpec with Parsers with Substitution with Str
       }
       case _                => fail("No diagnostic (2)")
     }
+  }
+
+  it should "support both substitution and elimination mode" in {
+    lazy val grammar: Syntax[Boolean] = recursive( (epsilon(true) ~ grammar).map{ case a ~ b => a && b} )
+    lazy val subs: Syntax[Boolean] = recursive( (epsilon(false) ~ grammar).map{ case a ~ b => a || b} )
+    lazy val expected: Syntax[Boolean] = recursive( (epsilon(false) ~ expected).map{ case a ~ b => a || b} )
+    assertResult(subs)(substitute(grammar, grammar, subs, false))
+    assert(structurallyEquivalent(substitute(grammar, grammar, subs, true), expected))
   }
 
   it should "work on mutually recusive syntaxes" in {

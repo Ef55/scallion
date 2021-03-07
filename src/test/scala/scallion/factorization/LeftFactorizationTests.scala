@@ -106,7 +106,7 @@ class LeftFactorizationTestSimple extends LeftFactorizationTest {
   )
 }
 
-class LeftFactorizationTestRecursive extends LeftFactorizationTest {
+class LeftFactorizationTestRecursive extends LeftFactorizationTest with visualization.Graphs {
   type Result = Int
   val gramma: Syntax[Int] = recursive(
     epsilon(0) | 
@@ -115,7 +115,7 @@ class LeftFactorizationTestRecursive extends LeftFactorizationTest {
   )
   def grammar = gramma
   lazy val factorize = leftFactorize(NumberKind, grammar)
-  def factorized = substitute(factorize, grammar, factorize)
+  def factorized = substitute(factorize, gramma, factorize, true)
   def name = "Recursive grammar"
   def tests = Seq(
     ("", 0),
