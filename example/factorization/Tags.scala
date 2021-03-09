@@ -153,7 +153,7 @@ object tags {
       }
     }
 
-    // Effective output:
+    // Output:
     // ===================================================
     // A conflict was detected in the first syntax !
     // No conflicts were detected in the second syntax !

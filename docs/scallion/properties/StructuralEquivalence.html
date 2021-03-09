@@ -117,8 +117,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="" title=""></a>
-                        <a href="" title="">StructuralEquivalence</a>
+                        <a class="trait" href="" title="Contains functions to compare syntaxes."></a>
+                        <a href="" title="Contains functions to compare syntaxes.">StructuralEquivalence</a>
                       </li>
               </ul>
             </div>
@@ -147,7 +147,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.properties.StructuralEquivalence">StructuralEquivalence</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/properties/StructuralEquivalence.scala" target="_blank">StructuralEquivalence.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to compare syntaxes.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.properties.StructuralEquivalence">StructuralEquivalence</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/properties/StructuralEquivalence.scala" target="_blank">StructuralEquivalence.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -168,7 +169,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
           <div id="order">
             <span class="filtertype">Ordering</span>
             <ol>
-              
+              <li class="group out"><span>Grouped</span></li>
               <li class="alpha in"><span>Alphabetic</span></li>
               <li class="inherit out"><span>By Inheritance</span></li>
             </ol>
@@ -454,7 +455,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.properties.StructuralEquivalence#structurallyEquivalent" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.properties.StructuralEquivalence#structurallyEquivalent" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
       <a id="structurallyEquivalent(lhs:StructuralEquivalence.this.Syntax[_],rhs:StructuralEquivalence.this.Syntax[_]):Boolean"></a><a id="structurallyEquivalent((StructuralEquivalence.this)#Syntax[_],(StructuralEquivalence.this)#Syntax[_]):Boolean"></a>
       <span class="permalink">
       <a href="../../scallion/properties/StructuralEquivalence.html#structurallyEquivalent(lhs:StructuralEquivalence.this.Syntax[_],rhs:StructuralEquivalence.this.Syntax[_]):Boolean" title="Permalink">
@@ -469,7 +470,13 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="name">structurallyEquivalent</span><span class="params">(<span name="lhs">lhs: (<a href="" class="extype" name="scallion.properties.StructuralEquivalence">StructuralEquivalence</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>, <span name="rhs">rhs: (<a href="" class="extype" name="scallion.properties.StructuralEquivalence">StructuralEquivalence</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Indicates whether two syntaxes have the same structure.</p><div class="fullcomment"><div class="comment cmt"><p>Indicates whether two syntaxes have the same structure.</p><p>This comes as a workaround for Transform syntaxes which
+cannot implement value equality.</p><pre><span class="kw">val</span> a = epsilon(()).map(_ <span class="kw">=&gt;</span> <span class="num">1</span>)
+<span class="kw">val</span> b = epsilon(()).map(_ <span class="kw">=&gt;</span> <span class="num">1</span>)
+a == b <span class="cmt">// is false</span></pre><p>This method is used to
+compare syntaxes, looking if the two syntaxes have the
+same &quot;structure&quot;, and whether the leafs (Elem, Success)
+are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true</span></pre></div><dl class="paramcmts block"><dt class="param">lhs</dt><dd class="cmt"><p>One of the syntaxes to compare.</p></dd><dt class="param">rhs</dt><dd class="cmt"><p>One of the syntaxes to compare.</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -589,7 +596,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="Ungrouped">
+        <div class="group" name="property">
+              <h3>Syntaxes property</h3>
+              
+            </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

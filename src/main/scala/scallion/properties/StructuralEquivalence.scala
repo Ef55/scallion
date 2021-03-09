@@ -3,10 +3,36 @@ package properties
 
 import scala.collection.mutable.{Set, HashMap, MultiMap}
 
+/** Contains functions to compare syntaxes.
+  *
+  * @groupname property Syntaxes property
+  */
 trait StructuralEquivalence { self: Syntaxes =>
 
   import Syntax._
 
+  /** Indicates whether two syntaxes have the same structure.
+    *
+    * This comes as a workaround for Transform syntaxes which
+    * cannot implement value equality. 
+    * {{{
+    * val a = epsilon(()).map(_ => 1)
+    * val b = epsilon(()).map(_ => 1)
+    * a == b // is false
+    * }}}
+    * This method is used to
+    * compare syntaxes, looking if the two syntaxes have the
+    * same "structure", and whether the leafs (Elem, Success)
+    * are the same.
+    * {{{
+    * structurallyEquivalent(a, b) // is true 
+    * }}}
+    * 
+    * @param lhs One of the syntaxes to compare.
+    * @param rhs One of the syntaxes to compare.
+    *
+    * @group property
+    */
   def structurallyEquivalent(lhs: Syntax[_], rhs: Syntax[_]): Boolean = {
     val recs = new HashMap[RecId, Set[RecId]] with MultiMap[RecId, RecId]
 

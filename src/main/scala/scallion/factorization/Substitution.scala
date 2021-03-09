@@ -1,7 +1,6 @@
 package scallion
 package factorization
 
-import scala.unchecked
 import scala.collection.mutable.HashMap
 
 /** Contains functions to apply substitution to a syntax.
@@ -45,6 +44,7 @@ trait Substitution { self: Syntaxes =>
     * === grammar   // Left unchanged...
     * =!= expected  // ... which is not what we expected.
     * }}}
+    *
     * @group factorization
     */
   def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A], elim: Boolean = true): Syntax[B] = {
@@ -77,7 +77,7 @@ trait Substitution { self: Syntaxes =>
           val nInner = iter(inner)
           if(nInner != inner){ nInner.mark(mark) }else{ m }
         }
-        case rec: Recursive[C @unchecked] => {  // The type is needed to avoid type mismatch when recursing
+        case rec: Recursive[_] => {
           substs += ( current -> recursive(iter(rec.inner)) )
           substs.get(current).get.asInstanceOf[Syntax[C]]
         }
