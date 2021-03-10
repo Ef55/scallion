@@ -298,12 +298,31 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
+              
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="scallion.factorization.Substitution#eliminate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
+      <a id="eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]"></a><a id="eliminate[A,B]((Factorization.this)#Syntax[B],(Factorization.this)#Syntax[A],(Factorization.this)#Syntax[A]):(Factorization.this)#Syntax[B]"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/Factorization.html#eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.B">B</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.A">A</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.B">B</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Eliminate a Syntax by substituting it with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Eliminate a Syntax by substituting it with another one.</p><p>This function is just a shorthand for substitute with
+<code>elim = true</code>.</p><pre>substitute(i, o, s, <span class="kw">true</span>) === eliminate(i, o, s)</pre></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>Syntax in which the substition(s) will happen.</p></dd><dt class="param">original</dt><dd class="cmt"><p>Syntax to eliminate.</p></dd><dt class="param">subst</dt><dd class="cmt"><p>Syntax to use as replacement.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="Substitution.html#substitute[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A],elim:Boolean):Substitution.this.Syntax[B]" class="extmbr" name="scallion.factorization.Substitution#substitute">scallion.factorization.Substitution.substitute</a></p></span></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -336,28 +355,6 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Factorization.html#finalize():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -375,6 +372,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -395,6 +394,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -412,22 +413,6 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scallion.factorization.Substitution#isSafeForSubstitution" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="isSafeForSubstitution(s:Substitution.this.Syntax[_]):Boolean"></a><a id="isSafeForSubstitution((Factorization.this)#Syntax[_]):Boolean"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Factorization.html#isSafeForSubstitution(s:Substitution.this.Syntax[_]):Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">isSafeForSubstitution</span><span class="params">(<span name="s">s: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a></dd><dt>To do</dt><dd><span class="cmt"><p>Replace by isSafeForEquality</p></span></dd></dl></div>
     </li><li name="scallion.factorization.LeftFactorization#leftFactorize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
       <a id="leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A]):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorize[A,L]((Factorization.this)#Syntax[L],(Factorization.this)#Syntax[A]):(Factorization.this)#Syntax[A]"></a>
       <span class="permalink">
@@ -497,6 +482,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -516,6 +503,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scallion.factorization.Substitution#substitute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
       <a id="substitute[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A],elim:Boolean):Substitution.this.Syntax[B]"></a><a id="substitute[A,B]((Factorization.this)#Syntax[B],(Factorization.this)#Syntax[A],(Factorization.this)#Syntax[A],Boolean):(Factorization.this)#Syntax[B]"></a>
@@ -529,20 +518,20 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.B">B</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.A">A</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.A">A</span>]</span>, <span name="elim">elim: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.B">B</span>]</span>
+        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.B">B</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.A">A</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.A">A</span>]</span>, <span name="elim">elim: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.B">B</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Substitutes a Syntax with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Substitutes a Syntax with another one.
-</p></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>Syntax in which the substition(s) will happen.</p></dd><dt class="param">original</dt><dd class="cmt"><p>Syntax which will be removed.</p></dd><dt class="param">subst</dt><dd class="cmt"><p>Syntax to use as replacement.</p></dd><dt class="param">elim</dt><dd class="cmt"><p>Indicates whether <code>original</code> must be completely eliminated from returned syntax (see example 2).</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a></dd><div class="block">Examples:
+      <p class="shortcomment cmt">Substitutes a syntax with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Substitutes a syntax with another one.
+</p></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>Syntax in which the substition(s) will happen.</p></dd><dt class="param">original</dt><dd class="cmt"><p>Syntax which will be removed.</p></dd><dt class="param">subst</dt><dd class="cmt"><p>Syntax to use as replacement.</p></dd><dt class="param">elim</dt><dd class="cmt"><p>Indicates whether <code>original</code> must also be substituted inside of <code>subst</code> (see example 2).</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a></dd><div class="block">Examples:
                <ol><li class="cmt"><p></p><pre><span class="kw">lazy</span> <span class="kw">val</span> grammar: Syntax[<span class="std">Boolean</span>] = recursive( epsilon(<span class="kw">true</span>) | grammar )
 <span class="kw">lazy</span> <span class="kw">val</span> result: Syntax[<span class="std">Boolean</span>] = recursive( epsilon(<span class="kw">false</span>) | result )
 substitute(grammar, epsilon(<span class="kw">true</span>), epsilon(<span class="kw">false</span>))  === result</pre></li>, <li class="cmt"><p></p><pre><span class="kw">lazy</span> <span class="kw">val</span> grammar: Syntax[<span class="std">Boolean</span>] = recursive( (epsilon(<span class="kw">true</span>) ~ grammar).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a &amp;&amp; b} )
-<span class="kw">lazy</span> <span class="kw">val</span> substitute: Syntax[<span class="std">Boolean</span>] = recursive( (epsilon(<span class="kw">false</span>) ~ grammar).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a || b} )
-substitute(grammar, grammar, substitute, <span class="kw">false</span>) === substitute
-substitute(grammar, grammar, substitute, <span class="kw">true</span>)
-=== recursive( (epsilon(<span class="kw">false</span>) ~ substitute).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a || b} )</pre></li></ol>
+<span class="kw">lazy</span> <span class="kw">val</span> subst: Syntax[<span class="std">Boolean</span>] = recursive( (epsilon(<span class="kw">false</span>) ~ grammar).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a || b} )
+<span class="kw">lazy</span> <span class="kw">val</span> eliminate: Syntax[<span class="std">Boolean</span>] = recursive( (epsilon(<span class="kw">false</span>) ~ eliminate).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a || b} )
+substitute(grammar, grammar, subst) === subst
+eliminate(grammar, grammar, subst) === eliminate</pre></li></ol>
             </div><dt>Note</dt><dd><span class="cmt"><p>Due to some implementation details, this function might return unexpected results
-      when working with mapped syntaxes:</p><pre><span class="kw">val</span> transform = (c: <span class="std">Char</span>) <span class="kw">=&gt;</span> c.asDigit
+      when working with mapped syntaxes (see <a href="../properties/StructuralEquivalence.html" class="extype" name="scallion.properties.StructuralEquivalence">scallion.properties.StructuralEquivalence</a>):</p><pre><span class="kw">val</span> transform = (c: <span class="std">Char</span>) <span class="kw">=&gt;</span> c.asDigit
 <span class="kw">val</span> grammar = epsilon(<span class="lit">'1'</span>).map(transform) ~ epsilon(<span class="num">2</span>)
 <span class="kw">val</span> expected = epsilon(<span class="num">3</span>) ~ epsilon(<span class="num">2</span>)
 substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilon(<span class="num">3</span>))
@@ -603,28 +592,6 @@ disjunctions only appear at &quot;the top-level&quot; of the syntax.
 unfold(s) === (a ~ a) | (a ~ b)</pre></li></ol>
             </div></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Factorization.html#wait():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
       <a href="../../scallion/factorization/Factorization.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
@@ -670,13 +637,64 @@ unfold(s) === (a ~ a) | (a ~ b)</pre></li></ol>
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/Factorization.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li>
               </ol>
             </div>
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/Factorization.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version ) see corresponding Javadoc for more information.">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+                <span class="name">@deprecated</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version )</i> see corresponding Javadoc for more information.</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

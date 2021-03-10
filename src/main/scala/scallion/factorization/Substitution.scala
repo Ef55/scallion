@@ -11,12 +11,12 @@ trait Substitution { self: Syntaxes =>
 
   import Syntax._
 
-  /** Substitutes a Syntax with another one.
+  /** Substitutes a syntax with another one.
     *
     * @param in Syntax in which the substition(s) will happen.
     * @param original Syntax which will be removed.
     * @param subst Syntax to use as replacement.
-    * @param elim Indicates whether `original` must be completely eliminated from returned syntax (see example 2).
+    * @param elim Indicates whether `original` must also be substituted inside of `subst` (see example 2).
     *
     * @example 
     * {{{
@@ -28,14 +28,14 @@ trait Substitution { self: Syntaxes =>
     * @example
     * {{{
     * lazy val grammar: Syntax[Boolean] = recursive( (epsilon(true) ~ grammar).map{ case a ~ b => a && b} )
-    * lazy val substitute: Syntax[Boolean] = recursive( (epsilon(false) ~ grammar).map{ case a ~ b => a || b} )
-    * substitute(grammar, grammar, substitute, false) === substitute
-    * substitute(grammar, grammar, substitute, true) 
-    * === recursive( (epsilon(false) ~ substitute).map{ case a ~ b => a || b} )
+    * lazy val subst: Syntax[Boolean] = recursive( (epsilon(false) ~ grammar).map{ case a ~ b => a || b} )
+    * lazy val eliminate: Syntax[Boolean] = recursive( (epsilon(false) ~ eliminate).map{ case a ~ b => a || b} )
+    * substitute(grammar, grammar, subst) === subst
+    * eliminate(grammar, grammar, subst) === eliminate
     * }}}
     *
     * @note Due to some implementation details, this function might return unexpected results
-    *       when working with mapped syntaxes:
+    *       when working with mapped syntaxes (see [[scallion.properties.StructuralEquivalence]]):
     * {{{
     * val transform = (c: Char) => c.asDigit
     * val grammar = epsilon('1').map(transform) ~ epsilon(2)
@@ -47,7 +47,7 @@ trait Substitution { self: Syntaxes =>
     *
     * @group factorization
     */
-  def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A], elim: Boolean = true): Syntax[B] = {
+  def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A], elim: Boolean = false): Syntax[B] = {
     val substs = HashMap[Syntax[_], Syntax[_]]()
     substs += (original -> (if(elim){ iter(subst) }else{ subst })) 
 
@@ -87,22 +87,23 @@ trait Substitution { self: Syntaxes =>
     iter(in)
   }
 
-
-  /**
-    * @todo Replace by isSafeForEquality
+  /** Eliminate a Syntax by substituting it with another one.
+    *
+    * This function is just a shorthand for substitute with
+    * `elim = true`.
+    * {{{
+    * substitute(i, o, s, true) === eliminate(i, o, s)
+    * }}}
+    * 
+    * @param in Syntax in which the substition(s) will happen.
+    * @param original Syntax to eliminate.
+    * @param subst Syntax to use as replacement.
+    * 
+    * @see [[scallion.factorization.Substitution.substitute]]
+    * 
+    * @group factorization
     */
-  def isSafeForSubstitution(s: Syntax[_]): Boolean = {
-    s match {
-      case Elem(_)              => true
-      case Failure()            => true
-      case Success(_)           => true
-      case _: Recursive[_]      => true
-
-      case Sequence(l, r)       => isSafeForSubstitution(l) && isSafeForSubstitution(r)
-      case Disjunction(l, r)    => isSafeForSubstitution(l) && isSafeForSubstitution(r)
-      case Marked(_, i)         => isSafeForSubstitution(i)
-
-      case Transform(_, _, i)   => false
-    }
+  def eliminate[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A]): Syntax[B] = {
+    return substitute(in, original, subst, true)
   }
 }
