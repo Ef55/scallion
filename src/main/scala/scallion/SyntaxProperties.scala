@@ -94,7 +94,7 @@ trait SyntaxesProperties { self: Syntaxes =>
     def isLL1: Boolean = conflicts.isEmpty
   }
 
-  protected sealed trait SyntaxCell[A] {
+  private sealed trait SyntaxCell[A] {
     def init(): Unit
 
     val syntax: Syntax[A]
@@ -106,7 +106,7 @@ trait SyntaxesProperties { self: Syntaxes =>
     val conflictCell: Cell[Set[Conflict], Set[Conflict], Set[Conflict]] = new SetCell[Conflict]
   }
 
-  protected object SyntaxCell {
+  private object SyntaxCell {
 
     case class Success[A](value: A, syntax: Syntax[A]) extends SyntaxCell[A] {
       override def init(): Unit = {
@@ -304,12 +304,6 @@ trait SyntaxesProperties { self: Syntaxes =>
   }
   import SyntaxCell._
 
-  protected def getCell[A](syntax: Syntax[A]): SyntaxCell[A] = {
-    syntaxToCellCache
-      .getOrElse(syntax, syntaxToCell(syntax))
-      .asInstanceOf[SyntaxCell[A]]
-  }
-
   protected def getProperties[A](syntax: Syntax[A]): Properties[A] = {
     val syntaxCell = getCell(syntax)
     Properties(
@@ -318,6 +312,12 @@ trait SyntaxesProperties { self: Syntaxes =>
         syntaxCell.snfCell.get.flatMap(_.kinds),
         syntaxCell.conflictCell.get
     )
+  }
+
+  private def getCell[A](syntax: Syntax[A]): SyntaxCell[A] = {
+    syntaxToCellCache
+      .getOrElse(syntax, syntaxToCell(syntax))
+      .asInstanceOf[SyntaxCell[A]]
   }
 
   private def syntaxToCell[A](syntax: Syntax[A]): SyntaxCell[A] = {

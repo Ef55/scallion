@@ -22,6 +22,7 @@ import scala.annotation.tailrec
 import scala.collection.immutable.HashSet
 import scala.collection.mutable.HashMap
 import java.util.WeakHashMap
+import java.util.Properties
 
 /** This trait implements LL(1) parsing with derivatives. */
 trait Parsing extends SyntaxesProperties { self: Syntaxes =>
@@ -203,58 +204,59 @@ trait Parsing extends SyntaxesProperties { self: Syntaxes =>
       // Cache miss... Real work begins.
       val recTrees: HashMap[RecId, Any] = new HashMap()
 
-      def buildTree[A](syntaxCell: SyntaxCell[A]): Tree[A] = {
-        val tree: Tree[A] = syntaxCell match {
-          case SyntaxCell.Success(value, _) =>
+      def buildTree[A](syn: Syntax[A]): Tree[A] = {
+        val prop: Properties[A] = getProperties(syn)
+        val tree: Tree[A] = syn match {
+          case Syntax.Success(value) =>
             new Tree.Success(value) {
-              override val nullable: Option[A] = syntaxCell.nullableCell.get
-              override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-              override val syntax: Syntax[A] = syntaxCell.syntax
+              override val nullable: Option[A] = prop.nullable
+              override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+              override val syntax: Syntax[A] = syn
             }
-          case SyntaxCell.Failure(_) =>
+          case Syntax.Failure() =>
             new Tree.Failure[A]() {
-              override val nullable: Option[A] = syntaxCell.nullableCell.get
-              override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-              override val syntax: Syntax[A] = syntaxCell.syntax
+              override val nullable: Option[A] = prop.nullable
+              override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+              override val syntax: Syntax[A] = syn
             }
-          case SyntaxCell.Elem(kind, _) =>
+          case Syntax.Elem(kind) =>
             new Tree.Elem(kind) {
-              override val nullable: Option[Token] = syntaxCell.nullableCell.get
-              override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-              override val syntax: Syntax[Token] = syntaxCell.syntax
+              override val nullable: Option[Token] = prop.nullable
+              override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+              override val syntax: Syntax[Token] = syn
             }
-          case SyntaxCell.Disjunction(left, right, _) =>
+          case Syntax.Disjunction(left, right) =>
             new Tree.Disjunction[A](buildTree(left), buildTree(right)) {
-              override val nullable: Option[A] = syntaxCell.nullableCell.get
-              override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-              override val syntax: Syntax[A] = syntaxCell.syntax
+              override val nullable: Option[A] = prop.nullable
+              override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+              override val syntax: Syntax[A] = syn
             }
-          case SyntaxCell.Sequence(left: SyntaxCell[tA], right: SyntaxCell[tB], _) =>
+          case Syntax.Sequence(left: Syntax[tA], right: Syntax[tB]) =>
             new Tree.Sequence[tA, tB](buildTree(left), buildTree(right)) {
-              override val nullable: Option[tA ~ tB] = syntaxCell.nullableCell.get
-              override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-              override val syntax: Syntax[tA ~ tB] = syntaxCell.syntax
+              override val nullable: Option[tA ~ tB] = prop.nullable
+              override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+              override val syntax: Syntax[tA ~ tB] = syn
             }
-          case SyntaxCell.Marked(inner, mark, _) =>
+          case Syntax.Marked(mark, inner) =>
             new Tree.Marked[A](buildTree(inner), mark) {
-              override val nullable: Option[A] = syntaxCell.nullableCell.get
-              override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-              override val syntax: Syntax[A] = syntaxCell.syntax
+              override val nullable: Option[A] = prop.nullable
+              override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+              override val syntax: Syntax[A] = syn
             }
-          case SyntaxCell.Transform(inner: SyntaxCell[tA], function, inverse, _) =>
+          case Syntax.Transform(function, inverse, inner: Syntax[tA]) =>
             new Tree.Transform[tA, A](buildTree(inner), function, inverse) {
-              override val nullable: Option[A] = syntaxCell.nullableCell.get
-              override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-              override val syntax: Syntax[A] = syntaxCell.syntax
+              override val nullable: Option[A] = prop.nullable
+              override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+              override val syntax: Syntax[A] = syn
             }
-          case SyntaxCell.Recursive(recInner, recId, _) => recTrees.get(recId) match {
+          case Syntax.Recursive(recId, recInner) => recTrees.get(recId) match {
             case None => {
               val rec = new Tree.Recursive[A] {
                 override val id = recId
-                override lazy val inner: Tree[A] = syntaxToTreeCache.get(recInner.syntax).asInstanceOf[Tree[A]]
-                override val nullable: Option[A] = syntaxCell.nullableCell.get
-                override val first: HashSet[Kind] = HashSet(syntaxCell.firstCell.get.toSeq: _*)
-                override val syntax: Syntax[A] = syntaxCell.syntax
+                override lazy val inner: Tree[A] = syntaxToTreeCache.get(recInner).asInstanceOf[Tree[A]]
+                override val nullable: Option[A] = prop.nullable
+                override val first: HashSet[Kind] = HashSet(prop.first.toSeq: _*)
+                override val syntax: Syntax[A] = syn
               }
 
               recTrees += recId -> rec
@@ -267,15 +269,14 @@ trait Parsing extends SyntaxesProperties { self: Syntaxes =>
           }
         }
 
-        syntaxToTreeCache.put(syntaxCell.syntax, tree)
+        syntaxToTreeCache.put(syn, tree)
 
         tree
       }
 
-      val syntaxCell: SyntaxCell[A] = getCell(syntax)
-      val tree: Tree[A] = buildTree(syntaxCell)
+      val tree: Tree[A] = buildTree(syntax)
 
-      lazy val conflicts: Set[Conflict] = getProperties(syntaxCell.syntax).conflicts
+      lazy val conflicts: Set[Conflict] = getProperties(syntax).conflicts
       if (enforceLL1 && conflicts.nonEmpty) {
         throw ConflictException(conflicts)
       }
