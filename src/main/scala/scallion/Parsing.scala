@@ -201,7 +201,6 @@ trait Parsing extends SyntaxesProperties { self: Syntaxes =>
       }
 
       // Cache miss... Real work begins.
-
       val recTrees: HashMap[RecId, Any] = new HashMap()
 
       def buildTree[A](syntaxCell: SyntaxCell[A]): Tree[A] = {
@@ -273,7 +272,7 @@ trait Parsing extends SyntaxesProperties { self: Syntaxes =>
         tree
       }
 
-      val syntaxCell: SyntaxCell[A] = syntaxToCell(syntax)
+      val syntaxCell: SyntaxCell[A] = cell(syntax)
       val tree: Tree[A] = buildTree(syntaxCell)
 
       lazy val conflicts: Set[Conflict] = properties(syntaxCell.syntax).conflicts

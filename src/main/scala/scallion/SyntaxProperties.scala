@@ -8,7 +8,7 @@ import scala.collection.mutable.WeakHashMap
 
 trait SyntaxesProperties { self: Syntaxes =>
   /** Cache of computation of LL(1) properties for syntaxes. */
-  private val syntaxToPropertiesCache: WeakHashMap[Syntax[_], Properties[_]] = new WeakHashMap()
+  private val syntaxToCellCache: WeakHashMap[Syntax[_], SyntaxCell[_]] = new WeakHashMap()
 
   /** Follow-last set tagged with its source. */
   protected case class ShouldNotFollowEntry(source: Syntax.Disjunction[_], kinds: Set[Kind])
@@ -300,36 +300,50 @@ trait SyntaxesProperties { self: Syntaxes =>
   }
   import SyntaxCell._
 
-  protected def properties[A](syntax: Syntax[A]): Properties[A] = {
-    if(!syntaxToPropertiesCache.contains(syntax)){
-      syntaxToCell(syntax)
-    }
-    syntaxToPropertiesCache.get(syntax).get.asInstanceOf[Properties[A]]
+  protected def cell[A](syntax: Syntax[A]): SyntaxCell[A] = {
+    syntaxToCellCache
+      .getOrElse(syntax, syntaxToCell(syntax))
+      .asInstanceOf[SyntaxCell[A]]
   }
 
-  protected def syntaxToCell[A](syntax: Syntax[A]): SyntaxCell[A] = {
+  protected def properties[A](syntax: Syntax[A]): Properties[A] = {
+    val syntaxCell = cell(syntax)
+    Properties(
+        syntaxCell.nullableCell.get,
+        syntaxCell.firstCell.get,
+        syntaxCell.snfCell.get.flatMap(_.kinds),
+        syntaxCell.conflictCell.get
+    )
+  }
+
+  private def syntaxToCell[A](syntax: Syntax[A]): SyntaxCell[A] = {
 
     val recCells: HashMap[RecId, SyntaxCell[_]] = new HashMap()
-    def buildCell[A](syntax: Syntax[A]): SyntaxCell[A] = syntax match {
-      case Syntax.Success(value) => SyntaxCell.Success(value, syntax)
-      case Syntax.Failure() => SyntaxCell.Failure(syntax)
-      case Syntax.Elem(kind) => SyntaxCell.Elem(kind, syntax)
-      case Syntax.Disjunction(left, right) =>
-        SyntaxCell.Disjunction(buildCell(left), buildCell(right), syntax)
-      case Syntax.Sequence(left, right) =>
-        SyntaxCell.Sequence(buildCell(left), buildCell(right), syntax)
-      case Syntax.Marked(mark, inner) =>
-        SyntaxCell.Marked(buildCell(inner), mark, syntax)
-      case Syntax.Transform(function, inverse, inner) =>
-        SyntaxCell.Transform(buildCell(inner), function, inverse, syntax)
-      case Syntax.Recursive(id, inner) => recCells.get(id) match {
-        case None => {
-          val rec = SyntaxCell.Recursive(buildCell(inner), id, syntax)
-          recCells += id -> rec
-          rec
+    def buildCell[A](syntax: Syntax[A]): SyntaxCell[A] = {
+      syntaxToCellCache.getOrElseUpdate( 
+        syntax,
+        syntax match {
+          case Syntax.Success(value) => SyntaxCell.Success(value, syntax)
+          case Syntax.Failure() => SyntaxCell.Failure(syntax)
+          case Syntax.Elem(kind) => SyntaxCell.Elem(kind, syntax)
+          case Syntax.Disjunction(left, right) =>
+            SyntaxCell.Disjunction(buildCell(left), buildCell(right), syntax)
+          case Syntax.Sequence(left, right) =>
+            SyntaxCell.Sequence(buildCell(left), buildCell(right), syntax)
+          case Syntax.Marked(mark, inner) =>
+            SyntaxCell.Marked(buildCell(inner), mark, syntax)
+          case Syntax.Transform(function, inverse, inner) =>
+            SyntaxCell.Transform(buildCell(inner), function, inverse, syntax)
+          case Syntax.Recursive(id, inner) => recCells.get(id) match {
+            case None => {
+              val rec = SyntaxCell.Recursive(buildCell(inner), id, syntax)
+              recCells += id -> rec
+              rec
+            }
+            case Some(rec) => rec.asInstanceOf[SyntaxCell.Recursive[A]]
+          }
         }
-        case Some(rec) => rec.asInstanceOf[SyntaxCell.Recursive[A]]
-      }
+      ).asInstanceOf[SyntaxCell[A]]
     }
 
     var recChecked: Set[RecId] = Set()
@@ -375,45 +389,9 @@ trait SyntaxesProperties { self: Syntaxes =>
       }
     }
 
-    var recProps: Set[RecId] = Set()
-    def buildProperties[A](syntaxCell: SyntaxCell[A]): Properties[A] = {
-
-      syntaxCell match {
-        case SyntaxCell.Disjunction(left, right, _) => {
-          buildProperties(left)
-          buildProperties(right)
-        }
-        case SyntaxCell.Sequence(left, right, _) => {
-          buildProperties(left)
-          buildProperties(right)
-        }
-        case SyntaxCell.Marked(inner, _, _) => {
-          buildProperties(inner)
-        }
-        case SyntaxCell.Transform(inner, _, _, _) => {
-          buildProperties(inner)
-        }
-        case SyntaxCell.Recursive(recInner, recId, _) => if (!recProps.contains(recId)) {
-          recProps += recId
-          buildProperties(recInner)
-        }
-        case _ => ()
-      }
-
-      val properties = Properties(
-        syntaxCell.nullableCell.get,
-        syntaxCell.firstCell.get,
-        syntaxCell.snfCell.get.flatMap(_.kinds),
-        syntaxCell.conflictCell.get)
-
-      syntaxToPropertiesCache.put(syntaxCell.syntax, properties)
-      properties
-    }
-
     val cell = buildCell(syntax)
     cell.init()
     checkConflicts(cell)
-    buildProperties(cell)
     cell
   }
 }
