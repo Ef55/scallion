@@ -7,7 +7,8 @@ import scallion.visualization._
 import silex._
 
 /** In this example, we show how left factorization can
-  * be used to transform a non-LL1 grammar into an LL1 grammar.
+  * be used to solve First-First conflicts and make a
+  * non-LL1 grammar into a LL1 grammar.
   * 
   * We will parse tags, as used in some markup languages (XML, HTML, ...).
   * The different "types" of tags are:
@@ -25,8 +26,8 @@ case class UnknownToken(token: String) extends Token
 
 object TagsLexer extends Lexers with CharRegExps {
 
-  type Token = example.factorization.tags.Token  // Tokens.
-  type Position = Unit  // Positions. Ignored here.
+  type Token    = example.factorization.tags.Token  // Tokens.
+  type Position = Unit                              // Positions. Ignored in this example.
 
   val lexer = Lexer(
     // Words
@@ -87,8 +88,8 @@ case class EmptyTag(identifier: String) extends Tag{
 
 
 object TagsParser extends Parsers with Factorization with Graphs {
-  type Token = example.factorization.tags.Token
-  type Kind = example.factorization.tags.TokenKind
+  type Token  = example.factorization.tags.Token
+  type Kind   = example.factorization.tags.TokenKind
 
   import Implicits._
 
@@ -102,31 +103,32 @@ object TagsParser extends Parsers with Factorization with Graphs {
   }
 
   // Basic blocks
-  val identifier =  accept(WordKind){ case WordToken(id) => id }
-  val tagPrefix =   elem(LeftBracketKind)
-  val tagSuffix =   elem(RightBracketKind)
-  val slash =       elem(SlashKind)
+  val identifier  = accept(WordKind){ case WordToken(id) => id }
+  val tagPrefix   = elem(LeftBracketKind)
+  val tagSuffix   = elem(RightBracketKind)
+  val slash       = elem(SlashKind)
 
   // The different tags
-  val openingTag =  (tagPrefix ~>~ identifier ~<~ tagSuffix).map{case id => OpeningTag(id)}
-  val closingTag =  (tagPrefix ~>~ slash ~>~ identifier ~<~ tagSuffix).map(id => ClosingTag(id))
-  val emptyTag =    (tagPrefix ~>~ identifier ~<~ slash ~<~ tagSuffix).map{case id => EmptyTag(id)}.up[Tag]
-  val tagPair =     (openingTag ~ closingTag).map{ case op ~ cl => TagPair(op, cl)}.up[Tag]
+  val openingTag  = (tagPrefix ~>~ identifier ~<~ tagSuffix).map{case id => OpeningTag(id)}
+  val closingTag  = (tagPrefix ~>~ slash ~>~ identifier ~<~ tagSuffix).map(id => ClosingTag(id))
+  val emptyTag    = (tagPrefix ~>~ identifier ~<~ slash ~<~ tagSuffix).map{case id => EmptyTag(id)}.up[Tag]
+  val tagPair     = (openingTag ~ closingTag).map{ case op ~ cl => TagPair(op, cl)}.up[Tag]
 
-  // This is clearly not LL1: both alternatives begin with `tagPrefix ~ identifier`
-  val grammar =           tagPair | emptyTag     
-  val grammarFactorized = solveFirstConflicts(grammar)
+  // The grammar is clearly not LL1: both alternatives begin with `tagPrefix ~ identifier`
+  val grammar           = tagPair | emptyTag     
+  val factorizedGrammar = solveFirstConflicts(grammar)
 
-  // Trying to generate a parser "as-is"
-  val parser = Try(Parser(grammar))
+  // Generate the parsers
+  val parser            = Try(Parser(grammar))
+  val factorizedParser  = Try(Parser(factorizedGrammar))
 
-  // With factorization
-  val parserFactorized = Try(Parser(grammarFactorized))
-
-  // Generate graphs of both grammars
-  val dirPath = "example/factorization/graphs"
-  graphs.outputGraph(grammar, dirPath, "original")
-  graphs.outputGraph(grammarFactorized, dirPath, "factorized")
+  // Generate graph for both grammars
+  val generateGraphs = false
+  if(generateGraphs){
+    val dirPath = "example/factorization/graphs"
+    graphs.outputGraph(grammar, dirPath, "original")
+    graphs.outputGraph(factorizedGrammar, dirPath, "factorized")
+  }
 }
 
 
@@ -137,7 +139,7 @@ object tags {
       "<tag>  </tag>",
       "<tag />",
       "<h3  >     </  h3>",
-      // Invalide
+      // Invalid
       ">tag<",
       "This input shouldn't even be here",
       "<tag tag><tag / tag>",
@@ -149,7 +151,7 @@ object tags {
     println("A conflict was detected in the first syntax !")
 
 
-    val Success(parser) = TagsParser.parserFactorized
+    val Success(parser) = TagsParser.factorizedParser
     println("No conflicts were detected in the second syntax !")
     for(sentence <- examples){
       parser(TagsLexer(sentence.iterator)) match {
