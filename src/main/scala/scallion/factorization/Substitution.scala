@@ -77,8 +77,8 @@ trait Substitution { self: Syntaxes =>
           val nInner = iter(inner)
           if(nInner != inner){ nInner.mark(mark) }else{ m }
         }
-        case rec: Recursive[_] => {
-          substs += ( current -> recursive(iter(rec.inner)) )
+        case Recursive(_, inner)          => {
+          substs += ( current -> recursive(iter(inner)) )
           substs.get(current).get.asInstanceOf[Syntax[C]]
         }
       }

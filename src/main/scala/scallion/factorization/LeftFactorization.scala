@@ -140,7 +140,7 @@ trait LeftFactorization { self: Syntaxes with SyntaxesProperties =>
         case Marked(mark, inner)        => leftFactorOut(inner).mark(mark)
         case s: Success[_]              => Factorization.fail(s)
         case Failure()                  => Factorization(failure, failure)
-        case rec: Recursive[_]          => leftFactorOut(rec.inner).asRecursive
+        case Recursive(_, inner)       => leftFactorOut(inner).asRecursive
       }
     }
 
