@@ -106,7 +106,7 @@ class LeftFactorizationTestSimple extends LeftFactorizationTest {
   )
 }
 
-class LeftFactorizationTestRecursive extends LeftFactorizationTest with visualization.Graphs {
+class LeftFactorizationTestRecursive extends LeftFactorizationTest {
   type Result = Int
   val gramma: Syntax[Int] = recursive(
     epsilon(0) | 
@@ -156,5 +156,16 @@ class LeftFactorizationTestNonTerminal extends LeftFactorizationTest {
     ("aaa3", 6),
     ("efgh", 4),
     ("efg9", 12)
+  )
+}
+
+class LeftFactorizationNullPrefixTest extends LeftFactorizationTest {
+  type Result = Int
+  def grammar = (epsilon(1) ~ letter ~ letter).map(_ => 1) | letter.map(_ => 2)
+  def factorized = leftFactorize(LetterKind, grammar)
+  def name = "Epsilon-prefixed grammar"
+  def tests = Seq(
+    ("aa", 1),
+    ("a", 2)
   )
 }

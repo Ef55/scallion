@@ -6,6 +6,7 @@ import scala.collection.immutable.HashSet
 import scala.collection.mutable.HashMap
 import scala.collection.mutable.WeakHashMap
 
+/** Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...) */
 trait SyntaxesProperties { self: Syntaxes =>
   /** Cache of computation of LL(1) properties for syntaxes. */
   private val syntaxToCellCache: WeakHashMap[Syntax[_], SyntaxCell[_]] = new WeakHashMap()
@@ -85,6 +86,9 @@ trait SyntaxesProperties { self: Syntaxes =>
 
     /** Indicates if the syntax accepts at least one sequence. */
     def isProductive: Boolean = isNullable || first.nonEmpty
+
+    /** Indicates if the syntax only accepts the empty sequence. */
+    def isNull: Boolean = nullable.nonEmpty && first.isEmpty
 
     /** Indicates if the syntax is LL(1). */
     def isLL1: Boolean = conflicts.isEmpty
@@ -300,14 +304,14 @@ trait SyntaxesProperties { self: Syntaxes =>
   }
   import SyntaxCell._
 
-  protected def cell[A](syntax: Syntax[A]): SyntaxCell[A] = {
+  protected def getCell[A](syntax: Syntax[A]): SyntaxCell[A] = {
     syntaxToCellCache
       .getOrElse(syntax, syntaxToCell(syntax))
       .asInstanceOf[SyntaxCell[A]]
   }
 
-  protected def properties[A](syntax: Syntax[A]): Properties[A] = {
-    val syntaxCell = cell(syntax)
+  protected def getProperties[A](syntax: Syntax[A]): Properties[A] = {
+    val syntaxCell = getCell(syntax)
     Properties(
         syntaxCell.nullableCell.get,
         syntaxCell.firstCell.get,

@@ -3,6 +3,7 @@ package example.factorization.tags
 import scala.util.{Try, Success, Failure}
 import scallion._
 import scallion.factorization._
+import scallion.visualization._
 import silex._
 
 /** In this example, we show how left factorization can
@@ -85,7 +86,7 @@ case class EmptyTag(identifier: String) extends Tag{
 }
 
 
-object TagsParser extends Parsers with Factorization {
+object TagsParser extends Parsers with Factorization with Graphs {
   type Token = example.factorization.tags.Token
   type Kind = example.factorization.tags.TokenKind
 
@@ -107,21 +108,25 @@ object TagsParser extends Parsers with Factorization {
   val slash =       elem(SlashKind)
 
   // The different tags
-  val openingTag =  (tagPrefix ~ identifier ~<~ tagSuffix).map{case _ ~ id => OpeningTag(id)}
+  val openingTag =  (tagPrefix ~>~ identifier ~<~ tagSuffix).map{case id => OpeningTag(id)}
   val closingTag =  (tagPrefix ~>~ slash ~>~ identifier ~<~ tagSuffix).map(id => ClosingTag(id))
-  val emptyTag =    (tagPrefix ~ identifier ~<~ slash ~<~ tagSuffix).map{case _ ~ id => EmptyTag(id)}.up[Tag]
+  val emptyTag =    (tagPrefix ~>~ identifier ~<~ slash ~<~ tagSuffix).map{case id => EmptyTag(id)}.up[Tag]
   val tagPair =     (openingTag ~ closingTag).map{ case op ~ cl => TagPair(op, cl)}.up[Tag]
 
   // This is clearly not LL1: both alternatives begin with `tagPrefix ~ identifier`
-  val grammar =   tagPair | emptyTag     
-
+  val grammar =           tagPair | emptyTag     
+  val grammarFactorized = solveFirstConflicts(grammar)
 
   // Trying to generate a parser "as-is"
   val parser = Try(Parser(grammar))
 
   // With factorization
-  val parserFactorized = Try(Parser( leftFactorize(tagPrefix ~ identifier, grammar) ))
+  val parserFactorized = Try(Parser(grammarFactorized))
 
+  // Generate graphs of both grammars
+  val dirPath = "example/factorization/graphs"
+  graphs.outputGraph(grammar, dirPath, "original")
+  graphs.outputGraph(grammarFactorized, dirPath, "factorized")
 }
 
 

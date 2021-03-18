@@ -99,10 +99,10 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.Parsing" visbl="pub" class="indented2 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="ParsingextendsSyntaxesProperties"></a><a id="Parsing:Parsing"></a>
+    </li><li name="scallion.SyntaxesProperties" visbl="pub" class="indented2 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="SyntaxesPropertiesextendsAnyRef"></a><a id="SyntaxesProperties:SyntaxesProperties"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#ParsingextendsSyntaxesProperties" title="Permalink">
+      <a href="../scallion/index.html#SyntaxesPropertiesextendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -111,10 +111,10 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="This trait implements LL(1) parsing with derivatives." href="Parsing.html"><span class="name">Parsing</span></a><span class="result"> extends <a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></span>
+        <a title="Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)" href="SyntaxesProperties.html"><span class="name">SyntaxesProperties</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">This trait implements LL(1) parsing with derivatives.</p><div class="fullcomment"><div class="comment cmt"><p>This trait implements LL(1) parsing with derivatives.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)</p><div class="fullcomment"><div class="comment cmt"><p>Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <a class="object" href="SyntaxesProperties$Conflict$.html" title="Contains the description of the various LL(1) conflicts."></a>
                         <a class="trait" href="SyntaxesProperties$Conflict.html" title="Describes a LL(1) conflict."></a>
@@ -125,18 +125,6 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
                         <a href="SyntaxesProperties$ConflictException.html" title="Indicates that a syntax is not LL(1) due to various conflicts.">ConflictException</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Parsing$ParseResult.html" title="Result of parsing."></a>
-                        <a href="Parsing$ParseResult.html" title="Result of parsing.">ParseResult</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="Parsing$Parsed.html" title="Indicates that the input has been fully parsed, resulting in a value."></a>
-                        <a href="Parsing$Parsed.html" title="Indicates that the input has been fully parsed, resulting in a value.">Parsed</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="Parsing$Parser$.html" title="Factory of LL(1) parsers."></a>
-                        <a class="trait" href="Parsing$Parser.html" title="LL(1) parser."></a>
-                        <a href="Parsing$Parser.html" title="LL(1) parser.">Parser</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
                         <a class="class" href="SyntaxesProperties$Properties.html" title="Contains properties of syntaxes."></a>
                         <a href="SyntaxesProperties$Properties.html" title="Contains properties of syntaxes.">Properties</a>
                       </li><li class="current-entities indented2">
@@ -145,51 +133,49 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
                         <a href="SyntaxesProperties$ShouldNotFollowEntry.html" title="Follow-last set tagged with its source.">ShouldNotFollowEntry</a>
                       </li><li class="current-entities indented2">
                         <a class="object" href="SyntaxesProperties$SyntaxCell$.html" title=""></a>
-                        <a class="trait" href="SyntaxesProperties$SyntaxCell.html" title=""></a>
-                        <a href="SyntaxesProperties$SyntaxCell.html" title="">SyntaxCell</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="" title="Indicates that end of input was unexpectedly encountered."></a>
-                        <a href="" title="Indicates that end of input was unexpectedly encountered.">UnexpectedEnd</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="Parsing$UnexpectedToken.html" title="Indicates that the provided token was not expected at that point."></a>
-                        <a href="Parsing$UnexpectedToken.html" title="Indicates that the provided token was not expected at that point.">UnexpectedToken</a>
+                        <a class="trait" href="" title=""></a>
+                        <a href="" title="">SyntaxCell</a>
                       </li>
               </ul>
             </div>
           </div>
           <div id="content">
-            <body class="class type">
+            <body class="trait type">
       <div id="definition">
-        <div class="big-circle class">c</div>
-        <p id="owner"><a href="index.html" class="extype" name="scallion">scallion</a>.<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a></p>
-        <h1>UnexpectedEnd<span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html" title="Permalink">
+        <div class="big-circle trait-companion-object">t</div>
+        <p id="owner"><a href="index.html" class="extype" name="scallion">scallion</a>.<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></p>
+        <h1>SyntaxCell<span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
-        <h3><span class="morelinks"></span></h3>
+        <h3><span class="morelinks"><div>
+            Companion <a href="SyntaxesProperties$SyntaxCell$.html" title="See companion object">object SyntaxCell</a>
+          </div></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">UnexpectedEnd</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="rest">rest: (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.Parser">Parser</span>[<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>]</span>)</span><span class="result"> extends (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.ParseResult">ParseResult</span>[<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SyntaxCell</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Indicates that end of input was unexpectedly encountered.</p><p>The <code>syntax</code> for subsequent input is provided.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/Parsing.scala" target="_blank">Parsing.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/SyntaxProperties.scala" target="_blank">SyntaxProperties.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.ParseResult">ParseResult</span>[<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">
+              Known Subclasses
+            </span>
+            <div class="subClasses hiddenContent"><a href="SyntaxesProperties$SyntaxCell$$Disjunction.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Disjunction">Disjunction</a>, <a href="SyntaxesProperties$SyntaxCell$$Elem.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Elem">Elem</a>, <a href="SyntaxesProperties$SyntaxCell$$Failure.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Failure">Failure</a>, <a href="SyntaxesProperties$SyntaxCell$$Marked.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Marked">Marked</a>, <a href="SyntaxesProperties$SyntaxCell$$Recursive.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Recursive">Recursive</a>, <a href="SyntaxesProperties$SyntaxCell$$Sequence.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Sequence">Sequence</a>, <a href="SyntaxesProperties$SyntaxCell$$Success.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Success">Success</a>, <a href="SyntaxesProperties$SyntaxCell$$Transform.html" class="extype" name="scallion.SyntaxesProperties.SyntaxCell.Transform">Transform</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -214,7 +200,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.Parsing.UnexpectedEnd"><span>UnexpectedEnd</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scallion.Parsing.ParseResult"><span>ParseResult</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.SyntaxesProperties.SyntaxCell"><span>SyntaxCell</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -232,38 +218,54 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="scallion.Parsing.UnexpectedEnd#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(rest:Parsing.this.Parser[A]):Parsing.this.UnexpectedEnd[A]"></a><a id="&lt;init&gt;:(Parsing.this)#UnexpectedEnd[A]"></a>
-      <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#&lt;init&gt;(rest:Parsing.this.Parser[A]):Parsing.this.UnexpectedEnd[A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">UnexpectedEnd</span><span class="params">(<span name="rest">rest: (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.Parser">Parser</span>[<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>]</span>)</span>
-      </span>
-      
-      <p class="shortcomment cmt"></p>
-    </li></ol>
-            </div>
-
         
 
         
 
         <div class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="scallion.SyntaxesProperties.SyntaxCell#init" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="init():Unit"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#init():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">init</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="scallion.SyntaxesProperties.SyntaxCell#syntax" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="syntax:SyntaxesProperties.this.Syntax[A]"></a><a id="syntax:(SyntaxesProperties.this)#Syntax[A]"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#syntax:SyntaxesProperties.this.Syntax[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">syntax</span><span class="result">: (<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesProperties.SyntaxCell.A">A</span>]</span>
+      </span>
+      
+      
+    </li></ol>
+            </div>
+
+        <div class="values members">
+              <h3>Concrete Value Members</h3>
               <ol>
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -279,7 +281,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html###():Int" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -295,7 +297,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -311,7 +313,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -327,7 +329,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#clone():Object" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -350,10 +352,26 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="scallion.SyntaxesProperties.SyntaxCell#conflictCell" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="conflictCell:scallion.util.internal.Cell[Set[SyntaxesProperties.this.Conflict],Set[SyntaxesProperties.this.Conflict],Set[SyntaxesProperties.this.Conflict]]"></a><a id="conflictCell:Cell[Set[(SyntaxesProperties.this)#Conflict],Set[(SyntaxesProperties.this)#Conflict],Set[(SyntaxesProperties.this)#Conflict]]"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#conflictCell:scallion.util.internal.Cell[Set[SyntaxesProperties.this.Conflict],Set[SyntaxesProperties.this.Conflict],Set[SyntaxesProperties.this.Conflict]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">conflictCell</span><span class="result">: <span class="extype" name="scallion.util.internal.Cell">Cell</span>[<span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.SyntaxesProperties.Conflict">Conflict</span>], <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.SyntaxesProperties.Conflict">Conflict</span>], <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.SyntaxesProperties.Conflict">Conflict</span>]]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -366,10 +384,42 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#equals(x$1:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scallion.SyntaxesProperties.SyntaxCell#firstCell" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="firstCell:scallion.util.internal.Cell[Set[SyntaxesProperties.this.Kind],Set[SyntaxesProperties.this.Kind],Set[SyntaxesProperties.this.Kind]]"></a><a id="firstCell:Cell[Set[(SyntaxesProperties.this)#Kind],Set[(SyntaxesProperties.this)#Kind],Set[(SyntaxesProperties.this)#Kind]]"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#firstCell:scallion.util.internal.Cell[Set[SyntaxesProperties.this.Kind],Set[SyntaxesProperties.this.Kind],Set[SyntaxesProperties.this.Kind]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">firstCell</span><span class="result">: <span class="extype" name="scallion.util.internal.Cell">Cell</span>[<span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span>], <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span>], <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span>]]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#getClass():Class[_]" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -387,10 +437,10 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.Parsing.ParseResult#getValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getValue:Option[A]"></a>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#getValue:Option[A]" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -399,14 +449,19 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getValue</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>]</span>
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <p class="shortcomment cmt">Returns the parsed value, if any.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the parsed value, if any.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Parsing$ParseResult.html" class="extype" name="scallion.Parsing.ParseResult">ParseResult</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -419,26 +474,10 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scallion.Parsing.ParseResult#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="map[B](f:A=&gt;B):Parsing.this.ParseResult[B]"></a><a id="map[B]((A)⇒B):(Parsing.this)#ParseResult[B]"></a>
-      <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#map[B](f:A=&gt;B):Parsing.this.ParseResult[B]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">map</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>) ⇒ <span class="extype" name="scallion.Parsing.ParseResult.map.B">B</span></span>)</span><span class="result">: (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.ParseResult">ParseResult</span>[<span class="extype" name="scallion.Parsing.ParseResult.map.B">B</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Applies the given function on the parsed result.</p><div class="fullcomment"><div class="comment cmt"><p>Applies the given function on the parsed result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Parsing$ParseResult.html" class="extype" name="scallion.Parsing.ParseResult">ParseResult</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -454,7 +493,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#notify():Unit" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -475,7 +514,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#notifyAll():Unit" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -493,10 +532,10 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.Parsing.UnexpectedEnd#rest" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="rest:Parsing.this.Parser[A]"></a><a id="rest:(Parsing.this)#Parser[A]"></a>
+    </li><li name="scallion.SyntaxesProperties.SyntaxCell#nullableCell" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="nullableCell:scallion.util.internal.Cell[A,A,Option[A]]"></a><a id="nullableCell:Cell[A,A,Option[A]]"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#rest:Parsing.this.Parser[A]" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#nullableCell:scallion.util.internal.Cell[A,A,Option[A]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -505,14 +544,46 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">rest</span><span class="result">: (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.Parser">Parser</span>[<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>]</span>
+        <span class="name">nullableCell</span><span class="result">: <span class="extype" name="scallion.util.internal.Cell">Cell</span>[<span class="extype" name="scallion.SyntaxesProperties.SyntaxCell.A">A</span>, <span class="extype" name="scallion.SyntaxesProperties.SyntaxCell.A">A</span>, <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scallion.SyntaxesProperties.SyntaxCell.A">A</span>]]</span>
       </span>
       
-      <p class="shortcomment cmt">Parser for the rest of input.</p><div class="fullcomment"><div class="comment cmt"><p>Parser for the rest of input.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="scallion.Parsing.UnexpectedEnd">UnexpectedEnd</a> → <a href="Parsing$ParseResult.html" class="extype" name="scallion.Parsing.ParseResult">ParseResult</a></dd></dl></div>
+      
+    </li><li name="scallion.SyntaxesProperties.SyntaxCell#productiveCell" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="productiveCell:scallion.util.internal.Cell[Unit,Unit,Boolean]"></a><a id="productiveCell:Cell[Unit,Unit,Boolean]"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#productiveCell:scallion.util.internal.Cell[Unit,Unit,Boolean]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">productiveCell</span><span class="result">: <span class="extype" name="scallion.util.internal.Cell">Cell</span>[<span class="extype" name="scala.Unit">Unit</span>, <span class="extype" name="scala.Unit">Unit</span>, <span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      
+      
+    </li><li name="scallion.SyntaxesProperties.SyntaxCell#snfCell" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="snfCell:scallion.util.internal.Cell[Set[SyntaxesProperties.this.ShouldNotFollowEntry],Set[SyntaxesProperties.this.ShouldNotFollowEntry],Set[SyntaxesProperties.this.ShouldNotFollowEntry]]"></a><a id="snfCell:Cell[Set[(SyntaxesProperties.this)#ShouldNotFollowEntry],Set[(SyntaxesProperties.this)#ShouldNotFollowEntry],Set[(SyntaxesProperties.this)#ShouldNotFollowEntry]]"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#snfCell:scallion.util.internal.Cell[Set[SyntaxesProperties.this.ShouldNotFollowEntry],Set[SyntaxesProperties.this.ShouldNotFollowEntry],Set[SyntaxesProperties.this.ShouldNotFollowEntry]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">snfCell</span><span class="result">: <span class="extype" name="scallion.util.internal.Cell">Cell</span>[<span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.SyntaxesProperties.ShouldNotFollowEntry">ShouldNotFollowEntry</span>], <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.SyntaxesProperties.ShouldNotFollowEntry">ShouldNotFollowEntry</span>], <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a>.this)#<span class="extype" name="scallion.SyntaxesProperties.ShouldNotFollowEntry">ShouldNotFollowEntry</span>]]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -525,10 +596,26 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -550,7 +637,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -574,7 +661,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#wait():Unit" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -604,7 +691,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
               <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../scallion/Parsing$UnexpectedEnd.html#finalize():Unit" title="Permalink">
+      <a href="../scallion/SyntaxesProperties$SyntaxCell.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -632,17 +719,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.Product">
-              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
-            </div><div class="parent" name="scala.Equals">
-              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
-            </div><div class="parent" name="scallion.Parsing.ParseResult">
-              <h3>Inherited from (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.ParseResult">ParseResult</span>[<span class="extype" name="scallion.Parsing.UnexpectedEnd.A">A</span>]</h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

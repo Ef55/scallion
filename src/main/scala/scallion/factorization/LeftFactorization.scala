@@ -5,7 +5,7 @@ package factorization
   *
   * @groupname factorization Factorization
   */
-trait LeftFactorization { self: Syntaxes => 
+trait LeftFactorization { self: Syntaxes with SyntaxesProperties => 
 
   import Syntax._
 
@@ -53,6 +53,16 @@ trait LeftFactorization { self: Syntaxes =>
               _ match { case _ => throw new IllegalArgumentException("Reverse transformation not yet implemented") }
           ),
           this.alternative ~ follow
+        )
+      }
+
+      def prepend[P](prefix: Syntax[P]): Factorization[P ~ A] = {
+        Factorization(
+          (prefix ~ this.factorized).map(
+            _ match { case l ~ fr => (r: L) => scallion.~(l, fr(r)) },
+            _ match { case _ => throw new IllegalArgumentException("Reverse transformation not yet implemented") }
+          ),
+          prefix ~ this.alternative
         )
       }
 
@@ -112,7 +122,19 @@ trait LeftFactorization { self: Syntaxes =>
       s match {
         case _ if s == leftFactor       => Factorization.success.asInstanceOf[Factorization[A]]
         case e: Elem                    => Factorization.fail(e)
-        case Sequence(l, r)             => leftFactorOut(l) ~ r
+        case Sequence(l, r)             => {
+          val p = getProperties(l)
+          if(p.isNull){
+            leftFactorOut(r).prepend(l)
+          }
+          else{
+            // If the syntax is nullable, it might be possible
+            // that we should factorize both parts; we don't do this
+            // in order to stay simple (and because this case implies
+            // a first-follow conflict)
+            leftFactorOut(l) ~ r
+          }
+        }
         case Disjunction(l, r)          => leftFactorOut(l) | leftFactorOut(r)
         case Transform(fun, inv, inner) => leftFactorOut(inner).map(fun, inv)
         case Marked(mark, inner)        => leftFactorOut(inner).mark(mark)

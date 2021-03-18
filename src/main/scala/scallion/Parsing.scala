@@ -31,7 +31,7 @@ trait Parsing extends SyntaxesProperties { self: Syntaxes =>
     * @group property
     */
   implicit def syntaxToLL1Properties[A](syntax: Syntax[A]): Properties[A] = {
-    properties(syntax)
+    getProperties(syntax)
   }
 
   /** LL(1) parser.
@@ -192,7 +192,7 @@ trait Parsing extends SyntaxesProperties { self: Syntaxes =>
 
       // Handles caching.
       if (syntaxToTreeCache.containsKey(syntax)) {
-        lazy val conflicts = properties(syntax).conflicts
+        lazy val conflicts = getProperties(syntax).conflicts
         if (enforceLL1 && conflicts.nonEmpty) {
           throw ConflictException(conflicts)
         }
@@ -272,10 +272,10 @@ trait Parsing extends SyntaxesProperties { self: Syntaxes =>
         tree
       }
 
-      val syntaxCell: SyntaxCell[A] = cell(syntax)
+      val syntaxCell: SyntaxCell[A] = getCell(syntax)
       val tree: Tree[A] = buildTree(syntaxCell)
 
-      lazy val conflicts: Set[Conflict] = properties(syntaxCell.syntax).conflicts
+      lazy val conflicts: Set[Conflict] = getProperties(syntaxCell.syntax).conflicts
       if (enforceLL1 && conflicts.nonEmpty) {
         throw ConflictException(conflicts)
       }

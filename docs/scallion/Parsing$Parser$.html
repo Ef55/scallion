@@ -100,9 +100,9 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li name="scallion.Parsing" visbl="pub" class="indented2 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="ParsingextendsAnyRef"></a><a id="Parsing:Parsing"></a>
+      <a id="ParsingextendsSyntaxesProperties"></a><a id="Parsing:Parsing"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#ParsingextendsAnyRef" title="Permalink">
+      <a href="../scallion/index.html#ParsingextendsSyntaxesProperties" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -111,18 +111,18 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="This trait implements LL(1) parsing with derivatives." href="Parsing.html"><span class="name">Parsing</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="This trait implements LL(1) parsing with derivatives." href="Parsing.html"><span class="name">Parsing</span></a><span class="result"> extends <a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></span>
       </span>
       
       <p class="shortcomment cmt">This trait implements LL(1) parsing with derivatives.</p><div class="fullcomment"><div class="comment cmt"><p>This trait implements LL(1) parsing with derivatives.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
-                        <a class="object" href="Parsing$Conflict$.html" title="Contains the description of the various LL(1) conflicts."></a>
-                        <a class="trait" href="Parsing$Conflict.html" title="Describes a LL(1) conflict."></a>
-                        <a href="Parsing$Conflict.html" title="Describes a LL(1) conflict.">Conflict</a>
+                        <a class="object" href="SyntaxesProperties$Conflict$.html" title="Contains the description of the various LL(1) conflicts."></a>
+                        <a class="trait" href="SyntaxesProperties$Conflict.html" title="Describes a LL(1) conflict."></a>
+                        <a href="SyntaxesProperties$Conflict.html" title="Describes a LL(1) conflict.">Conflict</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="Parsing$ConflictException.html" title="Indicates that a syntax is not LL(1) due to various conflicts."></a>
-                        <a href="Parsing$ConflictException.html" title="Indicates that a syntax is not LL(1) due to various conflicts.">ConflictException</a>
+                        <a class="class" href="SyntaxesProperties$ConflictException.html" title="Indicates that a syntax is not LL(1) due to various conflicts."></a>
+                        <a href="SyntaxesProperties$ConflictException.html" title="Indicates that a syntax is not LL(1) due to various conflicts.">ConflictException</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Parsing$ParseResult.html" title="Result of parsing."></a>
@@ -137,8 +137,16 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
                         <a href="Parsing$Parser.html" title="LL(1) parser.">Parser</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="Parsing$Properties.html" title="Contains properties of syntaxes."></a>
-                        <a href="Parsing$Properties.html" title="Contains properties of syntaxes.">Properties</a>
+                        <a class="class" href="SyntaxesProperties$Properties.html" title="Contains properties of syntaxes."></a>
+                        <a href="SyntaxesProperties$Properties.html" title="Contains properties of syntaxes.">Properties</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="class" href="SyntaxesProperties$ShouldNotFollowEntry.html" title="Follow-last set tagged with its source."></a>
+                        <a href="SyntaxesProperties$ShouldNotFollowEntry.html" title="Follow-last set tagged with its source.">ShouldNotFollowEntry</a>
+                      </li><li class="current-entities indented2">
+                        <a class="object" href="SyntaxesProperties$SyntaxCell$.html" title=""></a>
+                        <a class="trait" href="SyntaxesProperties$SyntaxCell.html" title=""></a>
+                        <a href="SyntaxesProperties$SyntaxCell.html" title="">SyntaxCell</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="class" href="Parsing$UnexpectedEnd.html" title="Indicates that end of input was unexpectedly encountered."></a>
@@ -301,7 +309,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
       <p class="shortcomment cmt">Builds a LL(1) parser from a syntax description.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a LL(1) parser from a syntax description.
 </p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The description of the syntax.</p></dd><dt class="param">enforceLL1</dt><dd class="cmt"><p>Indicates if the method should throw a
                   <code>ConflictException</code> when the <code>syntax</code> is not LL(1).
-                  <code>true</code> by default.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><a href="Parsing$ConflictException.html" class="extype" name="scallion.Parsing.ConflictException"><code>ConflictException</code></a> when the <code>syntax</code> is not LL(1) and <code>enforceLL1</code> is not set to <code>false</code>.</p></span></dd></dl></div>
+                  <code>true</code> by default.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><a href="SyntaxesProperties$ConflictException.html" class="extype" name="scallion.SyntaxesProperties.ConflictException"><code>ConflictException</code></a> when the <code>syntax</code> is not LL(1) and <code>enforceLL1</code> is not set to <code>false</code>.</p></span></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -330,7 +338,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">build</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.Parsing.Parser.build.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Predef.Set">Set</span>[(<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.Conflict">Conflict</span>], (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.Parser">Parser</span>[<span class="extype" name="scallion.Parsing.Parser.build.A">A</span>]]</span>
+        <span class="name">build</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.Parsing.Parser.build.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Predef.Set">Set</span>[(<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.SyntaxesProperties.Conflict">Conflict</span>], (<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a>.this)#<span class="extype" name="scallion.Parsing.Parser">Parser</span>[<span class="extype" name="scallion.Parsing.Parser.build.A">A</span>]]</span>
       </span>
       
       <p class="shortcomment cmt">Builds a LL(1) parser from a syntax description.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a LL(1) parser from a syntax description.
