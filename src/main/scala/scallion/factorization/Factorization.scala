@@ -10,20 +10,23 @@ trait Factorization extends LeftFactorization with Substitution with Unfold {
 
   import Conflict._
 
+  private def solveFirstConflict[A](syntax: Syntax[A], conflict: FirstConflict): Syntax[A] = {
+    val tokens = conflict.ambiguities
+    // The present cast doesn't have any meaning; it is just required in order to typecheck
+    val src = conflict.source.asInstanceOf[Syntax[Any]] 
+    tokens.foldLeft(syntax)( (s, t) => eliminate(s, src, leftFactorize(t, src)))
+  }
+
   def solveFirstConflicts[A](syntax: Syntax[A]): Syntax[A] = {
 
     @tailrec
     def iter[B](syntax: Syntax[B], conflicts: List[Conflict]): Syntax[B] = {
-      def leftFactorizeAndEliminate[C](i: Syntax[B], o: Syntax[C], t: Kind): Syntax[B] = {
-        eliminate(i, o, leftFactorize(t, o))
-      }
-
       conflicts match {
-        case FirstConflict(src, tokens) :: _ => {
-          val newSyntax = leftFactorizeAndEliminate(syntax, src, tokens.head)
+        case (fc: FirstConflict) :: _ => {
+          val newSyntax = solveFirstConflict(syntax, fc)
           iter(newSyntax, getProperties(newSyntax).conflicts.toList)
         }
-        case h :: tl => println(h); iter(syntax, tl)
+        case h :: tl => iter(syntax, tl)
         case Nil     => syntax
       }
     }
