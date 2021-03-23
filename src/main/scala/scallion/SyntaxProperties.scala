@@ -88,7 +88,7 @@ trait SyntaxesProperties { self: Syntaxes =>
     def isProductive: Boolean = isNullable || first.nonEmpty
 
     /** Indicates if the syntax only accepts the empty sequence. */
-    def isNull: Boolean = nullable.nonEmpty && first.isEmpty
+    def isNull: Boolean = isNullable && first.isEmpty
 
     /** Indicates if the syntax is LL(1). */
     def isLL1: Boolean = conflicts.isEmpty
