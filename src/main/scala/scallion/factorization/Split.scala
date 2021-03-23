@@ -69,4 +69,65 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     }
   }
 
+  /**
+    * Split a syntax into a part who has a prefix satisfying a
+    * given predicate and a part whose prefixes do not satisfy it.
+    *
+    * @param syntax The syntax to split.
+    * @param splitter The predicate indicating how to split.
+    * @return The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.
+    */
+  def splitByPrefix[A](syntax: Syntax[A], splitter: Syntax[_] => Boolean): (Option[Syntax[A]], Option[Syntax[A]]) = {
+    def iter[B](syntax: Syntax[B]): (Option[Syntax[B]], Option[Syntax[B]]) = {
+      println(syntax)
+      if(splitter(syntax)){
+        (Some(syntax), None)
+      }
+      else{
+        syntax match {
+          case Elem(_)      => (None, Some(syntax))
+          case Success(_)   => (None, Some(syntax))
+          case Failure()    => (None, Some(syntax))
+
+          case Sequence(l, r) => {
+            val (prefixed, unprefixed) = iter(l)
+            (prefixed.map(_ ~ r), unprefixed.map(_ ~ r))
+          }
+
+          case Disjunction(l, r) => {
+            val (prefixedl, unprefixedl) = iter(l)
+            val (prefixedr, unprefixedr) = iter(r)
+            (optDisjuction(prefixedl, prefixedr), optDisjuction(unprefixedl, unprefixedr))
+          }
+
+          case Transform(fun, inv, inner) => {
+            val (prefixed, unprefixed) = iter(inner)
+            (prefixed.map(_.map(fun, inv)), unprefixed.map(_.map(fun, inv)))
+          }
+
+          case Marked(_, inner) => iter(inner)
+
+          case Recursive(_, inner) => {
+            val (prefixed, unprefixed) = iter(inner)
+            (prefixed.map(recursive(_)), unprefixed.map(recursive(_)))
+          }
+        }
+      }
+    }
+
+    iter(syntax)
+  }
+
+  /**
+    * Split a recursive syntax into its left recursive component
+    * and its non-left recursive component.
+    *
+    * @param syntax The syntax to split.
+    * @return The left recursive component if any, and the component which isn't if any.
+    */
+  def splitLeftRecursive[A](syntax: Recursive[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
+    val (leftRec, nonLeftRec) = splitByPrefix(syntax.inner, _ == syntax)
+    (leftRec.map(recursive(_)), nonLeftRec.map(recursive(_)))
+  }
+
 }
