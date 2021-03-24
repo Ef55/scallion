@@ -68,4 +68,29 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
     assertStructuralEquivalence(expLeftRec)(leftRec.get)
     assertStructuralEquivalence(expNonLeftRec)(nonLeftRec.get)
   }
+
+  it should "not loop if some prefix is left recursive" in {
+    lazy val rec1: Recursive[Boolean] = recursive( (rec1 ~ tru).map(comb) | rec2 ).asInstanceOf[Recursive[Boolean]]
+    lazy val rec2: Syntax[Boolean] = recursive( rec2 )
+    val (leftRec, nonLeftRec) = splitLeftRecursive(rec1)
+
+    assert(leftRec.isDefined)
+    assert(nonLeftRec.isDefined)
+
+    assertStructuralEquivalence( recursive( (rec1 ~ tru).map(comb) ) )(leftRec.get)
+    assertStructuralEquivalence(rec2)(nonLeftRec.get)
+  }
+
+  it should "behaves correctly on mutual left recursions" in {
+    lazy val rec1: Recursive[Boolean] = 
+      recursive( rec2 | tru ).asInstanceOf[Recursive[Boolean]]
+    lazy val rec2: Recursive[Boolean] = 
+      recursive( (rec1 ~ falz).map(comb) | tru ).asInstanceOf[Recursive[Boolean]]
+    val (leftRec, nonLeftRec) = splitLeftRecursive(rec1)
+
+    assert(leftRec.isEmpty)
+    assert(nonLeftRec.isDefined)
+
+    assertStructuralEquivalence(rec1)(nonLeftRec.get)
+  }
 }
