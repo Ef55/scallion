@@ -25,8 +25,7 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     * @param syntax The syantax to split.
     * @return The non-nullable component if any, and the null component if any.
     */
-  def splitNullable[A](syntax: Syntax[A]): 
-  (Option[Syntax[A]], Option[Syntax[A]]) = {
+  def splitNullable[A](syntax: Syntax[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
 
     val prop = getProperties(syntax)
     if(prop.isNull){
