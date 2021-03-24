@@ -4,8 +4,11 @@ import scallion.Syntaxes
 import scallion.SyntaxesProperties
 import scala.annotation.tailrec
 
-/** Contains functions to factorize syntaxes. */
-trait Factorization extends LeftFactorization with Substitution with Unfold {
+/** Contains functions to factorize syntaxes. 
+ * 
+ * @groupname conflicts Conflicts resolution
+ */
+trait Factorization extends LeftFactorization with Substitution with Unfold with Split {
   self: Syntaxes with SyntaxesProperties => 
 
   import Conflict._
@@ -17,6 +20,13 @@ trait Factorization extends LeftFactorization with Substitution with Unfold {
     tokens.foldLeft(syntax)( (s, t) => eliminate(s, src, leftFactorize(t, src)))
   }
 
+  /**
+    * Attempt to solve first-first conflicts inside the syntax
+    *
+    * @param syntax The syntax with a conflict.
+    * 
+    * @group conflicts
+    */
   def solveFirstConflicts[A](syntax: Syntax[A]): Syntax[A] = {
 
     @tailrec

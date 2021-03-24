@@ -54,7 +54,7 @@ trait LeftRecursion { self: Syntaxes with SyntaxesProperties =>
     iter(syntax, true, Set.empty)
   }
 
-  /** @return If the syntax contains left-recursive non-terminals.
+  /** Indicate whether the syntax contains left-recursive non-terminals.
     *
     * @group property  
     */

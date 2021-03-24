@@ -125,8 +125,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Split.html" title=""></a>
-                        <a href="Split.html" title="">Split</a>
+                        <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
+                        <a href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
@@ -158,16 +158,17 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Factorization</span><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a> with <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.factorization.Unfold">Unfold</a></span>
+        <span class="name">Factorization</span><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a> with <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.factorization.Unfold">Unfold</a> with <a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to factorize syntaxes.</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/Factorization.scala" target="_blank">Factorization.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to factorize syntaxes.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/Factorization.scala" target="_blank">Factorization.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="Unfold.html" class="extype" name="scallion.factorization.Unfold">Unfold</a>, <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a>, <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a>, <a href="Unfold.html" class="extype" name="scallion.factorization.Unfold">Unfold</a>, <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a>, <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -193,7 +194,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.factorization.Factorization"><span>Factorization</span></li><li class="in" name="scallion.factorization.Unfold"><span>Unfold</span></li><li class="in" name="scallion.factorization.Substitution"><span>Substitution</span></li><li class="in" name="scallion.factorization.LeftFactorization"><span>LeftFactorization</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.factorization.Factorization"><span>Factorization</span></li><li class="in" name="scallion.factorization.Split"><span>Split</span></li><li class="in" name="scallion.factorization.Unfold"><span>Unfold</span></li><li class="in" name="scallion.factorization.Substitution"><span>Substitution</span></li><li class="in" name="scallion.factorization.LeftFactorization"><span>LeftFactorization</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -510,7 +511,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.factorization.Factorization#solveFirstConflicts" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.factorization.Factorization#solveFirstConflicts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="conflicts">
       <a id="solveFirstConflicts[A](syntax:Factorization.this.Syntax[A]):Factorization.this.Syntax[A]"></a><a id="solveFirstConflicts[A]((Factorization.this)#Syntax[A]):(Factorization.this)#Syntax[A]"></a>
       <span class="permalink">
       <a href="../../scallion/factorization/Factorization.html#solveFirstConflicts[A](syntax:Factorization.this.Syntax[A]):Factorization.this.Syntax[A]" title="Permalink">
@@ -525,7 +526,68 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="name">solveFirstConflicts</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Factorization.solveFirstConflicts.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Factorization.solveFirstConflicts.A">A</span>]</span>
       </span>
       
+      <p class="shortcomment cmt">Attempt to solve first-first conflicts inside the syntax
+</p><div class="fullcomment"><div class="comment cmt"><p>Attempt to solve first-first conflicts inside the syntax
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax with a conflict.</p></dd></dl></div>
+    </li><li name="scallion.factorization.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
+      <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((Factorization.this)#Syntax[A],((Factorization.this)#Syntax[_])⇒Boolean):(Option[(Factorization.this)#Syntax[A]],Option[(Factorization.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/Factorization.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]])</span>
+      </span>
       
+      <p class="shortcomment cmt">Split a syntax into a part which has a prefix satisfying a
+given predicate and a part whose prefixes do not satisfy it.</p><div class="fullcomment"><div class="comment cmt"><p>Split a syntax into a part which has a prefix satisfying a
+given predicate and a part whose prefixes do not satisfy it.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Might not terminate if the syntax is left recursive.</p></span></dd></dl></div>
+    </li><li name="scallion.factorization.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
+      <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(Factorization.this)#Syntax[A]],Option[(Factorization.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/Factorization.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitLeftRecursive</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Split a recursive syntax into its left recursive component
+and its non-left recursive component.</p><div class="fullcomment"><div class="comment cmt"><p>Split a recursive syntax into its left recursive component
+and its non-left recursive component.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the some prefix is left recursive.</p></span></dd></dl></div>
+    </li><li name="scallion.factorization.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
+      <a id="splitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitNullable[A]((Factorization.this)#Syntax[A]):(Option[(Factorization.this)#Syntax[A]],Option[(Factorization.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/Factorization.html#splitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Factorization">Factorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>]])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Split a (possibly) nullable syntax into a
+null syntax (only accepts the empty string)
+and a non-nullable syntax (doesn't accept the empty string).</p><div class="fullcomment"><div class="comment cmt"><p>Split a (possibly) nullable syntax into a
+null syntax (only accepts the empty string)
+and a non-nullable syntax (doesn't accept the empty string).
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the syntax is left recursive.</p></span></dd></dl></div>
     </li><li name="scallion.factorization.Substitution#substitute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
       <a id="substitute[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A],elim:Boolean):Substitution.this.Syntax[B]"></a><a id="substitute[A,B]((Factorization.this)#Syntax[B],(Factorization.this)#Syntax[A],(Factorization.this)#Syntax[A],Boolean):(Factorization.this)#Syntax[B]"></a>
       <span class="permalink">
@@ -718,7 +780,9 @@ unfold(s) === (a ~ a) | (a ~ b)</pre></li></ol>
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scallion.factorization.Unfold">
+        <div class="parent" name="scallion.factorization.Split">
+              <h3>Inherited from <a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></h3>
+            </div><div class="parent" name="scallion.factorization.Unfold">
               <h3>Inherited from <a href="Unfold.html" class="extype" name="scallion.factorization.Unfold">Unfold</a></h3>
             </div><div class="parent" name="scallion.factorization.Substitution">
               <h3>Inherited from <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a></h3>
@@ -733,7 +797,10 @@ unfold(s) === (a ~ a) | (a ~ b)</pre></li></ol>
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="factorization">
+        <div class="group" name="conflicts">
+              <h3>Conflicts resolution</h3>
+              
+            </div><div class="group" name="factorization">
               <h3>Factorization</h3>
               
             </div><div class="group" name="Ungrouped">

@@ -125,8 +125,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="" title=""></a>
-                        <a href="" title="">Split</a>
+                        <a class="trait" href="" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
+                        <a href="" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
@@ -163,12 +163,19 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.Split">Split</a> with <a href="../SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/Split.scala" target="_blank">Split.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to transform a syntax into an quivalent
+disjuction, where each alternative has some specified property.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.Split">Split</a> with <a href="../SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/Split.scala" target="_blank">Split.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">
+              Known Subclasses
+            </span>
+            <div class="subClasses hiddenContent"><a href="Factorization.html" class="extype" name="scallion.factorization.Factorization">Factorization</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -184,7 +191,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
           <div id="order">
             <span class="filtertype">Ordering</span>
             <ol>
-              
+              <li class="group out"><span>Grouped</span></li>
               <li class="alpha in"><span>Alphabetic</span></li>
               <li class="inherit out"><span>By Inheritance</span></li>
             </ol>
@@ -458,7 +465,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scallion.factorization.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
       <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((Split.this)#Syntax[A],((Split.this)#Syntax[_])⇒Boolean):(Option[(Split.this)#Syntax[A]],Option[(Split.this)#Syntax[A]])"></a>
       <span class="permalink">
       <a href="../../scallion/factorization/Split.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
@@ -473,11 +480,11 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]])</span>
       </span>
       
-      <p class="shortcomment cmt">Split a syntax into a part who has a prefix satisfying a
-given predicate and a part whose prefixes do not satisfy it.</p><div class="fullcomment"><div class="comment cmt"><p>Split a syntax into a part who has a prefix satisfying a
+      <p class="shortcomment cmt">Split a syntax into a part which has a prefix satisfying a
+given predicate and a part whose prefixes do not satisfy it.</p><div class="fullcomment"><div class="comment cmt"><p>Split a syntax into a part which has a prefix satisfying a
 given predicate and a part whose prefixes do not satisfy it.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Might not terminate if the syntax is left recursive.</p></span></dd></dl></div>
+    </li><li name="scallion.factorization.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
       <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(Split.this)#Syntax[A]],Option[(Split.this)#Syntax[A]])"></a>
       <span class="permalink">
       <a href="../../scallion/factorization/Split.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
@@ -495,8 +502,8 @@ given predicate and a part whose prefixes do not satisfy it.
       <p class="shortcomment cmt">Split a recursive syntax into its left recursive component
 and its non-left recursive component.</p><div class="fullcomment"><div class="comment cmt"><p>Split a recursive syntax into its left recursive component
 and its non-left recursive component.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the some prefix is left recursive.</p></span></dd></dl></div>
+    </li><li name="scallion.factorization.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
       <a id="splitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitNullable[A]((Split.this)#Syntax[A]):(Option[(Split.this)#Syntax[A]],Option[(Split.this)#Syntax[A]])"></a>
       <span class="permalink">
       <a href="../../scallion/factorization/Split.html#splitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
@@ -516,7 +523,7 @@ null syntax (only accepts the empty string)
 and a non-nullable syntax (doesn't accept the empty string).</p><div class="fullcomment"><div class="comment cmt"><p>Split a (possibly) nullable syntax into a
 null syntax (only accepts the empty string)
 and a non-nullable syntax (doesn't accept the empty string).
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the syntax is left recursive.</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -665,7 +672,10 @@ and a non-nullable syntax (doesn't accept the empty string).
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="Ungrouped">
+        <div class="group" name="factorization">
+              <h3>Factorization</h3>
+              
+            </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

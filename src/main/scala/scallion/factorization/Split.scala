@@ -3,6 +3,11 @@ package factorization
 
 import java.util.Properties
 
+/** Contains functions to transform a syntax into an quivalent
+  * disjuction, where each alternative has some specified property.
+  *
+  * @groupname factorization Factorization
+  */
 trait Split { self: SyntaxesProperties with Syntaxes =>
   import Syntax._
 
@@ -22,8 +27,12 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     * null syntax (only accepts the empty string)
     * and a non-nullable syntax (doesn't accept the empty string).
     *
+    * @note Will not terminate if the syntax is left recursive.
+    * 
     * @param syntax The syantax to split.
     * @return The non-nullable component if any, and the null component if any.
+    *
+    * @group factorization
     */
   def splitNullable[A](syntax: Syntax[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
 
@@ -69,16 +78,19 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
   }
 
   /**
-    * Split a syntax into a part who has a prefix satisfying a
+    * Split a syntax into a part which has a prefix satisfying a
     * given predicate and a part whose prefixes do not satisfy it.
+    * 
+    * @note Might not terminate if the syntax is left recursive.
     *
     * @param syntax The syntax to split.
     * @param splitter The predicate indicating how to split.
     * @return The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.
+    *
+    * @group factorization
     */
   def splitByPrefix[A](syntax: Syntax[A], splitter: Syntax[_] => Boolean): (Option[Syntax[A]], Option[Syntax[A]]) = {
     def iter[B](syntax: Syntax[B]): (Option[Syntax[B]], Option[Syntax[B]]) = {
-      println(syntax)
       if(splitter(syntax)){
         (Some(syntax), None)
       }
@@ -120,9 +132,13 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
   /**
     * Split a recursive syntax into its left recursive component
     * and its non-left recursive component.
+    * 
+    * @note Will not terminate if the some prefix is left recursive.
     *
     * @param syntax The syntax to split.
     * @return The left recursive component if any, and the component which isn't if any.
+    *
+    * @group factorization
     */
   def splitLeftRecursive[A](syntax: Recursive[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
     val (leftRec, nonLeftRec) = splitByPrefix(syntax.inner, _ == syntax)
