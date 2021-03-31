@@ -141,4 +141,20 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
     
     testGrammar(grammar, factorized, tests)
   }
+
+  it should "work on nullable-prefixed syntaxes" in {
+    val grammar = ( (opt(letter) ~ letter) || number ).map{
+      case Left(None ~ _)     => 1
+      case Left(Some(_) ~ _)  => 2
+      case Right(_)           => 3
+    }
+    val factorized = leftFactorize(LetterKind, grammar)
+    val tests = Seq(
+      ("a", 1),
+      ("aa", 2),
+      ("1", 3)
+    )
+    
+    testGrammar(grammar, factorized, tests)
+  }
 }

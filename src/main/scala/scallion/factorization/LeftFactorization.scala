@@ -5,7 +5,7 @@ package factorization
   *
   * @groupname factorization Factorization
   */
-trait LeftFactorization { self: Syntaxes with SyntaxesProperties => 
+trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties => 
 
   import Syntax._
 
@@ -92,16 +92,13 @@ trait LeftFactorization { self: Syntaxes with SyntaxesProperties =>
         case _ if s == leftFactor       => Factorization.success.asInstanceOf[Factorization[A, L]]
         case e: Elem                    => Factorization.fail(e)
         case Sequence(l, r)             => {
-          val p = getProperties(l)
-          if(p.isNull){
-            iter(r).prepend(l)
+          val lIter = iter(l)
+          if(getProperties(lIter.alternative).isNullable){
+            val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative)
+            (Factorization(lIter.factorized, lNotNullPart) ~ r) | iter(r).prepend(lNullPart)
           }
           else{
-            // If the syntax is nullable, it might be possible
-            // that we should factorize both parts; we don't do this
-            // in order to stay simple (and because this case implies
-            // a first-follow conflict)
-            iter(l) ~ r
+            lIter ~ r
           }
         }
         case Disjunction(l, r)          => iter(l) | iter(r)

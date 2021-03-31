@@ -18,9 +18,9 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
   val eps = epsilon(false)
   val comb = (p: Boolean ~ Boolean) => p._1 && p._2
 
-  "Split nullable" should "correctly split trivial example" in {
+  "(Try) split nullable" should "correctly split trivial example" in {
     val grammar = tru | eps
-    val (nonNul, nul) = splitNullable(grammar)
+    val (nonNul, nul) = trySplitNullable(grammar)
 
     assertResult(Some(tru))(nonNul)
     assertResult(Some(eps))(nul)
@@ -31,7 +31,7 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
     val grammar = (cstr ~ cstr).map(comb)
     val expNonNul = (tru ~ tru | tru ~ eps | eps ~ tru).map(comb)
     val expNul = (eps ~ eps).map(comb)
-    val (nonNul, nul) = splitNullable(grammar)
+    val (nonNul, nul) = trySplitNullable(grammar)
 
     assert(nonNul.isDefined)
     assert(nul.isDefined)
@@ -44,8 +44,8 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
     val nullSyntax = (eps ~ eps).map(comb) | eps
     val notNullableSyntax = (tru ~ falz).map(comb) | falz
 
-    val nullResult = splitNullable(nullSyntax)
-    val notNullableResult = splitNullable(notNullableSyntax)
+    val nullResult = trySplitNullable(nullSyntax)
+    val notNullableResult = trySplitNullable(notNullableSyntax)
 
     assert(nullResult._1.isEmpty)
     assert(nullResult._2.isDefined)

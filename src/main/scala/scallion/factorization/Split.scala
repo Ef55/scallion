@@ -34,7 +34,7 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     *
     * @group factorization
     */
-  def splitNullable[A](syntax: Syntax[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
+  def trySplitNullable[A](syntax: Syntax[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
 
     val prop = getProperties(syntax)
     if(prop.isNull){
@@ -47,8 +47,8 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
       syntax match {
 
         case Sequence(l: Syntax[tB], r: Syntax[tC]) => {
-          val (nonNulll, nulll) = splitNullable(l)
-          val (nonNullr, nullr) = splitNullable(r)
+          val (nonNulll, nulll) = trySplitNullable(l)
+          val (nonNullr, nullr) = trySplitNullable(r)
           val comb = (o1: Option[Syntax[tB]], o2: Option[Syntax[tC]]) => optZip(o1, o2).map(p => p._1 ~ p._2)
           (
             optDisjuction(comb(nonNulll, nonNullr), comb(nonNulll, nullr), comb(nulll, nonNullr)),
@@ -57,24 +57,32 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
         }
 
         case Disjunction(l, r) => {
-          val (nonNulll, nulll) = splitNullable(l)
-          val (nonNullr, nullr) = splitNullable(r)
+          val (nonNulll, nulll) = trySplitNullable(l)
+          val (nonNullr, nullr) = trySplitNullable(r)
           (optDisjuction(nonNulll, nonNullr), optDisjuction(nulll, nullr))
         }
 
         case Transform(fun, inv, inner) => {
-          val (nonNull, nul) = splitNullable(inner)
+          val (nonNull, nul) = trySplitNullable(inner)
           (nonNull.map(_.map(fun, inv)), nul.map(_.map(fun, inv)))
         }
 
-        case Marked(_, inner) => splitNullable(inner)
+        case Marked(_, inner) => trySplitNullable(inner)
 
         case Recursive(_, inner) => {
-          val (nonNull, nul) = splitNullable(inner)
+          val (nonNull, nul) = trySplitNullable(inner)
           (nonNull.map(recursive(_)), nul.map(recursive(_)))
         }
       }
     }
+  }
+
+  def splitNullable[A](syntax: Syntax[A]): (Syntax[A], Syntax[A]) = {
+    if(!getProperties(syntax).isNullable){
+      throw new IllegalArgumentException("The syntax should be nullable in order to be split by nullability")
+    }
+    val r = trySplitNullable(syntax)
+    (r._1.getOrElse(failure), r._2.get)
   }
 
   /**
