@@ -144,5 +144,9 @@ trait LeftFactorization { self: Syntaxes with SyntaxesProperties =>
     leftFactorize(Elem(leftFactor), s)
   }
   
+  def leftFactorOut[A, L](leftFactor: Syntax[L], s: Syntax[A]): (Syntax[L => A], Syntax[A]) = {
+    val r = internal(leftFactor, s)
+    (r.factorized, r.alternative)
+  }
 
 }
