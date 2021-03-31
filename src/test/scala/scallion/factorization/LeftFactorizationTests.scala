@@ -39,7 +39,7 @@ object Lexer {
   }
 }
 
-trait LeftFactorizationTest extends FlatSpec with Parsers with LeftFactorization with Substitution {
+class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization with Substitution {
   type Token = Tokens.Token
   type Kind = Tokens.Kind
 
@@ -51,121 +51,94 @@ trait LeftFactorizationTest extends FlatSpec with Parsers with LeftFactorization
 
   import Syntax._
 
-  def letter = elem(LetterKind)
-  def number = elem(NumberKind)
-  def inumber = number.map(n => { val Number(i) = n; i.asDigit })
-  def sep = elem(SeparatorKind)
+  val letter = elem(LetterKind)
+  val number = elem(NumberKind)
+  val inumber = number.map(n => { val Number(i) = n; i.asDigit })
+  val sep = elem(SeparatorKind)
 
-  type Result
-  def grammar: Syntax[Result]
-  def factorized: Syntax[Result]
-  def name: String
-  def tests: Seq[(String, Result)]
-
-  name should "have conflicts" in {
-    assertThrows[ConflictException](Parser(grammar))
+  def testGrammar[R](grammar: Syntax[R], factorized: Syntax[R], inputs: Seq[(String, R)]) {
+    assertHasConflicts(grammar)
+    val lInputs = inputs.map( p => (Lexer(p._1), p._2) )
+    val parser = assertIsLL1(factorized)
+    assertParseResults(parser, lInputs)
   }
 
-  it should "be LL1 once factorized" in {
-    try{
-      val parser = Parser(factorized)
-    }
-    catch{
-      case ConflictException(conflicts) => {
-        fail(debugString(factorized))
-      }
-    }
-  }
-
-  it should "parse strings as expected" in {
-    val parser = Parser(factorized)
-    for(input <- tests){
-      parser(Lexer(input._1).iterator) match {
-        case Parsed(r, _)   => 
-          assertResult(input._2, s"on input `${input._1}`")(r)
-        case _              => 
-          fail(s"Parsing failed on `${input._1}`")
-      }
-    }
-  }
-}
-
-class LeftFactorizationTestSimple extends LeftFactorizationTest {
-  type Result = Int
-  val prefix =
+  "Left factorization" should "work on simple grammar" in {
+    val prefix =
       (letter ~ letter).map(_ => 0) |
       (letter ~ number).map(_ => 1) |
       (number ~ number).map(_ => 2)
-  def grammar = (prefix ~ sep).map{ case i ~ _ => i}
-  def factorized = leftFactorize(LetterKind, grammar)
-  def name = "Simple grammar"
-  def tests = Seq(
-    ("ab ", 0),
-    ("a1-", 1),
-    ("11,", 2)
-  )
-}
+    val grammar = (prefix ~ sep).map{ case i ~ _ => i}
+    val factorized = leftFactorize(LetterKind, grammar)
+    val tests = Seq(
+      ("ab ", 0),
+      ("a1-", 1),
+      ("11,", 2)
+    )
+    
+    testGrammar(grammar, factorized, tests)
+  }
 
-class LeftFactorizationTestRecursive extends LeftFactorizationTest {
-  type Result = Int
-  val gramma: Syntax[Int] = recursive(
-    epsilon(0) | 
-    inumber | 
-    (inumber ~ sep ~ gramma).map{ case i ~ _ ~ j => i + j }
-  )
-  def grammar = gramma
-  lazy val factorize = leftFactorize(NumberKind, grammar)
-  def factorized = substitute(factorize, gramma, factorize, true)
-  def name = "Recursive grammar"
-  def tests = Seq(
-    ("", 0),
-    ("0,0,0", 0),
-    ("1,2,3", 6),
-    ("1,2,3,4,5,6,7,8,9", 45)
-  )
-}
+  it should "work on recursive grammar" in {
+    lazy val grammar: Syntax[Int] = recursive(
+      epsilon(0) | 
+      inumber | 
+      (inumber ~ sep ~ grammar).map{ case i ~ _ ~ j => i + j }
+    )
+    val factorize = leftFactorize(NumberKind, grammar)
+    val factorized = eliminate(factorize, grammar, factorize)
+    val tests = Seq(
+      ("", 0),
+      ("0,0,0", 0),
+      ("1,2,3", 6),
+      ("1,2,3,4,5,6,7,8,9", 45)
+    )
+    
+    testGrammar(grammar, factorized, tests)
+  }
 
-class LeftFactorizationTestRepsep extends LeftFactorizationTest {
-  import Implicits._
+  it should "work on grammar using repsep" in {
+    import Implicits._
+    def mkTestCase(str: String): (String, String) = (str, str.filter(_.isLetterOrDigit))
 
-  type Result = String
-  def grammar = 
-      repsep(letter, sep).map(_.map(_.toChar).mkString("")) |
-      (letter ~ number).map{ case l ~ n => s"${l.toChar}${n.toChar}"}
-  def factorized = leftFactorize(LetterKind, grammar)
-  def name = "Repsep grammar"
-  def mkTestCase(str: String): (String, String) = (str, str.filter(_.isLetterOrDigit))
-  def tests = Seq(
-    "a,b,c",
-    "x y z",
-    "a1",
-    "b2"
-  ).map(mkTestCase(_))
-}
+    val grammar = 
+        repsep(letter, sep).map(_.map(_.toChar).mkString("")) |
+        (letter ~ number).map{ case l ~ n => s"${l.toChar}${n.toChar}"}
+    val factorized = leftFactorize(LetterKind, grammar)
+    val tests = Seq(
+      "a,b,c",
+      "x y z",
+      "a1",
+      "b2"
+    ).map(mkTestCase(_))
+    
+    testGrammar(grammar, factorized, tests)
+  }
 
-class LeftFactorizationTestNonTerminal extends LeftFactorizationTest {
-  type Result = Int
-  val prefix = (letter ~ letter ~ letter).map(_ => 3)
-  def grammar =
-    (prefix ~ letter).map{ case i ~ _ => i + 1} |
-    (prefix ~ inumber).map{ case i ~ j => i + j}
-  def factorized = leftFactorize(prefix, grammar)
-  def name = "Non-terminal factorization"
-  def tests = Seq(
-    ("aaaa", 4),
-    ("aaa3", 6),
-    ("efgh", 4),
-    ("efg9", 12)
-  )
-}
+  it should "work with non-terminal left-factor" in {
+    val prefix = (letter ~ letter ~ letter).map(_ => 3)
+    val grammar =
+      (prefix ~ letter).map{ case i ~ _ => i + 1} |
+      (prefix ~ inumber).map{ case i ~ j => i + j}
+    val factorized = leftFactorize(prefix, grammar)
+    val tests = Seq(
+      ("aaaa", 4),
+      ("aaa3", 6),
+      ("efgh", 4),
+      ("efg9", 12)
+    )
+    
+    testGrammar(grammar, factorized, tests)
+  }
 
-class LeftFactorizationNullPrefixTest extends LeftFactorizationTest {
-  type Result = Int
-  def grammar = (epsilon(1) ~ letter ~ letter).map(_ => 1) | letter.map(_ => 2)
-  def factorized = leftFactorize(LetterKind, grammar)
-  def name = "Epsilon-prefixed grammar"
-  def tests = Seq(
-    ("aa", 1),
-    ("a", 2)
-  )
+  it should "work on null-prefixed syntaxes" in {
+    val grammar = (epsilon(1) ~ letter ~ letter).map(_ => 1) | letter.map(_ => 2)
+    val factorized = leftFactorize(LetterKind, grammar)
+    val tests = Seq(
+      ("aa", 1),
+      ("a", 2)
+    )
+    
+    testGrammar(grammar, factorized, tests)
+  }
 }

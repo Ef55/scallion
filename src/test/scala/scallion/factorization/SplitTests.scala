@@ -5,7 +5,7 @@ import scallion._
 import scallion.factorization._
 import scallion.properties._
 
-class SplitTests extends FlatSpec with Parsers with Split with StructuralEquivalence {
+class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence {
   type Token = Boolean
   type Kind = Boolean
 
@@ -36,8 +36,8 @@ class SplitTests extends FlatSpec with Parsers with Split with StructuralEquival
     assert(nonNul.isDefined)
     assert(nul.isDefined)
 
-    assert(structurallyEquivalent(nonNul.get, expNonNul))
-    assert(structurallyEquivalent(nul.get, expNul))
+    assertStructuralEquivalence(expNonNul)(nonNul.get)
+    assertStructuralEquivalence(expNul)(nul.get)
   }
 
   it should "return a None component if the syntax is not Nullable or is Null" in {
@@ -47,11 +47,13 @@ class SplitTests extends FlatSpec with Parsers with Split with StructuralEquival
     val nullResult = splitNullable(nullSyntax)
     val notNullableResult = splitNullable(notNullableSyntax)
 
-    assert(nullResult._1.isEmpty, nullResult._2.isDefined)
-    assert(notNullableResult._1.isDefined, notNullableResult._2.isEmpty)
+    assert(nullResult._1.isEmpty)
+    assert(nullResult._2.isDefined)
+    assert(notNullableResult._1.isDefined)
+    assert(notNullableResult._2.isEmpty)
 
-    assert(structurallyEquivalent(nullSyntax, nullResult._2.get))
-    assert(structurallyEquivalent(notNullableSyntax, notNullableResult._1.get))
+    assertStructuralEquivalence(nullSyntax)(nullResult._2.get)
+    assertStructuralEquivalence(notNullableSyntax)(notNullableResult._1.get)
   }
 
   "Split left recursive" should "detect the left recursion" in {
@@ -63,7 +65,7 @@ class SplitTests extends FlatSpec with Parsers with Split with StructuralEquival
     assert(leftRec.isDefined)
     assert(nonLeftRec.isDefined)
 
-    assert(structurallyEquivalent(leftRec.get, expLeftRec))
-    assert(structurallyEquivalent(nonLeftRec.get, expNonLeftRec))
+    assertStructuralEquivalence(expLeftRec)(leftRec.get)
+    assertStructuralEquivalence(expNonLeftRec)(nonLeftRec.get)
   }
 }
