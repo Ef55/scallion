@@ -5,7 +5,7 @@ package factorization
   *
   * @groupname factorization Factorization
   */
-trait Unfold { self: Syntaxes => 
+trait Unfold { self: Syntaxes with SyntaxesProperties => 
 
   import Syntax._
 
@@ -88,20 +88,56 @@ trait Unfold { self: Syntaxes =>
       } 
     }
 
-    def unfoldIter[A](s: Syntax[A], topLevel: Boolean): Factorization[A] = {
+    def iter[A](s: Syntax[A], topLevel: Boolean): Factorization[A] = {
       s match {
         case e: Elem                        => Factorization(e)
-        case Sequence(l, r)                 => (unfoldIter(l, false) ~ unfoldIter(r, false)).discard(s)
-        case Disjunction(l, r) if topLevel  => unfoldIter(l, true).unionDiscard(unfoldIter(r, true), s)
-        case Disjunction(l, r) if !topLevel => unfoldIter(l, false) | unfoldIter(r, false)
-        case Transform(fun, inv, inner)     => unfoldIter(inner, false).map(fun, inv).discard(s)
-        case Marked(mark, inner)            => unfoldIter(inner, false).discard(s)
+        case Sequence(l, r)                 => (iter(l, false) ~ iter(r, false)).discard(s)
+        case Disjunction(l, r) if topLevel  => iter(l, true).unionDiscard(iter(r, true), s)
+        case Disjunction(l, r) if !topLevel => iter(l, false) | iter(r, false)
+        case Transform(fun, inv, inner)     => iter(inner, false).map(fun, inv).discard(s)
+        case Marked(mark, inner)            => iter(inner, false).discard(s)
         case Success(_)                     => Factorization(s)
         case Failure()                      => Factorization(s)
         case rec: Recursive[_]              => Factorization(rec)
       }
     }
 
-    unfoldIter(s, true).complete
+    iter(s, true).complete
+  }
+
+  /** Unfold all the recursives inside a syntax which might
+    * be the first syntax to consume a token.
+    *
+    * @param syntax Syntax to unfold.
+    *
+    * @group factorization
+    */
+  def unfoldLeftmostRecursives[A](syntax: Syntax[A]): Syntax[A] = {
+    def iter[B](syntax: Syntax[B]): Syntax[B] = syntax match {
+      case Elem(_)                        => syntax
+      case Sequence(l, r)                 => 
+        if(getProperties(l).isNullable){
+          iter(l) ~ iter(r)
+        }
+        else{
+          iter(l) ~ r
+        }
+      case Disjunction(l, r)              => iter(l) | iter(r)
+      case Transform(fun, inv, inner)     => {
+        val unfInner = iter(inner)
+        if(unfInner == inner){
+          syntax
+        }
+        else{
+          unfInner.map(fun, inv)
+        }
+      }
+      case Marked(mark, inner)            => iter(inner).mark(mark)
+      case Success(_)                     => syntax
+      case Failure()                      => syntax
+      case rec: Recursive[_]              => rec.inner
+    } 
+
+    iter(syntax)
   }
 }
