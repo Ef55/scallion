@@ -1,61 +1,9 @@
-package scallion.factorization
+package scallion
+package factorization
 
 import org.scalatest._
-import scallion._
-import scallion.factorization._
 
-object Tokens {
-  sealed trait Token{
-    def toChar: Char = this match {
-      case Letter(c)    => c
-      case Number(c)    => c 
-      case Separator(c) => c 
-    }
-  }
-  case class Letter(char: Char) extends Token
-  case class Number(num: Char) extends Token
-  case class Separator(sep: Char) extends Token
-
-  sealed trait Kind
-  case object LetterKind extends Kind
-  case object NumberKind extends Kind
-  case object SeparatorKind extends Kind
-}
-import Tokens._
-
-object Lexer {
-  def apply(input: String): Seq[Token] = {
-    input.map( chr =>
-      if(chr.isLetter){
-        Letter(chr)
-      }
-      else if(chr.isDigit){
-        Number(chr)
-      }
-      else{
-        Separator(chr)
-      }
-    )
-  }
-}
-
-class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization with Substitution {
-  type Token = Tokens.Token
-  type Kind = Tokens.Kind
-
-  override def getKind(token: Token): Kind = token match {
-    case Letter(_)      => LetterKind
-    case Number(_)      => NumberKind
-    case Separator(_)   => SeparatorKind
-  }
-
-  import Syntax._
-
-  val letter = elem(LetterKind)
-  val number = elem(NumberKind)
-  val inumber = number.map(n => { val Number(i) = n; i.asDigit })
-  val sep = elem(SeparatorKind)
-
+class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization with Substitution with StringSyntaxes {
   def testGrammar[R](grammar: Syntax[R], factorized: Syntax[R], inputs: Seq[(String, R)]) {
     assertHasConflicts(grammar)
     val lInputs = inputs.map( p => (Lexer(p._1), p._2) )

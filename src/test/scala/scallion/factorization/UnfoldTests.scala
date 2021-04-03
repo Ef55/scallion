@@ -1,19 +1,9 @@
-package scallion.factorization
+package scallion
+package factorization
 
 import org.scalatest._
-import scallion._
-import scallion.factorization._
 
-class UnfoldTests extends ParsersTestHelper with Unfold {
-  type Token = Boolean
-  type Kind = Boolean
-
-  import Syntax._
-
-  def getKind(t: Token): Kind = t
-
-  val tru = elem(true)
-  val falz = elem(false)
+class UnfoldTests extends ParsersTestHelper with Unfold with BooleanSyntaxes {
 
   "Unfold disjunctions" should "unfold trivial example" in {
     val grammar = tru ~ (falz | tru) ~ falz

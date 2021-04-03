@@ -1,36 +1,24 @@
-package scallion.factorization
+package scallion
+package factorization
 
 import org.scalatest._
-import scallion._
-import scallion.factorization._
-import scallion.properties._
 
-class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence {
-  type Token = Boolean
-  type Kind = Boolean
-
-  import Syntax._
-
-  def getKind(t: Token): Kind = t
-
-  val tru = elem(true)
-  val falz = elem(false)
-  val eps = epsilon(false)
-  val comb = (p: Boolean ~ Boolean) => p._1 && p._2
+class SplitTests extends ParsersTestHelper with Split with BooleanSyntaxes {
+  import Syntax.Recursive
 
   "(Try) split nullable" should "correctly split trivial example" in {
-    val grammar = tru | eps
+    val grammar = tru | epsF
     val (nonNul, nul) = trySplitNullable(grammar)
 
     assertResult(Some(tru))(nonNul)
-    assertResult(Some(eps))(nul)
+    assertResult(Some(epsF))(nul)
   }
 
   it should "correctly split through the different constructs" in {
-    val cstr = tru | eps
-    val grammar = (cstr ~ cstr).map(comb)
-    val expNonNul = (tru ~ tru | tru ~ eps | eps ~ tru).map(comb)
-    val expNul = (eps ~ eps).map(comb)
+    val cstr = tru | epsF
+    val grammar = (cstr ~ cstr).map(andComb)
+    val expNonNul = (tru ~ tru | tru ~ epsF | epsF ~ tru).map(andComb)
+    val expNul = (epsF ~ epsF).map(andComb)
     val (nonNul, nul) = trySplitNullable(grammar)
 
     assert(nonNul.isDefined)
@@ -41,8 +29,8 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
   }
 
   it should "return a None component if the syntax is not Nullable or is Null" in {
-    val nullSyntax = (eps ~ eps).map(comb) | eps
-    val notNullableSyntax = (tru ~ falz).map(comb) | falz
+    val nullSyntax = (epsF ~ epsF).map(andComb) | epsF
+    val notNullableSyntax = (tru ~ falz).map(andComb) | falz
 
     val nullResult = trySplitNullable(nullSyntax)
     val notNullableResult = trySplitNullable(notNullableSyntax)
@@ -57,9 +45,9 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
   }
 
   "Split left recursive" should "detect the left recursion" in {
-    lazy val rec: Recursive[Boolean] = recursive( (rec ~ tru | falz ~ rec).map(comb) ).asInstanceOf[Recursive[Boolean]]
-    lazy val expLeftRec: Syntax[Boolean] = recursive( (rec ~ tru).map(comb) )
-    lazy val expNonLeftRec: Syntax[Boolean] = recursive( (falz ~ rec).map(comb) )
+    lazy val rec: Recursive[Boolean] = recursive( (rec ~ tru | falz ~ rec).map(andComb) ).asInstanceOf[Recursive[Boolean]]
+    lazy val expLeftRec: Syntax[Boolean] = recursive( (rec ~ tru).map(andComb) )
+    lazy val expNonLeftRec: Syntax[Boolean] = recursive( (falz ~ rec).map(andComb) )
     val (leftRec, nonLeftRec) = splitLeftRecursive(rec)
 
     assert(leftRec.isDefined)
@@ -70,14 +58,14 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
   }
 
   it should "not loop if some prefix is left recursive" in {
-    lazy val rec1: Recursive[Boolean] = recursive( (rec1 ~ tru).map(comb) | rec2 ).asInstanceOf[Recursive[Boolean]]
+    lazy val rec1: Recursive[Boolean] = recursive( (rec1 ~ tru).map(andComb) | rec2 ).asInstanceOf[Recursive[Boolean]]
     lazy val rec2: Syntax[Boolean] = recursive( rec2 )
     val (leftRec, nonLeftRec) = splitLeftRecursive(rec1)
 
     assert(leftRec.isDefined)
     assert(nonLeftRec.isDefined)
 
-    assertStructuralEquivalence( recursive( (rec1 ~ tru).map(comb) ) )(leftRec.get)
+    assertStructuralEquivalence( recursive( (rec1 ~ tru).map(andComb) ) )(leftRec.get)
     assertStructuralEquivalence(rec2)(nonLeftRec.get)
   }
 
@@ -85,7 +73,7 @@ class SplitTests extends ParsersTestHelper with Split with StructuralEquivalence
     lazy val rec1: Recursive[Boolean] = 
       recursive( rec2 | tru ).asInstanceOf[Recursive[Boolean]]
     lazy val rec2: Recursive[Boolean] = 
-      recursive( (rec1 ~ falz).map(comb) | tru ).asInstanceOf[Recursive[Boolean]]
+      recursive( (rec1 ~ falz).map(andComb) | tru ).asInstanceOf[Recursive[Boolean]]
     val (leftRec, nonLeftRec) = splitLeftRecursive(rec1)
 
     assert(leftRec.isEmpty)

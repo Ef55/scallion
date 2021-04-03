@@ -1,20 +1,9 @@
-package scallion.factorization
+package scallion
+package factorization
 
 import org.scalatest._
-import scallion._
-import scallion.factorization._
-import scallion.properties._
 
-class SubstitutionTests extends ParsersTestHelper with Substitution with StructuralEquivalence {
-  type Token = Boolean
-  type Kind = Boolean
-
-  import Syntax._
-
-  def getKind(t: Token): Kind = t
-
-  val tru = elem(true)
-  val falz = elem(false)
+class SubstitutionTests extends ParsersTestHelper with Substitution with BooleanSyntaxes {
 
   "Substitution" should "correctly replace matching trees" in {
     val grammar = 
