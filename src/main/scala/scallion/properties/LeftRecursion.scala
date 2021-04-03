@@ -61,4 +61,8 @@ trait LeftRecursion { self: Syntaxes with SyntaxesProperties =>
   def hasLeftRecursion(syntax: Syntax[_]): Boolean = {
     !findLeftRecursions(syntax).isEmpty
   }
+
+  def isLeftRecursive(syntax: Recursive[_]): Boolean = {
+    findLeftRecursions(syntax).contains(syntax)
+  }
 }

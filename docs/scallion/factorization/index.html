@@ -125,6 +125,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
+                        <a class="trait" href="LeftRecursion.html" title=""></a>
+                        <a href="LeftRecursion.html" title="">LeftRecursion</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
                         <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
                         <a href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
                       </li><li class="current-entities indented2">
@@ -239,9 +243,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       
       <p class="shortcomment cmt">Contains functions to factorize syntaxes.</p>
     </li><li name="scallion.factorization.LeftFactorization" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="LeftFactorizationextendsAnyRef"></a><a id="LeftFactorization:LeftFactorization"></a>
+      <a id="LeftFactorizationextendsSplit"></a><a id="LeftFactorization:LeftFactorization"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/index.html#LeftFactorizationextendsAnyRef" title="Permalink">
+      <a href="../../scallion/factorization/index.html#LeftFactorizationextendsSplit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -250,10 +254,26 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Contains functions to apply left factorization to a syntax." href="LeftFactorization.html"><span class="name">LeftFactorization</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="Contains functions to apply left factorization to a syntax." href="LeftFactorization.html"><span class="name">LeftFactorization</span></a><span class="result"> extends <a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></span>
       </span>
       
       <p class="shortcomment cmt">Contains functions to apply left factorization to a syntax.</p>
+    </li><li name="scallion.factorization.LeftRecursion" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LeftRecursionextendsLeftFactorizationwithSubstitutionwithUnfoldwithLeftRecursion"></a><a id="LeftRecursion:LeftRecursion"></a>
+      <span class="permalink">
+      <a href="../../scallion/factorization/index.html#LeftRecursionextendsLeftFactorizationwithSubstitutionwithUnfoldwithLeftRecursion" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="LeftRecursion.html"><span class="name">LeftRecursion</span></a><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a> with <a href="Substitution.html" class="extype" name="scallion.factorization.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.factorization.Unfold">Unfold</a> with <a href="../properties/LeftRecursion.html" class="extype" name="scallion.properties.LeftRecursion">properties.LeftRecursion</a></span>
+      </span>
+      
+      
     </li><li name="scallion.factorization.Split" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="SplitextendsAnyRef"></a><a id="Split:Split"></a>
       <span class="permalink">

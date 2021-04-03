@@ -3,7 +3,7 @@ package scallion
 import scallion.properties.StructuralEquivalence
 import org.scalatest._
 
-trait ParsersTestHelper extends FlatSpec with Parsers with StructuralEquivalence {
+trait ParsersTestHelper extends FlatSpec with Parsers with Enumeration with StructuralEquivalence {
 
   def assertHasConflicts(syntax: Syntax[_]): Unit = {
     assertThrows[ConflictException](Parser(syntax))
@@ -20,11 +20,18 @@ trait ParsersTestHelper extends FlatSpec with Parsers with StructuralEquivalence
     }
   }
 
-  def assertParses[A](parser: Parser[A], input: Seq[Token]): A = {
-    parser(input.iterator) match {
+  def assertParses[A](parser: Parser[A], input: Iterator[Token]): A = {
+    parser(input) match {
       case Parsed(r, _)   => r
       case _              => fail(s"Parsing failed on `${input}`")
     }
+  }
+
+  def assertParses[A](parser: Parser[A], input: Seq[Token]): A = assertParses(parser, input.iterator)
+
+  def assertParses[A](parser: Parser[A], generator: Syntax[A], valuer: Kind => Token, count: Int): Seq[A] = {
+    // toBuffer required to avoid lazy evaluation (which would result in nothing being tested)
+    Enumerator(generator).take(count).map(input => assertParses(parser, input.map(valuer))).toBuffer
   }
 
   def assertParseResult[A](expected: A)(parser: Parser[A], input: Seq[Token]): A = {
