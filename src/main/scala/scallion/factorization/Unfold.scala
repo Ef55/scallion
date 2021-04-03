@@ -135,7 +135,7 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
       case Marked(mark, inner)            => iter(inner).mark(mark)
       case Success(_)                     => syntax
       case Failure()                      => syntax
-      case rec: Recursive[_]              => rec.inner
+      case Recursive(_, inner)            => inner
     } 
 
     iter(syntax)
