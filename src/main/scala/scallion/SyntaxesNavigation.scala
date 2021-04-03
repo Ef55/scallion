@@ -1,7 +1,9 @@
 package scallion
 
+import scala.collection.immutable.Set
+
 trait SyntaxesNavigation { self: Syntaxes =>
-  trait PathNode[A, B] {
+  sealed trait PathNode[A, B] {
     def apply(syntax: Syntax[A]): Syntax[B]
   }
 
@@ -34,7 +36,7 @@ trait SyntaxesNavigation { self: Syntaxes =>
     }
   }
 
-  trait Path[A, B] {
+  sealed trait Path[A, B] {
     def length: Int
   }
   case class PathCons[A, B, C](head: PathNode[A, B], tail: Path[B, C]) extends Path[A, C] {
@@ -44,16 +46,29 @@ trait SyntaxesNavigation { self: Syntaxes =>
     def length: Int = 0
   }
 
+  sealed trait Direction
+  object Up extends Direction
+  object Down extends Direction
+  object DownLeft extends Direction
+  object DownRight extends Direction
+  val AllDirections: Set[Direction] = Set(Up, Down, DownLeft, DownRight)
+
   case class Zipper[F, T] private(focus: Syntax[F], path: Path[F, T]){
     import PathNode._
+
+    def isTop: Boolean = path.length == 0
+
+    def zipUp: Syntax[T] = 
+      if(isTop){ focus.asInstanceOf[Syntax[T]] }else{ this.up.zipUp }
+
+
+
+    // Navigation
 
     def up: Zipper[_, T] = path match {
       case PathCons(head, tail) => Zipper(head(focus), tail)
       case NilPath()            => throw new IllegalStateException("Cannot go up from top !")
     }
-
-    def zipUp: Syntax[T] = 
-      if(path.length > 0){ this.up.zipUp }else{ focus.asInstanceOf[Syntax[T]] }
 
     def down: Zipper[_, T] = focus match {
       case Syntax.Transform(fun, inv, inner: Syntax[tA]) =>
@@ -67,6 +82,28 @@ trait SyntaxesNavigation { self: Syntaxes =>
     // Why on god's green earth is such a hack needed ?!?
     def downLeft: Zipper[_, T] = Zipper.downLeftInternal(this)
     def downRight: Zipper[_, T] = Zipper.downRightInternal(this)
+
+    def move(directions: List[Direction]): Zipper[_, T] = {
+      def iter(direction: Direction): Zipper[_, T] = direction match {
+        case Up         => this.up
+        case Down       => this.down
+        case DownLeft   => this.downLeft
+        case DownRight  => this.downRight
+      }
+
+      directions match {
+        case head :: tl => iter(head).move(tl)
+        case Nil        => this
+      }
+    }
+
+    def move(directions: Direction*): Zipper[_, T] = {
+      this.move(directions.toList)
+    }
+
+    def validDownDirections: Set[Direction] = Zipper.validDirectionsInternal(focus)
+    def validDirections: Set[Direction] = if(isTop){ validDownDirections }else{ validDownDirections + Up }
+    def invalidDirections: Set[Direction] = AllDirections.diff(validDirections)
   }
 
   object Zipper {
@@ -96,6 +133,17 @@ trait SyntaxesNavigation { self: Syntaxes =>
         case _ =>
           throw new IllegalStateException("Cannot go down-right from here !")
       }
+    }
+
+    private def validDirectionsInternal[A](syntax: Syntax[A]): Set[Direction] = syntax match {
+      case Syntax.Elem(_)             => Set.empty
+      case Syntax.Success(_)          => Set.empty
+      case Syntax.Failure()           => Set.empty
+      case Syntax.Sequence(_, _)      => Set(DownLeft, DownRight)
+      case Syntax.Disjunction(_, _)   => Set(DownLeft, DownRight)
+      case Syntax.Transform(_, _, _)  => Set(Down)
+      case Syntax.Marked(_, _)        => Set(Down)
+      case Syntax.Recursive(_, _)     => Set.empty
     }
   }
 

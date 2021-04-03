@@ -7,14 +7,30 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
 
   val simpleSyntax = (tru ~ falz).map(orComb) | epsT
 
-  "Syntax zipper" should "allow to move around a syntax" in {
+  "Syntax zipper" should "allow to move around a syntax (method-directed)" in {
     val zipper1 = Zipper(simpleSyntax)
+    assert(zipper1.isTop)
     
     val zipper2 = zipper1.downRight
     assertResult(epsT)(zipper2.focus)
+    assert(!zipper2.isTop)
 
     val zipper3 = zipper2.up.downLeft.down.downRight
     assertResult(falz)(zipper3.focus)
+    assert(!zipper3.isTop)
+  }
+
+  it should "allow to move around a syntax (argument-directed)" in {
+    val zipper1 = Zipper(simpleSyntax)
+    assert(zipper1.isTop)
+    
+    val zipper2 = zipper1.move(DownRight)
+    assertResult(epsT)(zipper2.focus)
+    assert(!zipper2.isTop)
+
+    val zipper3 = zipper2.move(Up, DownLeft, Down, DownRight)
+    assertResult(falz)(zipper3.focus)
+    assert(!zipper3.isTop)
   }
 
   it should "throw exceptions in case of illegal moves" in {
@@ -27,6 +43,24 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
     assertThrows[IllegalStateException](zipper2.down)
     assertThrows[IllegalStateException](zipper2.downLeft)
     assertThrows[IllegalStateException](zipper2.downRight)
+  }
+
+  it should "be able to indicate (in)valid directions" in {
+    val zipper1 = Zipper(simpleSyntax)
+    assertResult(Set(DownLeft, DownRight))(zipper1.validDirections)
+    assertResult(Set(DownLeft, DownRight))(zipper1.validDownDirections)
+    assertResult(Set(Up, Down))(zipper1.invalidDirections)
+    
+    val zipper2 = zipper1.move(DownRight)
+    assertResult(Set(Up))(zipper2.validDirections)
+    assertResult(Set())(zipper2.validDownDirections)
+    assertResult(Set(Down, DownLeft, DownRight))(zipper2.invalidDirections)
+
+    val zipper3 = zipper2.move(Up, DownLeft)
+    assertResult(Set(Up, Down))(zipper3.validDirections)
+    assertResult(Set(Down))(zipper3.validDownDirections)
+    assertResult(Set(DownLeft, DownRight))(zipper3.invalidDirections)
+
   }
 
   it should "return a (structurally) equivalent syntax once zipped up" in {
