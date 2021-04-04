@@ -1,150 +1,95 @@
 package scallion
 
 import scala.collection.immutable.Set
+import scallion.util.BinaryTreeZipper
 
 trait SyntaxesNavigation { self: Syntaxes =>
-  sealed trait PathNode[A, B] {
-    def apply(syntax: Syntax[A]): Syntax[B]
-  }
+  import Syntax._
 
-  object PathNode {
+  val Direction = BinaryTreeZipper.Direction
+  import Direction._
+
+  private object SyntaxesPathNode {
+    import BinaryTreeZipper.PathNode._
+
     case class Transform[A, B](
       function: A => B,
       inverse: B => Seq[A]) 
-    extends PathNode[A, B] {
-      def apply(syntax: Syntax[A]) = Syntax.Transform(function, inverse, syntax)
+    extends UnaryNode[Syntax[_]] {
+      override def up(syntax: Syntax[_]) = Syntax.Transform(function, inverse, syntax.asInstanceOf[Syntax[A]])
+      override def hasLeft: Boolean = false
+      override def hasRight: Boolean = false
     }
 
-    case class Marked[A](mark: Mark) extends PathNode[A, A]{
-      def apply(syntax: Syntax[A]) = Syntax.Marked(mark, syntax)
+    case class Marked[A](mark: Mark) extends UnaryNode[Syntax[_]]{
+      override def up(syntax: Syntax[_]) = Syntax.Marked(mark, syntax.asInstanceOf[Syntax[A]])
+      override def hasLeft: Boolean = false
+      override def hasRight: Boolean = false
     }
 
-    case class LeftSequence[L, R](right: Syntax[R]) extends PathNode[L, L~R]{
-      def apply(syntax: Syntax[L]) = Syntax.Sequence(syntax, right)
+    case class LeftSequence[L, R](right: Syntax[R]) extends LeftNode[Syntax[_]]{
+      override def up(syntax: Syntax[_]) = Syntax.Sequence(syntax.asInstanceOf[Syntax[L]], right)
+      override def hasLeft: Boolean = false
+      override def hasRight: Boolean = true
     }
 
-    case class RightSequence[L, R](left: Syntax[L]) extends PathNode[R, L~R]{
-      def apply(syntax: Syntax[R]) = Syntax.Sequence(left, syntax)
+    case class RightSequence[L, R](left: Syntax[L]) extends RightNode[Syntax[_]]{
+      override def up(syntax: Syntax[_]) = Syntax.Sequence(left, syntax.asInstanceOf[Syntax[R]])
+      override def hasLeft: Boolean = true
+      override def hasRight: Boolean = false
     }
 
-    case class LeftDisjuction[A](right: Syntax[A]) extends PathNode[A, A]{
-      def apply(syntax: Syntax[A]) = Syntax.Disjunction(syntax, right)
+    case class LeftDisjuction[A](right: Syntax[A]) extends LeftNode[Syntax[_]]{
+      override def up(syntax: Syntax[_]) = Syntax.Disjunction(syntax.asInstanceOf[Syntax[A]], right)
+      override def hasLeft: Boolean = false
+      override def hasRight: Boolean = true
     }
 
-    case class RightDisjuction[A](left: Syntax[A]) extends PathNode[A, A]{
-      def apply(syntax: Syntax[A]) = Syntax.Disjunction(left, syntax)
+    case class RightDisjuction[A](left: Syntax[A]) extends RightNode[Syntax[_]]{
+      override def up(syntax: Syntax[_]) = Syntax.Disjunction(left, syntax.asInstanceOf[Syntax[A]])
+      override def hasLeft: Boolean = true
+      override def hasRight: Boolean = false
     }
   }
-
-  sealed trait Path[A, B] {
-    def length: Int
-  }
-  case class PathCons[A, B, C](head: PathNode[A, B], tail: Path[B, C]) extends Path[A, C] {
-    lazy val length: Int = tail.length + 1
-  }
-  case class NilPath[A]() extends Path[A, A] {
-    def length: Int = 0
-  }
-
-  sealed trait Direction
-  object Up extends Direction
-  object Down extends Direction
-  object DownLeft extends Direction
-  object DownRight extends Direction
-  val AllDirections: Set[Direction] = Set(Up, Down, DownLeft, DownRight)
-
-  case class Zipper[F, T] private(focus: Syntax[F], path: Path[F, T]){
-    import PathNode._
-
-    def isTop: Boolean = path.length == 0
-
-    def zipUp: Syntax[T] = 
-      if(isTop){ focus.asInstanceOf[Syntax[T]] }else{ this.up.zipUp }
-
-
-
-    // Navigation
-
-    def up: Zipper[_, T] = path match {
-      case PathCons(head, tail) => Zipper(head(focus), tail)
-      case NilPath()            => throw new IllegalStateException("Cannot go up from top !")
-    }
-
-    def down: Zipper[_, T] = focus match {
-      case Syntax.Transform(fun, inv, inner: Syntax[tA]) =>
-        Zipper[tA, T](inner, PathCons(Transform(fun ,inv), path))
-      case Syntax.Marked(mark, inner) =>
-        Zipper[F, T](inner, PathCons(Marked(mark), path))
-      case _ =>
-        throw new IllegalStateException("Cannot go down from here !")
-    }
-
-    // Why on god's green earth is such a hack needed ?!?
-    def downLeft: Zipper[_, T] = Zipper.downLeftInternal(this)
-    def downRight: Zipper[_, T] = Zipper.downRightInternal(this)
-
-    def move(directions: List[Direction]): Zipper[_, T] = {
-      def iter(direction: Direction): Zipper[_, T] = direction match {
-        case Up         => this.up
-        case Down       => this.down
-        case DownLeft   => this.downLeft
-        case DownRight  => this.downRight
-      }
-
-      directions match {
-        case head :: tl => iter(head).move(tl)
-        case Nil        => this
-      }
-    }
-
-    def move(directions: Direction*): Zipper[_, T] = {
-      this.move(directions.toList)
-    }
-
-    def validDownDirections: Set[Direction] = Zipper.validDirectionsInternal(focus)
-    def validDirections: Set[Direction] = if(isTop){ validDownDirections }else{ validDownDirections + Up }
-    def invalidDirections: Set[Direction] = AllDirections.diff(validDirections)
-  }
+  
+  type Zipper = BinaryTreeZipper.Zipper[Syntax[_]]
 
   object Zipper {
-    import PathNode._
+    import BinaryTreeZipper.PathNode._
 
-    def apply[A](syntax: Syntax[A]): Zipper[A, A] = Zipper(syntax, NilPath())
+    def apply[A](syntax: Syntax[A]) = new Zipper(syntax)(syntaxesBreakable)
 
-    private def downLeftInternal[F, T](zipper: Zipper[F, T]): Zipper[_, T] = {
-      val Zipper(focus, path) = zipper
-      focus match {
-        case Syntax.Sequence(l: Syntax[tF], r) =>
-          Zipper[tF, T](l, PathCons(LeftSequence(r), path))
-        case Syntax.Disjunction(l, r) =>
-          Zipper[F, T](l, PathCons(LeftDisjuction(r), path))
-        case _ =>
-          throw new IllegalStateException("Cannot go down-left from here !")
+    private val syntaxesBreakable = new BinaryTreeZipper.BinaryBreakable[Syntax[_]]  {
+      import BinaryTreeZipper.TreeNodeKind
+      import BinaryTreeZipper.TreeNodeKind._
+
+      def kind(value: Syntax[_]): TreeNodeKind = value match {
+        case Elem(_)            => LeafKind
+        case Success(_)         => LeafKind
+        case Failure()          => LeafKind
+        case Transform(_, _, _) => UnaryKind
+        case Marked(_, _)       => UnaryKind
+        case Sequence(_, _)     => BinaryKind
+        case Disjunction(_, _)  => BinaryKind
+        case Recursive(_, _)    => LeafKind
       }
-    }
 
-    private def downRightInternal[F, T](zipper: Zipper[F, T]): Zipper[_, T] = {
-      val Zipper(focus, path) = zipper
-      focus match {
-        case Syntax.Sequence(l, r: Syntax[tF]) =>
-          Zipper[tF, T](r, PathCons(RightSequence(l), path))
-        case Syntax.Disjunction(l, r) =>
-          Zipper[F, T](r, PathCons(RightDisjuction(l), path))
-        case _ =>
-          throw new IllegalStateException("Cannot go down-right from here !")
+      def breakDown(value: Syntax[_]): Option[(Syntax[_], UnaryNode[Syntax[_]])] = value match {
+        case Transform(fun, inv, inner) => Some((inner, SyntaxesPathNode.Transform(fun, inv)))
+        case Marked(mark, inner)        => Some((inner, SyntaxesPathNode.Marked(mark)))
+        case _                          => None
       }
-    }
+      def breakLeft(value: Syntax[_]): Option[(Syntax[_], LeftNode[Syntax[_]])] = value match {
+        case Sequence(l, r)     => Some((l, SyntaxesPathNode.LeftSequence(r)))
+        case Disjunction(l, r)  => Some((l, SyntaxesPathNode.LeftDisjuction(r)))
+        case _                  => None
+      }
+      def breakRight(value: Syntax[_]): Option[(Syntax[_], RightNode[Syntax[_]])] = value match {
+        case Sequence(l, r)     => Some((r, SyntaxesPathNode.RightSequence(l)))
+        case Disjunction(l, r)  => Some((r, SyntaxesPathNode.RightDisjuction(l)))
+        case _                  => None
+      }
 
-    private def validDirectionsInternal[A](syntax: Syntax[A]): Set[Direction] = syntax match {
-      case Syntax.Elem(_)             => Set.empty
-      case Syntax.Success(_)          => Set.empty
-      case Syntax.Failure()           => Set.empty
-      case Syntax.Sequence(_, _)      => Set(DownLeft, DownRight)
-      case Syntax.Disjunction(_, _)   => Set(DownLeft, DownRight)
-      case Syntax.Transform(_, _, _)  => Set(Down)
-      case Syntax.Marked(_, _)        => Set(Down)
-      case Syntax.Recursive(_, _)     => Set.empty
     }
   }
-
 }

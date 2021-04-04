@@ -3,7 +3,7 @@ package scallion
 import org.scalatest._
 
 class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with BooleanSyntaxes {
-  import Zipper._
+  import Direction._
 
   val simpleSyntax = (tru ~ falz).map(orComb) | epsT
 
@@ -49,18 +49,20 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
     val zipper1 = Zipper(simpleSyntax)
     assertResult(Set(DownLeft, DownRight))(zipper1.validDirections)
     assertResult(Set(DownLeft, DownRight))(zipper1.validDownDirections)
-    assertResult(Set(Up, Down))(zipper1.invalidDirections)
+    assertResult(Set())(zipper1.validLateralDirections)
+    assertResult(Set(Up, Down, Left, Right))(zipper1.invalidDirections)
     
     val zipper2 = zipper1.move(DownRight)
-    assertResult(Set(Up))(zipper2.validDirections)
+    assertResult(Set(Up, Left))(zipper2.validDirections)
     assertResult(Set())(zipper2.validDownDirections)
-    assertResult(Set(Down, DownLeft, DownRight))(zipper2.invalidDirections)
+    assertResult(Set(Left))(zipper2.validLateralDirections)
+    assertResult(Set(Down, DownLeft, DownRight, Right))(zipper2.invalidDirections)
 
     val zipper3 = zipper2.move(Up, DownLeft)
-    assertResult(Set(Up, Down))(zipper3.validDirections)
+    assertResult(Set(Up, Down, Right))(zipper3.validDirections)
     assertResult(Set(Down))(zipper3.validDownDirections)
-    assertResult(Set(DownLeft, DownRight))(zipper3.invalidDirections)
-
+    assertResult(Set(Right))(zipper3.validLateralDirections)
+    assertResult(Set(DownLeft, DownRight, Left))(zipper3.invalidDirections)
   }
 
   it should "return a (structurally) equivalent syntax once zipped up" in {
