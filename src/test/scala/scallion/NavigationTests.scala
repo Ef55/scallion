@@ -9,28 +9,28 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
 
   "Syntax zipper" should "allow to move around a syntax (method-directed)" in {
     val zipper1 = Zipper(simpleSyntax)
-    assert(zipper1.isTop)
+    assert(zipper1.isRoot)
     
     val zipper2 = zipper1.downRight
     assertResult(epsT)(zipper2.focus)
-    assert(!zipper2.isTop)
+    assert(!zipper2.isRoot)
 
     val zipper3 = zipper2.up.downLeft.down.downRight
     assertResult(falz)(zipper3.focus)
-    assert(!zipper3.isTop)
+    assert(!zipper3.isRoot)
   }
 
   it should "allow to move around a syntax (argument-directed)" in {
     val zipper1 = Zipper(simpleSyntax)
-    assert(zipper1.isTop)
+    assert(zipper1.isRoot)
     
     val zipper2 = zipper1.move(DownRight)
     assertResult(epsT)(zipper2.focus)
-    assert(!zipper2.isTop)
+    assert(!zipper2.isRoot)
 
     val zipper3 = zipper2.move(Up, DownLeft, Down, DownRight)
     assertResult(falz)(zipper3.focus)
-    assert(!zipper3.isTop)
+    assert(!zipper3.isRoot)
   }
 
   it should "throw exceptions in case of illegal moves" in {
