@@ -11,14 +11,16 @@ trait SyntaxesNavigation { self: Syntaxes =>
   import Direction._
   
   /** A zipper on a syntax. */
-  type Zipper = BinaryTreeZipper.Zipper[Syntax[_]]
+  type Zipper[A] = BinaryTreeZipper.Zipper[Syntax[_], Syntax[A]]
 
   /** Factory for syntax zipper. */
   object Zipper {
     import BinaryTreeZipper.BinaryTreeEquivalent
     import BinaryTreeZipper.BinaryTreeEquivalent._
 
-    def apply[A](syntax: Syntax[A]) = new Zipper(syntax)(syntaxesConverter)
+    def apply[A](syntax: Syntax[A]) = 
+      BinaryTreeZipper.Zipper[Syntax[_]](syntax)(syntaxesConverter)
+      .map(_.asInstanceOf[Syntax[A]])
 
     private val syntaxesConverter = new BinaryTreeZipper.BinaryTreeConvertible[Syntax[_]]  {
       def apply(syntax: Syntax[_]): BinaryTreeEquivalent[Syntax[_]] = syntax match {

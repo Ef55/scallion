@@ -46,7 +46,12 @@ trait ParsersTestHelper extends FlatSpec with Parsers with Enumeration with Stru
     }
   }
 
-  def assertStructuralEquivalence[A](expected: Syntax[_])(actual: Syntax[A]): Syntax[A] = {
+  def assertStructuralEquivalence[A](expected: Syntax[A])(actual: Syntax[A]): Syntax[A] = {
+    assert(structurallyEquivalent(actual, expected))
+    actual
+  }
+
+  def assertStructuralEquivalenceUntyped[A](expected: Syntax[_])(actual: Syntax[A]): Syntax[A] = {
     assert(structurallyEquivalent(actual, expected))
     actual
   }

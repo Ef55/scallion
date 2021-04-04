@@ -124,16 +124,9 @@ object BinaryTreeZipper {
     * @groupname navigation Tree navigation
     * @groupname focus Focus properties
     */
-  final class Zipper[T] private
-  (val focus: T, private val path: List[PathNode[T]])
+  final class Zipper[T, S] private
+  (val focus: T, val transform: T => S, private val path: List[PathNode[T]])
   (implicit convert: BinaryTreeConvertible[T]){
-    
-    /** @param focus The root of the binary-tree-like structure.
-      * @param convert A convert from the structure to a binary tree.
-      */
-    def this(focus: T)(implicit convert: BinaryTreeConvertible[T]) {
-      this(focus, Nil)
-    }
 
     private def illegalMove(move: String): Nothing = throw new IllegalStateException(s"Cannot go ${move} from here !")
 
@@ -144,8 +137,17 @@ object BinaryTreeZipper {
       * 
       * @group result
       */
-    def zipUp: T = 
-      if(isRoot){ focus }else{ this.up.zipUp }
+    def zipUp: S = 
+      if(isRoot){ transform(focus) }else{ this.up.zipUp }
+
+    /** Add a function to apply after zipping
+      * the syntax up. 
+      *
+      * @param fun The function to apply.
+      * 
+      * @group result
+      */
+    def map[R](fun: S => R): Zipper[T, R] = Zipper(focus, transform.andThen(fun), path)
 
     /** Indicate if the root is focused. 
       * @group focus
@@ -179,18 +181,18 @@ object BinaryTreeZipper {
     /** Move the focus up (parent).
       * @group navigation
       */
-    def up: Zipper[T] = path match {
-      case head :: tail => Zipper(head.up(focus), tail)
+    def up: Zipper[T, S] = path match {
+      case head :: tail => Zipper(head.up(focus), transform, tail)
       case Nil          => illegalMove("up")
     }
 
     /** Move the focus to the left (sibling).
       * @group navigation
       */
-    def left: Zipper[T] = path match {
+    def left: Zipper[T, S] = path match {
       case head :: tail if head.hasLeft => {
         val (left, newHead) = head.left(focus)
-        Zipper(left, newHead :: tail)
+        Zipper(left, transform, newHead :: tail)
       }
       case _ => illegalMove("left")
     }
@@ -198,10 +200,10 @@ object BinaryTreeZipper {
     /** Move the focus to the right (sibling).
       * @group navigation
       */
-    def right: Zipper[T] = path match {
+    def right: Zipper[T, S] = path match {
       case head :: tail if head.hasRight => {
         val (left, newHead) = head.right(focus)
-        Zipper(left, newHead :: tail)
+        Zipper(left, transform, newHead :: tail)
       }
       case _ => illegalMove("right")
     }
@@ -209,9 +211,9 @@ object BinaryTreeZipper {
     /** Move the focus down (only child).
       * @group navigation
       */
-    def down: Zipper[T] = {
+    def down: Zipper[T, S] = {
       convert(focus) match {
-        case Cons(value, cons)  => Zipper(value, UnaryNode(cons) :: path)
+        case Cons(value, cons)  => Zipper(value, transform, UnaryNode(cons) :: path)
         case _                  => illegalMove("down")
       }
     }
@@ -219,9 +221,9 @@ object BinaryTreeZipper {
     /** Move the focus down-left (left child).
       * @group navigation
       */
-    def downLeft: Zipper[T] = {
+    def downLeft: Zipper[T, S] = {
       convert(focus) match {
-        case Fork(l, r, cons)   => Zipper(l, LeftNode(r, cons) :: path)
+        case Fork(l, r, cons)   => Zipper(l, transform, LeftNode(r, cons) :: path)
         case _                  => illegalMove("down-left")
       }
     }
@@ -229,9 +231,9 @@ object BinaryTreeZipper {
     /** Move the focus down-right (right child).
       * @group navigation
       */
-    def downRight: Zipper[T] = {
+    def downRight: Zipper[T, S] = {
       convert(focus) match {
-        case Fork(l, r, cons)   => Zipper(r, RightNode(l, cons) :: path)
+        case Fork(l, r, cons)   => Zipper(r, transform, RightNode(l, cons) :: path)
         case _                  => illegalMove("down-right")
       }
     }
@@ -239,8 +241,8 @@ object BinaryTreeZipper {
     /** Move the focus according to directions.
       * @group navigation
       */
-    def move(directions: List[Direction]): Zipper[T] = {
-      def iter(direction: Direction): Zipper[T] = direction match {
+    def move(directions: List[Direction]): Zipper[T, S] = {
+      def iter(direction: Direction): Zipper[T, S] = direction match {
         case Up         => this.up
         case Left       => this.left
         case Right      => this.right 
@@ -258,18 +260,18 @@ object BinaryTreeZipper {
     /** Move the focus according to directions.
       * @group navigation
       */
-    def move(directions: Direction*): Zipper[T] = {
+    def move(directions: Direction*): Zipper[T, S] = {
       this.move(directions.toList)
     }
   }
 
   /** Factory for zipper. */
   object Zipper {
-    private def apply[T]
-    (focus: T, path: List[PathNode[T]])
-    (implicit convert: BinaryTreeConvertible[T]) = new Zipper(focus, path)
+    private def apply[T, S]
+    (focus: T, transform: T => S, path: List[PathNode[T]])
+    (implicit convert: BinaryTreeConvertible[T]) = new Zipper(focus, transform, path)
 
     /** Create a Zipper. */
-    def apply[T](focus: T)(implicit convert: BinaryTreeConvertible[T]) = new Zipper(focus)
+    def apply[T](focus: T)(implicit convert: BinaryTreeConvertible[T]): Zipper[T, T] = Zipper(focus, x => x, Nil)
   }
 }

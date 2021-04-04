@@ -176,7 +176,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Zipper</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Zipper</span><span class="tparams">[<span name="T">T</span>, <span name="S">S</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
 
@@ -230,26 +230,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="scallion.util.BinaryTreeZipper.Zipper#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(focus:T)(implicitconvert:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="&lt;init&gt;:Zipper[T]"></a>
-      <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#&lt;init&gt;(focus:T)(implicitconvert:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Zipper</span><span class="params">(<span name="focus">focus: <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="convert">convert: <a href="BinaryTreeZipper$$BinaryTreeConvertible.html" class="extype" name="scallion.util.BinaryTreeZipper.BinaryTreeConvertible">BinaryTreeConvertible</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>)</span>
-      </span>
-      
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">focus</dt><dd class="cmt"><p>The root of the binary-tree-like structure.</p></dd><dt class="param">convert</dt><dd class="cmt"><p>A convert from the structure to a binary tree.</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         
 
@@ -349,9 +330,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
               
         </dd></dl></div>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#down" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="down:scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="down:Zipper[T]"></a>
+      <a id="down:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="down:Zipper[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#down:scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#down:scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -360,14 +341,14 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">down</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">down</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus down (only child).</p>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#downLeft" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="downLeft:scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="downLeft:Zipper[T]"></a>
+      <a id="downLeft:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="downLeft:Zipper[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#downLeft:scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#downLeft:scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -376,14 +357,14 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">downLeft</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">downLeft</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus down-left (left child).</p>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#downRight" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="downRight:scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="downRight:Zipper[T]"></a>
+      <a id="downRight:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="downRight:Zipper[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#downRight:scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#downRight:scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -392,7 +373,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">downRight</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">downRight</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus down-right (right child).</p>
@@ -535,9 +516,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       
       <p class="shortcomment cmt">Indicate if the root is focused.</p>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#left" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="left:scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="left:Zipper[T]"></a>
+      <a id="left:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="left:Zipper[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#left:scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#left:scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -546,14 +527,14 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">left</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">left</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus to the left (sibling).</p>
-    </li><li name="scallion.util.BinaryTreeZipper.Zipper#move" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="move(directions:scallion.util.BinaryTreeZipper.Direction*):scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="move(Direction*):Zipper[T]"></a>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="result">
+      <a id="map[R](fun:S=&gt;R):scallion.util.BinaryTreeZipper.Zipper[T,R]"></a><a id="map[R]((S)⇒R):Zipper[T,R]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#move(directions:scallion.util.BinaryTreeZipper.Direction*):scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#map[R](fun:S=&gt;R):scallion.util.BinaryTreeZipper.Zipper[T,R]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -562,14 +543,33 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">move</span><span class="params">(<span name="directions">directions: <a href="BinaryTreeZipper$$Direction.html" class="extype" name="scallion.util.BinaryTreeZipper.Direction">Direction</a>*</span>)</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">map</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="fun">fun: (<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>) ⇒ <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.map.R">R</span></span>)</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.map.R">R</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Add a function to apply after zipping
+the syntax up.</p><div class="fullcomment"><div class="comment cmt"><p>Add a function to apply after zipping
+the syntax up.
+</p></div><dl class="paramcmts block"><dt class="param">fun</dt><dd class="cmt"><p>The function to apply.</p></dd></dl></div>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper#move" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
+      <a id="move(directions:scallion.util.BinaryTreeZipper.Direction*):scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="move(Direction*):Zipper[T,S]"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#move(directions:scallion.util.BinaryTreeZipper.Direction*):scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">move</span><span class="params">(<span name="directions">directions: <a href="BinaryTreeZipper$$Direction.html" class="extype" name="scallion.util.BinaryTreeZipper.Direction">Direction</a>*</span>)</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus according to directions.</p>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#move" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="move(directions:List[scallion.util.BinaryTreeZipper.Direction]):scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="move(List[Direction]):Zipper[T]"></a>
+      <a id="move(directions:List[scallion.util.BinaryTreeZipper.Direction]):scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="move(List[Direction]):Zipper[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#move(directions:List[scallion.util.BinaryTreeZipper.Direction]):scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#move(directions:List[scallion.util.BinaryTreeZipper.Direction]):scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -578,7 +578,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">move</span><span class="params">(<span name="directions">directions: <span class="extype" name="scala.List">List</span>[<a href="BinaryTreeZipper$$Direction.html" class="extype" name="scallion.util.BinaryTreeZipper.Direction">Direction</a>]</span>)</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">move</span><span class="params">(<span name="directions">directions: <span class="extype" name="scala.List">List</span>[<a href="BinaryTreeZipper$$Direction.html" class="extype" name="scallion.util.BinaryTreeZipper.Direction">Direction</a>]</span>)</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus according to directions.</p>
@@ -641,9 +641,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
               
         </dd></dl></div>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#right" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="right:scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="right:Zipper[T]"></a>
+      <a id="right:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="right:Zipper[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#right:scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#right:scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -652,7 +652,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">right</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">right</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus to the right (sibling).</p>
@@ -688,10 +688,26 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper.Zipper#up" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
-      <a id="up:scallion.util.BinaryTreeZipper.Zipper[T]"></a><a id="up:Zipper[T]"></a>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper#transform" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="transform:T=&gt;S"></a><a id="transform:(T)⇒S"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#up:scallion.util.BinaryTreeZipper.Zipper[T]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#transform:T=&gt;S" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transform</span><span class="result">: (<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>) ⇒ <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span></span>
+      </span>
+      
+      
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper#up" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
+      <a id="up:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="up:Zipper[T,S]"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#up:scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -700,7 +716,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">up</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>]</span>
+        <span class="name">up</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Move the focus up (parent).</p>
@@ -821,9 +837,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
               
         </dd></dl></div>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#zipUp" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="result">
-      <a id="zipUp:T"></a>
+      <a id="zipUp:S"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#zipUp:T" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#zipUp:S" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -832,7 +848,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipUp</span><span class="result">: <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span></span>
+        <span class="name">zipUp</span><span class="result">: <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span></span>
       </span>
       
       <p class="shortcomment cmt">Zip the tree up.</p><div class="fullcomment"><div class="comment cmt"><p>Zip the tree up.
