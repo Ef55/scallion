@@ -7,6 +7,16 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
 
   val mapFragment = (tru ~ falz).map(orComb)
   val simpleSyntax = mapFragment | epsT
+  val predicate = (e: Syntax[_]) => e match {
+    case Syntax.Elem(_)           => true
+    case Syntax.Disjunction(_, _) => true
+    case _                        => false
+  }
+  val leafsPredicate = (e: Syntax[_]) => e match {
+    case Syntax.Elem(_)           => true
+    case Syntax.Success(_)        => true
+    case _                        => false
+  }
 
   "Syntax zipper" should "allow to move around a syntax (method-directed)" in {
     val zipper1 = Zipper(simpleSyntax)
@@ -71,9 +81,9 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
     val zipper2 = zipper1.downRight
     val zipper3 = zipper2.up.downLeft.down.downRight
 
-    assertStructuralEquivalence(simpleSyntax)(zipper1.zipUp)
-    assertStructuralEquivalence(simpleSyntax)(zipper2.zipUp)
-    assertStructuralEquivalence(simpleSyntax)(zipper3.zipUp)
+    assertStructuralEquivalence(simpleSyntax)(zipper1.close)
+    assertStructuralEquivalence(simpleSyntax)(zipper2.close)
+    assertStructuralEquivalence(simpleSyntax)(zipper3.close)
   }
 
   it should "allow node replacement" in {
@@ -86,7 +96,7 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
 
     val expected = (tru ~ replacement).map(orComb) | replacement
 
-    assertStructuralEquivalence(expected)(result.zipUp)
+    assertStructuralEquivalence(expected)(result.close)
   }
 
   def assertWalkIteratorCorrespondance[T](walk: Walker[T], expected: Iterator[Syntax[_]]): Unit = {
@@ -110,15 +120,42 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
   }
 
   it should "be filterable" in {
-    val predicate = (e: Syntax[_]) => e match {
-      case Syntax.Elem(_)           => true
-      case Syntax.Disjunction(_, _) => true
-      case _                        => false
-    }
     val walk = Zipper(simpleSyntax).walk.filter(predicate)
     val expected = List(tru, falz, simpleSyntax).iterator
 
     assertWalkIteratorCorrespondance(walk, expected)
   }
 
+  it should "be usable as transformative tool" in {
+    val walk = Zipper(simpleSyntax).walk.filter(leafsPredicate)
+    val expected = (any ~ any).map(orComb) | any
+
+    assertStructuralEquivalence(expected)(walk.mapNexts(_ => any).close)
+  }
+
+  it should "be list/iterator convertible" in {
+    val walk = Zipper(simpleSyntax).walk
+    val expected = List(tru, falz, tru ~ falz, mapFragment, epsT, simpleSyntax)
+
+    assertResult(expected)(walk.toList)
+    assertWalkIteratorCorrespondance(walk, walk.toIterator)
+  }
+
+  it should "be restartable" in {
+    val walk = Zipper(simpleSyntax).walk.filter(predicate)
+    val expected = List(tru, falz, simpleSyntax)
+
+    assertWalkIteratorCorrespondance(walk, expected.iterator)
+    assert(walk.current.isEmpty)
+    assertWalkIteratorCorrespondance(walk.restart, expected.iterator)
+  }
+
+  it should "map every element, regardless of current state" in {
+    val walk = Zipper(simpleSyntax).walk.filter(leafsPredicate)
+    walk.next
+    walk.next
+    val expected = (any ~ any).map(orComb) | any
+
+    assertStructuralEquivalence(expected)(walk.map(_ => any).close)
+  }
 }

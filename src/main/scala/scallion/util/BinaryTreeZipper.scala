@@ -165,8 +165,11 @@ object BinaryTreeZipper {
       * 
       * @group result
       */
-    def zipUp: S = 
-      if(isRoot){ transform(focus) }else{ this.up.zipUp }
+    def zipUp: Zipper[T, S] = 
+      if(isRoot){ this }else{ this.up.zipUp }
+
+    /** Zip the tree up, apply the transform to the resulting tree and return. */
+    def close: S = transform(this.zipUp.focus)
 
     /** Add a function to apply after zipping
       * the syntax up. 
@@ -329,6 +332,11 @@ object BinaryTreeZipper {
   sealed abstract class Walker[T: BinaryTreeConvertible, S](protected val in: Zipper[T, S]) {
     protected def focus: Zipper[T, T]
 
+    /** Restart the current walk.
+      * All transformations/filtering are kept for the new walk.
+      */
+    def restart: Walker[T, S]
+
     /** The current node in the walk.
       * @return The current node, or None if the walk hasn't started or has ended.
       */
@@ -344,6 +352,31 @@ object BinaryTreeZipper {
 
     /** Replace the current node with another one. */
     def replaceCurrent(replacement: T): T
+
+    /** Apply a transformative function to the current node. */
+    final def mapCurrent(replacer: T => T): T = {
+      replaceCurrent(replacer(focus.focus))
+    }
+
+    /** Apply a transformative function to all the remaining nodes. 
+      * 
+      * The walk will be done after this operation.
+      */
+    final def mapNexts(replacer: T => T): Walker[T, S] = {
+      while(next.isDefined){
+        mapCurrent(replacer)
+      }
+      this
+    }
+
+    /** Apply a transformation to all node, regardless of the
+      * current state of the walk.
+      * 
+      * The walk will be done after this operation.
+      */
+    final def map(replacer: T => T): Walker[T, S] = {
+      restart.mapNexts(replacer)
+    }
 
     /**@return A list of all node remaining in the walk. */
     def toList: List[T]
@@ -362,11 +395,16 @@ object BinaryTreeZipper {
       */
     final def conclude(forced: Boolean): Zipper[T, S]  = 
       if(done || forced){
-        in.replace(focus.zipUp)._2
+        in.replace(focus.close)._2
       }
       else{
         throw new IllegalStateException("Cannot finalize a walk in progress !")
       }
+
+    /** Conclude the walk and then close the resulting zipper. */
+    def close(forced: Boolean): S = this.conclude(forced).close
+    /** Conclude the walk and then close the resulting zipper. */
+    def close: S = close(false)
 
     /** Conclude the walk without forcing it. */
     final def conclude: Zipper[T, S] = conclude(false)
@@ -386,7 +424,6 @@ object BinaryTreeZipper {
     def apply[T: BinaryTreeConvertible](value: T): Walker[T, T] = Walker(Zipper(value))
 
     private def canGoUp[T](focus: Zipper[T, T]) = !focus.validDirections(Right, Up).isEmpty
-    private def canGoDown[T](focus: Zipper[T, T]) = !focus.validDirections(DownLeft, Down).isEmpty
 
     private def gotoLeftmost[T](focus: Zipper[T, T]): Zipper[T, T] = {
       var newFocus = focus
@@ -426,6 +463,13 @@ object BinaryTreeZipper {
 
       protected def focus: Zipper[T, T] = tree
 
+      def restart: BaseWalker[T, S] = {
+        tree = tree.zipUp
+        startFlag = true
+        doneFlag = false
+        this
+      }
+
       override def current: Option[T] = if(doneFlag || startFlag){ None }else{ Some(tree.focus) }
       override def next: Option[T] = { 
         gotoNext(tree, startFlag) match {
@@ -464,6 +508,11 @@ object BinaryTreeZipper {
       private var startFlag: Boolean = true
 
       protected def focus: Zipper[T, T] = inner.focus
+
+      def restart: FilteredWalker[T, S] = {
+        inner.restart
+        this
+      }
 
       def current: Option[T] = if(startFlag){ None }else{ inner.current }
       def next: Option[T] = {
