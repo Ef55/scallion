@@ -27,9 +27,8 @@ trait SyntaxesNavigation { self: Syntaxes =>
       def apply(syntax: Syntax[_]): BinaryTreeEquivalent[Syntax[_]] = syntax match {
         case Elem(_) | Success(_) | Failure() =>
           Leaf(syntax)
-        case Transform(fun, inv, inner: Syntax[tA]) => {
+        case Transform(fun, inv, inner: Syntax[tA]) => 
           Cons(inner, (s: Syntax[_]) => Transform(fun, inv, s.asInstanceOf[Syntax[tA]]).asInstanceOf[Syntax[_]])
-        }
         case Marked(mark, inner) =>
           Cons(inner, Marked(mark, _))
         case Sequence(l, r) =>

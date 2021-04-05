@@ -127,10 +127,14 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="" href="BinaryTreeZipper$.html"><span class="name">BinaryTreeZipper</span></a>
+        <a title="A zipper for Binary-Tree-like date structures." href="BinaryTreeZipper$.html"><span class="name">BinaryTreeZipper</span></a>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion.util">util</a></dd></dl></div>
+      <p class="shortcomment cmt">A zipper for Binary-Tree-like date structures.</p><div class="fullcomment"><div class="comment cmt"><p>A zipper for Binary-Tree-like date structures.</p><p>In order to use this zipper on your won data structure, you should
+provide an implementation of <code>BinaryTreeConvertible[T]</code> where <code>T</code>
+is a common ancestors-type of all your node-types.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion.util">util</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">scallion.SyntaxesNavigation</a> for an example on how to implement
+<code>BinaryTreeConvertible[T]</code>.</p></span></dd></dl></div>
     </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="BinaryTreeZipper$$BinaryTreeConvertible.html" title="Transform some data structure into an equivalent binary tree which will then be used by the zipper."></a>
@@ -147,6 +151,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a class="object" href="BinaryTreeZipper$$PathNode$.html" title="Contains the possible path nodes."></a>
                         <a class="trait" href="BinaryTreeZipper$$PathNode.html" title="Represent a node in the path from root to focus."></a>
                         <a href="BinaryTreeZipper$$PathNode.html" title="Represent a node in the path from root to focus.">PathNode</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="BinaryTreeZipper$$Walker$.html" title="Factory for Walker."></a>
+                        <a class="class" href="BinaryTreeZipper$$Walker.html" title="Allow to visit every node of a zipper."></a>
+                        <a href="BinaryTreeZipper$$Walker.html" title="Allow to visit every node of a zipper.">Walker</a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="" title="Factory for zipper."></a>
                         <a class="class" href="BinaryTreeZipper$$Zipper.html" title="A zipper on a binary tree."></a>

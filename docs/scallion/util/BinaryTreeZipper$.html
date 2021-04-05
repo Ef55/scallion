@@ -117,8 +117,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="object" href="" title=""></a>
-                        <a href="" title="">BinaryTreeZipper</a>
+                        <a class="object" href="" title="A zipper for Binary-Tree-like date structures."></a>
+                        <a href="" title="A zipper for Binary-Tree-like date structures.">BinaryTreeZipper</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="object" href="Unfolds$.html" title="Contains functions to unfold values."></a>
@@ -151,7 +151,11 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/util/BinaryTreeZipper.scala" target="_blank">BinaryTreeZipper.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A zipper for Binary-Tree-like date structures.</p><p>In order to use this zipper on your won data structure, you should
+provide an implementation of <code>BinaryTreeConvertible[T]</code> where <code>T</code>
+is a common ancestors-type of all your node-types.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/util/BinaryTreeZipper.scala" target="_blank">BinaryTreeZipper.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">scallion.SyntaxesNavigation</a> for an example on how to implement
+<code>BinaryTreeConvertible[T]</code>.</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -172,7 +176,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
           <div id="order">
             <span class="filtertype">Ordering</span>
             <ol>
-              
+              <li class="group out"><span>Grouped</span></li>
               <li class="alpha in"><span>Alphabetic</span></li>
               <li class="inherit out"><span>By Inheritance</span></li>
             </ol>
@@ -203,7 +207,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="scallion.util.BinaryTreeZipper.BinaryTreeConvertible" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+              <ol><li name="scallion.util.BinaryTreeZipper.BinaryTreeConvertible" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="binarytree">
       <a id="BinaryTreeConvertible[T]extendsAnyRef"></a><a id="BinaryTreeConvertible[T]:BinaryTreeConvertible[T]"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#BinaryTreeConvertible[T]extendsAnyRef" title="Permalink">
@@ -222,7 +226,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
 binary tree which will then be used by the zipper.</p><div class="fullcomment"><div class="comment cmt"><p>Transform some data structure into an equivalent
 binary tree which will then be used by the zipper.
 </p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The type of a node in the data structure.</p></dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper.BinaryTreeEquivalent" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.BinaryTreeEquivalent" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="binarytree">
       <a id="BinaryTreeEquivalent[T]extendsAnyRef"></a><a id="BinaryTreeEquivalent[T]:BinaryTreeEquivalent[T]"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#BinaryTreeEquivalent[T]extendsAnyRef" title="Permalink">
@@ -241,7 +245,7 @@ binary tree which will then be used by the zipper.
 in order for the zipper to be able to navigate it.</p><div class="fullcomment"><div class="comment cmt"><p>Information needed on a kind of node of a data structure
 in order for the zipper to be able to navigate it.
 </p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The type of a node in the data structure.</p></dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper.Direction" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.Direction" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="navigation">
       <a id="DirectionextendsAnyRef"></a><a id="Direction:Direction"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#DirectionextendsAnyRef" title="Permalink">
@@ -257,7 +261,7 @@ in order for the zipper to be able to navigate it.
       </span>
       
       <p class="shortcomment cmt">The different directions which can be used to navigate in the tree.</p>
-    </li><li name="scallion.util.BinaryTreeZipper.PathNode" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.PathNode" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="path">
       <a id="PathNode[T]extendsAnyRef"></a><a id="PathNode[T]:PathNode[T]"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#PathNode[T]extendsAnyRef" title="Permalink">
@@ -273,7 +277,23 @@ in order for the zipper to be able to navigate it.
       </span>
       
       <p class="shortcomment cmt">Represent a node in the path from root to focus.</p>
-    </li><li name="scallion.util.BinaryTreeZipper.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.Walker" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="navigation">
+      <a id="Walker[T,S]extendsAnyRef"></a><a id="Walker[T,S]:Walker[T,S]"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$.html#Walker[T,S]extendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Allow to visit every node of a zipper." href="BinaryTreeZipper$$Walker.html"><span class="name">Walker</span></a><span class="tparams">[<span name="T">T</span>, <span name="S">S</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Allow to visit every node of a zipper.</p>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="zipper">
       <a id="Zipper[T,S]extendsAnyRef"></a><a id="Zipper[T,S]:Zipper[T,S]"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#Zipper[T,S]extendsAnyRef" title="Permalink">
@@ -636,7 +656,7 @@ in order for the zipper to be able to navigate it.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper.BinaryTreeEquivalent" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.BinaryTreeEquivalent" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="binarytree">
       <a id="BinaryTreeEquivalent"></a><a id="BinaryTreeEquivalent:BinaryTreeEquivalent"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#BinaryTreeEquivalent" title="Permalink">
@@ -652,7 +672,7 @@ in order for the zipper to be able to navigate it.
       </span>
       
       <p class="shortcomment cmt">Contains the binary tree equivalents.</p>
-    </li><li name="scallion.util.BinaryTreeZipper.Direction" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.Direction" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
       <a id="Direction"></a><a id="Direction:Direction"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#Direction" title="Permalink">
@@ -668,7 +688,7 @@ in order for the zipper to be able to navigate it.
       </span>
       
       <p class="shortcomment cmt">Contains all possible directions.</p>
-    </li><li name="scallion.util.BinaryTreeZipper.PathNode" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.PathNode" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="path">
       <a id="PathNode"></a><a id="PathNode:PathNode"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#PathNode" title="Permalink">
@@ -684,7 +704,23 @@ in order for the zipper to be able to navigate it.
       </span>
       
       <p class="shortcomment cmt">Contains the possible path nodes.</p>
-    </li><li name="scallion.util.BinaryTreeZipper.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.util.BinaryTreeZipper.Walker" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
+      <a id="Walker"></a><a id="Walker:Walker"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$.html#Walker" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Factory for Walker." href="BinaryTreeZipper$$Walker$.html"><span class="name">Walker</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">Factory for Walker.</p>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="zipper">
       <a id="Zipper"></a><a id="Zipper:Zipper"></a>
       <span class="permalink">
       <a href="../../scallion/util/BinaryTreeZipper$.html#Zipper" title="Permalink">
@@ -748,7 +784,19 @@ in order for the zipper to be able to navigate it.
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="Ungrouped">
+        <div class="group" name="binarytree">
+              <h3>Binary tree conversion</h3>
+              
+            </div><div class="group" name="navigation">
+              <h3>Zipper navigation</h3>
+              
+            </div><div class="group" name="path">
+              <h3>Root path</h3>
+              
+            </div><div class="group" name="zipper">
+              <h3>Zipper</h3>
+              
+            </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

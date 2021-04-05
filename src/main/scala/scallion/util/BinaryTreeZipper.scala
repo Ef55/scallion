@@ -2,12 +2,28 @@ package scallion.util
 
 import scala.collection.immutable.Set
 
+/** A zipper for Binary-Tree-like date structures. 
+ * 
+ * In order to use this zipper on your won data structure, you should
+ * provide an implementation of `BinaryTreeConvertible[T]` where `T`
+ * is a common ancestors-type of all your node-types.
+ * 
+ * @see [[scallion.SyntaxesNavigation]] for an example on how to implement
+ * `BinaryTreeConvertible[T]`.
+ * 
+ * @groupname zipper Zipper
+ * @groupname binarytree Binary tree conversion
+ * @groupname navigation Zipper navigation
+ * @groupname path Root path
+ */
 object BinaryTreeZipper { 
   private def setInclIf[T](set: Set[T], condElements: (Boolean, T)*): Set[T] = {
     condElements.foldLeft(set)( (s, p) => if(p._1){ s + p._2 }else{ s } )
   }
 
-  /** Represent a node in the path from root to focus. */
+  /** Represent a node in the path from root to focus. 
+    * @group path
+    */
   sealed trait PathNode[T] {
     /** Go up one node in the path.
       *
@@ -34,7 +50,9 @@ object BinaryTreeZipper {
     /** Indicate if this path node has a right sibling. */
     def hasRight: Boolean
   }
-  /** Contains the possible path nodes. */
+  /** Contains the possible path nodes. 
+    * @group path
+    */
   object PathNode {
     /** A path node with only child. */
     final case class UnaryNode[T](cons: T => T) extends PathNode[T] {
@@ -68,9 +86,13 @@ object BinaryTreeZipper {
   }
   import PathNode._
 
-  /** The different directions which can be used to navigate in the tree. */
+  /** The different directions which can be used to navigate in the tree. 
+    * @group navigation
+    */
   sealed trait Direction
-  /** Contains all possible directions. */
+  /** Contains all possible directions. 
+    * @group navigation
+    */
   object Direction {
     case object Up extends Direction
     case object Left extends Direction
@@ -86,6 +108,7 @@ object BinaryTreeZipper {
     * in order for the zipper to be able to navigate it.
     * 
     * @tparam T The type of a node in the data structure.
+    * @group binarytree
     */
   sealed trait BinaryTreeEquivalent[T] {
     import BinaryTreeEquivalent._
@@ -96,7 +119,9 @@ object BinaryTreeZipper {
       case Fork(_, _, _)  => fork
     }
   }
-  /** Contains the binary tree equivalents. */
+  /** Contains the binary tree equivalents. 
+    * @group binarytree
+    */
   object BinaryTreeEquivalent {
     /** A leaf node (0 children). */
     final case class Leaf[T](value: T) extends BinaryTreeEquivalent[T]
@@ -111,6 +136,7 @@ object BinaryTreeZipper {
     * binary tree which will then be used by the zipper.
     * 
     * @tparam T The type of a node in the data structure.
+    * @group binarytree
     */
   trait BinaryTreeConvertible[T] {
     def apply(value: T): BinaryTreeEquivalent[T]
@@ -120,6 +146,7 @@ object BinaryTreeZipper {
     * 
     * @tparam T The type of a node of the binary-tree-like structure.
     * 
+    * @group zipper
     * @groupname result Result
     * @groupname navigation Tree navigation
     * @groupname focus Focus properties
@@ -279,10 +306,13 @@ object BinaryTreeZipper {
       this.move(directions.toList)
     }
 
-    def walk: Walker[T, S] = new Walker.BaseWalker(this)
+    /** Initiate a walk on the currently focused subtree. */
+    def walk: Walker[T, S] = Walker(this)
   }
 
-  /** Factory for zipper. */
+  /** Factory for zipper. 
+    * @group zipper
+    */
   object Zipper {
     private def apply[T, S]
     (focus: T, transform: T => S, path: List[PathNode[T]])
@@ -290,24 +320,46 @@ object BinaryTreeZipper {
 
     /** Create a Zipper. */
     def apply[T](focus: T)(implicit convert: BinaryTreeConvertible[T]): Zipper[T, T] = Zipper(focus, x => x, Nil)
+  
   }
 
-
+  /** Allow to visit every node of a zipper. 
+    * @group navigation
+    */
   sealed abstract class Walker[T: BinaryTreeConvertible, S](protected val in: Zipper[T, S]) {
     protected def focus: Zipper[T, T]
 
+    /** The current node in the walk.
+      * @return The current node, or None if the walk hasn't started or has ended.
+      */
     def current: Option[T]
+
+    /** Continue the walk.
+      * @return The next node, or None if there are no more nodes.
+      */
     def next: Option[T]
+
+    /** Indicate if the walk ended. */
     def done: Boolean
 
+    /** Replace the current node with another one. */
     def replaceCurrent(replacement: T): T
 
+    /**@return A list of all node remaining in the walk. */
     def toList: List[T]
 
+    /** Return the original zipper this walk was started on. */
     final def cancel: Zipper[T, S] = in
 
+    /** Add a predicate which all future returned node will satisfy. */
     def filter(filter: T => Boolean): Walker[T, S] = new Walker.FilteredWalker(this, filter)
 
+    /** Conclude the walk by returning a zipper with all applied
+      * replacements.
+      * 
+      * @pram forced Indicate if it must be concluded event if some nodes were not yet visited.
+      * @throws IllegalStateException If the walk is not done and the conclusion is not forced.
+      */
     final def conclude(forced: Boolean): Zipper[T, S]  = 
       if(done || forced){
         in.replace(focus.zipUp)._2
@@ -315,12 +367,23 @@ object BinaryTreeZipper {
       else{
         throw new IllegalStateException("Cannot finalize a walk in progress !")
       }
+
+    /** Conclude the walk without forcing it. */
     final def conclude: Zipper[T, S] = conclude(false)
 
+    /** Convert to iterator.
+      * @note This operation is not lazy; all elements of this walk
+      * will be computed eagerly at call.
+      */
     final def toIterator: Iterator[T] = toList.iterator
   }
 
-  private object Walker {
+  /** Factory for Walker. 
+    * @group navigation
+    */
+  object Walker {
+    def apply[T: BinaryTreeConvertible, S](zipper: Zipper[T, S]): Walker[T, S] = new BaseWalker(zipper)
+    def apply[T: BinaryTreeConvertible](value: T): Walker[T, T] = Walker(Zipper(value))
 
     private def canGoUp[T](focus: Zipper[T, T]) = !focus.validDirections(Right, Up).isEmpty
     private def canGoDown[T](focus: Zipper[T, T]) = !focus.validDirections(DownLeft, Down).isEmpty
@@ -351,7 +414,7 @@ object BinaryTreeZipper {
         }
       }
 
-    final class BaseWalker[T: BinaryTreeConvertible, S] private
+    private final class BaseWalker[T: BinaryTreeConvertible, S] private
     (private var tree: Zipper[T, T], in: Zipper[T, S])
     extends Walker[T, S](in) { 
       private var startFlag: Boolean = true
@@ -394,7 +457,8 @@ object BinaryTreeZipper {
         ls.reverse
       }
     }
-    final class FilteredWalker[T: BinaryTreeConvertible, S] private[util]
+
+    private final class FilteredWalker[T: BinaryTreeConvertible, S] private[util]
     (private val inner: Walker[T, S], val filter: T => Boolean)
     extends Walker[T, S](inner.in) { 
       private var startFlag: Boolean = true
