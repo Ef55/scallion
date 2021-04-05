@@ -12,6 +12,7 @@ trait SyntaxesNavigation { self: Syntaxes =>
   
   /** A zipper on a syntax. */
   type Zipper[A] = BinaryTreeZipper.Zipper[Syntax[_], Syntax[A]]
+  type Walker[A] = BinaryTreeZipper.Walker[Syntax[_], Syntax[A]]
 
   /** Factory for syntax zipper. */
   object Zipper {

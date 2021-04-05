@@ -123,6 +123,7 @@ object BinaryTreeZipper {
     * @groupname result Result
     * @groupname navigation Tree navigation
     * @groupname focus Focus properties
+    * @groupname transform Transformations
     */
   final class Zipper[T, S] private
   (val focus: T, val transform: T => S, private val path: List[PathNode[T]])
@@ -149,6 +150,16 @@ object BinaryTreeZipper {
       */
     def map[R](fun: S => R): Zipper[T, R] = Zipper(focus, transform.andThen(fun), path)
 
+    /** Replace the focused node by another one.
+      *
+      * @param replacement The replacement node.
+      * @return The replaced node and the new tree.
+      * 
+      * @group transform
+      */
+    def replace(replacement: T): (T, Zipper[T, S]) = 
+      (focus, Zipper(replacement, transform, path))
+
     /** Indicate if the root is focused. 
       * @group focus
       */
@@ -158,7 +169,7 @@ object BinaryTreeZipper {
       * @group focus
       */
     def validDownDirections: Set[Direction] = convert(focus).map(Set.empty, Set(Down), Set(DownLeft, DownRight))
-    
+
     /** Indicate to which sibling the focus can be moved to. 
       * @group focus
       */
@@ -172,6 +183,10 @@ object BinaryTreeZipper {
       */
     def validDirections: Set[Direction] = setInclIf(validDownDirections ++ validLateralDirections, (!isRoot, Up))
     
+    def validDirections(directions: Direction*): Set[Direction] = validDirections.intersect(directions.toSet)
+
+    def validDirection(direction: Direction): Boolean = validDirections.contains(direction)
+
     /** Indicate where the focus cannot be moved to. 
       * @group focus
       */
@@ -263,6 +278,8 @@ object BinaryTreeZipper {
     def move(directions: Direction*): Zipper[T, S] = {
       this.move(directions.toList)
     }
+
+    def walk: Walker[T, S] = new Walker.BaseWalker(this)
   }
 
   /** Factory for zipper. */
@@ -273,5 +290,130 @@ object BinaryTreeZipper {
 
     /** Create a Zipper. */
     def apply[T](focus: T)(implicit convert: BinaryTreeConvertible[T]): Zipper[T, T] = Zipper(focus, x => x, Nil)
+  }
+
+
+  sealed abstract class Walker[T: BinaryTreeConvertible, S](protected val in: Zipper[T, S]) {
+    protected def focus: Zipper[T, T]
+
+    def current: Option[T]
+    def next: Option[T]
+    def done: Boolean
+
+    def replaceCurrent(replacement: T): T
+
+    def toList: List[T]
+
+    final def cancel: Zipper[T, S] = in
+
+    def filter(filter: T => Boolean): Walker[T, S] = new Walker.FilteredWalker(this, filter)
+
+    final def conclude(forced: Boolean): Zipper[T, S]  = 
+      if(done || forced){
+        in.replace(focus.zipUp)._2
+      }
+      else{
+        throw new IllegalStateException("Cannot finalize a walk in progress !")
+      }
+    final def conclude: Zipper[T, S] = conclude(false)
+
+    final def toIterator: Iterator[T] = toList.iterator
+  }
+
+  private object Walker {
+
+    private def canGoUp[T](focus: Zipper[T, T]) = !focus.validDirections(Right, Up).isEmpty
+    private def canGoDown[T](focus: Zipper[T, T]) = !focus.validDirections(DownLeft, Down).isEmpty
+
+    private def gotoLeftmost[T](focus: Zipper[T, T]): Zipper[T, T] = {
+      var newFocus = focus
+      var downDir = newFocus.validDirections(DownLeft, Down).headOption
+      while(downDir.isDefined){
+        newFocus = newFocus.move(downDir.get)
+        downDir = newFocus.validDirections(DownLeft, Down).headOption
+      }
+      newFocus
+    }
+
+    private def gotoNext[T](focus: Zipper[T, T], start: Boolean): Option[Zipper[T, T]] = 
+      if(start){
+        Some(gotoLeftmost(focus))
+      }
+      else if(!canGoUp(focus)){
+        None
+      }
+      else{
+        if(focus.validDirection(Right)){
+          Some(gotoLeftmost(focus.right))
+        }
+        else{
+          Some(focus.up)
+        }
+      }
+
+    final class BaseWalker[T: BinaryTreeConvertible, S] private
+    (private var tree: Zipper[T, T], in: Zipper[T, S])
+    extends Walker[T, S](in) { 
+      private var startFlag: Boolean = true
+      private var doneFlag: Boolean = false
+
+      private[util] def this(root: Zipper[T, S]) {
+        this(Zipper(root.focus), root)
+      }
+
+      protected def focus: Zipper[T, T] = tree
+
+      override def current: Option[T] = if(doneFlag || startFlag){ None }else{ Some(tree.focus) }
+      override def next: Option[T] = { 
+        gotoNext(tree, startFlag) match {
+          case Some(zipper) =>  tree = zipper
+          case None         => doneFlag = true
+        }
+        startFlag = false
+        current
+      }
+      override def done: Boolean = doneFlag
+
+      override def replaceCurrent(replacement: T): T =
+        if(current.isEmpty){
+          throw new IllegalStateException("Cannot replace current if there is none !")
+        }
+        else{
+          val (replaced, newTree) = tree.replace(replacement)
+          tree = newTree
+          replaced
+        }
+
+      override def toList: List[T] = {
+        var optNext = gotoNext(tree, startFlag)
+        var ls: List[T] = Nil
+        while(optNext.isDefined){
+          ls = optNext.get.focus :: ls
+          optNext = gotoNext(optNext.get, false)
+        }
+        ls.reverse
+      }
+    }
+    final class FilteredWalker[T: BinaryTreeConvertible, S] private[util]
+    (private val inner: Walker[T, S], val filter: T => Boolean)
+    extends Walker[T, S](inner.in) { 
+      private var startFlag: Boolean = true
+
+      protected def focus: Zipper[T, T] = inner.focus
+
+      def current: Option[T] = if(startFlag){ None }else{ inner.current }
+      def next: Option[T] = {
+        startFlag = false
+        while(!done && inner.next.filter(filter).isEmpty) {}
+        current
+      }
+      def done: Boolean = inner.done
+
+      override def filter(additional: T => Boolean): Walker[T, S] = new FilteredWalker(inner, x => filter(x) && additional(x))
+
+      def replaceCurrent(replacement: T): T = inner.replaceCurrent(replacement)
+
+      override def toList: List[T] = inner.toList.filter(filter)
+    }
   }
 }

@@ -5,7 +5,8 @@ import org.scalatest._
 class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with BooleanSyntaxes {
   import Direction._
 
-  val simpleSyntax = (tru ~ falz).map(orComb) | epsT
+  val mapFragment = (tru ~ falz).map(orComb)
+  val simpleSyntax = mapFragment | epsT
 
   "Syntax zipper" should "allow to move around a syntax (method-directed)" in {
     val zipper1 = Zipper(simpleSyntax)
@@ -73,6 +74,51 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
     assertStructuralEquivalence(simpleSyntax)(zipper1.zipUp)
     assertStructuralEquivalence(simpleSyntax)(zipper2.zipUp)
     assertStructuralEquivalence(simpleSyntax)(zipper3.zipUp)
+  }
+
+  it should "allow node replacement" in {
+    val zipper = Zipper(simpleSyntax)
+    val replacement = ((tru ~ any).map(andComb) ~ falz).map(orComb)
+
+    val result = zipper
+      .move(DownLeft, Down, DownRight).replace(replacement)._2
+      .move(Up, Up, Up, DownRight).replace(replacement)._2
+
+    val expected = (tru ~ replacement).map(orComb) | replacement
+
+    assertStructuralEquivalence(expected)(result.zipUp)
+  }
+
+  def assertWalkIteratorCorrespondance[T](walk: Walker[T], expected: Iterator[Syntax[_]]): Unit = {
+    var i = 0
+    do {
+      walk.next match {
+        case Some(value) => {
+          assert(expected.hasNext, "Iterator is shorter than walk")
+          assertResult(expected.next(), s"at index ${i}")(value)
+          i += 1
+        }
+        case None => assert(!expected.hasNext, "Iterator is longer than walk")
+      }
+    }while(walk.current.isDefined)
+  }
+
+  "Syntax walk" should "work on simple example" in {
+    val walk = Zipper(simpleSyntax).walk
+    val expected = List(tru, falz, tru ~ falz, mapFragment, epsT, simpleSyntax).iterator
+    assertWalkIteratorCorrespondance(walk, expected)
+  }
+
+  it should "be filterable" in {
+    val predicate = (e: Syntax[_]) => e match {
+      case Syntax.Elem(_)           => true
+      case Syntax.Disjunction(_, _) => true
+      case _                        => false
+    }
+    val walk = Zipper(simpleSyntax).walk.filter(predicate)
+    val expected = List(tru, falz, simpleSyntax).iterator
+
+    assertWalkIteratorCorrespondance(walk, expected)
   }
 
 }
