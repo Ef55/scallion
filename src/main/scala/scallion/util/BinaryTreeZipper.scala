@@ -310,7 +310,7 @@ object BinaryTreeZipper {
     }
 
     /** Initiate a walk on the currently focused subtree. */
-    def walk: Walker[T, S] = Walker(this)
+    def walk: Walk[T, S] = Walk(this)
   }
 
   /** Factory for zipper. 
@@ -329,13 +329,13 @@ object BinaryTreeZipper {
   /** Allow to visit every node of a zipper. 
     * @group navigation
     */
-  sealed abstract class Walker[T: BinaryTreeConvertible, S](protected val in: Zipper[T, S]) {
+  sealed abstract class Walk[T: BinaryTreeConvertible, S](protected val in: Zipper[T, S]) {
     protected def focus: Zipper[T, T]
 
     /** Restart the current walk.
       * All transformations/filtering are kept for the new walk.
       */
-    def restart: Walker[T, S]
+    def restart: Walk[T, S]
 
     /** The current node in the walk.
       * @return The current node, or None if the walk hasn't started or has ended.
@@ -362,7 +362,7 @@ object BinaryTreeZipper {
       * 
       * The walk will be done after this operation.
       */
-    final def mapNexts(replacer: T => T): Walker[T, S] = {
+    final def mapNexts(replacer: T => T): Walk[T, S] = {
       while(next.isDefined){
         mapCurrent(replacer)
       }
@@ -374,7 +374,7 @@ object BinaryTreeZipper {
       * 
       * The walk will be done after this operation.
       */
-    final def map(replacer: T => T): Walker[T, S] = {
+    final def map(replacer: T => T): Walk[T, S] = {
       restart.mapNexts(replacer)
     }
 
@@ -385,7 +385,7 @@ object BinaryTreeZipper {
     final def cancel: Zipper[T, S] = in
 
     /** Add a predicate which all future returned node will satisfy. */
-    def filter(filter: T => Boolean): Walker[T, S] = new Walker.FilteredWalker(this, filter)
+    def filter(filter: T => Boolean): Walk[T, S] = new Walk.FilteredWalk(this, filter)
 
     /** Conclude the walk by returning a zipper with all applied
       * replacements.
@@ -416,12 +416,12 @@ object BinaryTreeZipper {
     final def toIterator: Iterator[T] = toList.iterator
   }
 
-  /** Factory for Walker. 
+  /** Factory for Walk. 
     * @group navigation
     */
-  object Walker {
-    def apply[T: BinaryTreeConvertible, S](zipper: Zipper[T, S]): Walker[T, S] = new BaseWalker(zipper)
-    def apply[T: BinaryTreeConvertible](value: T): Walker[T, T] = Walker(Zipper(value))
+  object Walk {
+    def apply[T: BinaryTreeConvertible, S](zipper: Zipper[T, S]): Walk[T, S] = new BaseWalk(zipper)
+    def apply[T: BinaryTreeConvertible](value: T): Walk[T, T] = Walk(Zipper(value))
 
     private def canGoUp[T](focus: Zipper[T, T]) = !focus.validDirections(Right, Up).isEmpty
 
@@ -451,9 +451,9 @@ object BinaryTreeZipper {
         }
       }
 
-    private final class BaseWalker[T: BinaryTreeConvertible, S] private
+    private final class BaseWalk[T: BinaryTreeConvertible, S] private
     (private var tree: Zipper[T, T], in: Zipper[T, S])
-    extends Walker[T, S](in) { 
+    extends Walk[T, S](in) { 
       private var startFlag: Boolean = true
       private var doneFlag: Boolean = false
 
@@ -463,7 +463,7 @@ object BinaryTreeZipper {
 
       protected def focus: Zipper[T, T] = tree
 
-      def restart: BaseWalker[T, S] = {
+      def restart: BaseWalk[T, S] = {
         tree = tree.zipUp
         startFlag = true
         doneFlag = false
@@ -502,14 +502,14 @@ object BinaryTreeZipper {
       }
     }
 
-    private final class FilteredWalker[T: BinaryTreeConvertible, S] private[util]
-    (private val inner: Walker[T, S], val filter: T => Boolean)
-    extends Walker[T, S](inner.in) { 
+    private final class FilteredWalk[T: BinaryTreeConvertible, S] private[util]
+    (private val inner: Walk[T, S], val filter: T => Boolean)
+    extends Walk[T, S](inner.in) { 
       private var startFlag: Boolean = true
 
       protected def focus: Zipper[T, T] = inner.focus
 
-      def restart: FilteredWalker[T, S] = {
+      def restart: FilteredWalk[T, S] = {
         inner.restart
         this
       }
@@ -522,7 +522,7 @@ object BinaryTreeZipper {
       }
       def done: Boolean = inner.done
 
-      override def filter(additional: T => Boolean): Walker[T, S] = new FilteredWalker(inner, x => filter(x) && additional(x))
+      override def filter(additional: T => Boolean): Walk[T, S] = new FilteredWalk(inner, x => filter(x) && additional(x))
 
       def replaceCurrent(replacement: T): T = inner.replaceCurrent(replacement)
 

@@ -12,7 +12,7 @@ trait SyntaxesNavigation { self: Syntaxes =>
   
   /** A zipper on a syntax. */
   type Zipper[A] = BinaryTreeZipper.Zipper[Syntax[_], Syntax[A]]
-  type Walker[A] = BinaryTreeZipper.Walker[Syntax[_], Syntax[A]]
+  type Walk[A] = BinaryTreeZipper.Walk[Syntax[_], Syntax[A]]
 
   /** Factory for syntax zipper. */
   object Zipper {
@@ -39,5 +39,10 @@ trait SyntaxesNavigation { self: Syntaxes =>
           Leaf(syntax)
       }
     }
+  }
+
+  object Walk {
+    def apply[A](zipper: Zipper[A]): Walk[A] = zipper.walk
+    def apply[A](syntax: Syntax[A]): Walk[A] = Walk(Zipper(syntax))
   }
 }
