@@ -99,7 +99,7 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
     assertStructuralEquivalence(expected)(result.close)
   }
 
-  def assertWalkIteratorCorrespondance[T](walk: Walker[T], expected: Iterator[Syntax[_]]): Unit = {
+  def assertWalkIteratorCorrespondance[T](walk: Walk[T], expected: Iterator[Syntax[_]]): Unit = {
     var i = 0
     do {
       walk.next match {

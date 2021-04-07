@@ -3,7 +3,7 @@ package scallion
 import scallion.properties.StructuralEquivalence
 import org.scalatest._
 
-trait ParsersTestHelper extends FlatSpec with Parsers with Enumeration with StructuralEquivalence {
+trait ParsersTestHelper extends FlatSpec with Parsers with visualization.Graphs with Enumeration with StructuralEquivalence {
 
   def assertHasConflicts(syntax: Syntax[_]): Unit = {
     assertThrows[ConflictException](Parser(syntax))
@@ -56,4 +56,7 @@ trait ParsersTestHelper extends FlatSpec with Parsers with Enumeration with Stru
     actual
   }
 
+  def outputGraph[A](syntax: Syntax[A], name: String): Unit = {
+    graphs.outputGraph(syntax, "target/graphs", name)
+  }
 }
