@@ -51,9 +51,14 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
     }
 
     def asRecursive: Factorization[A, L] = {
+      def mkRec[B](s: Syntax[B]) = s match {
+        case Failure()  => s
+        case _          => recursive(s)
+      }
+
       Factorization(
-        recursive(this.factorized),
-        recursive(this.alternative)
+        mkRec(this.factorized),
+        mkRec(this.alternative)
       )
     }
 
@@ -85,13 +90,13 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
     }
   }
 
-  private def internal[A, L](leftFactor: Syntax[L], s: Syntax[A]): Factorization[A, L] = {
-
+  // recTerm indicates if recursives should be considered as units
+  private def internal[A, L](leftFactor: Syntax[L], s: Syntax[A], recTerm: Boolean): Factorization[A, L] = {
     def iter[A](s: Syntax[A]): Factorization[A, L] = {
       s match {
-        case _ if s == leftFactor       => Factorization.success.asInstanceOf[Factorization[A, L]]
-        case e: Elem                    => Factorization.fail(e)
-        case Sequence(l, r)             => {
+        case _ if s == leftFactor             => Factorization.success.asInstanceOf[Factorization[A, L]]
+        case Elem(_)                          => Factorization.fail(s)
+        case Sequence(l, r)                   => {
           val lIter = iter(l)
           if(getProperties(lIter.alternative).isNullable){
             val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative)
@@ -101,12 +106,13 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
             lIter ~ r
           }
         }
-        case Disjunction(l, r)          => iter(l) | iter(r)
-        case Transform(fun, inv, inner) => iter(inner).map(fun, inv)
-        case Marked(mark, inner)        => iter(inner) // mark ignored
-        case s: Success[_]              => Factorization.fail(s)
-        case Failure()                  => Factorization(failure, failure)
-        case Recursive(_, inner)        => iter(inner).asRecursive
+        case Disjunction(l, r)                => iter(l) | iter(r)
+        case Transform(fun, inv, inner)       => iter(inner).map(fun, inv)
+        case Marked(mark, inner)              => iter(inner) // mark ignored
+        case s: Success[_]                    => Factorization.fail(s)
+        case Failure()                        => Factorization(failure, failure)
+        case Recursive(_, inner) if recTerm   => iter(inner).asRecursive
+        case Recursive(_, _) if !recTerm      => Factorization.fail(s)
       }
     }
 
@@ -119,14 +125,10 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
     * @param s Syntax on which to apply the factorization.
     * @return An equivalent syntax, with the syntax left factorized.
     *
-    * @todo Handle nullable left-handside of [[scallion.Syntaxes.Syntax.Sequence]].
-    * @todo Handle recursive syntaxes (through recursive substitution - 
-    *       see [[scallion.factorization.Substitution.substitute]]).
-    *
     * @group factorization
     */
   def leftFactorize[A, L](leftFactor: Syntax[L], s: Syntax[A]): Syntax[A] = {
-    internal(leftFactor, s).complete(leftFactor)
+    internal(leftFactor, s, true).complete(leftFactor)
   }
 
   /** Left factorizes a single terminal in the syntax.
@@ -141,8 +143,18 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
     leftFactorize(Elem(leftFactor), s)
   }
   
-  def leftFactorOut[A, L](leftFactor: Syntax[L], s: Syntax[A]): (Syntax[L => A], Syntax[A]) = {
-    val r = internal(leftFactor, s)
+  /** Remove (factor out) a prefix from a syntax.
+    * 
+    * @param leftFactor Syntax to left factor out.
+    * @param s Syntax on which to apply the factorization.
+    * @param recTerm Whether recursive nodes should be broken or not.
+    * @return The alternative of the syntax where the prefix could be left factored, and
+    *   another syntax where the prefix could not be removed.
+    * 
+    * @group factorization
+    */
+  def leftFactorOut[A, L](leftFactor: Syntax[L], s: Syntax[A], recTerm: Boolean = true): (Syntax[L => A], Syntax[A]) = {
+    val r = internal(leftFactor, s, recTerm)
     (r.factorized, r.alternative)
   }
 

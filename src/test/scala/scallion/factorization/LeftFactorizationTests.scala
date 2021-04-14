@@ -6,9 +6,8 @@ import org.scalatest._
 class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization with Substitution with StringSyntaxes {
   def testGrammar[R](grammar: Syntax[R], factorized: Syntax[R], inputs: Seq[(String, R)]) {
     assertHasConflicts(grammar)
-    val lInputs = inputs.map( p => (Lexer(p._1), p._2) )
     val parser = assertIsLL1(factorized)
-    assertParseResults(parser, lInputs)
+    assertParseResults(parser, inputs, Lexer.apply(_))
   }
 
   "Left factorization" should "work on simple grammar" in {
@@ -104,5 +103,32 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
     )
     
     testGrammar(grammar, factorized, tests)
+  }
+
+  "Left factor out" should "correctly remove the prefix" in {
+    val grammar = letter ~ number | number ~ letter
+    val (factorized, remains) = leftFactorOut(letter, grammar)
+
+    assertStructuralEquivalence(number ~ letter)(remains)
+    val parser = assertIsLL1(factorized)
+    assertParses(parser, Seq("1", "2"), Lexer.apply(_))
+  }
+
+  it should "break recursives when asked to" in {
+    val grammar = recursive( letter )
+    val (factorized, remains) = leftFactorOut(letter, grammar, true)
+
+    val expected: Syntax[Token => Token] = recursive( epsilon(()).map(_ => x => x) )
+
+    assertStructuralEquivalence(expected)(factorized)
+    assertResult(failure)(remains)
+  }
+
+  it should "not break recursives when asked not to" in {
+    val grammar = recursive( letter )
+    val (factorized, remains) = leftFactorOut(letter, grammar, false)
+
+    assertResult(failure)(factorized)
+    assertResult(grammar)(remains)
   }
 }

@@ -52,6 +52,7 @@ trait BooleanSyntaxes extends Syntaxes {
 
   def getKind(t: Token): Kind = t
   def getValue(k: Kind): Token = k
+  def valuePrinter(t: Token): String = if(t){ "T" }else{ "F" }
 
   val tru = elem(true)
   val falz = elem(false)

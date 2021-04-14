@@ -1,9 +1,25 @@
 package scallion
 
+import scallion.visualization.{Graphs, Grammars}
 import scallion.properties.StructuralEquivalence
 import org.scalatest._
+import scala.util.Random
+import scala.collection.mutable.{Set, HashMap, MultiMap}
 
-trait ParsersTestHelper extends FlatSpec with Parsers with visualization.Graphs with Enumeration with StructuralEquivalence {
+trait ParsersTestHelper extends FlatSpec with Inside
+with Parsers with Graphs with Grammars with Enumeration with StructuralEquivalence {
+  import ParsersTestHelper._
+
+  def generateSample[A](valuer: Kind => Token, printer: Token => String = _.toString)(generator: Syntax[A])(count: SampleSize): List[Iterator[Token]] = {
+    val samples = Enumerator(generator).take(count.value).toList.map(_.map(valuer))
+    if(PrintSamples > 0){
+      println(s"Random samples (among ${samples.size}): ")
+      RNG.shuffle(samples.take(PrintSamples*10)).take(PrintSamples).foreach(
+        sample => println(sample.map(printer).mkString)
+      )
+    }
+    samples
+  }
 
   def assertHasConflicts(syntax: Syntax[_]): Unit = {
     assertThrows[ConflictException](Parser(syntax))
@@ -15,7 +31,8 @@ trait ParsersTestHelper extends FlatSpec with Parsers with visualization.Graphs 
     }
     catch{
       case ConflictException(conflicts) => {
-        fail(debugString(syntax))
+        outputGraph(syntax, s"${suiteName}_unexpectedly_not_ll1")
+        fail(if(PrintConflictsReport){ debugString(syntax) }else{ "The syntax is not LL1 !" })
       }
     }
   }
@@ -29,9 +46,20 @@ trait ParsersTestHelper extends FlatSpec with Parsers with visualization.Graphs 
 
   def assertParses[A](parser: Parser[A], input: Seq[Token]): A = assertParses(parser, input.iterator)
 
-  def assertParses[A](parser: Parser[A], generator: Syntax[A], valuer: Kind => Token, count: Int): Seq[A] = {
-    // toBuffer required to avoid lazy evaluation (which would result in nothing being tested)
-    Enumerator(generator).take(count).map(input => assertParses(parser, input.map(valuer))).toBuffer
+  def assertParses[A](parser: Parser[A], inputs: Seq[Seq[Token]]): Seq[A] = {
+    inputs.map{
+      case input => assertParses(parser, input)
+    }
+  }
+
+  def assertParses[A, I](parser: Parser[A], inputs: Seq[I], lexer: I => Seq[Token]): Seq[A] = {
+    assertParses(parser, inputs.map(lexer(_)))
+  }
+
+
+
+  def assertParses[A](valuer: Kind => Token, printer: Token => String = _.toString)(parser: Parser[A], generator: Syntax[A], count: SampleSize): Seq[A] = {
+    generateSample(valuer, printer)(generator)(count).map(input => assertParses(parser, input))
   }
 
   def assertParseResult[A](expected: A)(parser: Parser[A], input: Seq[Token]): A = {
@@ -46,7 +74,74 @@ trait ParsersTestHelper extends FlatSpec with Parsers with visualization.Graphs 
     }
   }
 
+  def assertParseResults[A, I](parser: Parser[A], inputsExpected: Seq[(I, A)], lexer: I => Seq[Token]): Seq[A] = {
+    assertParseResults(parser, inputsExpected.map(p => (lexer(p._1), p._2)))
+  }
+
   def assertStructuralEquivalence[A](expected: Syntax[A])(actual: Syntax[A]): Syntax[A] = {
+    import Syntax._
+    val recs = new HashMap[RecId, Set[RecId]] with MultiMap[RecId, RecId]
+
+    def constructName(s: Syntax[_]): String = {
+      s match {
+        case Elem(e)  => s"Elem(${e})"
+        case Sequence(_, _) => "Sequence"
+        case Disjunction(_, _) => "Disjunction"
+        case Transform(_, _, _) => "Transform"
+        case Marked(m, _) => s"Marked(${m})"
+        case Success(s) => s"Success(${s})"
+        case Failure()  => "Failure"
+        case Recursive(id, _) => s"Recursive(${id})"
+      }
+    }
+
+    def iter(actual: Syntax[_], expected: Syntax[_], str: String): Unit = {
+      val sep = "\n\t- "
+      (actual, expected) match {
+        case (Elem(e1), Elem(e2)) => 
+          assert(e1 == e2, s"${str}${sep}Element mismatch: `${e1}` is not `${e2}`")
+        case (Sequence(l1, r1), Sequence(l2, r2)) => { 
+          iter(l1, l2, s"${str}${sep}Sequence (left)")
+          iter(r1, r2, s"${str}${sep}Sequence (right)") 
+        }
+        case (Disjunction(l1, r1), Disjunction(l2, r2)) => { 
+          iter(l1, l2, s"${str}${sep}Disjunction (left)")
+          iter(r1, r2, s"${str}${sep}Disjunction (right)") 
+        }
+        case (Transform(_, _, i1), Transform(_, _, i2)) => 
+          iter(i1, i2, s"${str}${sep}Transform")
+        case (Marked(m1, i1), Marked(m2, i2)) => 
+          iter(i1, i2, s"${str}${sep}Marked (`${m1}` and `${m2}`)")
+        case (Success(s1), Success(s2)) => 
+          assert(s1 == s2, s"${str}${sep}Success mismatch: `${s1}` is not `${s2}`")
+        case (Failure(), Failure()) =>
+          ()
+        case (Recursive(id1, in1), Recursive(id2, in2)) => 
+          if(recs.entryExists(id1, _ == id2)){
+            ()
+          }
+          else{
+            recs.addBinding(id1, id2)
+            iter(in1, in2, s"${str}${sep}Recursive (${id1} and ${id2})")
+          }
+        case _ => 
+          fail(s"${str}${sep}Construct mismatch: `${constructName(actual)}` is not `${constructName(expected)}`")
+      }
+    }
+
+    try{
+      iter(expected, actual, "Syntaxes not equivalent: ")
+    }
+    catch{
+      case e: Throwable if OutputGraphsOnFailure => {
+        outputGraph(expected, s"${suiteName}_expected")
+        outputGraph(actual, s"${suiteName}_actual")
+        throw e
+      }
+      case e: Throwable => throw e
+    }
+
+    // Additional check to ensure coherence
     assert(structurallyEquivalent(actual, expected))
     actual
   }
@@ -57,6 +152,30 @@ trait ParsersTestHelper extends FlatSpec with Parsers with visualization.Graphs 
   }
 
   def outputGraph[A](syntax: Syntax[A], name: String): Unit = {
-    graphs.outputGraph(syntax, "target/graphs", name)
+    graphs.outputGraph(syntax, GraphDirectory, name)
   }
+
+  def printGrammar[A](syntax: Syntax[A], name: String = "<unspecified>"): Unit = {
+    println(s"Grammar ${name}:")
+    println(grammars.getGrammar(syntax).pretty())
+  }
+}
+
+object ParsersTestHelper {
+  final case class SampleSize(value: Int)
+
+  val TinySample = SampleSize(500)
+  val SmallSample = SampleSize(1000)
+  val MediumSample = SampleSize(3000)
+  val BigSample = SampleSize(5000)
+  val HugeSample = SampleSize(10000)
+
+  val PrintConflictsReport: Boolean = false
+
+  val RNG: Random = new Random(123854514)
+  val PrintSamples: Int = 0
+  require(PrintSamples >= 0)
+
+  val OutputGraphsOnFailure = true
+  val GraphDirectory = "target/graphs"
 }
