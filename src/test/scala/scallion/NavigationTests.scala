@@ -113,28 +113,36 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
     }while(walk.current.isDefined)
   }
 
-  "Syntax walk" should "work on simple example" in {
-    val walk = Zipper(simpleSyntax).walk
+  "Syntax walk" should "work on simple example (post order)" in {
+    val walk = Zipper(simpleSyntax).walkPostOrder
     val expected = List(tru, falz, tru ~ falz, mapFragment, epsT, simpleSyntax).iterator
+
+    assertWalkIteratorCorrespondance(walk, expected)
+  }
+
+  it should "work on simple example (pre order)" in {
+    val walk = Zipper(simpleSyntax).walkPreOrder
+    val expected = List(simpleSyntax, mapFragment, tru ~ falz, tru, falz, epsT).iterator
+
     assertWalkIteratorCorrespondance(walk, expected)
   }
 
   it should "be filterable" in {
-    val walk = Zipper(simpleSyntax).walk.filter(predicate)
+    val walk = Zipper(simpleSyntax).walkPostOrder.filter(predicate)
     val expected = List(tru, falz, simpleSyntax).iterator
 
     assertWalkIteratorCorrespondance(walk, expected)
   }
 
   it should "be usable as transformative tool" in {
-    val walk = Zipper(simpleSyntax).walk.filter(leafsPredicate)
+    val walk = Zipper(simpleSyntax).walkPostOrder.filter(leafsPredicate)
     val expected = (any ~ any).map(orComb) | any
 
     assertStructuralEquivalence(expected)(walk.mapNexts(_ => any).close)
   }
 
   it should "be list/iterator convertible" in {
-    val walk = Zipper(simpleSyntax).walk
+    val walk = Zipper(simpleSyntax).walkPostOrder
     val expected = List(tru, falz, tru ~ falz, mapFragment, epsT, simpleSyntax)
 
     assertResult(expected)(walk.toList)
@@ -142,7 +150,7 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
   }
 
   it should "be restartable" in {
-    val walk = Zipper(simpleSyntax).walk.filter(predicate)
+    val walk = Zipper(simpleSyntax).walkPostOrder.filter(predicate)
     val expected = List(tru, falz, simpleSyntax)
 
     assertWalkIteratorCorrespondance(walk, expected.iterator)
@@ -151,7 +159,7 @@ class NavigationTests extends ParsersTestHelper with SyntaxesNavigation with Boo
   }
 
   it should "map every element, regardless of current state" in {
-    val walk = Zipper(simpleSyntax).walk.filter(leafsPredicate)
+    val walk = Zipper(simpleSyntax).walkPostOrder.filter(leafsPredicate)
     walk.next
     walk.next
     val expected = (any ~ any).map(orComb) | any

@@ -1,13 +1,14 @@
 package scallion
 package factorization
 
+import scala.collection.immutable.Map
 import scala.collection.mutable.HashMap
 
 /** Contains functions to apply substitution to a syntax.
   *
   * @groupname factorization Factorization
   */
-trait Substitution { self: Syntaxes => 
+trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesProperties => 
 
   import Syntax._
 
@@ -47,15 +48,37 @@ trait Substitution { self: Syntaxes =>
     *
     * @group factorization
     */
-  def substitute[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A], elim: Boolean = false): Syntax[B] = {
-    val substs = HashMap[Syntax[_], Syntax[_]]()
-    substs += (original -> (if(elim){ iter(subst) }else{ subst })) 
+  def substitute[A, B](in: Syntax[A], original: Syntax[B], subst: Syntax[B]): Syntax[A] = {
+    val map: Map[Syntax[_], Syntax[_]] = Map((original, subst))
+    substitute(in, map, false)
+  }
+
+  // TODO: try to find something for superstructure substitution + elimination (= infinite rec)
+  def substitute[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]], elim: Boolean = false): Syntax[A] = {
+    def makeRecursive[B](s: Syntax[B]): Syntax[B] = 
+      if(isRecursive(s)){ s }else{ recursive(s) }
+    
+    trait LazySyntax { def syntax[A]: Syntax[A] }
+    object LazySyntax{
+      def apply(s: => Syntax[_]) = new LazySyntax {
+        lazy val syntaxVal = s
+        override def syntax[A] = syntaxVal.asInstanceOf[Syntax[A]]
+      }
+    }
+
+    val substs = HashMap[Syntax[_], LazySyntax]()
+    for(s <- substitutions.filter(p => p._1 != p._2)){
+      substs += (s._1 -> LazySyntax(
+        if(elim){ iter(s._2) }
+        else{ s._2 }
+      )) 
+    }
 
     def iter[C](current: Syntax[C]): Syntax[C] = {
       // Most of the redundant code could be factorized into a generic function,
       // but the type system + type erasure won't allow it.
       current match {
-        case _ if substs.contains(current)=> substs.get(current).get.asInstanceOf[Syntax[C]]
+        case _ if substs.contains(current)=> substs.get(current).get.syntax[C]
         case e: Elem                      => e 
         case s: Success[_]                => s 
         case f: Failure[_]                => f 
@@ -77,15 +100,24 @@ trait Substitution { self: Syntaxes =>
           val nInner = iter(inner)
           if(nInner != inner){ nInner.mark(mark) }else{ m }
         }
-        case Recursive(_, inner)          => {
-          substs += ( current -> recursive(iter(inner)) )
-          substs.get(current).get.asInstanceOf[Syntax[C]]
+        case Recursive(id, inner)          => {
+          substs += ( current -> LazySyntax(recursive(iter(inner))) )
+          substs.get(current).get.syntax[C]
         }
       }
     }
 
     iter(in)
   }
+
+  def substitute[A](in: Syntax[A], substitutions: (Syntax[_], Syntax[_])*): Syntax[A] = 
+    substitute(in, substitutions.toMap, false)
+
+  def eliminate[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]]): Syntax[A] = 
+    substitute(in, substitutions, true)
+
+  def eliminate[A](in: Syntax[A], substitutions: (Syntax[_], Syntax[_])*): Syntax[A] = 
+    substitute(in, substitutions.toMap, true)
 
   /** Eliminate a Syntax by substituting it with another one.
     *
@@ -104,6 +136,8 @@ trait Substitution { self: Syntaxes =>
     * @group factorization
     */
   def eliminate[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A]): Syntax[B] = {
-    return substitute(in, original, subst, true)
+    val map: Map[Syntax[_], Syntax[_]] = Map((original, subst))
+    substitute(in, map, true)
   }
+
 }

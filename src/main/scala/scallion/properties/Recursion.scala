@@ -7,6 +7,15 @@ import scala.collection.mutable.{Set => MSet, HashSet}
 trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesProperties =>
   import Syntax._ 
 
+  /** Indicate if a syntax is recursive.
+   * 
+   * @group property
+   */
+  def isRecursive(syntax: Syntax[_]): Boolean = syntax match {
+    case _: Recursive[_]  => true
+    case _                => false
+  }
+
   /** List all the recursives in the syntax tree.
     * 
     * The recursives are ordered by ascending
@@ -23,7 +32,7 @@ trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesPropert
     }
 
     def retrieveRecursives(syntax: Syntax[_]): List[Recursive[_]] = 
-      Zipper(syntax).walk.filter(isRecursive).toList.map(_.asInstanceOf[Recursive[_]])
+      Zipper(syntax).walkPostOrder.filter(isRecursive).toList.map(_.asInstanceOf[Recursive[_]])
 
     def iter(queue: Queue[Recursive[_]], result: List[Recursive[_]]): List[Recursive[_]] = {
       queue.dequeueOption match {
@@ -38,18 +47,18 @@ trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesPropert
     iter(Queue.empty ++ retrieveRecursives(syntax), Nil)
   }
 
-  /**
-    * Search if the syntax contains any left-recursive
+  /** Search if the syntax contains any left-recursive
     * non-terminal, and return the left-recursives if so.
+    * 
+    * @see [[scallion.properties.Recursion.isLeftRecursive]]
     * 
     * @param syntax The syntax to analyze.
     * @return The left-recursive non-terminals.
     *
     * @group property
     */
-  def findLeftRecursions(syntax: Syntax[_]): Set[Recursive[_]] = {
+  def findLeftRecursives(syntax: Syntax[_]): Set[Recursive[_]] = {
     val analyzed: MSet[Recursive[_]] = new HashSet()
-
 
     def iter(syntax: Syntax[_], leftmost: Boolean, recs: Set[Syntax[_]]): Set[Recursive[_]] = syntax match {
       case Elem(_)                => Set.empty
@@ -86,10 +95,53 @@ trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesPropert
     * @group property  
     */
   def hasLeftRecursion(syntax: Syntax[_]): Boolean = {
-    !findLeftRecursions(syntax).isEmpty
+    !findLeftRecursives(syntax).isEmpty
   }
 
+  /** Indicate if this syntax is left recursive.
+    * 
+    * A syntax is left-recursive if it appears in itself
+    * as the first token consumer (i.e. it is either the first
+    * symbol or is only prefixed by nullable syntaxes). 
+    *
+    * @param syntax The syntax to test.
+    */
   def isLeftRecursive(syntax: Recursive[_]): Boolean = {
-    findLeftRecursions(syntax).contains(syntax)
+    def iter(current: Syntax[_], recs: Set[RecId]): Boolean = current match {
+      case _ if syntax == current => true
+      case Elem(_)                => false
+      case Success(_)             => false
+      case Failure()              => false
+      case Sequence(l, r)         => iter(l, recs) || ( getProperties(l).isNullable && iter(r, recs) )
+      case Disjunction(l, r)      => iter(l, recs) || iter(r, recs)
+      case Transform(_, _, inner) => iter(inner, recs)
+      case Marked(_, inner)       => iter(inner, recs)
+      case Recursive(id, inner)   => !recs.contains(id) && iter(inner, recs + id)
+    }
+
+    iter(syntax.inner, Set.empty)
+  }
+
+  /** Indicate if this syntax is direct left recursive.
+    * 
+    * A syntax is direct left-recursive if it appears in itself
+    * as the first token consumer without breaking recursive constructs.
+    *
+    * @param syntax
+    * @return
+    */
+  def isDirectLeftRecursive(syntax: Recursive[_]): Boolean = {
+    def iter(current: Syntax[_]): Boolean = current match {
+      case Elem(_)                => false
+      case Success(_)             => false
+      case Failure()              => false
+      case Sequence(l, r)         => iter(l) || (getProperties(l).isNullable && iter(r))
+      case Disjunction(l, r)      => iter(l) || iter(r)
+      case Transform(_, _, inner) => iter(inner)
+      case Marked(_, inner)       => iter(inner)
+      case _: Recursive[_]        => current == syntax
+    }
+
+    iter(syntax.inner)
   }
 }

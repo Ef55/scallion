@@ -42,7 +42,9 @@ trait SyntaxesNavigation { self: Syntaxes =>
   }
 
   object Walk {
-    def apply[A](zipper: Zipper[A]): Walk[A] = zipper.walk
-    def apply[A](syntax: Syntax[A]): Walk[A] = Walk(Zipper(syntax))
+    def postOrder[A](zipper: Zipper[A]): Walk[A] = zipper.walkPostOrder
+    def postOrder[A](syntax: Syntax[A]): Walk[A] = postOrder(Zipper(syntax))
+    def preOrder[A](zipper: Zipper[A]): Walk[A] = zipper.walkPreOrder
+    def preOrder[A](syntax: Syntax[A]): Walk[A] = preOrder(Zipper(syntax))
   }
 }

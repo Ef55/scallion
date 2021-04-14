@@ -310,7 +310,11 @@ object BinaryTreeZipper {
     }
 
     /** Initiate a walk on the currently focused subtree. */
-    def walk: Walk[T, S] = Walk(this)
+    def walkPostOrder: Walk[T, S] = Walk.postOrder(this)
+
+
+    /** Initiate a walk on the currently focused subtree. */
+    def walkPreOrder: Walk[T, S] = Walk.preOrder(this)
   }
 
   /** Factory for zipper. 
@@ -420,8 +424,10 @@ object BinaryTreeZipper {
     * @group navigation
     */
   object Walk {
-    def apply[T: BinaryTreeConvertible, S](zipper: Zipper[T, S]): Walk[T, S] = new BaseWalk(zipper)
-    def apply[T: BinaryTreeConvertible](value: T): Walk[T, T] = Walk(Zipper(value))
+    def postOrder[T: BinaryTreeConvertible, S](zipper: Zipper[T, S]): Walk[T, S] = new PostOrderWalk(zipper)
+    def postOrder[T: BinaryTreeConvertible](value: T): Walk[T, T] = postOrder(Zipper(value))
+    def preOrder[T: BinaryTreeConvertible, S](zipper: Zipper[T, S]): Walk[T, S] = new PreOrderWalk(zipper)
+    def preOrder[T: BinaryTreeConvertible](value: T): Walk[T, T] = preOrder(Zipper(value))
 
     private def canGoUp[T](focus: Zipper[T, T]) = !focus.validDirections(Right, Up).isEmpty
 
@@ -435,7 +441,32 @@ object BinaryTreeZipper {
       newFocus
     }
 
-    private def gotoNext[T](focus: Zipper[T, T], start: Boolean): Option[Zipper[T, T]] = 
+    private def gotoFirstRight[T](focus: Zipper[T, T]): Option[Zipper[T, T]] = {
+      if(focus.validDirection(Right)){
+        Some(focus.right)
+      }
+      else if(focus.validDirection(Up)){
+        gotoFirstRight(focus.up)
+      }
+      else{
+        None
+      }
+    }
+
+    private def gotoNextPreOrder[T](focus: Zipper[T, T], start: Boolean): Option[Zipper[T, T]] = {
+      val downDir = focus.validDirections(DownLeft, Down).headOption
+      if(start){
+        Some(focus)
+      }
+      else if(downDir.isDefined){
+        Some(focus.move(downDir.get))
+      }
+      else{
+        gotoFirstRight(focus)
+      }
+    }
+
+    private def gotoNextPostOrder[T](focus: Zipper[T, T], start: Boolean): Option[Zipper[T, T]] = 
       if(start){
         Some(gotoLeftmost(focus))
       }
@@ -451,37 +482,39 @@ object BinaryTreeZipper {
         }
       }
 
-    private final class BaseWalk[T: BinaryTreeConvertible, S] private
+
+    private sealed abstract class ExtremaOrderWalk[T: BinaryTreeConvertible, S] private
     (private var tree: Zipper[T, T], in: Zipper[T, S])
     extends Walk[T, S](in) { 
       private var startFlag: Boolean = true
       private var doneFlag: Boolean = false
 
-      private[util] def this(root: Zipper[T, S]) {
+      protected def this(root: Zipper[T, S]) {
         this(Zipper(root.focus), root)
       }
 
-      protected def focus: Zipper[T, T] = tree
+      protected final def focus: Zipper[T, T] = tree
+      protected def gotoNext(focus: Zipper[T, T], start: Boolean): Option[Zipper[T, T]]
 
-      def restart: BaseWalk[T, S] = {
+      override final def restart: ExtremaOrderWalk[T, S] = {
         tree = tree.zipUp
         startFlag = true
         doneFlag = false
         this
       }
 
-      override def current: Option[T] = if(doneFlag || startFlag){ None }else{ Some(tree.focus) }
-      override def next: Option[T] = { 
+      override final def current: Option[T] = if(doneFlag || startFlag){ None }else{ Some(tree.focus) }
+      override final def next: Option[T] = { 
         gotoNext(tree, startFlag) match {
-          case Some(zipper) =>  tree = zipper
+          case Some(zipper) => tree = zipper
           case None         => doneFlag = true
         }
         startFlag = false
         current
       }
-      override def done: Boolean = doneFlag
+      override final def done: Boolean = doneFlag
 
-      override def replaceCurrent(replacement: T): T =
+      override final def replaceCurrent(replacement: T): T =
         if(current.isEmpty){
           throw new IllegalStateException("Cannot replace current if there is none !")
         }
@@ -491,15 +524,30 @@ object BinaryTreeZipper {
           replaced
         }
 
-      override def toList: List[T] = {
+      override final def toList: List[T] = {
         var optNext = gotoNext(tree, startFlag)
         var ls: List[T] = Nil
         while(optNext.isDefined){
           ls = optNext.get.focus :: ls
-          optNext = gotoNext(optNext.get, false)
+          optNext = gotoNextPostOrder(optNext.get, false)
         }
         ls.reverse
       }
+    }
+
+
+    private final class PostOrderWalk[T: BinaryTreeConvertible, S] private[scallion]
+    (root: Zipper[T, S]) extends ExtremaOrderWalk[T, S](root) { 
+
+      protected def gotoNext(focus: Zipper[T, T], start: Boolean): Option[Zipper[T, T]] = 
+        gotoNextPostOrder[T](focus, start)
+    }
+
+    private final class PreOrderWalk[T: BinaryTreeConvertible, S] private[scallion]
+    (root: Zipper[T, S]) extends ExtremaOrderWalk[T, S](root) { 
+
+      protected def gotoNext(focus: Zipper[T, T], start: Boolean): Option[Zipper[T, T]] = 
+        gotoNextPreOrder[T](focus, start)
     }
 
     private final class FilteredWalk[T: BinaryTreeConvertible, S] private[util]
