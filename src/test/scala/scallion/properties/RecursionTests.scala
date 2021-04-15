@@ -68,8 +68,6 @@ class RecursionTests extends FlatSpec with Parsers with Recursion with BooleanSy
     val grammar = tru ~ rec1 ~ any
 
     val allRecs: List[Syntax[_]] = List(rec1, rec2, rec3, rec4, rec5, rec6, rec7)
-    println(allRecs)
-    println(listRecursives(grammar))
     assertResult(allRecs)(listRecursives(grammar))
   }
 

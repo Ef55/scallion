@@ -1,31 +1,68 @@
 package scallion
 package factorization
 
-trait LeftRecursion extends LeftFactorization with Substitution with Unfold with properties.LeftRecursion { self: Syntaxes with SyntaxesProperties =>
+trait LeftRecursion extends LeftFactorization 
+with Substitution with Unfold with SyntaxesNavigation with properties.Recursion { self: Syntaxes with SyntaxesProperties =>
   import Syntax._
 
-  def eliminateDirectLeftRecursion[A](syntax: Recursive[A]): Recursive[A] = {
-    val (recPart, simplePart) = leftFactorOut(syntax, syntax.inner)
-    val factorized = recursive( (simplePart ~ many(recPart)).map{
-      case scallion.~(base, follows) => follows.foldLeft(base)((current, follow) => follow(current))
-    })
+  def eliminateDirectLeftRecursion[A](syntax: Recursive[A]): Syntax[A] = {
+    if(isDirectLeftRecursive(syntax)){
+      val (recPart, simplePart) = leftFactorOut(syntax, syntax.inner, false)
+      val factorized = { 
+        (simplePart ~ many(recPart)).map{
+          case scallion.~(base, follows) => follows.foldLeft(base)((current, follow) => follow(current))
+        }
+      }
 
-    eliminate(factorized, syntax, factorized).asInstanceOf[Recursive[A]]
-  }
-
-  def eliminateLeftRecursion[A](syntax: Recursive[A]): Recursive[A] = {
-    if(!isLeftRecursive(syntax)){
-      syntax
+      factorized
     }
     else{
-      val direct = eliminateDirectLeftRecursion(syntax)
-      if(!isLeftRecursive(direct)){
-        direct
+      syntax
+    }
+  }
+
+  private def eliminateDirectLeftRecursionUntyped(syntax: Recursive[_]): Syntax[_] = {
+    eliminateDirectLeftRecursion(syntax)
+  }
+
+  private[scallion] def eliminateDirectLeftRecursions[A](syntax: Syntax[A]): Syntax[A] = {
+    val map = listRecursives(syntax)
+        .map(rec => ( rec, eliminateDirectLeftRecursionUntyped(rec) ))
+        .toMap[Syntax[_], Syntax[_]]
+    eliminate(
+      syntax, 
+      map
+    )
+  }
+
+  private[scallion] def unfoldLeftmostRecursivesOfLeftRecursives[A](syntax: Syntax[A]): Syntax[A] = {
+    listRecursives(syntax).foreach(r => assert(!isDirectLeftRecursive(r), r.id))
+    val map = listRecursives(syntax)
+        .filter(isLeftRecursive(_))
+        .take(1)
+        .map(rec => (
+            rec, 
+            if(isDirectLeftRecursive(rec)){ unfoldLeftmostRecursives(rec.inner) }else{ recursive( unfoldLeftmostRecursives(rec.inner)) } 
+          ))
+        .toMap[Syntax[_], Syntax[_]]
+    eliminate(syntax, map)
+  }
+
+  private[scallion] def eliminateLeftRecursionsStep[A](syntax: Syntax[A]): Syntax[A] = {
+    unfoldLeftmostRecursivesOfLeftRecursives(eliminateDirectLeftRecursions(syntax))
+  }
+
+  def eliminateLeftRecursions[A](syntax: Syntax[A]): Syntax[A] = {
+    def iter(s: Syntax[A]): Syntax[A] = {
+      if(!hasLeftRecursion(s)){
+        s
       }
       else{
-        eliminateLeftRecursion(unfoldLeftmostRecursives(direct).asInstanceOf[Recursive[A]])
+        iter(eliminateLeftRecursionsStep(s))
       }
     }
+
+    iter(syntax)
   }
 
 }

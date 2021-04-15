@@ -164,6 +164,8 @@ with Parsers with Graphs with Grammars with Enumeration with StructuralEquivalen
 object ParsersTestHelper {
   final case class SampleSize(value: Int)
 
+  val EmptySample = SampleSize(0)
+  val MinusculeSample = SampleSize(10)
   val TinySample = SampleSize(500)
   val SmallSample = SampleSize(1000)
   val MediumSample = SampleSize(3000)
