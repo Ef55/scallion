@@ -1,6 +1,7 @@
 package scallion
 package factorization
 
+import scallion.util.Logger
 import scala.collection.immutable.Map
 import scala.collection.mutable.HashMap
 
@@ -11,6 +12,11 @@ import scala.collection.mutable.HashMap
 trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesProperties => 
 
   import Syntax._
+
+  private def ifRec[U](s: Syntax[_], f: Recursive[_] => U, other: U): U = s match{
+    case r: Recursive[_]  => f(r)
+    case _                => other
+  }
 
   /** Substitutes a syntax with another one.
     *
@@ -55,9 +61,7 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
 
   // TODO: try to find something for superstructure substitution + elimination (= infinite rec)
   def substitute[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]], elim: Boolean = false): Syntax[A] = {
-    def makeRecursive[B](s: Syntax[B]): Syntax[B] = 
-      if(isRecursive(s)){ s }else{ recursive(s) }
-    
+
     trait LazySyntax { def syntax[A]: Syntax[A] }
     object LazySyntax{
       def apply(s: => Syntax[_]) = new LazySyntax {
@@ -68,6 +72,7 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
 
     val substs = HashMap[Syntax[_], LazySyntax]()
     for(s <- substitutions.filter(p => p._1 != p._2)){
+      ifRec(s._1, r => Logger.msg("Subst", s"Rec ${r.id} -> Provided (rec? ${ifRec(s._2, _.id, "no")}) "), ())
       substs += (s._1 -> LazySyntax(
         if(elim){ iter(s._2) }
         else{ s._2 }
@@ -101,7 +106,9 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
           if(nInner != inner){ nInner.mark(mark) }else{ m }
         }
         case Recursive(id, inner)          => {
-          substs += ( current -> LazySyntax(recursive(iter(inner))) )
+          val newRec = recursive(iter(inner)).asInstanceOf[Recursive[_]]
+          substs += ( current -> LazySyntax(newRec) )
+          Logger.msg("Subst", s"Rec ${id} -> Rec ${newRec.id} ")
           substs.get(current).get.syntax[C]
         }
       }

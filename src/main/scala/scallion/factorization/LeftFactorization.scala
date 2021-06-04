@@ -1,6 +1,8 @@
 package scallion
 package factorization
 
+import scallion.util.Logger
+
 /** Contains functions to apply left factorization to a syntax.
   *
   * @groupname factorization Factorization
@@ -50,10 +52,21 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
       )
     }
 
-    def asRecursive: Factorization[A, L] = {
+    def mark(mark: Mark): Factorization[A, L] = {
+      Factorization(
+        factorized.mark(mark ++ "-Fol"), 
+        alternative.mark(mark ++ "-Alt")
+      )
+    }
+
+    def asRecursive(oldId: RecId): Factorization[A, L] = {
       def mkRec[B](s: Syntax[B]) = s match {
         case Failure()  => s
-        case _          => recursive(s)
+        case _          => {
+          val newRec = recursive(s).asInstanceOf[Recursive[B]]
+          Logger.msg("LefFac", s"Rec ${oldId} -> ${newRec.id}")
+          newRec
+        }
       }
 
       Factorization(
@@ -99,7 +112,7 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
         case Sequence(l, r)                   => {
           val lIter = iter(l)
           if(getProperties(lIter.alternative).isNullable){
-            val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative)
+            val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative, recTerm)
             (Factorization(lIter.factorized, lNotNullPart) ~ r) | iter(r).prepend(lNullPart)
           }
           else{
@@ -108,10 +121,10 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
         }
         case Disjunction(l, r)                => iter(l) | iter(r)
         case Transform(fun, inv, inner)       => iter(inner).map(fun, inv)
-        case Marked(mark, inner)              => iter(inner) // mark ignored
+        case Marked(mark, inner)              => iter(inner).mark(mark)
         case s: Success[_]                    => Factorization.fail(s)
         case Failure()                        => Factorization(failure, failure)
-        case Recursive(_, inner) if recTerm   => iter(inner).asRecursive
+        case Recursive(id, inner) if recTerm  => iter(inner).asRecursive(id)
         case Recursive(_, _) if !recTerm      => Factorization.fail(s)
       }
     }

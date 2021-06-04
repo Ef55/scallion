@@ -87,10 +87,10 @@ trait Graphs { self: Syntaxes =>
 
             ("map", Seq(innerId))
           }
-          case Recursive(_, inner) => {
+          case Recursive(id, inner) => {
             val innerId = inspect(inner)
 
-            ("rec", Seq(innerId))
+            ("rec"+id, Seq(innerId))
           }
         }
 

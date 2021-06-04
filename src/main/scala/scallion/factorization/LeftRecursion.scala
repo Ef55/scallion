@@ -1,6 +1,8 @@
 package scallion
 package factorization
 
+import scallion.util.Logger
+
 trait LeftRecursion extends LeftFactorization 
 with Substitution with Unfold with SyntaxesNavigation with properties.Recursion { self: Syntaxes with SyntaxesProperties =>
   import Syntax._
@@ -8,12 +10,16 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
   def eliminateDirectLeftRecursion[A](syntax: Recursive[A]): Syntax[A] = {
     if(isDirectLeftRecursive(syntax)){
       val (recPart, simplePart) = leftFactorOut(syntax, syntax.inner, false)
-      val factorized = { 
-        (simplePart ~ many(recPart)).map{
+      val rec = many(recPart)
+      val factorized = recursive { 
+        (simplePart ~ rec).map{
           case scallion.~(base, follows) => follows.foldLeft(base)((current, follow) => follow(current))
         }
       }
 
+      Logger.msg("DirLRE", s"Treating ${syntax.id} -> ${factorized.asInstanceOf[Recursive[_]].id}")
+      Logger.msg("DirLRE", s"Simple part Recursives: ${listRecursives(simplePart).map(_.id)}")
+      Logger.msg("DirLRE", s"Recursive part Recursives: ${listRecursives(rec).map(_.id)}")
       factorized
     }
     else{
@@ -38,11 +44,11 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
   private[scallion] def unfoldLeftmostRecursivesOfLeftRecursives[A](syntax: Syntax[A]): Syntax[A] = {
     listRecursives(syntax).foreach(r => assert(!isDirectLeftRecursive(r), r.id))
     val map = listRecursives(syntax)
-        .filter(isLeftRecursive(_))
+        .filter(r => isLeftRecursive(r))
         .take(1)
         .map(rec => (
             rec, 
-            if(isDirectLeftRecursive(rec)){ unfoldLeftmostRecursives(rec.inner) }else{ recursive( unfoldLeftmostRecursives(rec.inner)) } 
+            recursive( unfoldLeftmostRecursives(rec.inner) )
           ))
         .toMap[Syntax[_], Syntax[_]]
     eliminate(syntax, map)

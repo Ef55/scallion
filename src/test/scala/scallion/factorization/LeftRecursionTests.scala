@@ -48,6 +48,20 @@ class LeftRecursionTests extends ParsersTestHelper with LeftRecursion with Boole
     assertResult(grammar)(eliminateDirectLeftRecursion(grammar))
   }
 
+  it should "generate non direct left recursives even with crossed recursion" in {
+    lazy val a: Recursive[Boolean] = 
+      recursive{ ( ((b ~ tru) ).map(orComb) | epsF).mark("A") }.asInstanceOf[Recursive[Boolean]]
+    lazy val b: Recursive[Boolean] = 
+      recursive{ ( (a ~ falz) | (b ~ falz) ).map(orComb).mark("B") }.asInstanceOf[Recursive[Boolean]]
+    val grammar = a
+
+    val factored = eliminateDirectLeftRecursions(grammar)
+
+    for(rec <- listRecursives(factored)){
+      assert(!isDirectLeftRecursive(rec), s"Direct left recursive ${rec.id}: \n${simpleRepr(rec.inner)}")
+    }
+  }
+
   "Left recursion elimination step" should "do nothing if the syntax has no left recursion" in {
     lazy val syntax1 = any ~ epsT
     lazy val syntax2: Syntax[Boolean] = (any ~ recursive(syntax2)).map(orComb)
@@ -56,7 +70,7 @@ class LeftRecursionTests extends ParsersTestHelper with LeftRecursion with Boole
     assertStructuralEquivalence(syntax2)(eliminateLeftRecursionsStep(syntax2))
   }
 
-  it should "solve example in two iterations" in {
+  it should "solve `chain 2` example in two iterations" in {
     lazy val a: Recursive[Boolean] = recursive{ (b ~ tru).map(orComb) | epsF }.asInstanceOf[Recursive[Boolean]]
     lazy val b: Recursive[Boolean] = recursive{ (a ~ falz).map(orComb) }.asInstanceOf[Recursive[Boolean]]
     val grammar = a
@@ -106,36 +120,20 @@ class LeftRecursionTests extends ParsersTestHelper with LeftRecursion with Boole
 
   it should behave like solveChainRecursion(20, ParsersTestHelper.MinusculeSample)
 
-  it should "solve example in XXX iterations" ignore {
+  it should "solve `two cycles` example in two iterations" in {
     lazy val a: Recursive[Boolean] = 
-      recursive{ ( ((b ~ tru) | (a ~ tru) ).map(orComb) | epsF).mark("A") }.asInstanceOf[Recursive[Boolean]]
+      recursive{ ( ((b ~ tru) ).map(orComb) | epsF).mark("A") }.asInstanceOf[Recursive[Boolean]]
     lazy val b: Recursive[Boolean] = 
       recursive{ ( (a ~ falz) | (b ~ falz) ).map(orComb).mark("B") }.asInstanceOf[Recursive[Boolean]]
     val grammar = a // Equivalent to (false | true)*
 
     assertHasConflicts(grammar)
-    outputGraph(grammar, "grammar")
-    printGrammar(grammar, "grammar")
 
-    // val step1 = eliminateLeftRecursionsStep(grammar)
-    // outputGraph(step1, "step1")
-    // printGrammar(step1, "step1")
-    // assertHasConflicts(step1)
+    val step1 = eliminateLeftRecursionsStep(grammar)
+    assertHasConflicts(step1)
 
-    // val step2 = eliminateLeftRecursionsStep(step1)
-    // outputGraph(step2, "step2")
-    // printGrammar(step2, "step2")
-    // val parser = assertIsLL1(step2)
-    val step1 = eliminateDirectLeftRecursions(grammar)
-    outputGraph(step1, "step1")
-    val step2 = unfoldLeftmostRecursivesOfLeftRecursives(step1)
-    outputGraph(step2, "step2")
-    val step3 = eliminateDirectLeftRecursions(step2)
-    outputGraph(step3, "step3")
-    val step4 = unfoldLeftmostRecursivesOfLeftRecursives(step3)
-    outputGraph(step4, "step4")
-
-    val parser = assertIsLL1(step4)
+    val step2 = eliminateLeftRecursionsStep(step1)
+    val parser = assertIsLL1(step2)
 
     assertParses(getValue(_), valuePrinter(_))(parser, grammar, ParsersTestHelper.MediumSample)
   }
@@ -144,7 +142,7 @@ class LeftRecursionTests extends ParsersTestHelper with LeftRecursion with Boole
     lazy val a: Recursive[Boolean] = recursive{ (b ~ tru).map(orComb) | epsF }.asInstanceOf[Recursive[Boolean]]
     lazy val b: Recursive[Boolean] = recursive{ (a ~ falz).map(orComb) }.asInstanceOf[Recursive[Boolean]]
 
-    val grammar = a // Equivalent to (false ~ true)*
+    val grammar = a
     val factorized = eliminateLeftRecursions(grammar)
 
     assertHasConflicts(grammar)
@@ -153,17 +151,49 @@ class LeftRecursionTests extends ParsersTestHelper with LeftRecursion with Boole
     assertParses(getValue(_), valuePrinter(_))(parser, grammar, ParsersTestHelper.SmallSample)
   }
 
-  it should "eliminate (in)direct left recursion without changing the underlying language" ignore {
+  it should "eliminate (in)direct left recursion without changing the underlying language" in {
     lazy val a: Recursive[Boolean] = 
       recursive{ ( (b ~ tru) | (a ~ tru) ).map(orComb) | epsF }.asInstanceOf[Recursive[Boolean]]
     lazy val b: Recursive[Boolean] = 
       recursive{ ( (a ~ falz) | (b ~ falz) ).map(orComb) }.asInstanceOf[Recursive[Boolean]]
-    val grammar = a // Equivalent to (false | true)*
+    val grammar = a
     val factorized = eliminateLeftRecursions(grammar)
 
     assertHasConflicts(grammar)
     val parser = assertIsLL1(factorized)
     
     assertParses(getValue(_), valuePrinter(_))(parser, grammar, ParsersTestHelper.MinusculeSample)
+  }
+}
+
+class LeftRecursionTests2 extends ParsersTestHelper with LeftRecursion with AlphabetSyntaxes {
+  "Left recursion elimination" should "make complexe left recursive syntax LL1" in {
+    lazy val a: Syntax[String] = 
+      recursive{ ( (b ~ 'a') | (a ~ 'a') ).map(concat) | eps }
+    lazy val b: Syntax[String] = 
+      recursive{ ( (a ~ 'b') | (b ~ 'b') ).map(concat) }
+
+    lazy val c: Syntax[String] = 
+      recursive{ ( (d ~ 'c') ).map(concat) | 'c' }
+    lazy val d: Syntax[String] = 
+      recursive{ ( (c ~ 'd') | (d ~ 'd') ).map(concat) }
+
+    lazy val e: Syntax[String] = 
+      recursive{ ( (f ~ 'e') ).map(concat) | eps }
+    lazy val f: Syntax[String] = 
+      recursive{ ( (g ~ 'f') ).map(concat) }
+    lazy val g: Syntax[String] = 
+      recursive{ ( (h ~ 'g') | (e ~ 'g') ).map(concat) }
+    lazy val h: Syntax[String] = 
+      recursive{ ( (e ~ 'h') ).map(concat) }
+
+    val grammar = a ~ 'X' ~ 't' | 'Y' ~ c ~ 't'  | e ~ 'Z' ~ a
+    val factorized = eliminateLeftRecursions(grammar)
+
+    assertHasConflicts(grammar)
+    val parser = assertIsLL1(factorized)
+    
+    assertParses(getValue(_), valuePrinter(_))(parser, grammar, ParsersTestHelper.SmallSample)
+    outputGraph(factorized, "without_final")
   }
 }
