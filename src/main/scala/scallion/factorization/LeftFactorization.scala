@@ -24,7 +24,7 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
       Factorization(
         (this.factorized ~ follow).map(
             _ match { case fl ~ r => (l: L) => scallion.~(fl(l), r)},
-            _ match { case _ => throw new IllegalArgumentException("Reverse transformation not yet implemented") }
+            _ match { case _ => throw new IllegalArgumentException("Reverse transformation not implemented") }
         ),
         this.alternative ~ follow
       )
@@ -34,7 +34,7 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
       Factorization(
         (prefix ~ this.factorized).map(
           _ match { case l ~ fr => (r: L) => scallion.~(l, fr(r)) },
-          _ match { case _ => throw new IllegalArgumentException("Reverse transformation not yet implemented") }
+          _ match { case _ => throw new IllegalArgumentException("Reverse transformation not implemented") }
         ),
         prefix ~ this.alternative
       )
@@ -44,16 +44,26 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
       Factorization(
         this.factorized.map(
           factorized => (l: L)  => fun(factorized(l)),
-          factorized => throw new IllegalArgumentException("Reverse transformation not yet implemented")
+          factorized => throw new IllegalArgumentException("Reverse transformation not implemented")
         ),
         this.alternative.map(fun, inv)
       )
     }
 
-    def asRecursive: Factorization[A, L] = {
+    def mark(mark: Mark): Factorization[A, L] = {
+      Factorization(
+        factorized.mark(mark ++ "-Fol"), 
+        alternative.mark(mark ++ "-Alt")
+      )
+    }
+
+    def asRecursive(oldId: RecId): Factorization[A, L] = {
       def mkRec[B](s: Syntax[B]) = s match {
         case Failure()  => s
-        case _          => recursive(s)
+        case _          => {
+          val newRec = recursive(s).asInstanceOf[Recursive[B]]
+          newRec
+        }
       }
 
       Factorization(
@@ -65,7 +75,7 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
     def complete(leftFactor: Syntax[L]): Syntax[A] = {
       (leftFactor ~ this.factorized).map(
         _ match { case l ~ f => f(l) },
-        (_: A) => throw new IllegalArgumentException("Reverse transformation not yet implemented")
+        (_: A) => throw new IllegalArgumentException("Reverse transformation not implemented")
       ) | this.alternative
     }
   }
@@ -99,7 +109,7 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
         case Sequence(l, r)                   => {
           val lIter = iter(l)
           if(getProperties(lIter.alternative).isNullable){
-            val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative)
+            val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative, recTerm)
             (Factorization(lIter.factorized, lNotNullPart) ~ r) | iter(r).prepend(lNullPart)
           }
           else{
@@ -108,10 +118,10 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
         }
         case Disjunction(l, r)                => iter(l) | iter(r)
         case Transform(fun, inv, inner)       => iter(inner).map(fun, inv)
-        case Marked(mark, inner)              => iter(inner) // mark ignored
+        case Marked(mark, inner)              => iter(inner).mark(mark)
         case s: Success[_]                    => Factorization.fail(s)
         case Failure()                        => Factorization(failure, failure)
-        case Recursive(_, inner) if recTerm   => iter(inner).asRecursive
+        case Recursive(id, inner) if recTerm  => iter(inner).asRecursive(id)
         case Recursive(_, _) if !recTerm      => Factorization.fail(s)
       }
     }

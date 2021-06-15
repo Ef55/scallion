@@ -12,6 +12,11 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
 
   import Syntax._
 
+  private def ifRec[U](s: Syntax[_], f: Recursive[_] => U, other: U): U = s match{
+    case r: Recursive[_]  => f(r)
+    case _                => other
+  }
+
   /** Substitutes a syntax with another one.
     *
     * @param in Syntax in which the substition(s) will happen.
@@ -55,9 +60,7 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
 
   // TODO: try to find something for superstructure substitution + elimination (= infinite rec)
   def substitute[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]], elim: Boolean = false): Syntax[A] = {
-    def makeRecursive[B](s: Syntax[B]): Syntax[B] = 
-      if(isRecursive(s)){ s }else{ recursive(s) }
-    
+
     trait LazySyntax { def syntax[A]: Syntax[A] }
     object LazySyntax{
       def apply(s: => Syntax[_]) = new LazySyntax {
@@ -101,7 +104,8 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
           if(nInner != inner){ nInner.mark(mark) }else{ m }
         }
         case Recursive(id, inner)          => {
-          substs += ( current -> LazySyntax(recursive(iter(inner))) )
+          val newRec = recursive(iter(inner)).asInstanceOf[Recursive[_]]
+          substs += ( current -> LazySyntax(newRec) )
           substs.get(current).get.syntax[C]
         }
       }

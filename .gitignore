@@ -2,4 +2,6 @@ target/
 project/target/
 example/target/
 .bsp/
+.metals/
+.vscode/
 graphs/

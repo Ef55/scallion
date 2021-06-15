@@ -1,24 +1,33 @@
 package scallion
 
-import scallion.visualization.{Graphs, Grammars}
+import scallion.visualization._
 import scallion.properties.StructuralEquivalence
+import scallion.util.Logger
 import org.scalatest._
 import scala.util.Random
 import scala.collection.mutable.{Set, HashMap, MultiMap}
 
-trait ParsersTestHelper extends FlatSpec with Inside
-with Parsers with Graphs with Grammars with Enumeration with StructuralEquivalence {
+trait ParsersTestHelper extends FlatSpec with Inside with BeforeAndAfter
+with Parsers with Graphs with Grammars with SimpleStrings with Enumeration with StructuralEquivalence {
   import ParsersTestHelper._
 
+  before {
+    Logger.clear
+  }
+
   def generateSample[A](valuer: Kind => Token, printer: Token => String = _.toString)(generator: Syntax[A])(count: SampleSize): List[Iterator[Token]] = {
-    val samples = Enumerator(generator).take(count.value).toList.map(_.map(valuer))
+    val samples = Enumerator(generator).take(count.value + PrintSamples).toList.map(_.map(valuer))
     if(PrintSamples > 0){
       println(s"Random samples (among ${samples.size}): ")
-      RNG.shuffle(samples.take(PrintSamples*10)).take(PrintSamples).foreach(
+      val (printed, rem) = RNG.shuffle(samples).splitAt(PrintSamples)
+      printed.foreach(
         sample => println(sample.map(printer).mkString)
       )
+      rem
     }
-    samples
+    else{
+      samples
+    }
   }
 
   def assertHasConflicts(syntax: Syntax[_]): Unit = {
@@ -38,9 +47,10 @@ with Parsers with Graphs with Grammars with Enumeration with StructuralEquivalen
   }
 
   def assertParses[A](parser: Parser[A], input: Iterator[Token]): A = {
-    parser(input) match {
+    val (i1, i2) = input.duplicate
+    parser(i1) match {
       case Parsed(r, _)   => r
-      case _              => fail(s"Parsing failed on `${input}`")
+      case _              => fail(s"Parsing failed on `${i2.toList}`")
     }
   }
 
@@ -159,6 +169,12 @@ with Parsers with Graphs with Grammars with Enumeration with StructuralEquivalen
     println(s"Grammar ${name}:")
     println(grammars.getGrammar(syntax).pretty())
   }
+
+  def dumpLogs: Unit = {
+    assert(Logger.Enabled)
+    Logger.print
+    Logger.clear
+  }
 }
 
 object ParsersTestHelper {
@@ -172,7 +188,7 @@ object ParsersTestHelper {
   val BigSample = SampleSize(5000)
   val HugeSample = SampleSize(10000)
 
-  val PrintConflictsReport: Boolean = false
+  val PrintConflictsReport: Boolean = true
 
   val RNG: Random = new Random(123854514)
   val PrintSamples: Int = 0

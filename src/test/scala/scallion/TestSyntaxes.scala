@@ -62,3 +62,27 @@ trait BooleanSyntaxes extends Syntaxes {
   val orComb = (p: Boolean ~ Boolean) => p._1 || p._2
   val andComb = (p: Boolean ~ Boolean) => p._1 && p._2
 }
+
+trait AlphabetSyntaxes extends Syntaxes {
+  import scala.language.implicitConversions
+
+  type Token = Char
+  type Kind = Char
+
+  def getKind(t: Token): Kind = {
+    assert(t.isLetter)
+    t
+  }
+  def getValue(k: Kind): Token = {
+    assert(k.isLetter)
+    k
+  }
+  def valuePrinter(t: Token): String = t.toString
+
+  implicit def toSyntax(kind: Kind): Syntax[String] = {
+    elem(kind).map(_.toString)
+  }
+
+  val eps = epsilon("")
+  val concat = (p: String ~ String) => p._1 ++ p._2
+}

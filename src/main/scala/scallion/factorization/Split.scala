@@ -34,7 +34,7 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     *
     * @group factorization
     */
-  def trySplitNullable[A](syntax: Syntax[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
+  def trySplitNullable[A](syntax: Syntax[A], recTerm: Boolean = true): (Option[Syntax[A]], Option[Syntax[A]]) = {
 
     val prop = getProperties(syntax)
     if(prop.isNull){
@@ -69,20 +69,22 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
 
         case Marked(_, inner) => trySplitNullable(inner)
 
-        case Recursive(_, inner) => {
+        case Recursive(_, inner) if recTerm => {
           val (nonNull, nul) = trySplitNullable(inner)
           (nonNull.map(recursive(_)), nul.map(recursive(_)))
         }
+
+        case Recursive(_, _) if !recTerm => (Some(syntax), None)
       }
     }
   }
 
-  def splitNullable[A](syntax: Syntax[A]): (Syntax[A], Syntax[A]) = {
+  def splitNullable[A](syntax: Syntax[A], recTerm: Boolean = true): (Syntax[A], Syntax[A]) = {
     if(!getProperties(syntax).isNullable){
       throw new IllegalArgumentException("The syntax should be nullable in order to be split by nullability")
     }
-    val r = trySplitNullable(syntax)
-    (r._1.getOrElse(failure), r._2.get)
+    val r = trySplitNullable(syntax, recTerm)
+    (r._1.getOrElse(failure), r._2.getOrElse(failure))
   }
 
   /**

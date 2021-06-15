@@ -8,8 +8,9 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
   def eliminateDirectLeftRecursion[A](syntax: Recursive[A]): Syntax[A] = {
     if(isDirectLeftRecursive(syntax)){
       val (recPart, simplePart) = leftFactorOut(syntax, syntax.inner, false)
-      val factorized = { 
-        (simplePart ~ many(recPart)).map{
+      val rec = many(recPart)
+      val factorized = recursive { 
+        (simplePart ~ rec).map{
           case scallion.~(base, follows) => follows.foldLeft(base)((current, follow) => follow(current))
         }
       }
@@ -38,11 +39,11 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
   private[scallion] def unfoldLeftmostRecursivesOfLeftRecursives[A](syntax: Syntax[A]): Syntax[A] = {
     listRecursives(syntax).foreach(r => assert(!isDirectLeftRecursive(r), r.id))
     val map = listRecursives(syntax)
-        .filter(isLeftRecursive(_))
+        .filter(r => isLeftRecursive(r))
         .take(1)
         .map(rec => (
             rec, 
-            if(isDirectLeftRecursive(rec)){ unfoldLeftmostRecursives(rec.inner) }else{ recursive( unfoldLeftmostRecursives(rec.inner)) } 
+            recursive( unfoldLeftmostRecursives(rec.inner) )
           ))
         .toMap[Syntax[_], Syntax[_]]
     eliminate(syntax, map)
