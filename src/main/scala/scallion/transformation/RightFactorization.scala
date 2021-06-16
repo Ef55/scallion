@@ -3,7 +3,7 @@ package transformation
 
 import scallion.properties.LL1Properties
 
-/** Contains functions to apply left transformation to a syntax.
+/** Contains functions to apply right factorization to a syntax.
   *
   * @groupname transformation Transformation
   */
@@ -118,14 +118,6 @@ trait RightFactorization extends Split { self: Syntaxes with Parsers with LL1Pro
           }
           else{
             iter(r).prepend(l)
-          }
-
-          if(isNullable(l)){
-            val (lNotNullPart, lNullPart) = splitNullable(l, recTerm)
-            (iter(lNotNullPart) ~ r) | iter(r).prepend(lNullPart)
-          }
-          else{
-            iter(l) ~ r
           }
         }
         case Disjunction(l, r)                => iter(l) | iter(r)

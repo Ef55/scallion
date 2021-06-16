@@ -8,9 +8,13 @@ import scala.annotation.tailrec
  * 
  * @groupname conflicts Conflicts resolution
  */
-trait Transformations extends LeftFactorization with LeftRecursion with Substitution with Unfold with Split with LL1Properties {
+trait Transformations extends 
+  LeftFactorization with RightFactorization with RightForceOut with
+  LeftRecursion with Substitution with 
+  Unfold with Split with LL1Properties {
   self: Syntaxes with Parsers => 
 
+  import Syntax._
   import Conflict._
 
   private def solveFirstConflict[A](syntax: Syntax[A], conflict: FirstConflict): Syntax[A] = {
@@ -22,9 +26,15 @@ trait Transformations extends LeftFactorization with LeftRecursion with Substitu
 
   private def solveFollowConflict[A](syntax: Syntax[A], conflict: FollowConflict): Syntax[A] = {
     val tokens = conflict.ambiguities
-    // The present cast doesn't have any meaning; it is just required in order to typecheck
-    val src = conflict.root.asInstanceOf[Syntax[Any]] 
-    tokens.foldLeft(syntax)( (s, t) => eliminate(s, src, leftFactorizeKind(t, src)))
+    (conflict.source, conflict.root) match {
+      case ( src: Syntax[tS], root@Sequence(l: Syntax[tL], r: Syntax[tR]) ) => {
+        val (factorized: Syntax[tS => tL], alternative: Syntax[tS]) = rightForceOut(src, l)
+        val solved: Syntax[tS ~ tR] = tokens.foldLeft(src ~ r)( (s, t) => leftFactorizeKind(t, s))
+        val newSyntax: Syntax[tL ~ tR] = (alternative ~ r) | 
+          (factorized ~ solved).map{ case f ~ (l ~ r) => scallion.~(f(l), r) }
+        eliminate(syntax, root, newSyntax)
+      }
+    }
   }
 
   /**

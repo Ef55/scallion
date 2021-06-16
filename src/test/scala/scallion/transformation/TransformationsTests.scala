@@ -26,10 +26,11 @@ class TransformationsTests extends ParsersTestHelper with Transformations with B
   }
 
   it should "work on first/follow example" in {
-    lazy val grammar: Syntax[Boolean] = recursive{
-      (tru ~ opt(grammar) ~ (tru ~ falz)).map(_ => true)
-    }
+    val grammar = (falz ~ (tru | epsT)) ~ tru
     val solved = solveConflicts(grammar)
+
+    outputGraph(grammar, "original")
+    outputGraph(solved, "solved")
 
     assertHasConflicts(grammar)
     val parser = assertIsLL1(solved)

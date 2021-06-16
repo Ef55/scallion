@@ -9,7 +9,7 @@ class RightFactorizationTests extends ParsersTestHelper with RightFactorization 
     assertParseResults(parser, inputs, Lexer.apply(_))
   }
 
-  "Right transformation" should "work on simple grammar" in {
+  "Right factorization" should "work on simple grammar" in {
     val prefix =
       (letter ~ number).map(_ => 1) |
       (number ~ number).map(_ => 2)
@@ -27,7 +27,7 @@ class RightFactorizationTests extends ParsersTestHelper with RightFactorization 
     val grammar = letter ~ number | number ~ letter
     val (factorized, remains) = rightFactorOut(number, grammar)
 
-    assertStructuralEquivalence(letter ~ number)(remains)
+    assertStructuralEquivalence(number ~ letter)(remains)
     val parser = assertIsLL1(factorized)
     assertParses(parser, Seq("a", "b"), Lexer.apply(_))
   }

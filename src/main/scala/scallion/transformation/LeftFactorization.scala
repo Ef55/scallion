@@ -3,7 +3,7 @@ package transformation
 
 import scallion.properties.LL1Properties
 
-/** Contains functions to apply left transformation to a syntax.
+/** Contains functions to apply left factorization to a syntax.
   *
   * @groupname transformation Transformation
   */
