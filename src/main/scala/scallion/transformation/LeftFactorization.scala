@@ -112,13 +112,12 @@ trait LeftFactorization extends Split { self: Syntaxes with Parsers with LL1Prop
         case _ if s == leftFactor             => Factorization.success.asInstanceOf[Factorization[A, L]]
         case Elem(_)                          => Factorization.fail(s)
         case Sequence(l, r)                   => {
-          val lIter = iter(l)
-          if(isNullable(lIter.alternative)){
-            val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative, recTerm)
-            (Factorization(lIter.factorized, lNotNullPart) ~ r) | iter(r).prepend(lNullPart)
+          if(isNullable(l)){
+            val (lNotNullPart, lNullPart) = splitNullable(l, recTerm)
+            (iter(lNotNullPart) ~ r) | iter(r).prepend(lNullPart)
           }
           else{
-            lIter ~ r
+            iter(l) ~ r
           }
         }
         case Disjunction(l, r)                => iter(l) | iter(r)

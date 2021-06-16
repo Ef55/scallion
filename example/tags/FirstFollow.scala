@@ -1,4 +1,4 @@
-package example.factorization.tags
+package example.factorization.tags.follow
 
 import scala.util.{Try, Success, Failure}
 import scallion._
@@ -26,7 +26,7 @@ case class UnknownToken(token: String) extends Token
 
 object TagsLexer extends Lexers with CharRegExps {
 
-  type Token    = example.factorization.tags.Token  // Tokens.
+  type Token    = example.factorization.tags.follow.Token  // Tokens.
   type Position = Unit                              // Positions. Ignored in this example.
 
   val lexer = Lexer(
@@ -79,8 +79,8 @@ case class ClosingTag(identifier: String){
 }
 
 sealed trait Tag
-case class TagPair(opening: OpeningTag, closing: ClosingTag) extends Tag{
-  override def toString = s"${opening}${closing}"
+case class TagPair(opening: OpeningTag, content: Option[Tag], closing: ClosingTag) extends Tag{
+  override def toString = s"${opening} ${content.map(_.toString).getOrElse("")} ${closing}"
 }
 case class EmptyTag(identifier: String) extends Tag{
   override def toString = s"<${identifier} />"
@@ -88,8 +88,8 @@ case class EmptyTag(identifier: String) extends Tag{
 
 
 object TagsParser extends Parsers with Transformations with Graphs {
-  type Token  = example.factorization.tags.Token
-  type Kind   = example.factorization.tags.TokenKind
+  type Token  = example.factorization.tags.follow.Token
+  type Kind   = example.factorization.tags.follow.TokenKind
 
   import Implicits._
 
@@ -109,23 +109,24 @@ object TagsParser extends Parsers with Transformations with Graphs {
   val slash       = elem(SlashKind)
 
   // The different tags
+  lazy val tag: Syntax[Tag] = recursive{ tagPair | emptyTag }
   val openingTag  = (tagPrefix ~>~ identifier ~<~ tagSuffix).map{case id => OpeningTag(id)}
   val closingTag  = (tagPrefix ~>~ slash ~>~ identifier ~<~ tagSuffix).map(id => ClosingTag(id))
   val emptyTag    = (tagPrefix ~>~ identifier ~<~ slash ~<~ tagSuffix).map{case id => EmptyTag(id)}.up[Tag]
-  val tagPair     = (openingTag ~ closingTag).map{ case op ~ cl => TagPair(op, cl)}.up[Tag]
+  val tagPair     = (openingTag ~ opt(tag) ~ closingTag).map{ case op ~ ct ~ cl => TagPair(op, ct, cl)}.up[Tag]
 
   // The grammar is clearly not LL1: both alternatives begin with `tagPrefix ~ identifier`
-  val grammar           = tagPair | emptyTag     
-  val factorizedGrammar = solveFirstConflicts(grammar)
+  val grammar           = tag     
+  val factorizedGrammar = solveConflicts(grammar)
 
   // Generate the parsers
   val parser            = Try(Parser(grammar))
   val factorizedParser  = Try(Parser(factorizedGrammar))
 
   // Generate graph for both grammars
-  val generateGraphs = false
+  val generateGraphs = true
   if(generateGraphs){
-    val dirPath = "example/factorization/graphs"
+    val dirPath = "example/tags/graphs"
     graphs.outputGraph(grammar, dirPath, "original")
     graphs.outputGraph(factorizedGrammar, dirPath, "factorized")
   }
@@ -139,6 +140,7 @@ object tags {
       "<tag>  </tag>",
       "<tag />",
       "<h3  >     </  h3>",
+      "<h1> <h2> <h3/> </h2> </h1>",
       // Invalid
       ">tag<",
       "This input shouldn't even be here",
@@ -149,7 +151,6 @@ object tags {
 
     val Failure(f) = TagsParser.parser
     println("A conflict was detected in the first syntax !")
-
 
     val Success(parser) = TagsParser.factorizedParser
     println("No conflicts were detected in the second syntax !")
