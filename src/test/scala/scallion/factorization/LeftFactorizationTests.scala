@@ -16,7 +16,7 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
       (letter ~ number).map(_ => 1) |
       (number ~ number).map(_ => 2)
     val grammar = (prefix ~ sep).map{ case i ~ _ => i}
-    val factorized = leftFactorize(LetterKind, grammar)
+    val factorized = leftFactorizeKind(LetterKind, grammar)
     val tests = Seq(
       ("ab ", 0),
       ("a1-", 1),
@@ -32,7 +32,7 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
       inumber | 
       (inumber ~ sep ~ grammar).map{ case i ~ _ ~ j => i + j }
     )
-    val factorize = leftFactorize(NumberKind, grammar)
+    val factorize = leftFactorizeKind(NumberKind, grammar)
     val factorized = eliminate(factorize, grammar, factorize)
     val tests = Seq(
       ("", 0),
@@ -51,7 +51,7 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
     val grammar = 
         repsep(letter, sep).map(_.map(_.toChar).mkString("")) |
         (letter ~ number).map{ case l ~ n => s"${l.toChar}${n.toChar}"}
-    val factorized = leftFactorize(LetterKind, grammar)
+    val factorized = leftFactorizeKind(LetterKind, grammar)
     val tests = Seq(
       "a,b,c",
       "x y z",
@@ -80,7 +80,7 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
 
   it should "work on null-prefixed syntaxes" in {
     val grammar = (epsilon(1) ~ letter ~ letter).map(_ => 1) | letter.map(_ => 2)
-    val factorized = leftFactorize(LetterKind, grammar)
+    val factorized = leftFactorizeKind(LetterKind, grammar)
     val tests = Seq(
       ("aa", 1),
       ("a", 2)
@@ -95,7 +95,7 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
       case Left(Some(_) ~ _)  => 2
       case Right(_)           => 3
     }
-    val factorized = leftFactorize(LetterKind, grammar)
+    val factorized = leftFactorizeKind(LetterKind, grammar)
     val tests = Seq(
       ("a", 1),
       ("aa", 2),

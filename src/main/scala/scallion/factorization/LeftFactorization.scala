@@ -7,6 +7,9 @@ package factorization
   */
 trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties => 
 
+  /////////////////////
+  //   Internals     //
+  /////////////////////
   import Syntax._
 
   private case class Factorization[A, L](
@@ -129,28 +132,34 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
     iter(s)
   }
 
+  /////////////////////
+  //   Interface     //
+  /////////////////////
+
   /** Left factorizes a syntax in the syntax.
     * 
     * @param leftFactor Syntax to left factor out.
     * @param s Syntax on which to apply the factorization.
+    * @param recTerm Whether recursive nodes should be broken or not.
     * @return An equivalent syntax, with the syntax left factorized.
     *
     * @group factorization
     */
-  def leftFactorize[A, L](leftFactor: Syntax[L], s: Syntax[A]): Syntax[A] = {
-    internal(leftFactor, s, true).complete(leftFactor)
+  def leftFactorize[A, L](leftFactor: Syntax[L], s: Syntax[A], recTerm: Boolean = true): Syntax[A] = {
+    internal(leftFactor, s, recTerm).complete(leftFactor)
   }
 
   /** Left factorizes a single terminal in the syntax.
   * 
   * @param leftFactor Terminal to left factor out.
   * @param s Syntax on which to apply the factorization.
+  * @param recTerm Whether recursive nodes should be broken or not.
   * @return An equivalent syntax, with the terminal factorized.
   *
   * @group factorization
   */
-  def leftFactorize[A](leftFactor: Kind, s: Syntax[A]): Syntax[A] = {
-    leftFactorize(Elem(leftFactor), s)
+  def leftFactorizeKind[A](leftFactor: Kind, s: Syntax[A], recTerm: Boolean = true): Syntax[A] = {
+    leftFactorize(elem(leftFactor), s, recTerm)
   }
   
   /** Remove (factor out) a prefix from a syntax.

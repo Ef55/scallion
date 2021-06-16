@@ -1,27 +1,17 @@
 package scallion
 package factorization
 
+/** Contains functions to eliminate left recursion.
+  *
+  * @groupname factorization Factorization
+  */
 trait LeftRecursion extends LeftFactorization 
 with Substitution with Unfold with SyntaxesNavigation with properties.Recursion { self: Syntaxes with SyntaxesProperties =>
   import Syntax._
 
-  def eliminateDirectLeftRecursion[A](syntax: Recursive[A]): Syntax[A] = {
-    if(isDirectLeftRecursive(syntax)){
-      val (recPart, simplePart) = leftFactorOut(syntax, syntax.inner, false)
-      val rec = many(recPart)
-      val factorized = recursive { 
-        (simplePart ~ rec).map{
-          case scallion.~(base, follows) => follows.foldLeft(base)((current, follow) => follow(current))
-        }
-      }
-
-      factorized
-    }
-    else{
-      syntax
-    }
-  }
-
+  /////////////////////
+  //   Internals     //
+  /////////////////////
   private def eliminateDirectLeftRecursionUntyped(syntax: Recursive[_]): Syntax[_] = {
     eliminateDirectLeftRecursion(syntax)
   }
@@ -53,6 +43,45 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
     unfoldLeftmostRecursivesOfLeftRecursives(eliminateDirectLeftRecursions(syntax))
   }
 
+  /////////////////////
+  //   Interface     //
+  /////////////////////
+
+  /** Eliminate direct left recursion from a syntax.
+    *
+    * This transforms syntaxes unsuited for LL1 parsing such as
+    * {{{
+    * lazy val rec: Syntax[Seq[Boolean]] = recursive{ rec :+ (elem(false) | eps(true)) }
+    * }}}
+    * into non direct left recursive ones.
+    * 
+    * @param syntax Syntax to transform.
+    * 
+    * @group factorization
+    */
+  def eliminateDirectLeftRecursion[A](syntax: Recursive[A]): Syntax[A] = {
+    if(isDirectLeftRecursive(syntax)){
+      val (recPart, simplePart) = leftFactorOut(syntax, syntax.inner, false)
+      val rec = many(recPart)
+      val factorized = recursive { 
+        (simplePart ~ rec).map{
+          case scallion.~(base, follows) => follows.foldLeft(base)((current, follow) => follow(current))
+        }
+      }
+
+      factorized
+    }
+    else{
+      syntax
+    }
+  }
+
+  /** Full procedure to eliminate all left recursions from a syntax.
+    * 
+    * @param syntax Syntax to transform.
+    * 
+    * @group factorization
+    */
   def eliminateLeftRecursions[A](syntax: Syntax[A]): Syntax[A] = {
     def iter(s: Syntax[A]): Syntax[A] = {
       if(!hasLeftRecursion(s)){
@@ -62,8 +91,8 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
         iter(eliminateLeftRecursionsStep(s))
       }
     }
-
     iter(syntax)
   }
+
 
 }

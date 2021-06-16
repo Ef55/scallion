@@ -61,6 +61,9 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
         this.alternatives.reduce((s1: Syntax[A], s2: Syntax[A]) => s1 | s2)
       }
 
+      // Indicates whether the unfolding is really changing the syntax
+      // this is done in an effort to avoid generating new syntaxes
+      // which are identical to other ones, which would then be unequal due to transforms
       def meaningless: Boolean = this.alternatives.length == 1
 
       def discard(original: Syntax[A]): Factorization[A] = {

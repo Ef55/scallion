@@ -17,7 +17,7 @@ trait Factorization extends LeftFactorization with Substitution with Unfold with
     val tokens = conflict.ambiguities
     // The present cast doesn't have any meaning; it is just required in order to typecheck
     val src = conflict.source.asInstanceOf[Syntax[Any]] 
-    tokens.foldLeft(syntax)( (s, t) => eliminate(s, src, leftFactorize(t, src)))
+    tokens.foldLeft(syntax)( (s, t) => eliminate(s, src, leftFactorizeKind(t, src)))
   }
 
   /**

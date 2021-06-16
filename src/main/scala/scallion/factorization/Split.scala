@@ -11,6 +11,10 @@ import java.util.Properties
 trait Split { self: SyntaxesProperties with Syntaxes =>
   import Syntax._
 
+  /////////////////////
+  //   Internals     //
+  /////////////////////
+
   private def optZip[A, B](o1: Option[A], o2: Option[B]): Option[(A, B)] = (o1, o2) match {
     case (Some(a), Some(b)) => Some((a, b))
     case _                  => None
@@ -21,6 +25,10 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
       (o1, o2) => optZip(o1, o2).map(p => p._1 | p._2).orElse(o1).orElse(o2)
     )
   }
+
+  /////////////////////
+  //   Interface     //
+  /////////////////////
 
   /**
     * Split a (possibly) nullable syntax into a 

@@ -58,7 +58,17 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
     substitute(in, map, false)
   }
 
-  // TODO: try to find something for superstructure substitution + elimination (= infinite rec)
+  /** Substitutes a syntax with another one.
+    *
+    * Unlike the base version, this one allows to perform multiple
+    * substitutions at once, given by the substitution map.
+    * 
+    * @param in Syntax in which the substition(s) will happen.
+    * @param substitutions Mappings old -> new syntax 
+    * @param elim Indicates whether `original` must also be substituted inside of `subst`.
+    *
+    * @group factorization
+    */
   def substitute[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]], elim: Boolean = false): Syntax[A] = {
 
     trait LazySyntax { def syntax[A]: Syntax[A] }
@@ -114,12 +124,26 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
     iter(in)
   }
 
+  /** Substitutes a syntax with another one.
+    *
+    * This version just add an additional way to specify the substitution mappings.
+    **/
   def substitute[A](in: Syntax[A], substitutions: (Syntax[_], Syntax[_])*): Syntax[A] = 
     substitute(in, substitutions.toMap, false)
 
+  /** Eliminate syntaxex by substituting it with other ones.
+    *
+    * This function is just a shorthand for substitute with
+    * `elim = true`.
+    **/
   def eliminate[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]]): Syntax[A] = 
     substitute(in, substitutions, true)
 
+  /** Eliminate syntaxex by substituting it with other ones.
+    *
+    * This function is just a shorthand for substitute with
+    * `elim = true`.
+    **/
   def eliminate[A](in: Syntax[A], substitutions: (Syntax[_], Syntax[_])*): Syntax[A] = 
     substitute(in, substitutions.toMap, true)
 
