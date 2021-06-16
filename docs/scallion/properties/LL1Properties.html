@@ -99,10 +99,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.factorization" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="factorization"></a><a id="factorization:factorization"></a>
+    </li><li name="scallion.properties" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="properties"></a><a id="properties:properties"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#factorization" title="Permalink">
+      <a href="../scallion/index.html#properties" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -111,34 +111,22 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">factorization</span></a>
+        <a title="" href="index.html"><span class="name">properties</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Factorization.html" title="Contains functions to factorize syntaxes."></a>
-                        <a href="Factorization.html" title="Contains functions to factorize syntaxes.">Factorization</a>
+                        <a class="trait" href="" title="Contains functions giving basic LL1 properties of syntaxes."></a>
+                        <a href="" title="Contains functions giving basic LL1 properties of syntaxes.">LL1Properties</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax."></a>
-                        <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
+                        <a class="trait" href="Recursion.html" title="Contains functions to find left recursions."></a>
+                        <a href="Recursion.html" title="Contains functions to find left recursions.">Recursion</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftRecursion.html" title=""></a>
-                        <a href="LeftRecursion.html" title="">LeftRecursion</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
-                        <a href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
-                        <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="" title="Contains functions to apply unfolding to a syntax."></a>
-                        <a href="" title="Contains functions to apply unfolding to a syntax.">Unfold</a>
+                        <a class="trait" href="StructuralEquivalence.html" title="Contains functions to compare syntaxes."></a>
+                        <a href="StructuralEquivalence.html" title="Contains functions to compare syntaxes.">StructuralEquivalence</a>
                       </li>
               </ul>
             </div>
@@ -147,9 +135,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
             <body class="trait type">
       <div id="definition">
         <div class="big-circle trait">t</div>
-        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.factorization">factorization</a></p>
-        <h1>Unfold<span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html" title="Permalink">
+        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.properties">properties</a></p>
+        <h1>LL1Properties<span class="permalink">
+      <a href="../../scallion/properties/LL1Properties.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
@@ -162,23 +150,18 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Unfold</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">LL1Properties</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to apply unfolding to a syntax.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.Unfold">Unfold</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/Unfold.scala" target="_blank">Unfold.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions giving basic LL1 properties of syntaxes.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../package$$Parsers.html" class="extype" name="scallion.Parsers">Parsers</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/properties/LL1.scala" target="_blank">LL1.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-            <span class="toggle">
-              Known Subclasses
-            </span>
-            <div class="subClasses hiddenContent"><a href="Factorization.html" class="extype" name="scallion.factorization.Factorization">Factorization</a>, <a href="LeftRecursion.html" class="extype" name="scallion.factorization.LeftRecursion">LeftRecursion</a></div>
-          </div></div>
+        </div></div>
         
 
       <div id="mbrsel">
@@ -203,7 +186,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.factorization.Unfold"><span>Unfold</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.properties.LL1Properties"><span>LL1Properties</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -233,7 +216,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -249,7 +232,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html###():Int" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -265,7 +248,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -281,7 +264,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -297,7 +280,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#clone():Object" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -323,7 +306,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -339,7 +322,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -355,7 +338,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#getClass():Class[_]" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -373,10 +356,26 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scallion.properties.LL1Properties#getConflicts" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="property">
+      <a id="getConflicts(syntax:LL1Properties.this.Syntax[_]):Set[LL1Properties.this.Conflict]"></a><a id="getConflicts((LL1Properties.this)#Syntax[_]):Set[(LL1Properties.this)#Conflict]"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/LL1Properties.html#getConflicts(syntax:LL1Properties.this.Syntax[_]):Set[LL1Properties.this.Conflict]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getConflicts</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a>.this)#<span class="extype" name="scallion.Parsing.Conflict">Conflict</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Return the conflicts in a syntax.</p>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#hashCode():Int" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -397,7 +396,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -410,10 +409,59 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scallion.properties.LL1Properties#isNull" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="isNull(syntax:LL1Properties.this.Syntax[_]):Boolean"></a><a id="isNull((LL1Properties.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/LL1Properties.html#isNull(syntax:LL1Properties.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isNull</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if a syntax is null (i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate if a syntax is null (i.e. only matches the empty sequence of tokens).
+</p></div></div>
+    </li><li name="scallion.properties.LL1Properties#isNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="property">
+      <a id="isNullable(syntax:LL1Properties.this.Syntax[_]):Boolean"></a><a id="isNullable((LL1Properties.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/LL1Properties.html#isNullable(syntax:LL1Properties.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isNullable</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if a syntax is nullable.</p>
+    </li><li name="scallion.properties.LL1Properties#isProductive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="property">
+      <a id="isProductive(syntax:LL1Properties.this.Syntax[_]):Boolean"></a><a id="isProductive((LL1Properties.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/LL1Properties.html#isProductive(syntax:LL1Properties.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isProductive</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if a syntax is productive.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -429,7 +477,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#notify():Unit" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -450,7 +498,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#notifyAll():Unit" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -471,7 +519,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -487,7 +535,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#toString():String" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -500,51 +548,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scallion.factorization.Unfold#unfoldDisjunctions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="unfoldDisjunctions[A](s:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]"></a><a id="unfoldDisjunctions[A]((Unfold.this)#Syntax[A]):(Unfold.this)#Syntax[A]"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#unfoldDisjunctions[A](s:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">unfoldDisjunctions</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="s">s: (<a href="" class="extype" name="scallion.factorization.Unfold">Unfold</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Unfold.unfoldDisjunctions.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Unfold">Unfold</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Unfold.unfoldDisjunctions.A">A</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Unfolds disjunctions inside the syntax so that
-disjunctions only appear at &quot;the top-level&quot; of the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Unfolds disjunctions inside the syntax so that
-disjunctions only appear at &quot;the top-level&quot; of the syntax.
-</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>Syntax to unfold.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
-               <ol><li class="cmt"><p></p><pre><span class="kw">val</span> s = a ~ (a | b)
-unfold(s) === (a ~ a) | (a ~ b)</pre></li></ol>
-            </div></dl></div>
-    </li><li name="scallion.factorization.Unfold#unfoldLeftmostRecursives" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="unfoldLeftmostRecursives[A](syntax:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]"></a><a id="unfoldLeftmostRecursives[A]((Unfold.this)#Syntax[A]):(Unfold.this)#Syntax[A]"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#unfoldLeftmostRecursives[A](syntax:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">unfoldLeftmostRecursives</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Unfold">Unfold</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Unfold.unfoldLeftmostRecursives.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Unfold">Unfold</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Unfold.unfoldLeftmostRecursives.A">A</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Unfold all the recursives inside a syntax which might
-be the first syntax to consume a token.</p><div class="fullcomment"><div class="comment cmt"><p>Unfold all the recursives inside a syntax which might
-be the first syntax to consume a token.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>Syntax to unfold.</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -566,7 +573,7 @@ be the first syntax to consume a token.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -590,7 +597,7 @@ be the first syntax to consume a token.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#wait():Unit" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -620,7 +627,7 @@ be the first syntax to consume a token.
               <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Unfold.html#finalize():Unit" title="Permalink">
+      <a href="../../scallion/properties/LL1Properties.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -657,8 +664,8 @@ be the first syntax to consume a token.
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="factorization">
-              <h3>Factorization</h3>
+        <div class="group" name="property">
+              <h3>Syntaxes property</h3>
               
             </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>

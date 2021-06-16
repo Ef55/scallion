@@ -99,22 +99,6 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.factorization" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="factorization"></a><a id="factorization:factorization"></a>
-      <span class="permalink">
-      <a href="../scallion/index.html#factorization" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="factorization/index.html"><span class="name">factorization</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li name="scallion.properties" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="properties"></a><a id="properties:properties"></a>
       <span class="permalink">
@@ -128,6 +112,22 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
       </span>
       <span class="symbol">
         <a title="" href="properties/index.html"><span class="name">properties</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
+    </li><li name="scallion.transformation" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformation"></a><a id="transformation:transformation"></a>
+      <span class="permalink">
+      <a href="../scallion/index.html#transformation" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="transformation/index.html"><span class="name">transformation</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
@@ -197,12 +197,8 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
                         <a href="Syntaxes.html" title="Contains the definition of syntaxes.">Syntaxes</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="trait" href="" title=""></a>
-                        <a href="" title="">SyntaxesNavigation</a>
-                      </li><li class="current-entities indented1">
-                        <span class="separator"></span>
-                        <a class="trait" href="SyntaxesProperties.html" title="Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)"></a>
-                        <a href="SyntaxesProperties.html" title="Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)">SyntaxesProperties</a>
+                        <a class="trait" href="" title="Zipper for syntaxes."></a>
+                        <a href="" title="Zipper for syntaxes.">SyntaxesNavigation</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="class" href="package$$$tilde.html" title="Simply a pair."></a>
@@ -235,12 +231,18 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a> with <a href="Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/SyntaxesNavigation.scala" target="_blank">SyntaxesNavigation.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Zipper for syntaxes.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a> with <a href="Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/SyntaxesNavigation.scala" target="_blank">SyntaxesNavigation.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">
+              Known Subclasses
+            </span>
+            <div class="subClasses hiddenContent"><a href="properties/Recursion.html" class="extype" name="scallion.properties.Recursion">Recursion</a>, <a href="transformation/LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>, <a href="transformation/Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a>, <a href="transformation/Transformation.html" class="extype" name="scallion.transformation.Transformation">Transformation</a>, <a href="visualization/SimpleStrings.html" class="extype" name="scallion.visualization.SimpleStrings">SimpleStrings</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -256,7 +258,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
           <div id="order">
             <span class="filtertype">Ordering</span>
             <ol>
-              
+              <li class="group out"><span>Grouped</span></li>
               <li class="alpha in"><span>Alphabetic</span></li>
               <li class="inherit out"><span>By Inheritance</span></li>
             </ol>
@@ -287,10 +289,10 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="scallion.SyntaxesNavigation.Walker" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Walker[A]=scallion.util.BinaryTreeZipper.Walker[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Walker[A]:(SyntaxesNavigation.this)#Walker[A]"></a>
+              <ol><li name="scallion.SyntaxesNavigation.Walk" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
+      <a id="Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Walk[A]:(SyntaxesNavigation.this)#Walk[A]"></a>
       <span class="permalink">
-      <a href="../scallion/SyntaxesNavigation.html#Walker[A]=scallion.util.BinaryTreeZipper.Walker[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
+      <a href="../scallion/SyntaxesNavigation.html#Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -299,11 +301,11 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">Walker</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="util/BinaryTreeZipper$$Walker.html" class="extype" name="scallion.util.BinaryTreeZipper.Walker">util.BinaryTreeZipper.Walker</a>[(<a href="" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Walker.A">A</span>]]</span>
+        <span class="name">Walk</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="util/BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">util.BinaryTreeZipper.Walk</a>[(<a href="" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Walk.A">A</span>]]</span>
       </span>
       
-      
-    </li><li name="scallion.SyntaxesNavigation.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Walk for syntax zippers.</p>
+    </li><li name="scallion.SyntaxesNavigation.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
       <a id="Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Zipper[A]:(SyntaxesNavigation.this)#Zipper[A]"></a>
       <span class="permalink">
       <a href="../scallion/SyntaxesNavigation.html#Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
@@ -375,7 +377,7 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scallion.SyntaxesNavigation#Direction" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scallion.SyntaxesNavigation#Direction" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
       <a id="Direction:scallion.util.BinaryTreeZipper.Direction.type"></a><a id="Direction:util.BinaryTreeZipper.Direction.type"></a>
       <span class="permalink">
       <a href="../scallion/SyntaxesNavigation.html#Direction:scallion.util.BinaryTreeZipper.Direction.type" title="Permalink">
@@ -681,7 +683,23 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scallion.SyntaxesNavigation.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scallion.SyntaxesNavigation.Walk" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
+      <a id="Walk"></a><a id="Walk:Walk"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesNavigation.html#Walk" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Walk for syntax zippers." href="SyntaxesNavigation$Walk$.html"><span class="name">Walk</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">Walk for syntax zippers.</p>
+    </li><li name="scallion.SyntaxesNavigation.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
       <a id="Zipper"></a><a id="Zipper:Zipper"></a>
       <span class="permalink">
       <a href="../scallion/SyntaxesNavigation.html#Zipper" title="Permalink">
@@ -745,7 +763,10 @@ See the package <a href="index.html" class="extype" name="scallion">scallion</a>
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="Ungrouped">
+        <div class="group" name="navigation">
+              <h3>Navigation</h3>
+              
+            </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

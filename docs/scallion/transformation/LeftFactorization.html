@@ -99,10 +99,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.properties" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="properties"></a><a id="properties:properties"></a>
+    </li><li name="scallion.transformation" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformation"></a><a id="transformation:transformation"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#properties" title="Permalink">
+      <a href="../scallion/index.html#transformation" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -111,22 +111,34 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">properties</span></a>
+        <a title="" href="index.html"><span class="name">transformation</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LL1Properties.html" title="Contains functions giving basic LL1 properties of syntaxes."></a>
-                        <a href="LL1Properties.html" title="Contains functions giving basic LL1 properties of syntaxes.">LL1Properties</a>
+                        <a class="trait" href="" title="Contains functions to apply left transformation to a syntax."></a>
+                        <a href="" title="Contains functions to apply left transformation to a syntax.">LeftFactorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Recursion.html" title="Contains functions to find left recursions."></a>
-                        <a href="Recursion.html" title="Contains functions to find left recursions.">Recursion</a>
+                        <a class="trait" href="LeftRecursion.html" title="Contains functions to eliminate left recursion."></a>
+                        <a href="LeftRecursion.html" title="Contains functions to eliminate left recursion.">LeftRecursion</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="" title="Contains functions to compare syntaxes."></a>
-                        <a href="" title="Contains functions to compare syntaxes.">StructuralEquivalence</a>
+                        <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
+                        <a href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
+                        <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Transformation.html" title="Contains functions to factorize syntaxes."></a>
+                        <a href="Transformation.html" title="Contains functions to factorize syntaxes.">Transformation</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
+                        <a href="Unfold.html" title="Contains functions to apply unfolding to a syntax.">Unfold</a>
                       </li>
               </ul>
             </div>
@@ -135,9 +147,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
             <body class="trait type">
       <div id="definition">
         <div class="big-circle trait">t</div>
-        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.properties">properties</a></p>
-        <h1>StructuralEquivalence<span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html" title="Permalink">
+        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.transformation">transformation</a></p>
+        <h1>LeftFactorization<span class="permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
@@ -150,18 +162,23 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">StructuralEquivalence</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">LeftFactorization</span><span class="result"> extends <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to compare syntaxes.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.properties.StructuralEquivalence">StructuralEquivalence</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/properties/StructuralEquivalence.scala" target="_blank">StructuralEquivalence.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to apply left transformation to a syntax.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../package$$Parsers.html" class="extype" name="scallion.Parsers">Parsers</a> with <a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/transformation/LeftFactorization.scala" target="_blank">LeftFactorization.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+          <div class="superTypes hiddenContent"><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">
+              Known Subclasses
+            </span>
+            <div class="subClasses hiddenContent"><a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>, <a href="Transformation.html" class="extype" name="scallion.transformation.Transformation">Transformation</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -186,7 +203,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.properties.StructuralEquivalence"><span>StructuralEquivalence</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.transformation.LeftFactorization"><span>LeftFactorization</span></li><li class="in" name="scallion.transformation.Split"><span>Split</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -216,7 +233,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -232,7 +249,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html###():Int" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -248,7 +265,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -264,7 +281,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -280,7 +297,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#clone():Object" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -306,7 +323,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -322,7 +339,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -338,7 +355,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#getClass():Class[_]" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -359,7 +376,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#hashCode():Int" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -380,7 +397,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -393,10 +410,62 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scallion.transformation.LeftFactorization#leftFactorOut" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])"></a><a id="leftFactorOut[A,L]((LeftFactorization.this)#Syntax[L],(LeftFactorization.this)#Syntax[A],Boolean):((LeftFactorization.this)#Syntax[(L)⇒A],(LeftFactorization.this)#Syntax[A])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">leftFactorOut</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[(<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.L">L</span>) ⇒ <span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>], (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Remove (factor out) a prefix from a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Remove (factor out) a prefix from a syntax.
+</p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Syntax to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>The alternative of the syntax where the prefix could be left factored, and
+  another syntax where the prefix could not be removed.</p></dd></dl></div>
+    </li><li name="scallion.transformation.LeftFactorization#leftFactorize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorize[A,L]((LeftFactorization.this)#Syntax[L],(LeftFactorization.this)#Syntax[A],Boolean):(LeftFactorization.this)#Syntax[A]"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">leftFactorize</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.A">A</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Left factorizes a syntax in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Left factorizes a syntax in the syntax.
+</p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Syntax to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the syntax left factorized.</p></dd></dl></div>
+    </li><li name="scallion.transformation.LeftFactorization#leftFactorizeKind" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="leftFactorizeKind[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorizeKind[A]((LeftFactorization.this)#Kind,(LeftFactorization.this)#Syntax[A],Boolean):(LeftFactorization.this)#Syntax[A]"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#leftFactorizeKind[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">leftFactorizeKind</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span></span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorizeKind.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorizeKind.A">A</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Left factorizes a single terminal in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Left factorizes a single terminal in the syntax.
+</p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Terminal to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the terminal factorized.</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -412,7 +481,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#notify():Unit" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -433,7 +502,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#notifyAll():Unit" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -451,10 +520,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.properties.StructuralEquivalence#structurallyEquivalent" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
-      <a id="structurallyEquivalent(lhs:StructuralEquivalence.this.Syntax[_],rhs:StructuralEquivalence.this.Syntax[_]):Boolean"></a><a id="structurallyEquivalent((StructuralEquivalence.this)#Syntax[_],(StructuralEquivalence.this)#Syntax[_]):Boolean"></a>
+    </li><li name="scallion.transformation.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((LeftFactorization.this)#Syntax[A],((LeftFactorization.this)#Syntax[_])⇒Boolean,Boolean):(Option[(LeftFactorization.this)#Syntax[A]],Option[(LeftFactorization.this)#Syntax[A]])"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#structurallyEquivalent(lhs:StructuralEquivalence.this.Syntax[_],rhs:StructuralEquivalence.this.Syntax[_]):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -463,20 +532,53 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">structurallyEquivalent</span><span class="params">(<span name="lhs">lhs: (<a href="" class="extype" name="scallion.properties.StructuralEquivalence">StructuralEquivalence</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>, <span name="rhs">rhs: (<a href="" class="extype" name="scallion.properties.StructuralEquivalence">StructuralEquivalence</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="enterRecursive">enterRecursive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]])</span>
       </span>
       
-      <p class="shortcomment cmt">Indicates whether two syntaxes have the same structure.</p><div class="fullcomment"><div class="comment cmt"><p>Indicates whether two syntaxes have the same structure.</p><p>This comes as a workaround for Transform syntaxes which
-cannot implement value equality.</p><pre><span class="kw">val</span> a = epsilon(()).map(_ <span class="kw">=&gt;</span> <span class="num">1</span>)
-<span class="kw">val</span> b = epsilon(()).map(_ <span class="kw">=&gt;</span> <span class="num">1</span>)
-a == b <span class="cmt">// is false</span></pre><p>This method is used to
-compare syntaxes, looking if the two syntaxes have the
-same &quot;structure&quot;, and whether the leafs (Elem, Success)
-are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true</span></pre></div><dl class="paramcmts block"><dt class="param">lhs</dt><dd class="cmt"><p>One of the syntaxes to compare.</p></dd><dt class="param">rhs</dt><dd class="cmt"><p>One of the syntaxes to compare.</p></dd></dl></div>
+      <p class="shortcomment cmt">Split a syntax into a part which has a prefix satisfying a
+given predicate and a part whose prefixes do not satisfy it.</p><div class="fullcomment"><div class="comment cmt"><p>Split a syntax into a part which has a prefix satisfying a
+given predicate and a part whose prefixes do not satisfy it.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt class="param">enterRecursive</dt><dd class="cmt"><p>Whether recursive construct should be split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Might not terminate if the syntax is left recursive and
+<code>enterRecursive</code> is set to <code>true</code>.</p></span></dd></dl></div>
+    </li><li name="scallion.transformation.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(LeftFactorization.this)#Syntax[A]],Option[(LeftFactorization.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitLeftRecursive</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Split a recursive syntax into its left recursive component
+and its non-left recursive component.</p><div class="fullcomment"><div class="comment cmt"><p>Split a recursive syntax into its left recursive component
+and its non-left recursive component.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd></dl></div>
+    </li><li name="scallion.transformation.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])"></a><a id="splitNullable[A]((LeftFactorization.this)#Syntax[A],Boolean):((LeftFactorization.this)#Syntax[A],(LeftFactorization.this)#Syntax[A])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>], (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>])</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -492,7 +594,7 @@ are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true<
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#toString():String" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -505,10 +607,31 @@ are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scallion.transformation.Split#trySplitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="trySplitNullable[A]((LeftFactorization.this)#Syntax[A],Boolean):(Option[(LeftFactorization.this)#Syntax[A]],Option[(LeftFactorization.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trySplitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Split a (possibly) nullable syntax into a
+null syntax (only accepts the empty string)
+and a non-nullable syntax (doesn't accept the empty string).</p><div class="fullcomment"><div class="comment cmt"><p>Split a (possibly) nullable syntax into a
+null syntax (only accepts the empty string)
+and a non-nullable syntax (doesn't accept the empty string).
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the syntax is left recursive.</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -530,7 +653,7 @@ are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true<
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -554,7 +677,7 @@ are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true<
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#wait():Unit" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -584,7 +707,7 @@ are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true<
               <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/StructuralEquivalence.html#finalize():Unit" title="Permalink">
+      <a href="../../scallion/transformation/LeftFactorization.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -612,7 +735,9 @@ are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true<
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scallion.transformation.Split">
+              <h3>Inherited from <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -621,8 +746,8 @@ are the same.</p><pre>structurallyEquivalent(a, b) <span class="cmt">// is true<
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="property">
-              <h3>Syntaxes property</h3>
+        <div class="group" name="transformation">
+              <h3>Transformation</h3>
               
             </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>

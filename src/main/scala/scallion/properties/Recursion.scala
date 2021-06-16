@@ -4,6 +4,10 @@ package properties
 import scala.collection.immutable.{Queue, Set}
 import scala.collection.mutable.{Set => MSet, HashSet}
 
+/** Contains functions to find left recursions.
+  *
+  * @groupname property Syntaxes property
+  */
 trait Recursion extends SyntaxesNavigation { self: Syntaxes with Parsers with LL1Properties =>
   import Syntax._ 
 

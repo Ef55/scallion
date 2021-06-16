@@ -8,21 +8,21 @@
           <meta name="keywords" content="" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
-      <script type="text/javascript" src="../../lib/jquery.panzoom.min.js"></script>
-      <script type="text/javascript" src="../../lib/jquery.mousewheel.min.js"></script>
-      <script type="text/javascript" src="../../lib/index.js"></script>
-      <script type="text/javascript" src="../../index.js"></script>
-      <script type="text/javascript" src="../../lib/scheduler.js"></script>
-      <script type="text/javascript" src="../../lib/template.js"></script>
-      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      <link href="../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../lib/jquery.js"></script>
+      <script type="text/javascript" src="../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../lib/index.js"></script>
+      <script type="text/javascript" src="../index.js"></script>
+      <script type="text/javascript" src="../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../lib/template.js"></script>
+      <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
       
       <script type="text/javascript">
         /* this variable can be used by the JS to determine the path to the root document */
-        var toRoot = '../../';
+        var toRoot = '../';
       </script>
     
         </head>
@@ -65,11 +65,11 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Scallion is a library for easily writing LL(1) parsers in Scala, with support for pretty printing." href="../../index.html"><span class="name">root</span></a>
+        <a title="Scallion is a library for easily writing LL(1) parsers in Scala, with support for pretty printing." href="../index.html"><span class="name">root</span></a>
       </span>
       
       <p class="shortcomment cmt">Scallion is a library for easily writing LL(1) parsers in Scala, with support for pretty printing.</p><div class="fullcomment"><div class="comment cmt"><h4>Overview</h4><p>Scallion is a library for easily writing LL(1) parsers in Scala, with support for pretty printing.
-See the package <a href="../index.html" class="extype" name="scallion">scallion</a> for more information.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+See the package <a href="index.html" class="extype" name="scallion">scallion</a> for more information.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
     </li><li name="_root_.scallion" visbl="pub" class="indented1 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="scallion"></a><a id="scallion:scallion"></a>
       <span class="permalink">
@@ -82,10 +82,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="This package is used to describe syntax for LL(1) languages." href="../index.html"><span class="name">scallion</span></a>
+        <a title="This package is used to describe syntax for LL(1) languages." href="index.html"><span class="name">scallion</span></a>
       </span>
       
-      <p class="shortcomment cmt">This package is used to describe syntax for LL(1) languages.</p><div class="fullcomment"><div class="comment cmt"><p>This package is used to describe syntax for LL(1) languages.</p><p>To use the package, mix-in the <a href="../package$$Parsers.html" class="extype" name="scallion.Parsers">scallion.Parsers</a> trait.</p><pre><span class="kw">object</span> MyParser <span class="kw">extends</span> Parsers {
+      <p class="shortcomment cmt">This package is used to describe syntax for LL(1) languages.</p><div class="fullcomment"><div class="comment cmt"><p>This package is used to describe syntax for LL(1) languages.</p><p>To use the package, mix-in the <a href="package$$Parsers.html" class="extype" name="scallion.Parsers">scallion.Parsers</a> trait.</p><pre><span class="kw">object</span> MyParser <span class="kw">extends</span> Parsers {
 
   <span class="cmt">// Type of tokens.</span>
   <span class="kw">type</span> Token = MyToken
@@ -98,47 +98,55 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
 
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
-}</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.factorization" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="factorization"></a><a id="factorization:factorization"></a>
+}</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="scallion.Parsing" visbl="pub" class="indented2 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ParsingextendsAnyRef"></a><a id="Parsing:Parsing"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#factorization" title="Permalink">
+      <a href="../scallion/index.html#ParsingextendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">package</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">factorization</span></a>
+        <a title="This trait implements LL(1) parsing with derivatives." href="Parsing.html"><span class="name">Parsing</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
+      <p class="shortcomment cmt">This trait implements LL(1) parsing with derivatives.</p><div class="fullcomment"><div class="comment cmt"><p>This trait implements LL(1) parsing with derivatives.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Factorization.html" title="Contains functions to factorize syntaxes."></a>
-                        <a href="Factorization.html" title="Contains functions to factorize syntaxes.">Factorization</a>
+                        <a class="object" href="Parsing$Conflict$.html" title="Contains the description of the various LL(1) conflicts."></a>
+                        <a class="trait" href="" title="Describes a LL(1) conflict."></a>
+                        <a href="" title="Describes a LL(1) conflict.">Conflict</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax."></a>
-                        <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
+                        <a class="class" href="Parsing$ConflictException.html" title="Indicates that a syntax is not LL(1) due to various conflicts."></a>
+                        <a href="Parsing$ConflictException.html" title="Indicates that a syntax is not LL(1) due to various conflicts.">ConflictException</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftRecursion.html" title=""></a>
-                        <a href="LeftRecursion.html" title="">LeftRecursion</a>
+                        <a class="trait" href="Parsing$ParseResult.html" title="Result of parsing."></a>
+                        <a href="Parsing$ParseResult.html" title="Result of parsing.">ParseResult</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
-                        <a href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
+                        <a class="class" href="Parsing$Parsed.html" title="Indicates that the input has been fully parsed, resulting in a value."></a>
+                        <a href="Parsing$Parsed.html" title="Indicates that the input has been fully parsed, resulting in a value.">Parsed</a>
+                      </li><li class="current-entities indented2">
+                        <a class="object" href="Parsing$Parser$.html" title="Factory of LL(1) parsers."></a>
+                        <a class="trait" href="Parsing$Parser.html" title="LL(1) parser."></a>
+                        <a href="Parsing$Parser.html" title="LL(1) parser.">Parser</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="" title="Contains functions to apply substitution to a syntax."></a>
-                        <a href="" title="Contains functions to apply substitution to a syntax.">Substitution</a>
+                        <a class="class" href="Parsing$Properties.html" title="Contains properties of syntaxes."></a>
+                        <a href="Parsing$Properties.html" title="Contains properties of syntaxes.">Properties</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
-                        <a href="Unfold.html" title="Contains functions to apply unfolding to a syntax.">Unfold</a>
+                        <a class="class" href="Parsing$UnexpectedEnd.html" title="Indicates that end of input was unexpectedly encountered."></a>
+                        <a href="Parsing$UnexpectedEnd.html" title="Indicates that end of input was unexpectedly encountered.">UnexpectedEnd</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="class" href="Parsing$UnexpectedToken.html" title="Indicates that the provided token was not expected at that point."></a>
+                        <a href="Parsing$UnexpectedToken.html" title="Indicates that the provided token was not expected at that point.">UnexpectedToken</a>
                       </li>
               </ul>
             </div>
@@ -146,29 +154,31 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
           <div id="content">
             <body class="trait type">
       <div id="definition">
-        <div class="big-circle trait">t</div>
-        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.factorization">factorization</a></p>
-        <h1>Substitution<span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html" title="Permalink">
+        <a href="Parsing$Conflict$.html" title="See companion object"><div class="big-circle trait-companion-object">t</div></a>
+        <p id="owner"><a href="index.html" class="extype" name="scallion">scallion</a>.<a href="Parsing.html" class="extype" name="scallion.Parsing">Parsing</a></p>
+        <h1><a href="Parsing$Conflict$.html" title="See companion object">Conflict</a><span class="permalink">
+      <a href="../scallion/Parsing$Conflict.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
-        <h3><span class="morelinks"></span></h3>
+        <h3><span class="morelinks"><div>
+            Companion <a href="Parsing$Conflict$.html" title="See companion object">object Conflict</a>
+          </div></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">sealed </span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Substitution</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Conflict</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to apply substitution to a syntax.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/Substitution.scala" target="_blank">Substitution.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Describes a LL(1) conflict.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/Parsing.scala" target="_blank">Parsing.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -177,7 +187,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="Factorization.html" class="extype" name="scallion.factorization.Factorization">Factorization</a>, <a href="LeftRecursion.html" class="extype" name="scallion.factorization.LeftRecursion">LeftRecursion</a></div>
+            <div class="subClasses hiddenContent"><a href="Parsing$Conflict$$FirstConflict.html" class="extype" name="scallion.Parsing.Conflict.FirstConflict">FirstConflict</a>, <a href="Parsing$Conflict$$FollowConflict.html" class="extype" name="scallion.Parsing.Conflict.FollowConflict">FollowConflict</a>, <a href="Parsing$Conflict$$NullableConflict.html" class="extype" name="scallion.Parsing.Conflict.NullableConflict">NullableConflict</a></div>
           </div></div>
         
 
@@ -194,7 +204,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
           <div id="order">
             <span class="filtertype">Ordering</span>
             <ol>
-              <li class="group out"><span>Grouped</span></li>
+              
               <li class="alpha in"><span>Alphabetic</span></li>
               <li class="inherit out"><span>By Inheritance</span></li>
             </ol>
@@ -203,7 +213,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.factorization.Substitution"><span>Substitution</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.Parsing.Conflict"><span>Conflict</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -225,15 +235,34 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
 
         
 
-        
+        <div class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="scallion.Parsing.Conflict#source" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="source:Parsing.this.Syntax.Disjunction[_]"></a><a id="source:Disjunction[_]"></a>
+      <span class="permalink">
+      <a href="../scallion/Parsing$Conflict.html#source:Parsing.this.Syntax.Disjunction[_]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">source</span><span class="result">: <a href="Syntaxes$Syntax$$Disjunction.html" class="extype" name="scallion.Syntaxes.Syntax.Disjunction">Disjunction</a>[_]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Source of the conflict.</p>
+    </li></ol>
+            </div>
 
         <div class="values members">
-              <h3>Value Members</h3>
+              <h3>Concrete Value Members</h3>
               <ol>
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -249,7 +278,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html###():Int" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -265,7 +294,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -281,7 +310,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -297,7 +326,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#clone():Object" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -309,7 +338,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
@@ -320,27 +349,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scallion.factorization.Substitution#eliminate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]"></a><a id="eliminate[A,B]((Substitution.this)#Syntax[B],(Substitution.this)#Syntax[A],(Substitution.this)#Syntax[A]):(Substitution.this)#Syntax[B]"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.B">B</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.A">A</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.eliminate.B">B</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Eliminate a Syntax by substituting it with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Eliminate a Syntax by substituting it with another one.</p><p>This function is just a shorthand for substitute with
-<code>elim = true</code>.</p><pre>substitute(i, o, s, <span class="kw">true</span>) === eliminate(i, o, s)</pre></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>Syntax in which the substition(s) will happen.</p></dd><dt class="param">original</dt><dd class="cmt"><p>Syntax to eliminate.</p></dd><dt class="param">subst</dt><dd class="cmt"><p>Syntax to use as replacement.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="#substitute[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A],elim:Boolean):Substitution.this.Syntax[B]" class="extmbr" name="scallion.factorization.Substitution#substitute">scallion.factorization.Substitution.substitute</a></p></span></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -356,7 +368,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -372,7 +384,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#getClass():Class[_]" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -393,7 +405,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#hashCode():Int" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -414,7 +426,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -430,7 +442,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -446,7 +458,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#notify():Unit" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -467,7 +479,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#notifyAll():Unit" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -485,41 +497,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.factorization.Substitution#substitute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="substitute[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A],elim:Boolean):Substitution.this.Syntax[B]"></a><a id="substitute[A,B]((Substitution.this)#Syntax[B],(Substitution.this)#Syntax[A],(Substitution.this)#Syntax[A],Boolean):(Substitution.this)#Syntax[B]"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#substitute[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A],elim:Boolean):Substitution.this.Syntax[B]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.B">B</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.A">A</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.A">A</span>]</span>, <span name="elim">elim: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.Substitution">Substitution</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Substitution.substitute.B">B</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Substitutes a syntax with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Substitutes a syntax with another one.
-</p></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>Syntax in which the substition(s) will happen.</p></dd><dt class="param">original</dt><dd class="cmt"><p>Syntax which will be removed.</p></dd><dt class="param">subst</dt><dd class="cmt"><p>Syntax to use as replacement.</p></dd><dt class="param">elim</dt><dd class="cmt"><p>Indicates whether <code>original</code> must also be substituted inside of <code>subst</code> (see example 2).</p></dd></dl><dl class="attributes block"> <div class="block">Examples:
-               <ol><li class="cmt"><p></p><pre><span class="kw">lazy</span> <span class="kw">val</span> grammar: Syntax[<span class="std">Boolean</span>] = recursive( epsilon(<span class="kw">true</span>) | grammar )
-<span class="kw">lazy</span> <span class="kw">val</span> result: Syntax[<span class="std">Boolean</span>] = recursive( epsilon(<span class="kw">false</span>) | result )
-substitute(grammar, epsilon(<span class="kw">true</span>), epsilon(<span class="kw">false</span>))  === result</pre></li>, <li class="cmt"><p></p><pre><span class="kw">lazy</span> <span class="kw">val</span> grammar: Syntax[<span class="std">Boolean</span>] = recursive( (epsilon(<span class="kw">true</span>) ~ grammar).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a &amp;&amp; b} )
-<span class="kw">lazy</span> <span class="kw">val</span> subst: Syntax[<span class="std">Boolean</span>] = recursive( (epsilon(<span class="kw">false</span>) ~ grammar).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a || b} )
-<span class="kw">lazy</span> <span class="kw">val</span> eliminate: Syntax[<span class="std">Boolean</span>] = recursive( (epsilon(<span class="kw">false</span>) ~ eliminate).map{ <span class="kw">case</span> a ~ b <span class="kw">=&gt;</span> a || b} )
-substitute(grammar, grammar, subst) === subst
-eliminate(grammar, grammar, subst) === eliminate</pre></li></ol>
-            </div><dt>Note</dt><dd><span class="cmt"><p>Due to some implementation details, this function might return unexpected results
-      when working with mapped syntaxes (see <a href="../properties/StructuralEquivalence.html" class="extype" name="scallion.properties.StructuralEquivalence">scallion.properties.StructuralEquivalence</a>):</p><pre><span class="kw">val</span> transform = (c: <span class="std">Char</span>) <span class="kw">=&gt;</span> c.asDigit
-<span class="kw">val</span> grammar = epsilon(<span class="lit">'1'</span>).map(transform) ~ epsilon(<span class="num">2</span>)
-<span class="kw">val</span> expected = epsilon(<span class="num">3</span>) ~ epsilon(<span class="num">2</span>)
-substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilon(<span class="num">3</span>))
-=== grammar   <span class="cmt">// Left unchanged...</span>
-=!= expected  <span class="cmt">// ... which is not what we expected.</span></pre></span></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -535,7 +516,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#toString():String" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -551,7 +532,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -573,7 +554,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -597,7 +578,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#wait():Unit" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -627,7 +608,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
               <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Substitution.html#finalize():Unit" title="Permalink">
+      <a href="../scallion/Parsing$Conflict.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -639,7 +620,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
         <span class="name deprecated" title="Deprecated: (Since version ) see corresponding Javadoc for more information.">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@Deprecated</span>
               
                 <span class="name">@deprecated</span>
@@ -664,10 +645,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="factorization">
-              <h3>Factorization</h3>
-              
-            </div><div class="group" name="Ungrouped">
+        <div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

@@ -99,22 +99,6 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.factorization" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="factorization"></a><a id="factorization:factorization"></a>
-      <span class="permalink">
-      <a href="../scallion/index.html#factorization" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="../factorization/index.html"><span class="name">factorization</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li name="scallion.properties" visbl="pub" class="indented2 current" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="properties"></a><a id="properties:properties"></a>
       <span class="permalink">
@@ -133,13 +117,33 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftRecursion.html" title="Contains functions to detect left recursion in a syntax."></a>
-                        <a href="LeftRecursion.html" title="Contains functions to detect left recursion in a syntax.">LeftRecursion</a>
+                        <a class="trait" href="LL1Properties.html" title="Contains functions giving basic LL1 properties of syntaxes."></a>
+                        <a href="LL1Properties.html" title="Contains functions giving basic LL1 properties of syntaxes.">LL1Properties</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Recursion.html" title="Contains functions to find left recursions."></a>
+                        <a href="Recursion.html" title="Contains functions to find left recursions.">Recursion</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="StructuralEquivalence.html" title="Contains functions to compare syntaxes."></a>
                         <a href="StructuralEquivalence.html" title="Contains functions to compare syntaxes.">StructuralEquivalence</a>
-                      </li><li name="scallion.util" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+                      </li><li name="scallion.transformation" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformation"></a><a id="transformation:transformation"></a>
+      <span class="permalink">
+      <a href="../scallion/index.html#transformation" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../transformation/index.html"><span class="name">transformation</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
+    </li><li name="scallion.util" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="util"></a><a id="util:util"></a>
       <span class="permalink">
       <a href="../scallion/index.html#util" title="Permalink">
@@ -210,10 +214,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="scallion.properties.LeftRecursion" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="LeftRecursionextendsAnyRef"></a><a id="LeftRecursion:LeftRecursion"></a>
+              <ol><li name="scallion.properties.LL1Properties" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LL1PropertiesextendsAnyRef"></a><a id="LL1Properties:LL1Properties"></a>
       <span class="permalink">
-      <a href="../../scallion/properties/index.html#LeftRecursionextendsAnyRef" title="Permalink">
+      <a href="../../scallion/properties/index.html#LL1PropertiesextendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -222,10 +226,26 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Contains functions to detect left recursion in a syntax." href="LeftRecursion.html"><span class="name">LeftRecursion</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="Contains functions giving basic LL1 properties of syntaxes." href="LL1Properties.html"><span class="name">LL1Properties</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Contains functions to detect left recursion in a syntax.</p>
+      <p class="shortcomment cmt">Contains functions giving basic LL1 properties of syntaxes.</p>
+    </li><li name="scallion.properties.Recursion" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RecursionextendsSyntaxesNavigation"></a><a id="Recursion:Recursion"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/index.html#RecursionextendsSyntaxesNavigation" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains functions to find left recursions." href="Recursion.html"><span class="name">Recursion</span></a><span class="result"> extends <a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains functions to find left recursions.</p>
     </li><li name="scallion.properties.StructuralEquivalence" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="StructuralEquivalenceextendsAnyRef"></a><a id="StructuralEquivalence:StructuralEquivalence"></a>
       <span class="permalink">

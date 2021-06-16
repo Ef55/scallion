@@ -3,18 +3,37 @@ package scallion
 import scala.collection.immutable.Set
 import scallion.util.BinaryTreeZipper
 
+/**
+  * Zipper for syntaxes.
+  * 
+  * @groupname navigation Navigation
+  */
 trait SyntaxesNavigation { self: Syntaxes =>
   import Syntax._
 
-  /**@see [[scallion.util.BinaryTreeZipper.Direction]] */
+  /**@see [[scallion.util.BinaryTreeZipper.Direction]] 
+    * @group navigation 
+    **/
   val Direction = BinaryTreeZipper.Direction
+
+  /** Direction to move in a syntax zipper.
+    * @group navigation 
+    **/
   import Direction._
   
-  /** A zipper on a syntax. */
+  /** A zipper on a syntax. 
+    * @group navigation 
+    **/
   type Zipper[A] = BinaryTreeZipper.Zipper[Syntax[_], Syntax[A]]
+
+  /** Walk for syntax zippers. 
+    * @group navigation 
+    **/
   type Walk[A] = BinaryTreeZipper.Walk[Syntax[_], Syntax[A]]
 
-  /** Factory for syntax zipper. */
+  /** Factory for syntax zipper. 
+    * @group navigation 
+    **/
   object Zipper {
     import BinaryTreeZipper.BinaryTreeEquivalent
     import BinaryTreeZipper.BinaryTreeEquivalent._
@@ -41,6 +60,9 @@ trait SyntaxesNavigation { self: Syntaxes =>
     }
   }
 
+  /** Walk for syntax zippers. 
+    * @group navigation 
+    **/
   object Walk {
     def postOrder[A](zipper: Zipper[A]): Walk[A] = zipper.walkPostOrder
     def postOrder[A](syntax: Syntax[A]): Walk[A] = postOrder(Zipper(syntax))

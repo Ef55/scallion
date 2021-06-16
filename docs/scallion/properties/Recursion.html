@@ -99,10 +99,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.factorization" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="factorization"></a><a id="factorization:factorization"></a>
+    </li><li name="scallion.properties" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="properties"></a><a id="properties:properties"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#factorization" title="Permalink">
+      <a href="../scallion/index.html#properties" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -111,34 +111,22 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">factorization</span></a>
+        <a title="" href="index.html"><span class="name">properties</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Factorization.html" title="Contains functions to factorize syntaxes."></a>
-                        <a href="Factorization.html" title="Contains functions to factorize syntaxes.">Factorization</a>
+                        <a class="trait" href="LL1Properties.html" title="Contains functions giving basic LL1 properties of syntaxes."></a>
+                        <a href="LL1Properties.html" title="Contains functions giving basic LL1 properties of syntaxes.">LL1Properties</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax."></a>
-                        <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
+                        <a class="trait" href="" title="Contains functions to find left recursions."></a>
+                        <a href="" title="Contains functions to find left recursions.">Recursion</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftRecursion.html" title=""></a>
-                        <a href="LeftRecursion.html" title="">LeftRecursion</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
-                        <a href="" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
-                        <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
-                        <a href="Unfold.html" title="Contains functions to apply unfolding to a syntax.">Unfold</a>
+                        <a class="trait" href="StructuralEquivalence.html" title="Contains functions to compare syntaxes."></a>
+                        <a href="StructuralEquivalence.html" title="Contains functions to compare syntaxes.">StructuralEquivalence</a>
                       </li>
               </ul>
             </div>
@@ -147,9 +135,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
             <body class="trait type">
       <div id="definition">
         <div class="big-circle trait">t</div>
-        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.factorization">factorization</a></p>
-        <h1>Split<span class="permalink">
-      <a href="../../scallion/factorization/Split.html" title="Permalink">
+        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.properties">properties</a></p>
+        <h1>Recursion<span class="permalink">
+      <a href="../../scallion/properties/Recursion.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
@@ -162,23 +150,22 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Split</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Recursion</span><span class="result"> extends <a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to transform a syntax into an quivalent
-disjuction, where each alternative has some specified property.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.Split">Split</a> with <a href="../SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/Split.scala" target="_blank">Split.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to find left recursions.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.properties.Recursion">Recursion</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../package$$Parsers.html" class="extype" name="scallion.Parsers">Parsers</a> with <a href="LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/properties/Recursion.scala" target="_blank">Recursion.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="Factorization.html" class="extype" name="scallion.factorization.Factorization">Factorization</a>, <a href="LeftFactorization.html" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>, <a href="LeftRecursion.html" class="extype" name="scallion.factorization.LeftRecursion">LeftRecursion</a></div>
+            <div class="subClasses hiddenContent"><a href="../transformation/LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>, <a href="../transformation/Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a>, <a href="../transformation/Transformation.html" class="extype" name="scallion.transformation.Transformation">Transformation</a></div>
           </div></div>
         
 
@@ -204,7 +191,7 @@ disjuction, where each alternative has some specified property.
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.factorization.Split"><span>Split</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.properties.Recursion"><span>Recursion</span></li><li class="in" name="scallion.SyntaxesNavigation"><span>SyntaxesNavigation</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -224,17 +211,84 @@ disjuction, where each alternative has some specified property.
         <div id="allMembers">
         
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="scallion.SyntaxesNavigation.Walk" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
+      <a id="Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Walk[A]:(Recursion.this)#Walk[A]"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Walk</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="../util/BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">util.BinaryTreeZipper.Walk</a>[(<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Walk.A">A</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Walk for syntax zippers.</p><div class="fullcomment"><div class="comment cmt"><p>Walk for syntax zippers.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></dd></dl></div>
+    </li><li name="scallion.SyntaxesNavigation.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
+      <a id="Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Zipper[A]:(Recursion.this)#Zipper[A]"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Zipper</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="../util/BinaryTreeZipper$$Zipper.html" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">util.BinaryTreeZipper.Zipper</a>[(<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Zipper.A">A</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A zipper on a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>A zipper on a syntax.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></dd></dl></div>
+    </li></ol>
+            </div>
 
         
 
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+                <li name="scallion.SyntaxesNavigation.Walk" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
+      <a id="Walk"></a><a id="Walk:Walk"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesNavigation.html#Walk" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Walk for syntax zippers." href="../SyntaxesNavigation$Walk$.html"><span class="name">Walk</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">Walk for syntax zippers.</p><div class="fullcomment"><div class="comment cmt"><p>Walk for syntax zippers.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></dd></dl></div>
+    </li><li name="scallion.SyntaxesNavigation.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
+      <a id="Zipper"></a><a id="Zipper:Zipper"></a>
+      <span class="permalink">
+      <a href="../scallion/SyntaxesNavigation.html#Zipper" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Factory for syntax zipper." href="../SyntaxesNavigation$Zipper$.html"><span class="name">Zipper</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">Factory for syntax zipper.</p><div class="fullcomment"><div class="comment cmt"><p>Factory for syntax zipper.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></dd></dl></div>
+    </li><li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -250,7 +304,7 @@ disjuction, where each alternative has some specified property.
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html###():Int" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -266,7 +320,7 @@ disjuction, where each alternative has some specified property.
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -279,10 +333,26 @@ disjuction, where each alternative has some specified property.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scallion.SyntaxesNavigation#Direction" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
+      <a id="Direction:scallion.util.BinaryTreeZipper.Direction.type"></a><a id="Direction:util.BinaryTreeZipper.Direction.type"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#Direction:scallion.util.BinaryTreeZipper.Direction.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Direction</span><span class="result">: <a href="../util/BinaryTreeZipper$$Direction$.html" class="extype" name="scallion.util.BinaryTreeZipper.Direction">util.BinaryTreeZipper.Direction</a>.type</span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="../util/BinaryTreeZipper$$Direction.html" class="extype" name="scallion.util.BinaryTreeZipper.Direction">scallion.util.BinaryTreeZipper.Direction</a></p></span></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -298,7 +368,7 @@ disjuction, where each alternative has some specified property.
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#clone():Object" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -324,7 +394,7 @@ disjuction, where each alternative has some specified property.
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -340,7 +410,7 @@ disjuction, where each alternative has some specified property.
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -353,10 +423,29 @@ disjuction, where each alternative has some specified property.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scallion.properties.Recursion#findLeftRecursives" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="findLeftRecursives(syntax:Recursion.this.Syntax[_]):scala.collection.immutable.Set[Recursion.this.Syntax.Recursive[_]]"></a><a id="findLeftRecursives((Recursion.this)#Syntax[_]):Set[Recursive[_]]"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#findLeftRecursives(syntax:Recursion.this.Syntax[_]):scala.collection.immutable.Set[Recursion.this.Syntax.Recursive[_]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findLeftRecursives</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Set">Set</span>[<a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Search if the syntax contains any left-recursive
+non-terminal, and return the left-recursives if so.</p><div class="fullcomment"><div class="comment cmt"><p>Search if the syntax contains any left-recursive
+non-terminal, and return the left-recursives if so.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to analyze.</p></dd><dt>returns</dt><dd class="cmt"><p>The left-recursive non-terminals.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="#isLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean" class="extmbr" name="scallion.properties.Recursion#isLeftRecursive">scallion.properties.Recursion.isLeftRecursive</a></p></span></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#getClass():Class[_]" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -374,10 +463,26 @@ disjuction, where each alternative has some specified property.
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scallion.properties.Recursion#hasLeftRecursion" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="property">
+      <a id="hasLeftRecursion(syntax:Recursion.this.Syntax[_]):Boolean"></a><a id="hasLeftRecursion((Recursion.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#hasLeftRecursion(syntax:Recursion.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasLeftRecursion</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate whether the syntax contains left-recursive non-terminals.</p>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#hashCode():Int" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -395,10 +500,28 @@ disjuction, where each alternative has some specified property.
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scallion.properties.Recursion#isDirectLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isDirectLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean"></a><a id="isDirectLeftRecursive(Recursive[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#isDirectLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isDirectLeftRecursive</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if this syntax is direct left recursive.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate if this syntax is direct left recursive.</p><p>A syntax is direct left-recursive if it appears in itself
+as the first token consumer without breaking recursive constructs.
+</p></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -411,10 +534,63 @@ disjuction, where each alternative has some specified property.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scallion.properties.Recursion#isLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean"></a><a id="isLeftRecursive(Recursive[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#isLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isLeftRecursive</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if this syntax is left recursive.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate if this syntax is left recursive.</p><p>A syntax is left-recursive if it appears in itself
+as the first token consumer (i.e. it is either the first
+symbol or is only prefixed by nullable syntaxes).
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to test.</p></dd></dl></div>
+    </li><li name="scallion.properties.Recursion#isRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="property">
+      <a id="isRecursive(syntax:Recursion.this.Syntax[_]):Boolean"></a><a id="isRecursive((Recursion.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#isRecursive(syntax:Recursion.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRecursive</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if a syntax is recursive.</p>
+    </li><li name="scallion.properties.Recursion#listRecursives" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="listRecursives(syntax:Recursion.this.Syntax[_]):List[Recursion.this.Syntax.Recursive[_]]"></a><a id="listRecursives((Recursion.this)#Syntax[_]):List[Recursive[_]]"></a>
+      <span class="permalink">
+      <a href="../../scallion/properties/Recursion.html#listRecursives(syntax:Recursion.this.Syntax[_]):List[Recursion.this.Syntax.Recursive[_]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">listRecursives</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.properties.Recursion">Recursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">List all the recursives in the syntax tree.</p><div class="fullcomment"><div class="comment cmt"><p>List all the recursives in the syntax tree.</p><p>The recursives are ordered by ascending
+depth first and then from left to right.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to analyze</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -430,7 +606,7 @@ disjuction, where each alternative has some specified property.
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#notify():Unit" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -451,7 +627,7 @@ disjuction, where each alternative has some specified property.
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#notifyAll():Unit" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -469,65 +645,10 @@ disjuction, where each alternative has some specified property.
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((Split.this)#Syntax[A],((Split.this)#Syntax[_])⇒Boolean,Boolean):(Option[(Split.this)#Syntax[A]],Option[(Split.this)#Syntax[A]])"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="enterRecursive">enterRecursive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]])</span>
-      </span>
-      
-      <p class="shortcomment cmt">Split a syntax into a part which has a prefix satisfying a
-given predicate and a part whose prefixes do not satisfy it.</p><div class="fullcomment"><div class="comment cmt"><p>Split a syntax into a part which has a prefix satisfying a
-given predicate and a part whose prefixes do not satisfy it.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt class="param">enterRecursive</dt><dd class="cmt"><p>Whether recursive construct should be split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Might not terminate if the syntax is left recursive and
-<code>enterRecursive</code> is set to <code>true</code>.</p></span></dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(Split.this)#Syntax[A]],Option[(Split.this)#Syntax[A]])"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">splitLeftRecursive</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]])</span>
-      </span>
-      
-      <p class="shortcomment cmt">Split a recursive syntax into its left recursive component
-and its non-left recursive component.</p><div class="fullcomment"><div class="comment cmt"><p>Split a recursive syntax into its left recursive component
-and its non-left recursive component.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="splitNullable[A](syntax:Split.this.Syntax[A]):(Split.this.Syntax[A],Split.this.Syntax[A])"></a><a id="splitNullable[A]((Split.this)#Syntax[A]):((Split.this)#Syntax[A],(Split.this)#Syntax[A])"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#splitNullable[A](syntax:Split.this.Syntax[A]):(Split.this.Syntax[A],Split.this.Syntax[A])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">splitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>]</span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>], (<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>])</span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -543,7 +664,7 @@ and its non-left recursive component.
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#toString():String" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -556,31 +677,10 @@ and its non-left recursive component.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scallion.factorization.Split#trySplitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="trySplitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="trySplitNullable[A]((Split.this)#Syntax[A]):(Option[(Split.this)#Syntax[A]],Option[(Split.this)#Syntax[A]])"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#trySplitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trySplitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.trySplitNullable.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.trySplitNullable.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.Split">Split</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.trySplitNullable.A">A</span>]])</span>
-      </span>
-      
-      <p class="shortcomment cmt">Split a (possibly) nullable syntax into a
-null syntax (only accepts the empty string)
-and a non-nullable syntax (doesn't accept the empty string).</p><div class="fullcomment"><div class="comment cmt"><p>Split a (possibly) nullable syntax into a
-null syntax (only accepts the empty string)
-and a non-nullable syntax (doesn't accept the empty string).
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the syntax is left recursive.</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -602,7 +702,7 @@ and a non-nullable syntax (doesn't accept the empty string).
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -626,7 +726,7 @@ and a non-nullable syntax (doesn't accept the empty string).
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#wait():Unit" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -656,7 +756,7 @@ and a non-nullable syntax (doesn't accept the empty string).
               <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/Split.html#finalize():Unit" title="Permalink">
+      <a href="../../scallion/properties/Recursion.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -684,7 +784,9 @@ and a non-nullable syntax (doesn't accept the empty string).
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scallion.SyntaxesNavigation">
+              <h3>Inherited from <a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -693,8 +795,11 @@ and a non-nullable syntax (doesn't accept the empty string).
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="factorization">
-              <h3>Factorization</h3>
+        <div class="group" name="navigation">
+              <h3>Navigation</h3>
+              
+            </div><div class="group" name="property">
+              <h3>Syntaxes property</h3>
               
             </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>

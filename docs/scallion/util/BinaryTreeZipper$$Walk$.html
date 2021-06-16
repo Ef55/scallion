@@ -99,10 +99,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.factorization" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="factorization"></a><a id="factorization:factorization"></a>
+    </li><li name="scallion.util" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="util"></a><a id="util:util"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#factorization" title="Permalink">
+      <a href="../scallion/index.html#util" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -111,74 +111,90 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">factorization</span></a>
+        <a title="" href="index.html"><span class="name">util</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
-    </li><li class="current-entities indented2">
+    </li><li name="scallion.util.BinaryTreeZipper" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BinaryTreeZipper"></a><a id="BinaryTreeZipper:BinaryTreeZipper"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/index.html#BinaryTreeZipper" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="A zipper for Binary-Tree-like date structures." href="BinaryTreeZipper$.html"><span class="name">BinaryTreeZipper</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">A zipper for Binary-Tree-like date structures.</p><div class="fullcomment"><div class="comment cmt"><p>A zipper for Binary-Tree-like date structures.</p><p>In order to use this zipper on your won data structure, you should
+provide an implementation of <code>BinaryTreeConvertible[T]</code> where <code>T</code>
+is a common ancestors-type of all your node-types.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion.util">util</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">scallion.SyntaxesNavigation</a> for an example on how to implement
+<code>BinaryTreeConvertible[T]</code>.</p></span></dd></dl></div>
+    </li><li class="current-entities indented3">
                         <span class="separator"></span>
-                        <a class="trait" href="Factorization.html" title="Contains functions to factorize syntaxes."></a>
-                        <a href="Factorization.html" title="Contains functions to factorize syntaxes.">Factorization</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="" title="Contains functions to apply left factorization to a syntax."></a>
-                        <a href="" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="LeftRecursion.html" title=""></a>
-                        <a href="LeftRecursion.html" title="">LeftRecursion</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
-                        <a href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
-                        <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
-                        <a href="Unfold.html" title="Contains functions to apply unfolding to a syntax.">Unfold</a>
+                        <a class="trait" href="BinaryTreeZipper$$BinaryTreeConvertible.html" title="Transform some data structure into an equivalent binary tree which will then be used by the zipper."></a>
+                        <a href="BinaryTreeZipper$$BinaryTreeConvertible.html" title="Transform some data structure into an equivalent binary tree which will then be used by the zipper.">BinaryTreeConvertible</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="BinaryTreeZipper$$BinaryTreeEquivalent$.html" title="Contains the binary tree equivalents."></a>
+                        <a class="trait" href="BinaryTreeZipper$$BinaryTreeEquivalent.html" title="Information needed on a kind of node of a data structure in order for the zipper to be able to navigate it."></a>
+                        <a href="BinaryTreeZipper$$BinaryTreeEquivalent.html" title="Information needed on a kind of node of a data structure in order for the zipper to be able to navigate it.">BinaryTreeEquivalent</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="BinaryTreeZipper$$Direction$.html" title="Contains all possible directions."></a>
+                        <a class="trait" href="BinaryTreeZipper$$Direction.html" title="The different directions which can be used to navigate in the tree."></a>
+                        <a href="BinaryTreeZipper$$Direction.html" title="The different directions which can be used to navigate in the tree.">Direction</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="BinaryTreeZipper$$PathNode$.html" title="Contains the possible path nodes."></a>
+                        <a class="trait" href="BinaryTreeZipper$$PathNode.html" title="Represent a node in the path from root to focus."></a>
+                        <a href="BinaryTreeZipper$$PathNode.html" title="Represent a node in the path from root to focus.">PathNode</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="" title="Factory for Walk."></a>
+                        <a class="class" href="BinaryTreeZipper$$Walk.html" title="Allow to visit every node of a zipper."></a>
+                        <a href="BinaryTreeZipper$$Walk.html" title="Allow to visit every node of a zipper.">Walk</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="BinaryTreeZipper$$Zipper$.html" title="Factory for zipper."></a>
+                        <a class="class" href="BinaryTreeZipper$$Zipper.html" title="A zipper on a binary tree."></a>
+                        <a href="BinaryTreeZipper$$Zipper.html" title="A zipper on a binary tree.">Zipper</a>
                       </li>
               </ul>
             </div>
           </div>
           <div id="content">
-            <body class="trait type">
+            <body class="object value">
       <div id="definition">
-        <div class="big-circle trait">t</div>
-        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.factorization">factorization</a></p>
-        <h1>LeftFactorization<span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html" title="Permalink">
+        <a href="BinaryTreeZipper$$Walk.html" title="See companion class"><div class="big-circle object-companion-class">o</div></a>
+        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.util">util</a>.<a href="BinaryTreeZipper$.html" class="extype" name="scallion.util.BinaryTreeZipper">BinaryTreeZipper</a></p>
+        <h1><a href="BinaryTreeZipper$$Walk.html" title="See companion class">Walk</a><span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
-        <h3><span class="morelinks"></span></h3>
+        <h3><span class="morelinks"><div>
+            Companion <a href="BinaryTreeZipper$$Walk.html" title="See companion class">class Walk</a>
+          </div></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">LeftFactorization</span><span class="result"> extends <a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></span>
+        <span class="name">Walk</span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to apply left factorization to a syntax.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/factorization/LeftFactorization.scala" target="_blank">LeftFactorization.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Factory for Walk.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/util/BinaryTreeZipper.scala" target="_blank">BinaryTreeZipper.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-            <span class="toggle">
-              Known Subclasses
-            </span>
-            <div class="subClasses hiddenContent"><a href="Factorization.html" class="extype" name="scallion.factorization.Factorization">Factorization</a>, <a href="LeftRecursion.html" class="extype" name="scallion.factorization.LeftRecursion">LeftRecursion</a></div>
-          </div></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
         
 
       <div id="mbrsel">
@@ -194,7 +210,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
           <div id="order">
             <span class="filtertype">Ordering</span>
             <ol>
-              <li class="group out"><span>Grouped</span></li>
+              
               <li class="alpha in"><span>Alphabetic</span></li>
               <li class="inherit out"><span>By Inheritance</span></li>
             </ol>
@@ -203,7 +219,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.factorization.LeftFactorization"><span>LeftFactorization</span></li><li class="in" name="scallion.factorization.Split"><span>Split</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.util.BinaryTreeZipper.Walk"><span>Walk</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -233,7 +249,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -249,7 +265,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html###():Int" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -265,7 +281,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -281,7 +297,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -297,7 +313,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#clone():Object" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -323,7 +339,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -339,7 +355,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -355,7 +371,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#getClass():Class[_]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -376,7 +392,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#hashCode():Int" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -397,7 +413,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -410,61 +426,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scallion.factorization.LeftFactorization#leftFactorOut" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A]):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])"></a><a id="leftFactorOut[A,L]((LeftFactorization.this)#Syntax[L],(LeftFactorization.this)#Syntax[A]):((LeftFactorization.this)#Syntax[(L)⇒A],(LeftFactorization.this)#Syntax[A])"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A]):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">leftFactorOut</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorOut.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorOut.A">A</span>]</span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[(<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorOut.L">L</span>) ⇒ <span class="extype" name="scallion.factorization.LeftFactorization.leftFactorOut.A">A</span>], (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorOut.A">A</span>])</span>
-      </span>
-      
-      
-    </li><li name="scallion.factorization.LeftFactorization#leftFactorize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="leftFactorize[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A]):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorize[A]((LeftFactorization.this)#Kind,(LeftFactorization.this)#Syntax[A]):(LeftFactorization.this)#Syntax[A]"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#leftFactorize[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A]):LeftFactorization.this.Syntax[A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">leftFactorize</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span></span>, <span name="s">s: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorize.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorize.A">A</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Left factorizes a single terminal in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Left factorizes a single terminal in the syntax.
-</p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Terminal to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the factorization.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the terminal factorized.</p></dd></dl></div>
-    </li><li name="scallion.factorization.LeftFactorization#leftFactorize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A]):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorize[A,L]((LeftFactorization.this)#Syntax[L],(LeftFactorization.this)#Syntax[A]):(LeftFactorization.this)#Syntax[A]"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A]):LeftFactorization.this.Syntax[A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">leftFactorize</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorize.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorize.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.LeftFactorization.leftFactorize.A">A</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Left factorizes a syntax in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Left factorizes a syntax in the syntax.
-</p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Syntax to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the factorization.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the syntax left factorized.</p></dd></dl><dl class="attributes block"> <dt>To do</dt><dd><span class="cmt"><p>Handle nullable left-handside of <a href="../Syntaxes$Syntax$$Sequence.html" class="extype" name="scallion.Syntaxes.Syntax.Sequence">scallion.Syntaxes.Syntax.Sequence</a>.</p></span><span class="cmt"><p>Handle recursive syntaxes (through recursive substitution -
-      see <a href="Substitution.html#substitute[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A],elim:Boolean):Substitution.this.Syntax[B]" class="extmbr" name="scallion.factorization.Substitution#substitute">scallion.factorization.Substitution.substitute</a>).</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -480,7 +445,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#notify():Unit" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -501,7 +466,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#notifyAll():Unit" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -519,10 +484,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((LeftFactorization.this)#Syntax[A],((LeftFactorization.this)#Syntax[_])⇒Boolean,Boolean):(Option[(LeftFactorization.this)#Syntax[A]],Option[(LeftFactorization.this)#Syntax[A]])"></a>
+    </li><li name="scallion.util.BinaryTreeZipper.Walk#postOrder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="postOrder[T](value:T)(implicitevidence$3:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,T]"></a><a id="postOrder[T](T)(BinaryTreeConvertible[T]):Walk[T,T]"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#postOrder[T](value:T)(implicitevidence$3:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,T]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -531,18 +496,14 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="enterRecursive">enterRecursive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitByPrefix.A">A</span>]])</span>
+        <span class="name">postOrder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="BinaryTreeZipper$$BinaryTreeConvertible.html" class="extype" name="scallion.util.BinaryTreeZipper.BinaryTreeConvertible">BinaryTreeConvertible</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.T">T</span>]</span>)</span><span class="result">: <a href="BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">Walk</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Split a syntax into a part which has a prefix satisfying a
-given predicate and a part whose prefixes do not satisfy it.</p><div class="fullcomment"><div class="comment cmt"><p>Split a syntax into a part which has a prefix satisfying a
-given predicate and a part whose prefixes do not satisfy it.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt class="param">enterRecursive</dt><dd class="cmt"><p>Whether recursive construct should be split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Might not terminate if the syntax is left recursive and
-<code>enterRecursive</code> is set to <code>true</code>.</p></span></dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(LeftFactorization.this)#Syntax[A]],Option[(LeftFactorization.this)#Syntax[A]])"></a>
+      
+    </li><li name="scallion.util.BinaryTreeZipper.Walk#postOrder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="postOrder[T,S](zipper:scallion.util.BinaryTreeZipper.Zipper[T,S])(implicitevidence$2:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,S]"></a><a id="postOrder[T,S](Zipper[T,S])(BinaryTreeConvertible[T]):Walk[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#postOrder[T,S](zipper:scallion.util.BinaryTreeZipper.Zipper[T,S])(implicitevidence$2:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -551,17 +512,14 @@ given predicate and a part whose prefixes do not satisfy it.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">splitLeftRecursive</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitLeftRecursive.A">A</span>]])</span>
+        <span class="name">postOrder</span><span class="tparams">[<span name="T">T</span>, <span name="S">S</span>]</span><span class="params">(<span name="zipper">zipper: <a href="BinaryTreeZipper$$Zipper.html" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.S">S</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="BinaryTreeZipper$$BinaryTreeConvertible.html" class="extype" name="scallion.util.BinaryTreeZipper.BinaryTreeConvertible">BinaryTreeConvertible</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.T">T</span>]</span>)</span><span class="result">: <a href="BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">Walk</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.postOrder.S">S</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Split a recursive syntax into its left recursive component
-and its non-left recursive component.</p><div class="fullcomment"><div class="comment cmt"><p>Split a recursive syntax into its left recursive component
-and its non-left recursive component.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></dd></dl></div>
-    </li><li name="scallion.factorization.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="splitNullable[A](syntax:Split.this.Syntax[A]):(Split.this.Syntax[A],Split.this.Syntax[A])"></a><a id="splitNullable[A]((LeftFactorization.this)#Syntax[A]):((LeftFactorization.this)#Syntax[A],(LeftFactorization.this)#Syntax[A])"></a>
+      
+    </li><li name="scallion.util.BinaryTreeZipper.Walk#preOrder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="preOrder[T](value:T)(implicitevidence$5:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,T]"></a><a id="preOrder[T](T)(BinaryTreeConvertible[T]):Walk[T,T]"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#splitNullable[A](syntax:Split.this.Syntax[A]):(Split.this.Syntax[A],Split.this.Syntax[A])" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#preOrder[T](value:T)(implicitevidence$5:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,T]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -570,14 +528,30 @@ and its non-left recursive component.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">splitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>]</span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>], (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.splitNullable.A">A</span>])</span>
+        <span class="name">preOrder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="BinaryTreeZipper$$BinaryTreeConvertible.html" class="extype" name="scallion.util.BinaryTreeZipper.BinaryTreeConvertible">BinaryTreeConvertible</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.T">T</span>]</span>)</span><span class="result">: <a href="BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">Walk</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.T">T</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></dd></dl></div>
+      
+    </li><li name="scallion.util.BinaryTreeZipper.Walk#preOrder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="preOrder[T,S](zipper:scallion.util.BinaryTreeZipper.Zipper[T,S])(implicitevidence$4:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,S]"></a><a id="preOrder[T,S](Zipper[T,S])(BinaryTreeConvertible[T]):Walk[T,S]"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#preOrder[T,S](zipper:scallion.util.BinaryTreeZipper.Zipper[T,S])(implicitevidence$4:scallion.util.BinaryTreeZipper.BinaryTreeConvertible[T]):scallion.util.BinaryTreeZipper.Walk[T,S]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">preOrder</span><span class="tparams">[<span name="T">T</span>, <span name="S">S</span>]</span><span class="params">(<span name="zipper">zipper: <a href="BinaryTreeZipper$$Zipper.html" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.S">S</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="BinaryTreeZipper$$BinaryTreeConvertible.html" class="extype" name="scallion.util.BinaryTreeZipper.BinaryTreeConvertible">BinaryTreeConvertible</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.T">T</span>]</span>)</span><span class="result">: <a href="BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">Walk</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Walk.preOrder.S">S</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -593,7 +567,7 @@ and its non-left recursive component.
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#toString():String" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -606,31 +580,10 @@ and its non-left recursive component.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scallion.factorization.Split#trySplitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="factorization">
-      <a id="trySplitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="trySplitNullable[A]((LeftFactorization.this)#Syntax[A]):(Option[(LeftFactorization.this)#Syntax[A]],Option[(LeftFactorization.this)#Syntax[A]])"></a>
-      <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#trySplitNullable[A](syntax:Split.this.Syntax[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trySplitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.trySplitNullable.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.trySplitNullable.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.factorization.LeftFactorization">LeftFactorization</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.factorization.Split.trySplitNullable.A">A</span>]])</span>
-      </span>
-      
-      <p class="shortcomment cmt">Split a (possibly) nullable syntax into a
-null syntax (only accepts the empty string)
-and a non-nullable syntax (doesn't accept the empty string).</p><div class="fullcomment"><div class="comment cmt"><p>Split a (possibly) nullable syntax into a
-null syntax (only accepts the empty string)
-and a non-nullable syntax (doesn't accept the empty string).
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the syntax is left recursive.</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -652,7 +605,7 @@ and a non-nullable syntax (doesn't accept the empty string).
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -676,7 +629,7 @@ and a non-nullable syntax (doesn't accept the empty string).
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#wait():Unit" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -706,7 +659,7 @@ and a non-nullable syntax (doesn't accept the empty string).
               <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/factorization/LeftFactorization.html#finalize():Unit" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Walk$.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -734,9 +687,7 @@ and a non-nullable syntax (doesn't accept the empty string).
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scallion.factorization.Split">
-              <h3>Inherited from <a href="Split.html" class="extype" name="scallion.factorization.Split">Split</a></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -745,10 +696,7 @@ and a non-nullable syntax (doesn't accept the empty string).
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="factorization">
-              <h3>Factorization</h3>
-              
-            </div><div class="group" name="Ungrouped">
+        <div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

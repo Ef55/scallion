@@ -128,6 +128,8 @@ trait Substitution extends properties.Recursion { self: Syntaxes with Parsers wi
   /** Substitutes a syntax with another one.
     *
     * This version just add an additional way to specify the substitution mappings.
+    * 
+    * @group transformation
     **/
   def substitute[A](in: Syntax[A], substitutions: (Syntax[_], Syntax[_])*): Syntax[A] = 
     substitute(in, substitutions.toMap, false)
@@ -136,6 +138,8 @@ trait Substitution extends properties.Recursion { self: Syntaxes with Parsers wi
     *
     * This function is just a shorthand for substitute with
     * `elim = true`.
+    * 
+    * @group transformation
     **/
   def eliminate[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]]): Syntax[A] = 
     substitute(in, substitutions, true)
@@ -144,6 +148,8 @@ trait Substitution extends properties.Recursion { self: Syntaxes with Parsers wi
     *
     * This function is just a shorthand for substitute with
     * `elim = true`.
+    * 
+    * @group transformation
     **/
   def eliminate[A](in: Syntax[A], substitutions: (Syntax[_], Syntax[_])*): Syntax[A] = 
     substitute(in, substitutions.toMap, true)
@@ -160,7 +166,7 @@ trait Substitution extends properties.Recursion { self: Syntaxes with Parsers wi
     * @param original Syntax to eliminate.
     * @param subst Syntax to use as replacement.
     * 
-    * @see [[scallion.transformation.Substitution.substitute]]
+    * @see [[scallion.transformation.Substitution.substitute[A,B]*]]
     * 
     * @group transformation
     */

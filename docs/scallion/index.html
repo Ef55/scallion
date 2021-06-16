@@ -99,22 +99,6 @@ See the package <a href="" class="extype" name="scallion">scallion</a> for more 
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.factorization" visbl="pub" class="indented2 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="factorization"></a><a id="factorization:factorization"></a>
-      <span class="permalink">
-      <a href="../scallion/index.html#factorization" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="factorization/index.html"><span class="name">factorization</span></a>
-      </span>
-      
-      
     </li><li name="scallion.properties" visbl="pub" class="indented2 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="properties"></a><a id="properties:properties"></a>
       <span class="permalink">
@@ -128,6 +112,22 @@ See the package <a href="" class="extype" name="scallion">scallion</a> for more 
       </span>
       <span class="symbol">
         <a title="" href="properties/index.html"><span class="name">properties</span></a>
+      </span>
+      
+      
+    </li><li name="scallion.transformation" visbl="pub" class="indented2 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="transformation"></a><a id="transformation:transformation"></a>
+      <span class="permalink">
+      <a href="../scallion/index.html#transformation" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="transformation/index.html"><span class="name">transformation</span></a>
       </span>
       
       
@@ -197,12 +197,8 @@ See the package <a href="" class="extype" name="scallion">scallion</a> for more 
                         <a href="Syntaxes.html" title="Contains the definition of syntaxes.">Syntaxes</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="trait" href="SyntaxesNavigation.html" title=""></a>
-                        <a href="SyntaxesNavigation.html" title="">SyntaxesNavigation</a>
-                      </li><li class="current-entities indented1">
-                        <span class="separator"></span>
-                        <a class="trait" href="SyntaxesProperties.html" title="Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)"></a>
-                        <a href="SyntaxesProperties.html" title="Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)">SyntaxesProperties</a>
+                        <a class="trait" href="SyntaxesNavigation.html" title="Zipper for syntaxes."></a>
+                        <a href="SyntaxesNavigation.html" title="Zipper for syntaxes.">SyntaxesNavigation</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="class" href="package$$$tilde.html" title="Simply a pair."></a>
@@ -381,9 +377,9 @@ with unary operators and infix operators of different priority levels.</p><pre><
       
       <p class="shortcomment cmt">Main trait for defining parsers.</p>
     </li><li name="scallion.Parsing" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ParsingextendsSyntaxesProperties"></a><a id="Parsing:Parsing"></a>
+      <a id="ParsingextendsAnyRef"></a><a id="Parsing:Parsing"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#ParsingextendsSyntaxesProperties" title="Permalink">
+      <a href="../scallion/index.html#ParsingextendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -392,7 +388,7 @@ with unary operators and infix operators of different priority levels.</p><pre><
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="This trait implements LL(1) parsing with derivatives." href="Parsing.html"><span class="name">Parsing</span></a><span class="result"> extends <a href="SyntaxesProperties.html" class="extype" name="scallion.SyntaxesProperties">SyntaxesProperties</a></span>
+        <a title="This trait implements LL(1) parsing with derivatives." href="Parsing.html"><span class="name">Parsing</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
       <p class="shortcomment cmt">This trait implements LL(1) parsing with derivatives.</p>
@@ -440,26 +436,10 @@ with unary operators and infix operators of different priority levels.</p><pre><
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="" href="SyntaxesNavigation.html"><span class="name">SyntaxesNavigation</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="Zipper for syntaxes." href="SyntaxesNavigation.html"><span class="name">SyntaxesNavigation</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      
-    </li><li name="scallion.SyntaxesProperties" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="SyntaxesPropertiesextendsAnyRef"></a><a id="SyntaxesProperties:SyntaxesProperties"></a>
-      <span class="permalink">
-      <a href="../scallion/index.html#SyntaxesPropertiesextendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)" href="SyntaxesProperties.html"><span class="name">SyntaxesProperties</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Contains methods extending syntaxes with their properties (nullable, first set, follow set, ...)</p>
+      <p class="shortcomment cmt">Zipper for syntaxes.</p>
     </li><li name="scallion.~" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="pairs">
       <a id="~[+A,+B]extendsProductwithSerializable"></a><a id="~[+A,+B]:~[A,B]"></a>
       <span class="permalink">

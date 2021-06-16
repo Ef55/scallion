@@ -152,9 +152,9 @@ is a common ancestors-type of all your node-types.
                         <a class="trait" href="BinaryTreeZipper$$PathNode.html" title="Represent a node in the path from root to focus."></a>
                         <a href="BinaryTreeZipper$$PathNode.html" title="Represent a node in the path from root to focus.">PathNode</a>
                       </li><li class="current-entities indented3">
-                        <a class="object" href="BinaryTreeZipper$$Walker$.html" title="Factory for Walker."></a>
-                        <a class="class" href="BinaryTreeZipper$$Walker.html" title="Allow to visit every node of a zipper."></a>
-                        <a href="BinaryTreeZipper$$Walker.html" title="Allow to visit every node of a zipper.">Walker</a>
+                        <a class="object" href="BinaryTreeZipper$$Walk$.html" title="Factory for Walk."></a>
+                        <a class="class" href="BinaryTreeZipper$$Walk.html" title="Allow to visit every node of a zipper."></a>
+                        <a href="BinaryTreeZipper$$Walk.html" title="Allow to visit every node of a zipper.">Walk</a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="BinaryTreeZipper$$Zipper$.html" title="Factory for zipper."></a>
                         <a class="class" href="" title="A zipper on a binary tree."></a>
@@ -337,6 +337,22 @@ is a common ancestors-type of all your node-types.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper#close" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="close:S"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#close:S" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">close</span><span class="result">: <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Zip the tree up, apply the transform to the resulting tree and return.</p>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#down" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="navigation">
       <a id="down:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="down:Zipper[T,S]"></a>
       <span class="permalink">
@@ -893,10 +909,10 @@ the syntax up.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper.Zipper#walk" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="walk:scallion.util.BinaryTreeZipper.Walker[T,S]"></a><a id="walk:Walker[T,S]"></a>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper#walkPostOrder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="walkPostOrder:scallion.util.BinaryTreeZipper.Walk[T,S]"></a><a id="walkPostOrder:Walk[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#walk:scallion.util.BinaryTreeZipper.Walker[T,S]" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#walkPostOrder:scallion.util.BinaryTreeZipper.Walk[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -905,14 +921,30 @@ the syntax up.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">walk</span><span class="result">: <a href="BinaryTreeZipper$$Walker.html" class="extype" name="scallion.util.BinaryTreeZipper.Walker">Walker</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
+        <span class="name">walkPostOrder</span><span class="result">: <a href="BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">Walk</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Initiate a walk on the currently focused subtree.</p>
+    </li><li name="scallion.util.BinaryTreeZipper.Zipper#walkPreOrder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="walkPreOrder:scallion.util.BinaryTreeZipper.Walk[T,S]"></a><a id="walkPreOrder:Walk[T,S]"></a>
+      <span class="permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#walkPreOrder:scallion.util.BinaryTreeZipper.Walk[T,S]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">walkPreOrder</span><span class="result">: <a href="BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">Walk</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Initiate a walk on the currently focused subtree.</p>
     </li><li name="scallion.util.BinaryTreeZipper.Zipper#zipUp" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="result">
-      <a id="zipUp:S"></a>
+      <a id="zipUp:scallion.util.BinaryTreeZipper.Zipper[T,S]"></a><a id="zipUp:Zipper[T,S]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#zipUp:S" title="Permalink">
+      <a href="../../scallion/util/BinaryTreeZipper$$Zipper.html#zipUp:scallion.util.BinaryTreeZipper.Zipper[T,S]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -921,7 +953,7 @@ the syntax up.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">zipUp</span><span class="result">: <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span></span>
+        <span class="name">zipUp</span><span class="result">: <a href="" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">Zipper</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.T">T</span>, <span class="extype" name="scallion.util.BinaryTreeZipper.Zipper.S">S</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Zip the tree up.</p><div class="fullcomment"><div class="comment cmt"><p>Zip the tree up.
