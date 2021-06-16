@@ -1,12 +1,12 @@
 package scallion
-package factorization
+package transformation
 
 import scala.collection.immutable.Map
 import scala.collection.mutable.HashMap
 
 /** Contains functions to apply substitution to a syntax.
   *
-  * @groupname factorization Factorization
+  * @groupname transformation Transformation
   */
 trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesProperties => 
 
@@ -51,7 +51,7 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
     * =!= expected  // ... which is not what we expected.
     * }}}
     *
-    * @group factorization
+    * @group transformation
     */
   def substitute[A, B](in: Syntax[A], original: Syntax[B], subst: Syntax[B]): Syntax[A] = {
     val map: Map[Syntax[_], Syntax[_]] = Map((original, subst))
@@ -67,7 +67,7 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
     * @param substitutions Mappings old -> new syntax 
     * @param elim Indicates whether `original` must also be substituted inside of `subst`.
     *
-    * @group factorization
+    * @group transformation
     */
   def substitute[A](in: Syntax[A], substitutions: Map[Syntax[_], Syntax[_]], elim: Boolean = false): Syntax[A] = {
 
@@ -159,9 +159,9 @@ trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesPr
     * @param original Syntax to eliminate.
     * @param subst Syntax to use as replacement.
     * 
-    * @see [[scallion.factorization.Substitution.substitute]]
+    * @see [[scallion.transformation.Substitution.substitute]]
     * 
-    * @group factorization
+    * @group transformation
     */
   def eliminate[A, B](in: Syntax[B], original: Syntax[A], subst: Syntax[A]): Syntax[B] = {
     val map: Map[Syntax[_], Syntax[_]] = Map((original, subst))

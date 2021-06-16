@@ -1,9 +1,9 @@
 package scallion
-package factorization
+package transformation
 
-/** Contains functions to apply left factorization to a syntax.
+/** Contains functions to apply left transformation to a syntax.
   *
-  * @groupname factorization Factorization
+  * @groupname transformation Transformation
   */
 trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties => 
 
@@ -139,11 +139,11 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
   /** Left factorizes a syntax in the syntax.
     * 
     * @param leftFactor Syntax to left factor out.
-    * @param s Syntax on which to apply the factorization.
+    * @param s Syntax on which to apply the transformation.
     * @param recTerm Whether recursive nodes should be broken or not.
     * @return An equivalent syntax, with the syntax left factorized.
     *
-    * @group factorization
+    * @group transformation
     */
   def leftFactorize[A, L](leftFactor: Syntax[L], s: Syntax[A], recTerm: Boolean = true): Syntax[A] = {
     internal(leftFactor, s, recTerm).complete(leftFactor)
@@ -152,11 +152,11 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
   /** Left factorizes a single terminal in the syntax.
   * 
   * @param leftFactor Terminal to left factor out.
-  * @param s Syntax on which to apply the factorization.
+  * @param s Syntax on which to apply the transformation.
   * @param recTerm Whether recursive nodes should be broken or not.
   * @return An equivalent syntax, with the terminal factorized.
   *
-  * @group factorization
+  * @group transformation
   */
   def leftFactorizeKind[A](leftFactor: Kind, s: Syntax[A], recTerm: Boolean = true): Syntax[A] = {
     leftFactorize(elem(leftFactor), s, recTerm)
@@ -165,12 +165,12 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
   /** Remove (factor out) a prefix from a syntax.
     * 
     * @param leftFactor Syntax to left factor out.
-    * @param s Syntax on which to apply the factorization.
+    * @param s Syntax on which to apply the transformation.
     * @param recTerm Whether recursive nodes should be broken or not.
     * @return The alternative of the syntax where the prefix could be left factored, and
     *   another syntax where the prefix could not be removed.
     * 
-    * @group factorization
+    * @group transformation
     */
   def leftFactorOut[A, L](leftFactor: Syntax[L], s: Syntax[A], recTerm: Boolean = true): (Syntax[L => A], Syntax[A]) = {
     val r = internal(leftFactor, s, recTerm)

@@ -1,5 +1,5 @@
 package scallion
-package factorization
+package transformation
 
 import scala.collection.immutable.NumericRange
 import org.scalatest._

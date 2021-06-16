@@ -1,12 +1,12 @@
 package scallion
-package factorization
+package transformation
 
 import java.util.Properties
 
 /** Contains functions to transform a syntax into an quivalent
   * disjuction, where each alternative has some specified property.
   *
-  * @groupname factorization Factorization
+  * @groupname transformation Transformation
   */
 trait Split { self: SyntaxesProperties with Syntaxes =>
   import Syntax._
@@ -40,7 +40,7 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     * @param syntax The syantax to split.
     * @return The non-nullable component if any, and the null component if any.
     *
-    * @group factorization
+    * @group transformation
     */
   def trySplitNullable[A](syntax: Syntax[A], recTerm: Boolean = true): (Option[Syntax[A]], Option[Syntax[A]]) = {
 
@@ -107,7 +107,7 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     * @param enterRecursive Whether recursive construct should be split.
     * @return The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.
     *
-    * @group factorization
+    * @group transformation
     */
   def splitByPrefix[A](syntax: Syntax[A], splitter: Syntax[_] => Boolean, enterRecursive: Boolean = false): 
   (Option[Syntax[A]], Option[Syntax[A]]) = {
@@ -162,7 +162,7 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     * @param syntax The syntax to split.
     * @return The left recursive component if any, and the component which isn't if any.
     *
-    * @group factorization
+    * @group transformation
     */
   def splitLeftRecursive[A](syntax: Recursive[A]): (Option[Syntax[A]], Option[Syntax[A]]) = {
     val (leftRec, nonLeftRec) = splitByPrefix(syntax.inner, syntax == _, false)

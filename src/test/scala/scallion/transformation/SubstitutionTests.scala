@@ -1,5 +1,5 @@
 package scallion
-package factorization
+package transformation
 
 import org.scalatest._
 

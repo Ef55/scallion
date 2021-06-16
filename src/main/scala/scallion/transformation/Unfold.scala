@@ -1,9 +1,9 @@
 package scallion
-package factorization
+package transformation
 
 /** Contains functions to apply unfolding to a syntax.
   *
-  * @groupname factorization Factorization
+  * @groupname transformation Transformation
   */
 trait Unfold { self: Syntaxes with SyntaxesProperties => 
 
@@ -20,23 +20,23 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
     * unfold(s) === (a ~ a) | (a ~ b)
     * }}}
     *
-    * @group factorization
+    * @group transformation
     */
   def unfoldDisjunctions[A](s: Syntax[A]): Syntax[A] = {
 
-    case class Factorization[A](
+    case class Transformation[A](
       alternatives: Seq[Syntax[A]]
     ){
       require(this.alternatives.size > 0)
 
-      def |(that: Factorization[A]): Factorization[A] = {
-        Factorization(
+      def |(that: Transformation[A]): Transformation[A] = {
+        Transformation(
           this.alternatives ++ that.alternatives
         )
       }
 
-      def ~[F](that: Factorization[F]): Factorization[A ~ F] = {
-        Factorization(
+      def ~[F](that: Transformation[F]): Transformation[A ~ F] = {
+        Transformation(
           for(s1 <- this.alternatives;
               s2 <- that.alternatives
           )
@@ -45,14 +45,14 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
         )
       }
 
-      def map[B](fun: A => B, inv: B => Seq[A] = (b: B) => Seq()): Factorization[B] = {
-        Factorization(
+      def map[B](fun: A => B, inv: B => Seq[A] = (b: B) => Seq()): Transformation[B] = {
+        Transformation(
           this.alternatives.map(s => s.map(fun, inv))
         )
       }
 
-      def asRecursive: Factorization[A] = {
-        Factorization(
+      def asRecursive: Transformation[A] = {
+        Transformation(
           this.alternatives.map(s => recursive(s))
         )
       }
@@ -66,18 +66,18 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
       // which are identical to other ones, which would then be unequal due to transforms
       def meaningless: Boolean = this.alternatives.length == 1
 
-      def discard(original: Syntax[A]): Factorization[A] = {
+      def discard(original: Syntax[A]): Transformation[A] = {
         if(this.meaningless){
-          Factorization(original)
+          Transformation(original)
         }
         else{
           this
         }
       }
 
-      def unionDiscard(that: Factorization[A], original: Syntax[A]): Factorization[A] = {
+      def unionDiscard(that: Transformation[A], original: Syntax[A]): Transformation[A] = {
         if(this.meaningless && that.meaningless){
-          Factorization(original)
+          Transformation(original)
         }
         else{
           this | that
@@ -85,23 +85,23 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
       }
     }
 
-    object Factorization {
-      def apply[A](s: Syntax[A]): Factorization[A] = {
-        Factorization(Seq(s))
+    object Transformation {
+      def apply[A](s: Syntax[A]): Transformation[A] = {
+        Transformation(Seq(s))
       } 
     }
 
-    def iter[A](s: Syntax[A], topLevel: Boolean): Factorization[A] = {
+    def iter[A](s: Syntax[A], topLevel: Boolean): Transformation[A] = {
       s match {
-        case e: Elem                        => Factorization(e)
+        case e: Elem                        => Transformation(e)
         case Sequence(l, r)                 => (iter(l, false) ~ iter(r, false)).discard(s)
         case Disjunction(l, r) if topLevel  => iter(l, true).unionDiscard(iter(r, true), s)
         case Disjunction(l, r) if !topLevel => iter(l, false) | iter(r, false)
         case Transform(fun, inv, inner)     => iter(inner, false).map(fun, inv).discard(s)
         case Marked(mark, inner)            => iter(inner, false).discard(s)
-        case Success(_)                     => Factorization(s)
-        case Failure()                      => Factorization(s)
-        case rec: Recursive[_]              => Factorization(rec)
+        case Success(_)                     => Transformation(s)
+        case Failure()                      => Transformation(s)
+        case rec: Recursive[_]              => Transformation(rec)
       }
     }
 
@@ -113,7 +113,7 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
     *
     * @param syntax Syntax to unfold.
     *
-    * @group factorization
+    * @group transformation
     */
   def unfoldLeftmostRecursives[A](syntax: Syntax[A]): Syntax[A] = {
     def iter[B](syntax: Syntax[B]): Syntax[B] = syntax match {

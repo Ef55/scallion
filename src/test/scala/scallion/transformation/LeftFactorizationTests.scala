@@ -1,5 +1,5 @@
 package scallion
-package factorization
+package transformation
 
 import org.scalatest._
 
@@ -10,7 +10,7 @@ class LeftFactorizationTests extends ParsersTestHelper with LeftFactorization wi
     assertParseResults(parser, inputs, Lexer.apply(_))
   }
 
-  "Left factorization" should "work on simple grammar" in {
+  "Left transformation" should "work on simple grammar" in {
     val prefix =
       (letter ~ letter).map(_ => 0) |
       (letter ~ number).map(_ => 1) |

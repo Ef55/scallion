@@ -1,4 +1,4 @@
-package scallion.factorization
+package scallion.transformation
 
 import scallion.Syntaxes
 import scallion.SyntaxesProperties
@@ -8,7 +8,7 @@ import scala.annotation.tailrec
  * 
  * @groupname conflicts Conflicts resolution
  */
-trait Factorization extends LeftFactorization with Substitution with Unfold with Split {
+trait Transformation extends LeftFactorization with Substitution with Unfold with Split {
   self: Syntaxes with SyntaxesProperties => 
 
   import Conflict._

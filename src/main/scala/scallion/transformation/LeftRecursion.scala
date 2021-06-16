@@ -1,9 +1,9 @@
 package scallion
-package factorization
+package transformation
 
 /** Contains functions to eliminate left recursion.
   *
-  * @groupname factorization Factorization
+  * @groupname transformation Transformation
   */
 trait LeftRecursion extends LeftFactorization 
 with Substitution with Unfold with SyntaxesNavigation with properties.Recursion { self: Syntaxes with SyntaxesProperties =>
@@ -57,7 +57,7 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
     * 
     * @param syntax Syntax to transform.
     * 
-    * @group factorization
+    * @group transformation
     */
   def eliminateDirectLeftRecursion[A](syntax: Recursive[A]): Syntax[A] = {
     if(isDirectLeftRecursive(syntax)){
@@ -80,7 +80,7 @@ with Substitution with Unfold with SyntaxesNavigation with properties.Recursion 
     * 
     * @param syntax Syntax to transform.
     * 
-    * @group factorization
+    * @group transformation
     */
   def eliminateLeftRecursions[A](syntax: Syntax[A]): Syntax[A] = {
     def iter(s: Syntax[A]): Syntax[A] = {
