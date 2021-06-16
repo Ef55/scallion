@@ -1,11 +1,13 @@
 package scallion
 package transformation
 
+import scallion.properties.LL1Properties
+
 /** Contains functions to apply left transformation to a syntax.
   *
   * @groupname transformation Transformation
   */
-trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties => 
+trait LeftFactorization extends Split { self: Syntaxes with Parsers with LL1Properties => 
 
   /////////////////////
   //   Internals     //
@@ -111,7 +113,7 @@ trait LeftFactorization extends Split { self: Syntaxes with SyntaxesProperties =
         case Elem(_)                          => Factorization.fail(s)
         case Sequence(l, r)                   => {
           val lIter = iter(l)
-          if(getProperties(lIter.alternative).isNullable){
+          if(isNullable(lIter.alternative)){
             val (lNotNullPart, lNullPart) = splitNullable(lIter.alternative, recTerm)
             (Factorization(lIter.factorized, lNotNullPart) ~ r) | iter(r).prepend(lNullPart)
           }

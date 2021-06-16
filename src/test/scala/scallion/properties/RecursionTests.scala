@@ -5,7 +5,7 @@ import org.scalatest._
 import scallion._
 import scallion.properties._
 
-class RecursionTests extends FlatSpec with Parsers with Recursion with BooleanSyntaxes {
+class RecursionTests extends FlatSpec with Parsers with LL1Properties with Recursion with BooleanSyntaxes {
   import Syntax._
 
   "Is recursive" should "do its job" in {

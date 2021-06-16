@@ -1,11 +1,13 @@
 package scallion
 package transformation
 
+import scallion.properties.LL1Properties
+
 /** Contains functions to apply unfolding to a syntax.
   *
   * @groupname transformation Transformation
   */
-trait Unfold { self: Syntaxes with SyntaxesProperties => 
+trait Unfold { self: Syntaxes with Parsers with LL1Properties => 
 
   import Syntax._
 
@@ -119,7 +121,7 @@ trait Unfold { self: Syntaxes with SyntaxesProperties =>
     def iter[B](syntax: Syntax[B]): Syntax[B] = syntax match {
       case Elem(_)                        => syntax
       case Sequence(l, r)                 => 
-        if(getProperties(l).isNullable){
+        if(isNullable(l)){
           iter(l) ~ iter(r)
         }
         else{

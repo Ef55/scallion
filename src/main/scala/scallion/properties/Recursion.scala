@@ -4,7 +4,7 @@ package properties
 import scala.collection.immutable.{Queue, Set}
 import scala.collection.mutable.{Set => MSet, HashSet}
 
-trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesProperties =>
+trait Recursion extends SyntaxesNavigation { self: Syntaxes with Parsers with LL1Properties =>
   import Syntax._ 
 
   /** Indicate if a syntax is recursive.
@@ -64,7 +64,7 @@ trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesPropert
       case Elem(_)                => Set.empty
       case Success(_)             => Set.empty
       case Failure()              => Set.empty
-      case Sequence(l, r)         => iter(l, leftmost, recs) ++ iter(r, leftmost && getProperties(l).isNullable, recs)
+      case Sequence(l, r)         => iter(l, leftmost, recs) ++ iter(r, leftmost && isNullable(l), recs)
       case Disjunction(l, r)      => iter(l, leftmost, recs) ++ iter(r, leftmost, recs)
       case Transform(_, _, inner) => iter(inner, leftmost, recs)
       case Marked(_, inner)       => iter(inner, leftmost, recs)
@@ -112,7 +112,7 @@ trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesPropert
       case Elem(_)                => false
       case Success(_)             => false
       case Failure()              => false
-      case Sequence(l, r)         => iter(l, recs) || ( getProperties(l).isNullable && iter(r, recs) )
+      case Sequence(l, r)         => iter(l, recs) || ( isNullable(l) && iter(r, recs) )
       case Disjunction(l, r)      => iter(l, recs) || iter(r, recs)
       case Transform(_, _, inner) => iter(inner, recs)
       case Marked(_, inner)       => iter(inner, recs)
@@ -135,7 +135,7 @@ trait Recursion extends SyntaxesNavigation { self: Syntaxes with SyntaxesPropert
       case Elem(_)                => false
       case Success(_)             => false
       case Failure()              => false
-      case Sequence(l, r)         => iter(l) || (getProperties(l).isNullable && iter(r))
+      case Sequence(l, r)         => iter(l) || (isNullable(l) && iter(r))
       case Disjunction(l, r)      => iter(l) || iter(r)
       case Transform(_, _, inner) => iter(inner)
       case Marked(_, inner)       => iter(inner)

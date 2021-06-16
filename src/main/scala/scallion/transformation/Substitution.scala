@@ -1,6 +1,7 @@
 package scallion
 package transformation
 
+import scallion.properties.LL1Properties
 import scala.collection.immutable.Map
 import scala.collection.mutable.HashMap
 
@@ -8,7 +9,7 @@ import scala.collection.mutable.HashMap
   *
   * @groupname transformation Transformation
   */
-trait Substitution extends properties.Recursion { self: Syntaxes with SyntaxesProperties => 
+trait Substitution extends properties.Recursion { self: Syntaxes with Parsers with LL1Properties => 
 
   import Syntax._
 

@@ -1,14 +1,14 @@
 package scallion
 package transformation
 
-import java.util.Properties
+import scallion.properties.LL1Properties
 
 /** Contains functions to transform a syntax into an quivalent
   * disjuction, where each alternative has some specified property.
   *
   * @groupname transformation Transformation
   */
-trait Split { self: SyntaxesProperties with Syntaxes =>
+trait Split { self: Syntaxes with Parsers with LL1Properties =>
   import Syntax._
 
   /////////////////////
@@ -44,11 +44,10 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
     */
   def trySplitNullable[A](syntax: Syntax[A], recTerm: Boolean = true): (Option[Syntax[A]], Option[Syntax[A]]) = {
 
-    val prop = getProperties(syntax)
-    if(prop.isNull){
+    if(isNull(syntax)){
       (None, Some(syntax))
     }
-    else if(!prop.isNullable){
+    else if(!isNullable(syntax)){
       (Some(syntax), None)
     }
     else {
@@ -88,7 +87,7 @@ trait Split { self: SyntaxesProperties with Syntaxes =>
   }
 
   def splitNullable[A](syntax: Syntax[A], recTerm: Boolean = true): (Syntax[A], Syntax[A]) = {
-    if(!getProperties(syntax).isNullable){
+    if(!isNullable(syntax)){
       throw new IllegalArgumentException("The syntax should be nullable in order to be split by nullability")
     }
     val r = trySplitNullable(syntax, recTerm)

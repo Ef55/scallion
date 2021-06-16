@@ -1,5 +1,6 @@
 package scallion
 
+import scallion.properties._
 import scallion.visualization._
 import scallion.properties.StructuralEquivalence
 import scallion.util.Logger
@@ -8,7 +9,7 @@ import scala.util.Random
 import scala.collection.mutable.{Set, HashMap, MultiMap}
 
 trait ParsersTestHelper extends FlatSpec with Inside with BeforeAndAfter
-with Parsers with Graphs with Grammars with SimpleStrings with Enumeration with StructuralEquivalence {
+with Parsers with LL1Properties with Graphs with Grammars with SimpleStrings with Enumeration with StructuralEquivalence {
   import ParsersTestHelper._
 
   before {

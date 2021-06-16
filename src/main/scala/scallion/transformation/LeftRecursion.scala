@@ -1,12 +1,14 @@
 package scallion
 package transformation
 
+import scallion.properties.LL1Properties
+
 /** Contains functions to eliminate left recursion.
   *
   * @groupname transformation Transformation
   */
 trait LeftRecursion extends LeftFactorization 
-with Substitution with Unfold with SyntaxesNavigation with properties.Recursion { self: Syntaxes with SyntaxesProperties =>
+with Substitution with Unfold with SyntaxesNavigation with properties.Recursion { self: Syntaxes with Parsers with LL1Properties =>
   import Syntax._
 
   /////////////////////

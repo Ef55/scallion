@@ -1,7 +1,7 @@
-package scallion.transformation
+package scallion
+package transformation
 
-import scallion.Syntaxes
-import scallion.SyntaxesProperties
+import scallion.properties.LL1Properties
 import scala.annotation.tailrec
 
 /** Contains functions to factorize syntaxes. 
@@ -9,7 +9,7 @@ import scala.annotation.tailrec
  * @groupname conflicts Conflicts resolution
  */
 trait Transformation extends LeftFactorization with Substitution with Unfold with Split {
-  self: Syntaxes with SyntaxesProperties => 
+  self: Syntaxes with Parsers with LL1Properties => 
 
   import Conflict._
 
@@ -34,13 +34,13 @@ trait Transformation extends LeftFactorization with Substitution with Unfold wit
       conflicts match {
         case (fc: FirstConflict) :: _ => {
           val newSyntax = solveFirstConflict(syntax, fc)
-          iter(newSyntax, getProperties(newSyntax).conflicts.toList)
+          iter(newSyntax, getConflicts(newSyntax).toList)
         }
         case h :: tl => iter(syntax, tl)
         case Nil     => syntax
       }
     }
 
-    iter(syntax, getProperties(syntax).conflicts.toList)
+    iter(syntax, getConflicts(syntax).toList)
   }
 }
