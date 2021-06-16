@@ -8,8 +8,8 @@ import scala.annotation.tailrec
  * 
  * @groupname conflicts Conflicts resolution
  */
-trait Transformation extends LeftFactorization with Substitution with Unfold with Split {
-  self: Syntaxes with Parsers with LL1Properties => 
+trait Transformations extends LeftFactorization with Substitution with Unfold with Split with LL1Properties {
+  self: Syntaxes with Parsers => 
 
   import Conflict._
 

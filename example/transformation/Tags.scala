@@ -2,7 +2,7 @@ package example.factorization.tags
 
 import scala.util.{Try, Success, Failure}
 import scallion._
-import scallion.factorization._
+import scallion.transformation._
 import scallion.visualization._
 import silex._
 
@@ -87,7 +87,7 @@ case class EmptyTag(identifier: String) extends Tag{
 }
 
 
-object TagsParser extends Parsers with Factorization with Graphs {
+object TagsParser extends Parsers with Transformations with Graphs {
   type Token  = example.factorization.tags.Token
   type Kind   = example.factorization.tags.TokenKind
 
