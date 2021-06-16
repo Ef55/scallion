@@ -15,6 +15,11 @@ import silex._
   * - Opening:  <tag>
   * - Closing:  </tag>
   * - Empty:    <tag />
+  * 
+  * This example extends the previous one (FirstFirst)
+  * by allowing tags to be defined other tag pairs
+  * (e.g. `<outer> <inner /> </outer>`)
+  * which introduce First/Follow conflicts.
   */
 
 sealed trait Token 
@@ -140,6 +145,7 @@ object tags {
       "<tag>  </tag>",
       "<tag />",
       "<h3  >     </  h3>",
+      "<h1> <h2> </h2> </h1>",
       "<h1> <h2> <h3/> </h2> </h1>",
       // Invalid
       ">tag<",
@@ -168,6 +174,8 @@ object tags {
     // Parsed: `<tag>  </tag>` as `<tag></tag>`
     // Parsed: `<tag />` as `<tag />`
     // Parsed: `<h3  >     </  h3>` as `<h3></h3>`
+    // Parsed: `<h1> <h2> </h2> </h1>` as `<h1> <h2>  </h2> </h1>`
+    // Parsed: `<h1> <h2> <h3/> </h2> </h1>` as `<h1> <h2> <h3 /> </h2> </h1>`
     // Rejected: `>tag<`
     // Rejected: `This input shouldn't even be here`
     // Rejected: `<tag tag><tag / tag>`
