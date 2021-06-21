@@ -99,10 +99,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
   <span class="cmt">// Then define your syntax using combinators.</span>
   <span class="kw">lazy</span> <span class="kw">val</span> mySyntax = ...
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="scallion.util" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="util"></a><a id="util:util"></a>
+    </li><li name="scallion.transformation" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformation"></a><a id="transformation:transformation"></a>
       <span class="permalink">
-      <a href="../scallion/index.html#util" title="Permalink">
+      <a href="../scallion/index.html#transformation" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -111,54 +111,42 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">util</span></a>
+        <a title="" href="index.html"><span class="name">transformation</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="BinaryTreeZipper"></a><a id="BinaryTreeZipper:BinaryTreeZipper"></a>
-      <span class="permalink">
-      <a href="../../scallion/util/index.html#BinaryTreeZipper" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="A zipper for Binary-Tree-like date structures." href="BinaryTreeZipper$.html"><span class="name">BinaryTreeZipper</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">A zipper for Binary-Tree-like date structures.</p><div class="fullcomment"><div class="comment cmt"><p>A zipper for Binary-Tree-like date structures.</p><p>In order to use this zipper on your won data structure, you should
-provide an implementation of <code>BinaryTreeConvertible[T]</code> where <code>T</code>
-is a common ancestors-type of all your node-types.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="scallion.util">util</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">scallion.SyntaxesNavigation</a> for an example on how to implement
-<code>BinaryTreeConvertible[T]</code>.</p></span></dd></dl></div>
-    </li><li class="current-entities indented3">
+    </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="BinaryTreeZipper$$BinaryTreeConvertible.html" title="Transform some data structure into an equivalent binary tree which will then be used by the zipper."></a>
-                        <a href="BinaryTreeZipper$$BinaryTreeConvertible.html" title="Transform some data structure into an equivalent binary tree which will then be used by the zipper.">BinaryTreeConvertible</a>
-                      </li><li class="current-entities indented3">
-                        <a class="object" href="BinaryTreeZipper$$BinaryTreeEquivalent$.html" title="Contains the binary tree equivalents."></a>
-                        <a class="trait" href="BinaryTreeZipper$$BinaryTreeEquivalent.html" title="Information needed on a kind of node of a data structure in order for the zipper to be able to navigate it."></a>
-                        <a href="BinaryTreeZipper$$BinaryTreeEquivalent.html" title="Information needed on a kind of node of a data structure in order for the zipper to be able to navigate it.">BinaryTreeEquivalent</a>
-                      </li><li class="current-entities indented3">
-                        <a class="object" href="BinaryTreeZipper$$Direction$.html" title="Contains all possible directions."></a>
-                        <a class="trait" href="BinaryTreeZipper$$Direction.html" title="The different directions which can be used to navigate in the tree."></a>
-                        <a href="BinaryTreeZipper$$Direction.html" title="The different directions which can be used to navigate in the tree.">Direction</a>
-                      </li><li class="current-entities indented3">
-                        <a class="object" href="BinaryTreeZipper$$PathNode$.html" title="Contains the possible path nodes."></a>
-                        <a class="trait" href="" title="Represent a node in the path from root to focus."></a>
-                        <a href="" title="Represent a node in the path from root to focus.">PathNode</a>
-                      </li><li class="current-entities indented3">
-                        <a class="object" href="BinaryTreeZipper$$Walk$.html" title="Factory for Walk."></a>
-                        <a class="class" href="BinaryTreeZipper$$Walk.html" title="Allow to visit every node of a zipper."></a>
-                        <a href="BinaryTreeZipper$$Walk.html" title="Allow to visit every node of a zipper.">Walk</a>
-                      </li><li class="current-entities indented3">
-                        <a class="object" href="BinaryTreeZipper$$Zipper$.html" title="Factory for zipper."></a>
-                        <a class="class" href="BinaryTreeZipper$$Zipper.html" title="A zipper on a binary tree."></a>
-                        <a href="BinaryTreeZipper$$Zipper.html" title="A zipper on a binary tree.">Zipper</a>
+                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax."></a>
+                        <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="LeftRecursion.html" title="Contains functions to eliminate left recursion."></a>
+                        <a href="LeftRecursion.html" title="Contains functions to eliminate left recursion.">LeftRecursion</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="RightFactorization.html" title="Contains functions to apply right factorization to a syntax."></a>
+                        <a href="RightFactorization.html" title="Contains functions to apply right factorization to a syntax.">RightFactorization</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="" title="Contains functions to apply right transformation to a syntax."></a>
+                        <a href="" title="Contains functions to apply right transformation to a syntax.">RightForceOut</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
+                        <a href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property.">Split</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Substitution.html" title="Contains functions to apply substitution to a syntax."></a>
+                        <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Transformations.html" title="Contains functions to factorize syntaxes."></a>
+                        <a href="Transformations.html" title="Contains functions to factorize syntaxes.">Transformations</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
+                        <a href="Unfold.html" title="Contains functions to apply unfolding to a syntax.">Unfold</a>
                       </li>
               </ul>
             </div>
@@ -166,39 +154,38 @@ is a common ancestors-type of all your node-types.
           <div id="content">
             <body class="trait type">
       <div id="definition">
-        <a href="BinaryTreeZipper$$PathNode$.html" title="See companion object"><div class="big-circle trait-companion-object">t</div></a>
-        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.util">util</a>.<a href="BinaryTreeZipper$.html" class="extype" name="scallion.util.BinaryTreeZipper">BinaryTreeZipper</a></p>
-        <h1><a href="BinaryTreeZipper$$PathNode$.html" title="See companion object">PathNode</a><span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html" title="Permalink">
+        <div class="big-circle trait">t</div>
+        <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.transformation">transformation</a></p>
+        <h1>RightForceOut<span class="permalink">
+      <a href="../../scallion/transformation/RightForceOut.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
-        <h3><span class="morelinks"><div>
-            Companion <a href="BinaryTreeZipper$$PathNode$.html" title="See companion object">object PathNode</a>
-          </div></span></h3>
+        <h3><span class="morelinks"></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">sealed </span>
+        <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">PathNode</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">RightForceOut</span><span class="result"> extends <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represent a node in the path from root to focus.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/util/BinaryTreeZipper.scala" target="_blank">BinaryTreeZipper.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to apply right transformation to a syntax.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../package$$Parsers.html" class="extype" name="scallion.Parsers">Parsers</a> with <a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/transformation/RightForceOut.scala" target="_blank">RightForceOut.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="BinaryTreeZipper$$PathNode$$LeftNode.html" class="extype" name="scallion.util.BinaryTreeZipper.PathNode.LeftNode">LeftNode</a>, <a href="BinaryTreeZipper$$PathNode$$RightNode.html" class="extype" name="scallion.util.BinaryTreeZipper.PathNode.RightNode">RightNode</a>, <a href="BinaryTreeZipper$$PathNode$$UnaryNode.html" class="extype" name="scallion.util.BinaryTreeZipper.PathNode.UnaryNode">UnaryNode</a></div>
+            <div class="subClasses hiddenContent"><a href="Transformations.html" class="extype" name="scallion.transformation.Transformations">Transformations</a></div>
           </div></div>
         
 
@@ -215,7 +202,7 @@ is a common ancestors-type of all your node-types.
           <div id="order">
             <span class="filtertype">Ordering</span>
             <ol>
-              
+              <li class="group out"><span>Grouped</span></li>
               <li class="alpha in"><span>Alphabetic</span></li>
               <li class="inherit out"><span>By Inheritance</span></li>
             </ol>
@@ -224,7 +211,7 @@ is a common ancestors-type of all your node-types.
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.util.BinaryTreeZipper.PathNode"><span>PathNode</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.transformation.RightForceOut"><span>RightForceOut</span></li><li class="in" name="scallion.transformation.Split"><span>Split</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -246,101 +233,15 @@ is a common ancestors-type of all your node-types.
 
         
 
-        <div class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="scallion.util.BinaryTreeZipper.PathNode#hasLeft" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="hasLeft:Boolean"></a>
-      <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#hasLeft:Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hasLeft</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Indicate if this path node has a left sibling.</p>
-    </li><li name="scallion.util.BinaryTreeZipper.PathNode#hasRight" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="hasRight:Boolean"></a>
-      <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#hasRight:Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hasRight</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Indicate if this path node has a right sibling.</p>
-    </li><li name="scallion.util.BinaryTreeZipper.PathNode#left" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="left(value:T):(T,scallion.util.BinaryTreeZipper.PathNode.LeftNode[T])"></a><a id="left(T):(T,LeftNode[T])"></a>
-      <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#left(value:T):(T,scallion.util.BinaryTreeZipper.PathNode.LeftNode[T])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">left</span><span class="params">(<span name="value">value: <span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span></span>)</span><span class="result">: (<span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span>, <a href="BinaryTreeZipper$$PathNode$$LeftNode.html" class="extype" name="scallion.util.BinaryTreeZipper.PathNode.LeftNode">LeftNode</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span>])</span>
-      </span>
-      
-      <p class="shortcomment cmt">Change the path node to go left instead of right.</p><div class="fullcomment"><div class="comment cmt"><p>Change the path node to go left instead of right.
-</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The current focus.</p></dd><dt>returns</dt><dd class="cmt"><p>The left sibling and the new node.</p></dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper.PathNode#right" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="right(value:T):(T,scallion.util.BinaryTreeZipper.PathNode.RightNode[T])"></a><a id="right(T):(T,RightNode[T])"></a>
-      <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#right(value:T):(T,scallion.util.BinaryTreeZipper.PathNode.RightNode[T])" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">right</span><span class="params">(<span name="value">value: <span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span></span>)</span><span class="result">: (<span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span>, <a href="BinaryTreeZipper$$PathNode$$RightNode.html" class="extype" name="scallion.util.BinaryTreeZipper.PathNode.RightNode">RightNode</a>[<span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span>])</span>
-      </span>
-      
-      <p class="shortcomment cmt">Change the path node to right instead of left.</p><div class="fullcomment"><div class="comment cmt"><p>Change the path node to right instead of left.
-</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The current focus.</p></dd><dt>returns</dt><dd class="cmt"><p>The right sibling and the new node.</p></dd></dl></div>
-    </li><li name="scallion.util.BinaryTreeZipper.PathNode#up" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="up(value:T):T"></a><a id="up(T):T"></a>
-      <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#up(value:T):T" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">up</span><span class="params">(<span name="value">value: <span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span></span>)</span><span class="result">: <span class="extype" name="scallion.util.BinaryTreeZipper.PathNode.T">T</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Go up one node in the path.</p><div class="fullcomment"><div class="comment cmt"><p>Go up one node in the path.
-</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The current focus.</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         <div class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol>
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -356,7 +257,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html###():Int" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -372,7 +273,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -388,7 +289,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -404,7 +305,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#clone():Object" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -428,7 +329,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -444,7 +345,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -460,7 +361,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#finalize():Unit" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -482,7 +383,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#getClass():Class[_]" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -501,7 +402,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#hashCode():Int" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -520,7 +421,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -536,7 +437,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -552,7 +453,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#notify():Unit" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -571,7 +472,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#notifyAll():Unit" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -587,10 +488,87 @@ is a common ancestors-type of all your node-types.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scallion.transformation.RightForceOut#rightForceOut" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rightForceOut[A,R](rightFactor:RightForceOut.this.Syntax[R],syntax:RightForceOut.this.Syntax[A]):(RightForceOut.this.Syntax[R=&gt;A],RightForceOut.this.Syntax[A])"></a><a id="rightForceOut[A,R]((RightForceOut.this)#Syntax[R],(RightForceOut.this)#Syntax[A]):((RightForceOut.this)#Syntax[(R)⇒A],(RightForceOut.this)#Syntax[A])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#rightForceOut[A,R](rightFactor:RightForceOut.this.Syntax[R],syntax:RightForceOut.this.Syntax[A]):(RightForceOut.this.Syntax[R=&gt;A],RightForceOut.this.Syntax[A])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rightForceOut</span><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="params">(<span name="rightFactor">rightFactor: (<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.R">R</span>]</span>, <span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.A">A</span>]</span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[(<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.R">R</span>) ⇒ <span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.A">A</span>], (<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.A">A</span>])</span>
+      </span>
+      
+      <p class="shortcomment cmt">(Weird) variant of right factor out, where
+- Syntaxes are compared by reference;
+- The factored syntax is quaranted to be a rightmost subtree (up to nullable right-siblings).</p><div class="fullcomment"><div class="comment cmt"><p>(Weird) variant of right factor out, where
+- Syntaxes are compared by reference;
+- The factored syntax is quaranted to be a rightmost subtree (up to nullable right-siblings).
+</p></div><dl class="paramcmts block"><dt class="param">rightFactor</dt><dd class="cmt"><p>Syntax to right factor out.</p></dd><dt class="param">syntax</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt>returns</dt><dd class="cmt"><p>The alternative of the syntax where the prefix could be right factored, and
+  another syntax where the prefix could not be removed.</p></dd></dl></div>
+    </li><li name="scallion.transformation.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((RightForceOut.this)#Syntax[A],((RightForceOut.this)#Syntax[_])⇒Boolean,Boolean):(Option[(RightForceOut.this)#Syntax[A]],Option[(RightForceOut.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="enterRecursive">enterRecursive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Split a syntax into a part which has a prefix satisfying a
+given predicate and a part whose prefixes do not satisfy it.</p><div class="fullcomment"><div class="comment cmt"><p>Split a syntax into a part which has a prefix satisfying a
+given predicate and a part whose prefixes do not satisfy it.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt class="param">enterRecursive</dt><dd class="cmt"><p>Whether recursive construct should be split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Might not terminate if the syntax is left recursive and
+<code>enterRecursive</code> is set to <code>true</code>.</p></span></dd></dl></div>
+    </li><li name="scallion.transformation.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(RightForceOut.this)#Syntax[A]],Option[(RightForceOut.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitLeftRecursive</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Split a recursive syntax into its left recursive component
+and its non-left recursive component.</p><div class="fullcomment"><div class="comment cmt"><p>Split a recursive syntax into its left recursive component
+and its non-left recursive component.
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd></dl></div>
+    </li><li name="scallion.transformation.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])"></a><a id="splitNullable[A]((RightForceOut.this)#Syntax[A],Boolean):((RightForceOut.this)#Syntax[A],(RightForceOut.this)#Syntax[A])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>], (<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>])</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -606,7 +584,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#toString():String" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -619,10 +597,31 @@ is a common ancestors-type of all your node-types.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scallion.transformation.Split#trySplitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="trySplitNullable[A]((RightForceOut.this)#Syntax[A],Boolean):(Option[(RightForceOut.this)#Syntax[A]],Option[(RightForceOut.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trySplitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Split a (possibly) nullable syntax into a
+null syntax (only accepts the empty string)
+and a non-nullable syntax (doesn't accept the empty string).</p><div class="fullcomment"><div class="comment cmt"><p>Split a (possibly) nullable syntax into a
+null syntax (only accepts the empty string)
+and a non-nullable syntax (doesn't accept the empty string).
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the syntax is left recursive.</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#wait():Unit" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -644,7 +643,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -666,7 +665,7 @@ is a common ancestors-type of all your node-types.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/util/BinaryTreeZipper$$PathNode.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../scallion/transformation/RightForceOut.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -697,7 +696,9 @@ is a common ancestors-type of all your node-types.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scallion.transformation.Split">
+              <h3>Inherited from <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -706,7 +707,10 @@ is a common ancestors-type of all your node-types.
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="Ungrouped">
+        <div class="group" name="transformation">
+              <h3>Transformation</h3>
+              
+            </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>
               
             </div>

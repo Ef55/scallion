@@ -117,12 +117,20 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left transformation to a syntax."></a>
-                        <a href="LeftFactorization.html" title="Contains functions to apply left transformation to a syntax.">LeftFactorization</a>
+                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax."></a>
+                        <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="LeftRecursion.html" title="Contains functions to eliminate left recursion."></a>
                         <a href="LeftRecursion.html" title="Contains functions to eliminate left recursion.">LeftRecursion</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="RightFactorization.html" title="Contains functions to apply right factorization to a syntax."></a>
+                        <a href="RightFactorization.html" title="Contains functions to apply right factorization to a syntax.">RightFactorization</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="RightForceOut.html" title="Contains functions to apply right transformation to a syntax."></a>
+                        <a href="RightForceOut.html" title="Contains functions to apply right transformation to a syntax.">RightForceOut</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
@@ -133,8 +141,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a href="" title="Contains functions to apply substitution to a syntax.">Substitution</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Transformation.html" title="Contains functions to factorize syntaxes."></a>
-                        <a href="Transformation.html" title="Contains functions to factorize syntaxes.">Transformation</a>
+                        <a class="trait" href="Transformations.html" title="Contains functions to factorize syntaxes."></a>
+                        <a href="Transformations.html" title="Contains functions to factorize syntaxes.">Transformations</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
@@ -177,7 +185,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>, <a href="Transformation.html" class="extype" name="scallion.transformation.Transformation">Transformation</a></div>
+            <div class="subClasses hiddenContent"><a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>, <a href="Transformations.html" class="extype" name="scallion.transformation.Transformations">Transformations</a></div>
           </div></div>
         
 
@@ -395,8 +403,6 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
@@ -488,6 +494,28 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Substitution.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="scallion.properties.Recursion#findLeftRecursives" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
       <a id="findLeftRecursives(syntax:Recursion.this.Syntax[_]):scala.collection.immutable.Set[Recursion.this.Syntax.Recursive[_]]"></a><a id="findLeftRecursives((Substitution.this)#Syntax[_]):Set[Recursive[_]]"></a>
       <span class="permalink">
@@ -525,8 +553,6 @@ non-terminal, and return the left-recursives if so.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
         </dd></dl></div>
     </li><li name="scallion.properties.Recursion#hasLeftRecursion" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
       <a id="hasLeftRecursion(syntax:Recursion.this.Syntax[_]):Boolean"></a><a id="hasLeftRecursion((Substitution.this)#Syntax[_]):Boolean"></a>
@@ -562,8 +588,6 @@ non-terminal, and return the left-recursives if so.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
-              
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scallion.properties.Recursion#isDirectLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -688,8 +712,6 @@ depth first and then from left to right.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
         </dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -708,8 +730,6 @@ depth first and then from left to right.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
-              
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scallion.transformation.Substitution#substitute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
@@ -811,6 +831,28 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Substitution.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
       <a href="../../scallion/transformation/Substitution.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
@@ -856,64 +898,13 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
-      <span class="permalink">
-      <a href="../../scallion/transformation/Substitution.html#wait():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li>
               </ol>
             </div>
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <span class="permalink">
-      <a href="../../scallion/transformation/Substitution.html#finalize():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version ) see corresponding Javadoc for more information.">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@Deprecated</span>
-              
-                <span class="name">@deprecated</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version )</i> see corresponding Javadoc for more information.</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

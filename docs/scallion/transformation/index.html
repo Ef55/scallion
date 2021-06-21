@@ -133,12 +133,20 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="scallion">scallion</a></dd></dl></div>
     </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left transformation to a syntax."></a>
-                        <a href="LeftFactorization.html" title="Contains functions to apply left transformation to a syntax.">LeftFactorization</a>
+                        <a class="trait" href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax."></a>
+                        <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="LeftRecursion.html" title="Contains functions to eliminate left recursion."></a>
                         <a href="LeftRecursion.html" title="Contains functions to eliminate left recursion.">LeftRecursion</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="RightFactorization.html" title="Contains functions to apply right factorization to a syntax."></a>
+                        <a href="RightFactorization.html" title="Contains functions to apply right factorization to a syntax.">RightFactorization</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="RightForceOut.html" title="Contains functions to apply right transformation to a syntax."></a>
+                        <a href="RightForceOut.html" title="Contains functions to apply right transformation to a syntax.">RightForceOut</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Split.html" title="Contains functions to transform a syntax into an quivalent disjuction, where each alternative has some specified property."></a>
@@ -149,8 +157,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Transformation.html" title="Contains functions to factorize syntaxes."></a>
-                        <a href="Transformation.html" title="Contains functions to factorize syntaxes.">Transformation</a>
+                        <a class="trait" href="Transformations.html" title="Contains functions to factorize syntaxes."></a>
+                        <a href="Transformations.html" title="Contains functions to factorize syntaxes.">Transformations</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
@@ -238,10 +246,10 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Contains functions to apply left transformation to a syntax." href="LeftFactorization.html"><span class="name">LeftFactorization</span></a><span class="result"> extends <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></span>
+        <a title="Contains functions to apply left factorization to a syntax." href="LeftFactorization.html"><span class="name">LeftFactorization</span></a><span class="result"> extends <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></span>
       </span>
       
-      <p class="shortcomment cmt">Contains functions to apply left transformation to a syntax.</p>
+      <p class="shortcomment cmt">Contains functions to apply left factorization to a syntax.</p>
     </li><li name="scallion.transformation.LeftRecursion" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="LeftRecursionextendsLeftFactorizationwithSubstitutionwithUnfoldwithSyntaxesNavigationwithRecursion"></a><a id="LeftRecursion:LeftRecursion"></a>
       <span class="permalink">
@@ -258,6 +266,38 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       </span>
       
       <p class="shortcomment cmt">Contains functions to eliminate left recursion.</p>
+    </li><li name="scallion.transformation.RightFactorization" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RightFactorizationextendsSplit"></a><a id="RightFactorization:RightFactorization"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/index.html#RightFactorizationextendsSplit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains functions to apply right factorization to a syntax." href="RightFactorization.html"><span class="name">RightFactorization</span></a><span class="result"> extends <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains functions to apply right factorization to a syntax.</p>
+    </li><li name="scallion.transformation.RightForceOut" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RightForceOutextendsSplit"></a><a id="RightForceOut:RightForceOut"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/index.html#RightForceOutextendsSplit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains functions to apply right transformation to a syntax." href="RightForceOut.html"><span class="name">RightForceOut</span></a><span class="result"> extends <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains functions to apply right transformation to a syntax.</p>
     </li><li name="scallion.transformation.Split" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="SplitextendsAnyRef"></a><a id="Split:Split"></a>
       <span class="permalink">
@@ -291,10 +331,10 @@ disjuction, where each alternative has some specified property.</p>
       </span>
       
       <p class="shortcomment cmt">Contains functions to apply substitution to a syntax.</p>
-    </li><li name="scallion.transformation.Transformation" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="TransformationextendsLeftFactorizationwithSubstitutionwithUnfoldwithSplit"></a><a id="Transformation:Transformation"></a>
+    </li><li name="scallion.transformation.Transformations" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TransformationsextendsLeftFactorizationwithRightFactorizationwithRightForceOutwithLeftRecursionwithSubstitutionwithUnfoldwithSplitwithLL1Properties"></a><a id="Transformations:Transformations"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/index.html#TransformationextendsLeftFactorizationwithSubstitutionwithUnfoldwithSplit" title="Permalink">
+      <a href="../../scallion/transformation/index.html#TransformationsextendsLeftFactorizationwithRightFactorizationwithRightForceOutwithLeftRecursionwithSubstitutionwithUnfoldwithSplitwithLL1Properties" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -303,7 +343,7 @@ disjuction, where each alternative has some specified property.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Contains functions to factorize syntaxes." href="Transformation.html"><span class="name">Transformation</span></a><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a> with <a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.transformation.Unfold">Unfold</a> with <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></span>
+        <a title="Contains functions to factorize syntaxes." href="Transformations.html"><span class="name">Transformations</span></a><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a> with <a href="RightFactorization.html" class="extype" name="scallion.transformation.RightFactorization">RightFactorization</a> with <a href="RightForceOut.html" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a> with <a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a> with <a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.transformation.Unfold">Unfold</a> with <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a> with <a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></span>
       </span>
       
       <p class="shortcomment cmt">Contains functions to factorize syntaxes.</p>

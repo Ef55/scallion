@@ -121,8 +121,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a href="LeftFactorization.html" title="Contains functions to apply left factorization to a syntax.">LeftFactorization</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="" title="Contains functions to eliminate left recursion."></a>
-                        <a href="" title="Contains functions to eliminate left recursion.">LeftRecursion</a>
+                        <a class="trait" href="LeftRecursion.html" title="Contains functions to eliminate left recursion."></a>
+                        <a href="LeftRecursion.html" title="Contains functions to eliminate left recursion.">LeftRecursion</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="RightFactorization.html" title="Contains functions to apply right factorization to a syntax."></a>
@@ -141,8 +141,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                         <a href="Substitution.html" title="Contains functions to apply substitution to a syntax.">Substitution</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="trait" href="Transformations.html" title="Contains functions to factorize syntaxes."></a>
-                        <a href="Transformations.html" title="Contains functions to factorize syntaxes.">Transformations</a>
+                        <a class="trait" href="" title="Contains functions to factorize syntaxes."></a>
+                        <a href="" title="Contains functions to factorize syntaxes.">Transformations</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="trait" href="Unfold.html" title="Contains functions to apply unfolding to a syntax."></a>
@@ -156,8 +156,8 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
       <div id="definition">
         <div class="big-circle trait">t</div>
         <p id="owner"><a href="../index.html" class="extype" name="scallion">scallion</a>.<a href="index.html" class="extype" name="scallion.transformation">transformation</a></p>
-        <h1>LeftRecursion<span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html" title="Permalink">
+        <h1>Transformations<span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
@@ -170,23 +170,18 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">LeftRecursion</span><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a> with <a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.transformation.Unfold">Unfold</a> with <a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a> with <a href="../properties/Recursion.html" class="extype" name="scallion.properties.Recursion">Recursion</a></span>
+        <span class="name">Transformations</span><span class="result"> extends <a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a> with <a href="RightFactorization.html" class="extype" name="scallion.transformation.RightFactorization">RightFactorization</a> with <a href="RightForceOut.html" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a> with <a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a> with <a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a> with <a href="Unfold.html" class="extype" name="scallion.transformation.Unfold">Unfold</a> with <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a> with <a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to eliminate left recursion.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../package$$Parsers.html" class="extype" name="scallion.Parsers">Parsers</a> with <a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/transformation/LeftRecursion.scala" target="_blank">LeftRecursion.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains functions to factorize syntaxes.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a> with <a href="../Syntaxes.html" class="extype" name="scallion.Syntaxes">Syntaxes</a> with <a href="../package$$Parsers.html" class="extype" name="scallion.Parsers">Parsers</a></dd><dt>Source</dt><dd><a href="https://raw.githubusercontent.com/epfl-lara/scallion/master/src/main/scala/scallion/transformation/Transformation.scala" target="_blank">Transformation.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="Unfold.html" class="extype" name="scallion.transformation.Unfold">Unfold</a>, <a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a>, <a href="../properties/Recursion.html" class="extype" name="scallion.properties.Recursion">Recursion</a>, <a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a>, <a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>, <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-            <span class="toggle">
-              Known Subclasses
-            </span>
-            <div class="subClasses hiddenContent"><a href="Transformations.html" class="extype" name="scallion.transformation.Transformations">Transformations</a></div>
-          </div></div>
+          <div class="superTypes hiddenContent"><a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a>, <a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>, <a href="Unfold.html" class="extype" name="scallion.transformation.Unfold">Unfold</a>, <a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a>, <a href="../properties/Recursion.html" class="extype" name="scallion.properties.Recursion">Recursion</a>, <a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a>, <a href="RightForceOut.html" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a>, <a href="RightFactorization.html" class="extype" name="scallion.transformation.RightFactorization">RightFactorization</a>, <a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a>, <a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
         
 
       <div id="mbrsel">
@@ -211,7 +206,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="scallion.transformation.LeftRecursion"><span>LeftRecursion</span></li><li class="in" name="scallion.transformation.Unfold"><span>Unfold</span></li><li class="in" name="scallion.transformation.Substitution"><span>Substitution</span></li><li class="in" name="scallion.properties.Recursion"><span>Recursion</span></li><li class="in" name="scallion.SyntaxesNavigation"><span>SyntaxesNavigation</span></li><li class="in" name="scallion.transformation.LeftFactorization"><span>LeftFactorization</span></li><li class="in" name="scallion.transformation.Split"><span>Split</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="scallion.transformation.Transformations"><span>Transformations</span></li><li class="in" name="scallion.properties.LL1Properties"><span>LL1Properties</span></li><li class="in" name="scallion.transformation.LeftRecursion"><span>LeftRecursion</span></li><li class="in" name="scallion.transformation.Unfold"><span>Unfold</span></li><li class="in" name="scallion.transformation.Substitution"><span>Substitution</span></li><li class="in" name="scallion.properties.Recursion"><span>Recursion</span></li><li class="in" name="scallion.SyntaxesNavigation"><span>SyntaxesNavigation</span></li><li class="in" name="scallion.transformation.RightForceOut"><span>RightForceOut</span></li><li class="in" name="scallion.transformation.RightFactorization"><span>RightFactorization</span></li><li class="in" name="scallion.transformation.LeftFactorization"><span>LeftFactorization</span></li><li class="in" name="scallion.transformation.Split"><span>Split</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -234,9 +229,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="scallion.SyntaxesNavigation.Walk" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
-      <a id="Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Walk[A]:(LeftRecursion.this)#Walk[A]"></a>
+      <a id="Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Walk[A]:(Transformations.this)#Walk[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#Walk[A]=scallion.util.BinaryTreeZipper.Walk[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -245,14 +240,14 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">Walk</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="../util/BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">util.BinaryTreeZipper.Walk</a>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Walk.A">A</span>]]</span>
+        <span class="name">Walk</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="../util/BinaryTreeZipper$$Walk.html" class="extype" name="scallion.util.BinaryTreeZipper.Walk">util.BinaryTreeZipper.Walk</a>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Walk.A">A</span>]]</span>
       </span>
       
       <p class="shortcomment cmt">Walk for syntax zippers.</p><div class="fullcomment"><div class="comment cmt"><p>Walk for syntax zippers.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></dd></dl></div>
     </li><li name="scallion.SyntaxesNavigation.Zipper" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
-      <a id="Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Zipper[A]:(LeftRecursion.this)#Zipper[A]"></a>
+      <a id="Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]"></a><a id="Zipper[A]:(Transformations.this)#Zipper[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#Zipper[A]=scallion.util.BinaryTreeZipper.Zipper[SyntaxesNavigation.this.Syntax[_],SyntaxesNavigation.this.Syntax[A]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -261,7 +256,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">Zipper</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="../util/BinaryTreeZipper$$Zipper.html" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">util.BinaryTreeZipper.Zipper</a>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Zipper.A">A</span>]]</span>
+        <span class="name">Zipper</span><span class="tparams">[<span name="A">A</span>]</span><span class="result alias"> = <a href="../util/BinaryTreeZipper$$Zipper.html" class="extype" name="scallion.util.BinaryTreeZipper.Zipper">util.BinaryTreeZipper.Zipper</a>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.SyntaxesNavigation.Zipper.A">A</span>]]</span>
       </span>
       
       <p class="shortcomment cmt">A zipper on a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>A zipper on a syntax.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></dd></dl></div>
@@ -308,7 +303,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -324,7 +319,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html###():Int" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -340,7 +335,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -356,7 +351,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scallion.SyntaxesNavigation#Direction" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="navigation">
       <a id="Direction:scallion.util.BinaryTreeZipper.Direction.type"></a><a id="Direction:util.BinaryTreeZipper.Direction.type"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#Direction:scallion.util.BinaryTreeZipper.Direction.type" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#Direction:scallion.util.BinaryTreeZipper.Direction.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -372,7 +367,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -388,7 +383,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#clone():Object" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -410,9 +405,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
               
         </dd></dl></div>
     </li><li name="scallion.transformation.Substitution#eliminate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]"></a><a id="eliminate[A,B]((LeftRecursion.this)#Syntax[B],(LeftRecursion.this)#Syntax[A],(LeftRecursion.this)#Syntax[A]):(LeftRecursion.this)#Syntax[B]"></a>
+      <a id="eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]"></a><a id="eliminate[A,B]((Transformations.this)#Syntax[B],(Transformations.this)#Syntax[A],(Transformations.this)#Syntax[A]):(Transformations.this)#Syntax[B]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#eliminate[A,B](in:Substitution.this.Syntax[B],original:Substitution.this.Syntax[A],subst:Substitution.this.Syntax[A]):Substitution.this.Syntax[B]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -421,15 +416,15 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.B">B</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.B">B</span>]</span>
+        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.B">B</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.B">B</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Eliminate a Syntax by substituting it with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Eliminate a Syntax by substituting it with another one.</p><p>This function is just a shorthand for substitute with
 <code>elim = true</code>.</p><pre>substitute(i, o, s, <span class="kw">true</span>) === eliminate(i, o, s)</pre></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>Syntax in which the substition(s) will happen.</p></dd><dt class="param">original</dt><dd class="cmt"><p>Syntax to eliminate.</p></dd><dt class="param">subst</dt><dd class="cmt"><p>Syntax to use as replacement.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="Substitution.html#substitute[A,B](in:Substitution.this.Syntax[A],original:Substitution.this.Syntax[B],subst:Substitution.this.Syntax[B]):Substitution.this.Syntax[A]" class="extmbr" name="scallion.transformation.Substitution#substitute">scallion.transformation.Substitution.substitute[A,B]*</a></p></span></dd></dl></div>
     </li><li name="scallion.transformation.Substitution#eliminate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="eliminate[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]"></a><a id="eliminate[A]((LeftRecursion.this)#Syntax[A],((LeftRecursion.this)#Syntax[_],(LeftRecursion.this)#Syntax[_])*):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="eliminate[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]"></a><a id="eliminate[A]((Transformations.this)#Syntax[A],((Transformations.this)#Syntax[_],(Transformations.this)#Syntax[_])*):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#eliminate[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#eliminate[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -438,16 +433,16 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>, <span name="substitutions">substitutions: ((<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_])*</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>
+        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>, <span name="substitutions">substitutions: ((<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_])*</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Eliminate syntaxex by substituting it with other ones.</p><div class="fullcomment"><div class="comment cmt"><p>Eliminate syntaxex by substituting it with other ones.</p><p>This function is just a shorthand for substitute with
 <code>elim = true</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a></dd></dl></div>
     </li><li name="scallion.transformation.Substitution#eliminate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="eliminate[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]]):Substitution.this.Syntax[A]"></a><a id="eliminate[A]((LeftRecursion.this)#Syntax[A],Map[(LeftRecursion.this)#Syntax[_],(LeftRecursion.this)#Syntax[_]]):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="eliminate[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]]):Substitution.this.Syntax[A]"></a><a id="eliminate[A]((Transformations.this)#Syntax[A],Map[(Transformations.this)#Syntax[_],(Transformations.this)#Syntax[_]]):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#eliminate[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]]):Substitution.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#eliminate[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]]):Substitution.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -456,16 +451,16 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>, <span name="substitutions">substitutions: <span class="extype" name="scala.collection.immutable.Map">Map</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>
+        <span class="name">eliminate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>, <span name="substitutions">substitutions: <span class="extype" name="scala.collection.immutable.Map">Map</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.eliminate.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Eliminate syntaxex by substituting it with other ones.</p><div class="fullcomment"><div class="comment cmt"><p>Eliminate syntaxex by substituting it with other ones.</p><p>This function is just a shorthand for substitute with
 <code>elim = true</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a></dd></dl></div>
     </li><li name="scallion.transformation.LeftRecursion#eliminateDirectLeftRecursion" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="eliminateDirectLeftRecursion[A](syntax:LeftRecursion.this.Syntax.Recursive[A]):LeftRecursion.this.Syntax[A]"></a><a id="eliminateDirectLeftRecursion[A](Recursive[A]):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="eliminateDirectLeftRecursion[A](syntax:LeftRecursion.this.Syntax.Recursive[A]):LeftRecursion.this.Syntax[A]"></a><a id="eliminateDirectLeftRecursion[A](Recursive[A]):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#eliminateDirectLeftRecursion[A](syntax:LeftRecursion.this.Syntax.Recursive[A]):LeftRecursion.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#eliminateDirectLeftRecursion[A](syntax:LeftRecursion.this.Syntax.Recursive[A]):LeftRecursion.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -474,15 +469,15 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eliminateDirectLeftRecursion</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateDirectLeftRecursion.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateDirectLeftRecursion.A">A</span>]</span>
+        <span class="name">eliminateDirectLeftRecursion</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateDirectLeftRecursion.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateDirectLeftRecursion.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Eliminate direct left recursion from a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Eliminate direct left recursion from a syntax.</p><p>This transforms syntaxes unsuited for LL1 parsing such as</p><pre><span class="kw">lazy</span> <span class="kw">val</span> rec: Syntax[<span class="std">Seq</span>[<span class="std">Boolean</span>]] = recursive{ rec :+ (elem(<span class="kw">false</span>) | eps(<span class="kw">true</span>)) }</pre><p>into non direct left recursive ones.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>Syntax to transform.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>Syntax to transform.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a></dd></dl></div>
     </li><li name="scallion.transformation.LeftRecursion#eliminateLeftRecursions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="eliminateLeftRecursions[A](syntax:LeftRecursion.this.Syntax[A]):LeftRecursion.this.Syntax[A]"></a><a id="eliminateLeftRecursions[A]((LeftRecursion.this)#Syntax[A]):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="eliminateLeftRecursions[A](syntax:LeftRecursion.this.Syntax[A]):LeftRecursion.this.Syntax[A]"></a><a id="eliminateLeftRecursions[A]((Transformations.this)#Syntax[A]):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#eliminateLeftRecursions[A](syntax:LeftRecursion.this.Syntax[A]):LeftRecursion.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#eliminateLeftRecursions[A](syntax:LeftRecursion.this.Syntax[A]):LeftRecursion.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -491,15 +486,15 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eliminateLeftRecursions</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateLeftRecursions.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateLeftRecursions.A">A</span>]</span>
+        <span class="name">eliminateLeftRecursions</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateLeftRecursions.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftRecursion.eliminateLeftRecursions.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Full procedure to eliminate all left recursions from a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Full procedure to eliminate all left recursions from a syntax.
-</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>Syntax to transform.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>Syntax to transform.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -515,7 +510,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -531,7 +526,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#finalize():Unit" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -551,9 +546,9 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
               
         </dd></dl></div>
     </li><li name="scallion.properties.Recursion#findLeftRecursives" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
-      <a id="findLeftRecursives(syntax:Recursion.this.Syntax[_]):scala.collection.immutable.Set[Recursion.this.Syntax.Recursive[_]]"></a><a id="findLeftRecursives((LeftRecursion.this)#Syntax[_]):Set[Recursive[_]]"></a>
+      <a id="findLeftRecursives(syntax:Recursion.this.Syntax[_]):scala.collection.immutable.Set[Recursion.this.Syntax.Recursive[_]]"></a><a id="findLeftRecursives((Transformations.this)#Syntax[_]):Set[Recursive[_]]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#findLeftRecursives(syntax:Recursion.this.Syntax[_]):scala.collection.immutable.Set[Recursion.this.Syntax.Recursive[_]]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#findLeftRecursives(syntax:Recursion.this.Syntax[_]):scala.collection.immutable.Set[Recursion.this.Syntax.Recursive[_]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -562,7 +557,7 @@ See the package <a href="../index.html" class="extype" name="scallion">scallion<
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">findLeftRecursives</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Set">Set</span>[<a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]]</span>
+        <span class="name">findLeftRecursives</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Set">Set</span>[<a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]]</span>
       </span>
       
       <p class="shortcomment cmt">Search if the syntax contains any left-recursive
@@ -572,7 +567,7 @@ non-terminal, and return the left-recursives if so.
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#getClass():Class[_]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -588,10 +583,10 @@ non-terminal, and return the left-recursives if so.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.properties.Recursion#hasLeftRecursion" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
-      <a id="hasLeftRecursion(syntax:Recursion.this.Syntax[_]):Boolean"></a><a id="hasLeftRecursion((LeftRecursion.this)#Syntax[_]):Boolean"></a>
+    </li><li name="scallion.properties.LL1Properties#getConflicts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="getConflicts(syntax:LL1Properties.this.Syntax[_]):Set[LL1Properties.this.Conflict]"></a><a id="getConflicts((Transformations.this)#Syntax[_]):Set[(Transformations.this)#Conflict]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#hasLeftRecursion(syntax:Recursion.this.Syntax[_]):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#getConflicts(syntax:LL1Properties.this.Syntax[_]):Set[LL1Properties.this.Conflict]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -600,7 +595,24 @@ non-terminal, and return the left-recursives if so.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">hasLeftRecursion</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">getConflicts</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Parsing.Conflict">Conflict</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Return the conflicts in a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Return the conflicts in a syntax.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd></dl></div>
+    </li><li name="scallion.properties.Recursion#hasLeftRecursion" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="hasLeftRecursion(syntax:Recursion.this.Syntax[_]):Boolean"></a><a id="hasLeftRecursion((Transformations.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#hasLeftRecursion(syntax:Recursion.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasLeftRecursion</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <p class="shortcomment cmt">Indicate whether the syntax contains left-recursive non-terminals.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate whether the syntax contains left-recursive non-terminals.
@@ -608,7 +620,7 @@ non-terminal, and return the left-recursives if so.
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#hashCode():Int" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -627,7 +639,7 @@ non-terminal, and return the left-recursives if so.
     </li><li name="scallion.properties.Recursion#isDirectLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isDirectLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean"></a><a id="isDirectLeftRecursive(Recursive[_]):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#isDirectLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#isDirectLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -645,7 +657,7 @@ as the first token consumer without breaking recursive constructs.
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -661,7 +673,7 @@ as the first token consumer without breaking recursive constructs.
     </li><li name="scallion.properties.Recursion#isLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean"></a><a id="isLeftRecursive(Recursive[_]):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#isLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#isLeftRecursive(syntax:Recursion.this.Syntax.Recursive[_]):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -677,10 +689,10 @@ as the first token consumer without breaking recursive constructs.
 as the first token consumer (i.e. it is either the first
 symbol or is only prefixed by nullable syntaxes).
 </p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to test.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../properties/Recursion.html" class="extype" name="scallion.properties.Recursion">Recursion</a></dd></dl></div>
-    </li><li name="scallion.properties.Recursion#isRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
-      <a id="isRecursive(syntax:Recursion.this.Syntax[_]):Boolean"></a><a id="isRecursive((LeftRecursion.this)#Syntax[_]):Boolean"></a>
+    </li><li name="scallion.properties.LL1Properties#isNull" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="isNull(syntax:LL1Properties.this.Syntax[_]):Boolean"></a><a id="isNull((Transformations.this)#Syntax[_]):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#isRecursive(syntax:Recursion.this.Syntax[_]):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#isNull(syntax:LL1Properties.this.Syntax[_]):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -689,15 +701,66 @@ symbol or is only prefixed by nullable syntaxes).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">isRecursive</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">isNull</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if a syntax is null (i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate if a syntax is null (i.e. only matches the empty sequence of tokens).
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd></dl></div>
+    </li><li name="scallion.properties.LL1Properties#isNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="isNullable(syntax:LL1Properties.this.Syntax[_]):Boolean"></a><a id="isNullable((Transformations.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#isNullable(syntax:LL1Properties.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isNullable</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if a syntax is nullable.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate if a syntax is nullable.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd></dl></div>
+    </li><li name="scallion.properties.LL1Properties#isProductive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="isProductive(syntax:LL1Properties.this.Syntax[_]):Boolean"></a><a id="isProductive((Transformations.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#isProductive(syntax:LL1Properties.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isProductive</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Indicate if a syntax is productive.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate if a syntax is productive.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></dd></dl></div>
+    </li><li name="scallion.properties.Recursion#isRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
+      <a id="isRecursive(syntax:Recursion.this.Syntax[_]):Boolean"></a><a id="isRecursive((Transformations.this)#Syntax[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#isRecursive(syntax:Recursion.this.Syntax[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRecursive</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <p class="shortcomment cmt">Indicate if a syntax is recursive.</p><div class="fullcomment"><div class="comment cmt"><p>Indicate if a syntax is recursive.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../properties/Recursion.html" class="extype" name="scallion.properties.Recursion">Recursion</a></dd></dl></div>
     </li><li name="scallion.transformation.LeftFactorization#leftFactorOut" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])"></a><a id="leftFactorOut[A,L]((LeftRecursion.this)#Syntax[L],(LeftRecursion.this)#Syntax[A],Boolean):((LeftRecursion.this)#Syntax[(L)⇒A],(LeftRecursion.this)#Syntax[A])"></a>
+      <a id="leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])"></a><a id="leftFactorOut[A,L]((Transformations.this)#Syntax[L],(Transformations.this)#Syntax[A],Boolean):((Transformations.this)#Syntax[(L)⇒A],(Transformations.this)#Syntax[A])"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#leftFactorOut[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):(LeftFactorization.this.Syntax[L=&gt;A],LeftFactorization.this.Syntax[A])" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -706,16 +769,16 @@ symbol or is only prefixed by nullable syntaxes).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">leftFactorOut</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[(<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.L">L</span>) ⇒ <span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>])</span>
+        <span class="name">leftFactorOut</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[(<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.L">L</span>) ⇒ <span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorOut.A">A</span>])</span>
       </span>
       
       <p class="shortcomment cmt">Remove (factor out) a prefix from a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Remove (factor out) a prefix from a syntax.
 </p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Syntax to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>The alternative of the syntax where the prefix could be left factored, and
   another syntax where the prefix could not be removed.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a></dd></dl></div>
     </li><li name="scallion.transformation.LeftFactorization#leftFactorize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorize[A,L]((LeftRecursion.this)#Syntax[L],(LeftRecursion.this)#Syntax[A],Boolean):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorize[A,L]((Transformations.this)#Syntax[L],(Transformations.this)#Syntax[A],Boolean):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#leftFactorize[A,L](leftFactor:LeftFactorization.this.Syntax[L],s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -724,15 +787,15 @@ symbol or is only prefixed by nullable syntaxes).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">leftFactorize</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.A">A</span>]</span>
+        <span class="name">leftFactorize</span><span class="tparams">[<span name="A">A</span>, <span name="L">L</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.L">L</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorize.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Left factorizes a syntax in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Left factorizes a syntax in the syntax.
 </p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Syntax to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the syntax left factorized.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a></dd></dl></div>
     </li><li name="scallion.transformation.LeftFactorization#leftFactorizeKind" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="leftFactorizeKind[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorizeKind[A]((LeftRecursion.this)#Kind,(LeftRecursion.this)#Syntax[A],Boolean):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="leftFactorizeKind[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]"></a><a id="leftFactorizeKind[A]((Transformations.this)#Kind,(Transformations.this)#Syntax[A],Boolean):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#leftFactorizeKind[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#leftFactorizeKind[A](leftFactor:LeftFactorization.this.Kind,s:LeftFactorization.this.Syntax[A],recTerm:Boolean):LeftFactorization.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -741,15 +804,15 @@ symbol or is only prefixed by nullable syntaxes).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">leftFactorizeKind</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span></span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorizeKind.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorizeKind.A">A</span>]</span>
+        <span class="name">leftFactorizeKind</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="leftFactor">leftFactor: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span></span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorizeKind.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.LeftFactorization.leftFactorizeKind.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Left factorizes a single terminal in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Left factorizes a single terminal in the syntax.
 </p></div><dl class="paramcmts block"><dt class="param">leftFactor</dt><dd class="cmt"><p>Terminal to left factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the terminal factorized.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a></dd></dl></div>
     </li><li name="scallion.properties.Recursion#listRecursives" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="property">
-      <a id="listRecursives(syntax:Recursion.this.Syntax[_]):List[Recursion.this.Syntax.Recursive[_]]"></a><a id="listRecursives((LeftRecursion.this)#Syntax[_]):List[Recursive[_]]"></a>
+      <a id="listRecursives(syntax:Recursion.this.Syntax[_]):List[Recursion.this.Syntax.Recursive[_]]"></a><a id="listRecursives((Transformations.this)#Syntax[_]):List[Recursive[_]]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#listRecursives(syntax:Recursion.this.Syntax[_]):List[Recursion.this.Syntax.Recursive[_]]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#listRecursives(syntax:Recursion.this.Syntax[_]):List[Recursion.this.Syntax.Recursive[_]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -758,7 +821,7 @@ symbol or is only prefixed by nullable syntaxes).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">listRecursives</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]]</span>
+        <span class="name">listRecursives</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[_]]</span>
       </span>
       
       <p class="shortcomment cmt">List all the recursives in the syntax tree.</p><div class="fullcomment"><div class="comment cmt"><p>List all the recursives in the syntax tree.</p><p>The recursives are ordered by ascending
@@ -767,7 +830,7 @@ depth first and then from left to right.
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -783,7 +846,7 @@ depth first and then from left to right.
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#notify():Unit" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -802,7 +865,7 @@ depth first and then from left to right.
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#notifyAll():Unit" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -818,10 +881,10 @@ depth first and then from left to right.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scallion.transformation.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((LeftRecursion.this)#Syntax[A],((LeftRecursion.this)#Syntax[_])⇒Boolean,Boolean):(Option[(LeftRecursion.this)#Syntax[A]],Option[(LeftRecursion.this)#Syntax[A]])"></a>
+    </li><li name="scallion.transformation.RightFactorization#rightFactorOut" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="rightFactorOut[A,R](rightFactor:RightFactorization.this.Syntax[R],s:RightFactorization.this.Syntax[A],recTerm:Boolean):(RightFactorization.this.Syntax[R=&gt;A],RightFactorization.this.Syntax[A])"></a><a id="rightFactorOut[A,R]((Transformations.this)#Syntax[R],(Transformations.this)#Syntax[A],Boolean):((Transformations.this)#Syntax[(R)⇒A],(Transformations.this)#Syntax[A])"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#rightFactorOut[A,R](rightFactor:RightFactorization.this.Syntax[R],s:RightFactorization.this.Syntax[A],recTerm:Boolean):(RightFactorization.this.Syntax[R=&gt;A],RightFactorization.this.Syntax[A])" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -830,7 +893,99 @@ depth first and then from left to right.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="enterRecursive">enterRecursive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]])</span>
+        <span class="name">rightFactorOut</span><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="params">(<span name="rightFactor">rightFactor: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorOut.R">R</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorOut.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[(<span class="extype" name="scallion.transformation.RightFactorization.rightFactorOut.R">R</span>) ⇒ <span class="extype" name="scallion.transformation.RightFactorization.rightFactorOut.A">A</span>], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorOut.A">A</span>])</span>
+      </span>
+      
+      <p class="shortcomment cmt">Remove (factor out) a prefix from a syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Remove (factor out) a prefix from a syntax.
+</p></div><dl class="paramcmts block"><dt class="param">rightFactor</dt><dd class="cmt"><p>Syntax to right factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>The alternative of the syntax where the prefix could be right factored, and
+  another syntax where the prefix could not be removed.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RightFactorization.html" class="extype" name="scallion.transformation.RightFactorization">RightFactorization</a></dd></dl></div>
+    </li><li name="scallion.transformation.RightFactorization#rightFactorize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="rightFactorize[A,R](rightFactor:RightFactorization.this.Syntax[R],s:RightFactorization.this.Syntax[A],recTerm:Boolean):RightFactorization.this.Syntax[A]"></a><a id="rightFactorize[A,R]((Transformations.this)#Syntax[R],(Transformations.this)#Syntax[A],Boolean):(Transformations.this)#Syntax[A]"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#rightFactorize[A,R](rightFactor:RightFactorization.this.Syntax[R],s:RightFactorization.this.Syntax[A],recTerm:Boolean):RightFactorization.this.Syntax[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rightFactorize</span><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="params">(<span name="rightFactor">rightFactor: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorize.R">R</span>]</span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorize.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorize.A">A</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Right factorizes a syntax in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Right factorizes a syntax in the syntax.
+</p></div><dl class="paramcmts block"><dt class="param">rightFactor</dt><dd class="cmt"><p>Syntax to right factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the syntax right factorized.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RightFactorization.html" class="extype" name="scallion.transformation.RightFactorization">RightFactorization</a></dd></dl></div>
+    </li><li name="scallion.transformation.RightFactorization#rightFactorizeKind" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="rightFactorizeKind[A](rightFactor:RightFactorization.this.Kind,s:RightFactorization.this.Syntax[A],recTerm:Boolean):RightFactorization.this.Syntax[A]"></a><a id="rightFactorizeKind[A]((Transformations.this)#Kind,(Transformations.this)#Syntax[A],Boolean):(Transformations.this)#Syntax[A]"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#rightFactorizeKind[A](rightFactor:RightFactorization.this.Kind,s:RightFactorization.this.Syntax[A],recTerm:Boolean):RightFactorization.this.Syntax[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rightFactorizeKind</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="rightFactor">rightFactor: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Kind">Kind</span></span>, <span name="s">s: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorizeKind.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightFactorization.rightFactorizeKind.A">A</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Right factorizes a single terminal in the syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Right factorizes a single terminal in the syntax.
+</p></div><dl class="paramcmts block"><dt class="param">rightFactor</dt><dd class="cmt"><p>Terminal to right factor out.</p></dd><dt class="param">s</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt class="param">recTerm</dt><dd class="cmt"><p>Whether recursive nodes should be broken or not.</p></dd><dt>returns</dt><dd class="cmt"><p>An equivalent syntax, with the terminal factorized.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RightFactorization.html" class="extype" name="scallion.transformation.RightFactorization">RightFactorization</a></dd></dl></div>
+    </li><li name="scallion.transformation.RightForceOut#rightForceOut" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rightForceOut[A,R](rightFactor:RightForceOut.this.Syntax[R],syntax:RightForceOut.this.Syntax[A]):(RightForceOut.this.Syntax[R=&gt;A],RightForceOut.this.Syntax[A])"></a><a id="rightForceOut[A,R]((Transformations.this)#Syntax[R],(Transformations.this)#Syntax[A]):((Transformations.this)#Syntax[(R)⇒A],(Transformations.this)#Syntax[A])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#rightForceOut[A,R](rightFactor:RightForceOut.this.Syntax[R],syntax:RightForceOut.this.Syntax[A]):(RightForceOut.this.Syntax[R=&gt;A],RightForceOut.this.Syntax[A])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rightForceOut</span><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="params">(<span name="rightFactor">rightFactor: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.R">R</span>]</span>, <span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.A">A</span>]</span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[(<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.R">R</span>) ⇒ <span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.A">A</span>], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.RightForceOut.rightForceOut.A">A</span>])</span>
+      </span>
+      
+      <p class="shortcomment cmt">(Weird) variant of right factor out, where
+- Syntaxes are compared by reference;
+- The factored syntax is quaranted to be a rightmost subtree (up to nullable right-siblings).</p><div class="fullcomment"><div class="comment cmt"><p>(Weird) variant of right factor out, where
+- Syntaxes are compared by reference;
+- The factored syntax is quaranted to be a rightmost subtree (up to nullable right-siblings).
+</p></div><dl class="paramcmts block"><dt class="param">rightFactor</dt><dd class="cmt"><p>Syntax to right factor out.</p></dd><dt class="param">syntax</dt><dd class="cmt"><p>Syntax on which to apply the transformation.</p></dd><dt>returns</dt><dd class="cmt"><p>The alternative of the syntax where the prefix could be right factored, and
+  another syntax where the prefix could not be removed.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RightForceOut.html" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a></dd></dl></div>
+    </li><li name="scallion.transformation.Transformations#solveConflicts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="conflicts">
+      <a id="solveConflicts[A](syntax:Transformations.this.Syntax[A]):Transformations.this.Syntax[A]"></a><a id="solveConflicts[A]((Transformations.this)#Syntax[A]):(Transformations.this)#Syntax[A]"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#solveConflicts[A](syntax:Transformations.this.Syntax[A]):Transformations.this.Syntax[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">solveConflicts</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Transformations.solveConflicts.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Transformations.solveConflicts.A">A</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Attempt to solve conflicts inside the syntax
+</p><div class="fullcomment"><div class="comment cmt"><p>Attempt to solve conflicts inside the syntax
+</p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax with a conflict.</p></dd></dl></div>
+    </li><li name="scallion.transformation.Split#splitByPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
+      <a id="splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitByPrefix[A]((Transformations.this)#Syntax[A],((Transformations.this)#Syntax[_])⇒Boolean,Boolean):(Option[(Transformations.this)#Syntax[A]],Option[(Transformations.this)#Syntax[A]])"></a>
+      <span class="permalink">
+      <a href="../../scallion/transformation/Transformations.html#splitByPrefix[A](syntax:Split.this.Syntax[A],splitter:Split.this.Syntax[_]=&gt;Boolean,enterRecursive:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitByPrefix</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]</span>, <span name="splitter">splitter: ((<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="enterRecursive">enterRecursive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitByPrefix.A">A</span>]])</span>
       </span>
       
       <p class="shortcomment cmt">Split a syntax into a part which has a prefix satisfying a
@@ -839,9 +994,9 @@ given predicate and a part whose prefixes do not satisfy it.
 </p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt class="param">splitter</dt><dd class="cmt"><p>The predicate indicating how to split.</p></dd><dt class="param">enterRecursive</dt><dd class="cmt"><p>Whether recursive construct should be split.</p></dd><dt>returns</dt><dd class="cmt"><p>The part whose prefix satisfy the preidcate if any, and the part whose prefix don't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Might not terminate if the syntax is left recursive and
 <code>enterRecursive</code> is set to <code>true</code>.</p></span></dd></dl></div>
     </li><li name="scallion.transformation.Split#splitLeftRecursive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(LeftRecursion.this)#Syntax[A]],Option[(LeftRecursion.this)#Syntax[A]])"></a>
+      <a id="splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="splitLeftRecursive[A](Recursive[A]):(Option[(Transformations.this)#Syntax[A]],Option[(Transformations.this)#Syntax[A]])"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#splitLeftRecursive[A](syntax:Split.this.Syntax.Recursive[A]):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -850,7 +1005,7 @@ given predicate and a part whose prefixes do not satisfy it.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">splitLeftRecursive</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]])</span>
+        <span class="name">splitLeftRecursive</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: <a href="../Syntaxes$Syntax$$Recursive.html" class="extype" name="scallion.Syntaxes.Syntax.Recursive">Recursive</a>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitLeftRecursive.A">A</span>]])</span>
       </span>
       
       <p class="shortcomment cmt">Split a recursive syntax into its left recursive component
@@ -858,9 +1013,9 @@ and its non-left recursive component.</p><div class="fullcomment"><div class="co
 and its non-left recursive component.
 </p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syntax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The left recursive component if any, and the component which isn't if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd></dl></div>
     </li><li name="scallion.transformation.Split#splitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])"></a><a id="splitNullable[A]((LeftRecursion.this)#Syntax[A],Boolean):((LeftRecursion.this)#Syntax[A],(LeftRecursion.this)#Syntax[A])"></a>
+      <a id="splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])"></a><a id="splitNullable[A]((Transformations.this)#Syntax[A],Boolean):((Transformations.this)#Syntax[A],(Transformations.this)#Syntax[A])"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#splitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Split.this.Syntax[A],Split.this.Syntax[A])" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -869,14 +1024,14 @@ and its non-left recursive component.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">splitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>])</span>
+        <span class="name">splitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: ((<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.splitNullable.A">A</span>])</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd></dl></div>
     </li><li name="scallion.transformation.Substitution#substitute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="substitute[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]"></a><a id="substitute[A]((LeftRecursion.this)#Syntax[A],((LeftRecursion.this)#Syntax[_],(LeftRecursion.this)#Syntax[_])*):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="substitute[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]"></a><a id="substitute[A]((Transformations.this)#Syntax[A],((Transformations.this)#Syntax[_],(Transformations.this)#Syntax[_])*):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#substitute[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#substitute[A](in:Substitution.this.Syntax[A],substitutions:(Substitution.this.Syntax[_],Substitution.this.Syntax[_])*):Substitution.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -885,15 +1040,15 @@ and its non-left recursive component.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>, <span name="substitutions">substitutions: ((<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_])*</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>
+        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>, <span name="substitutions">substitutions: ((<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_])*</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Substitutes a syntax with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Substitutes a syntax with another one.</p><p>This version just add an additional way to specify the substitution mappings.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a></dd></dl></div>
     </li><li name="scallion.transformation.Substitution#substitute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="substitute[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]],elim:Boolean):Substitution.this.Syntax[A]"></a><a id="substitute[A]((LeftRecursion.this)#Syntax[A],Map[(LeftRecursion.this)#Syntax[_],(LeftRecursion.this)#Syntax[_]],Boolean):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="substitute[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]],elim:Boolean):Substitution.this.Syntax[A]"></a><a id="substitute[A]((Transformations.this)#Syntax[A],Map[(Transformations.this)#Syntax[_],(Transformations.this)#Syntax[_]],Boolean):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#substitute[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]],elim:Boolean):Substitution.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#substitute[A](in:Substitution.this.Syntax[A],substitutions:scala.collection.immutable.Map[Substitution.this.Syntax[_],Substitution.this.Syntax[_]],elim:Boolean):Substitution.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -902,16 +1057,16 @@ and its non-left recursive component.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>, <span name="substitutions">substitutions: <span class="extype" name="scala.collection.immutable.Map">Map</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]]</span>, <span name="elim">elim: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>
+        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>, <span name="substitutions">substitutions: <span class="extype" name="scala.collection.immutable.Map">Map</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_], (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[_]]</span>, <span name="elim">elim: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Substitutes a syntax with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Substitutes a syntax with another one.</p><p>Unlike the base version, this one allows to perform multiple
 substitutions at once, given by the substitution map.
 </p></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>Syntax in which the substition(s) will happen.</p></dd><dt class="param">substitutions</dt><dd class="cmt"><p>Mappings old -&gt; new syntax</p></dd><dt class="param">elim</dt><dd class="cmt"><p>Indicates whether <code>original</code> must also be substituted inside of <code>subst</code>.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a></dd></dl></div>
     </li><li name="scallion.transformation.Substitution#substitute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="substitute[A,B](in:Substitution.this.Syntax[A],original:Substitution.this.Syntax[B],subst:Substitution.this.Syntax[B]):Substitution.this.Syntax[A]"></a><a id="substitute[A,B]((LeftRecursion.this)#Syntax[A],(LeftRecursion.this)#Syntax[B],(LeftRecursion.this)#Syntax[B]):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="substitute[A,B](in:Substitution.this.Syntax[A],original:Substitution.this.Syntax[B],subst:Substitution.this.Syntax[B]):Substitution.this.Syntax[A]"></a><a id="substitute[A,B]((Transformations.this)#Syntax[A],(Transformations.this)#Syntax[B],(Transformations.this)#Syntax[B]):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#substitute[A,B](in:Substitution.this.Syntax[A],original:Substitution.this.Syntax[B],subst:Substitution.this.Syntax[B]):Substitution.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#substitute[A,B](in:Substitution.this.Syntax[A],original:Substitution.this.Syntax[B],subst:Substitution.this.Syntax[B]):Substitution.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -920,7 +1075,7 @@ substitutions at once, given by the substitution map.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.B">B</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.B">B</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>
+        <span class="name">substitute</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="in">in: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>, <span name="original">original: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.B">B</span>]</span>, <span name="subst">subst: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.B">B</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Substitution.substitute.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Substitutes a syntax with another one.</p><div class="fullcomment"><div class="comment cmt"><p>Substitutes a syntax with another one.
@@ -942,7 +1097,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -958,7 +1113,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#toString():String" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -972,9 +1127,9 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scallion.transformation.Split#trySplitNullable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="trySplitNullable[A]((LeftRecursion.this)#Syntax[A],Boolean):(Option[(LeftRecursion.this)#Syntax[A]],Option[(LeftRecursion.this)#Syntax[A]])"></a>
+      <a id="trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])"></a><a id="trySplitNullable[A]((Transformations.this)#Syntax[A],Boolean):(Option[(Transformations.this)#Syntax[A]],Option[(Transformations.this)#Syntax[A]])"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#trySplitNullable[A](syntax:Split.this.Syntax[A],recTerm:Boolean):(Option[Split.this.Syntax[A]],Option[Split.this.Syntax[A]])" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -983,7 +1138,7 @@ substitute(grammar, epsilon(<span class="lit">'1'</span>).map(transform), epsilo
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trySplitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]])</span>
+        <span class="name">trySplitNullable</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]</span>, <span name="recTerm">recTerm: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]], <span class="extype" name="scala.Option">Option</span>[(<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Split.trySplitNullable.A">A</span>]])</span>
       </span>
       
       <p class="shortcomment cmt">Split a (possibly) nullable syntax into a
@@ -993,9 +1148,9 @@ null syntax (only accepts the empty string)
 and a non-nullable syntax (doesn't accept the empty string).
 </p></div><dl class="paramcmts block"><dt class="param">syntax</dt><dd class="cmt"><p>The syantax to split.</p></dd><dt>returns</dt><dd class="cmt"><p>The non-nullable component if any, and the null component if any.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Split.html" class="extype" name="scallion.transformation.Split">Split</a></dd><dt>Note</dt><dd><span class="cmt"><p>Will not terminate if the syntax is left recursive.</p></span></dd></dl></div>
     </li><li name="scallion.transformation.Unfold#unfoldDisjunctions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="unfoldDisjunctions[A](s:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]"></a><a id="unfoldDisjunctions[A]((LeftRecursion.this)#Syntax[A]):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="unfoldDisjunctions[A](s:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]"></a><a id="unfoldDisjunctions[A]((Transformations.this)#Syntax[A]):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#unfoldDisjunctions[A](s:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#unfoldDisjunctions[A](s:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1004,7 +1159,7 @@ and a non-nullable syntax (doesn't accept the empty string).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unfoldDisjunctions</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="s">s: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldDisjunctions.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldDisjunctions.A">A</span>]</span>
+        <span class="name">unfoldDisjunctions</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="s">s: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldDisjunctions.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldDisjunctions.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Unfolds disjunctions inside the syntax so that
@@ -1015,9 +1170,9 @@ disjunctions only appear at &quot;the top-level&quot; of the syntax.
 unfold(s) === (a ~ a) | (a ~ b)</pre></li></ol>
             </div></dl></div>
     </li><li name="scallion.transformation.Unfold#unfoldLeftmostRecursives" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="transformation">
-      <a id="unfoldLeftmostRecursives[A](syntax:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]"></a><a id="unfoldLeftmostRecursives[A]((LeftRecursion.this)#Syntax[A]):(LeftRecursion.this)#Syntax[A]"></a>
+      <a id="unfoldLeftmostRecursives[A](syntax:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]"></a><a id="unfoldLeftmostRecursives[A]((Transformations.this)#Syntax[A]):(Transformations.this)#Syntax[A]"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#unfoldLeftmostRecursives[A](syntax:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#unfoldLeftmostRecursives[A](syntax:Unfold.this.Syntax[A]):Unfold.this.Syntax[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1026,7 +1181,7 @@ unfold(s) === (a ~ a) | (a ~ b)</pre></li></ol>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unfoldLeftmostRecursives</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldLeftmostRecursives.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldLeftmostRecursives.A">A</span>]</span>
+        <span class="name">unfoldLeftmostRecursives</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="syntax">syntax: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldLeftmostRecursives.A">A</span>]</span>)</span><span class="result">: (<a href="" class="extype" name="scallion.transformation.Transformations">Transformations</a>.this)#<span class="extype" name="scallion.Syntaxes.Syntax">Syntax</span>[<span class="extype" name="scallion.transformation.Unfold.unfoldLeftmostRecursives.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Unfold all the recursives inside a syntax which might
@@ -1036,7 +1191,7 @@ be the first syntax to consume a token.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#wait():Unit" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1058,7 +1213,7 @@ be the first syntax to consume a token.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1080,7 +1235,7 @@ be the first syntax to consume a token.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../scallion/transformation/LeftRecursion.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../scallion/transformation/Transformations.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1111,7 +1266,11 @@ be the first syntax to consume a token.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scallion.transformation.Unfold">
+        <div class="parent" name="scallion.properties.LL1Properties">
+              <h3>Inherited from <a href="../properties/LL1Properties.html" class="extype" name="scallion.properties.LL1Properties">LL1Properties</a></h3>
+            </div><div class="parent" name="scallion.transformation.LeftRecursion">
+              <h3>Inherited from <a href="LeftRecursion.html" class="extype" name="scallion.transformation.LeftRecursion">LeftRecursion</a></h3>
+            </div><div class="parent" name="scallion.transformation.Unfold">
               <h3>Inherited from <a href="Unfold.html" class="extype" name="scallion.transformation.Unfold">Unfold</a></h3>
             </div><div class="parent" name="scallion.transformation.Substitution">
               <h3>Inherited from <a href="Substitution.html" class="extype" name="scallion.transformation.Substitution">Substitution</a></h3>
@@ -1119,6 +1278,10 @@ be the first syntax to consume a token.
               <h3>Inherited from <a href="../properties/Recursion.html" class="extype" name="scallion.properties.Recursion">Recursion</a></h3>
             </div><div class="parent" name="scallion.SyntaxesNavigation">
               <h3>Inherited from <a href="../SyntaxesNavigation.html" class="extype" name="scallion.SyntaxesNavigation">SyntaxesNavigation</a></h3>
+            </div><div class="parent" name="scallion.transformation.RightForceOut">
+              <h3>Inherited from <a href="RightForceOut.html" class="extype" name="scallion.transformation.RightForceOut">RightForceOut</a></h3>
+            </div><div class="parent" name="scallion.transformation.RightFactorization">
+              <h3>Inherited from <a href="RightFactorization.html" class="extype" name="scallion.transformation.RightFactorization">RightFactorization</a></h3>
             </div><div class="parent" name="scallion.transformation.LeftFactorization">
               <h3>Inherited from <a href="LeftFactorization.html" class="extype" name="scallion.transformation.LeftFactorization">LeftFactorization</a></h3>
             </div><div class="parent" name="scallion.transformation.Split">
@@ -1132,7 +1295,10 @@ be the first syntax to consume a token.
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="navigation">
+        <div class="group" name="conflicts">
+              <h3>Conflicts resolution</h3>
+              
+            </div><div class="group" name="navigation">
               <h3>Navigation</h3>
               
             </div><div class="group" name="transformation">
